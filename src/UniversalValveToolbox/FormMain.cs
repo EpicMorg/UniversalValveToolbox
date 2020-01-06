@@ -34,7 +34,8 @@ namespace UniversalValveToolbox
 
         private void button_Launch_Click(object sender, EventArgs e)
         {
-
+            var frmSettings = new FormSettings();
+            frmSettings.ShowDialog();
         }
     }
 }

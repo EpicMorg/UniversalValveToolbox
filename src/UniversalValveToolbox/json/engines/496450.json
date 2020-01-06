@@ -1,0 +1,12 @@
+{
+  "appid": 496450,
+  "name": "J.A.C.K.",
+  "bin": "ReadMe.txt",
+  "tools": [
+    {
+      "args": "",
+      "bin": "jack.exe",
+      "name": "J.A.C.K."
+    }
+  ]
+}

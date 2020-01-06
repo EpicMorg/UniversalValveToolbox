@@ -1,0 +1,12 @@
+{
+  "appid": 254430,
+  "name": "Half-Life SDK",
+  "bin": "ReadMe.txt",
+  "tools": [
+    {
+      "args": "",
+      "bin": "Hammer Editor//hammer.exe",
+      "name": "Valve Hammer Editor"
+    }
+  ]
+}
