@@ -71,7 +71,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label_Mod);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(432, 196);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(374, 165);
             this.groupBox1.TabIndex = 5;
@@ -157,7 +157,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(12, 209);
+            this.button4.Location = new System.Drawing.Point(432, 393);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(374, 23);
             this.button4.TabIndex = 6;
@@ -168,7 +168,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(398, 242);
+            this.ClientSize = new System.Drawing.Size(844, 485);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

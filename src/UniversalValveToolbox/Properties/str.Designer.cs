@@ -22,14 +22,14 @@ namespace UniversalValveToolbox.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class str {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal str() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace UniversalValveToolbox.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UniversalValveToolbox.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UniversalValveToolbox.Properties.str", typeof(str).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,42 +61,47 @@ namespace UniversalValveToolbox.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to Edit Configurations.
         /// </summary>
-        internal static System.Drawing.Bitmap cancel_16 {
+        internal static string strEditConfigurations {
             get {
-                object obj = ResourceManager.GetObject("cancel_16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("strEditConfigurations", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to GitHub Link.
         /// </summary>
-        internal static System.Drawing.Bitmap checked_16 {
+        internal static string strGitHubLink {
             get {
-                object obj = ResourceManager.GetObject("checked_16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("strGitHubLink", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to Info.
         /// </summary>
-        internal static System.Drawing.Bitmap human_16 {
+        internal static string strInfo {
             get {
-                object obj = ResourceManager.GetObject("human_16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("strInfo", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to Settings.
         /// </summary>
-        internal static System.Drawing.Bitmap refresh_16 {
+        internal static string strSettings {
             get {
-                object obj = ResourceManager.GetObject("refresh_16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("strSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Web Links.
+        /// </summary>
+        internal static string strWebLinks {
+            get {
+                return ResourceManager.GetString("strWebLinks", resourceCulture);
             }
         }
     }

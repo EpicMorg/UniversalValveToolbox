@@ -69,6 +69,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\str.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>str.resx</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,7 +88,13 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Properties\str.ru.resx" />
+    <EmbeddedResource Include="Properties\str.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>str.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="json\engines\496450.json" />
     <None Include="json\engines\254430.json" />
     <None Include="json\engines\243750.json" />
@@ -105,6 +116,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\cancel_16.png" />
+    <None Include="Resources\checked_16.png" />
+    <None Include="Resources\human_16.png" />
+    <None Include="Resources\refresh_16.png" />
     <Content Include="valve.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

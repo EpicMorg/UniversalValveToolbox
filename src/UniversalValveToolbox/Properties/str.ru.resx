@@ -117,17 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="checked_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\checked_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="strEditConfigurations" xml:space="preserve">
+    <value>Редактирование конфигураций</value>
   </data>
-  <data name="cancel_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cancel_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="strGitHubLink" xml:space="preserve">
+    <value>Ссылка на GitHub</value>
   </data>
-  <data name="human_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\human_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="strInfo" xml:space="preserve">
+    <value>Информация</value>
   </data>
-  <data name="refresh_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\refresh_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="strSettings" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="strWebLinks" xml:space="preserve">
+    <value>Ссылки на Web</value>
   </data>
 </root>
