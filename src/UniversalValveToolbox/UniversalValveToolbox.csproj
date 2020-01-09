@@ -55,22 +55,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="forms\FormEditProfile.cs">
+    <Compile Include="FormProfilePropertie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\FormEditProfile.Designer.cs">
-      <DependentUpon>FormEditProfile.cs</DependentUpon>
+    <Compile Include="FormProfilePropertie.Designer.cs">
+      <DependentUpon>FormProfilePropertie.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\FormMain.cs">
+    <Compile Include="FormProfiles.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\FormMain.Designer.cs">
+    <Compile Include="FormProfiles.Designer.cs">
+      <DependentUpon>FormProfiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\FormSettings.cs">
+    <Compile Include="FormSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\FormSettings.Designer.cs">
+    <Compile Include="FormSettings.Designer.cs">
       <DependentUpon>FormSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -80,13 +86,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>str.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="forms\FormEditProfile.resx">
-      <DependentUpon>FormEditProfile.cs</DependentUpon>
+    <EmbeddedResource Include="FormProfilePropertie.resx">
+      <DependentUpon>FormProfilePropertie.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\FormMain.resx">
+    <EmbeddedResource Include="FormProfiles.resx">
+      <DependentUpon>FormProfiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\FormSettings.resx">
+    <EmbeddedResource Include="FormSettings.resx">
       <DependentUpon>FormSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

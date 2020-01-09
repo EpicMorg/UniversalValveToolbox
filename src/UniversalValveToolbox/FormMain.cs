@@ -83,8 +83,8 @@ namespace UniversalValveToolbox {
 #if DEBUG
                         MessageBox.Show(selectedClient, Properties.str.strInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
 #endif
-                        var frmSettings = new FormSettings();
-                        frmSettings.ShowDialog();
+                        var frmProfiles = new FormProfiles();
+                        frmProfiles.ShowDialog();
                     } else if (selectedClient == Properties.str.strGitHubLink) {
 #if DEBUG
                         MessageBox.Show(selectedClient, Properties.str.strInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
