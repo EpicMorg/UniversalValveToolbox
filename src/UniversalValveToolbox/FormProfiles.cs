@@ -11,14 +11,5 @@ namespace UniversalValveToolbox {
 
         }
 
-        private void buttonNew_Click(object sender, EventArgs e) {
-            var frmProfilePropertie = new FormProfilePropertie();
-            frmProfilePropertie.ShowDialog();
-        }
-
-        private void buttonEdit_Click(object sender, EventArgs e) {
-            var frmProfilePropertie = new FormProfilePropertie();
-            frmProfilePropertie.ShowDialog();
-        }
     }
 }

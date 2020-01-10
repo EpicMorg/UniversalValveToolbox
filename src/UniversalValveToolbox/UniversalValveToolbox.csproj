@@ -55,11 +55,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormProfilePropertie.cs">
+    <Compile Include="FormAddons.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormProfilePropertie.Designer.cs">
-      <DependentUpon>FormProfilePropertie.cs</DependentUpon>
+    <Compile Include="FormAddons.Designer.cs">
+      <DependentUpon>FormAddons.cs</DependentUpon>
     </Compile>
     <Compile Include="FormProfiles.cs">
       <SubType>Form</SubType>
@@ -81,13 +81,33 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\str.Designer.cs">
+    <Compile Include="Properties\translations\MenuCategories.Designer.cs">
+      <DependentUpon>MenuCategories.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>str.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormProfilePropertie.resx">
-      <DependentUpon>FormProfilePropertie.cs</DependentUpon>
+    <Compile Include="Properties\translations\MenuItems.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MenuItems.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\translations\MenuCategories.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MenuCategories.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\translations\MessageBoxes.ru.Designer.cs">
+      <DependentUpon>MessageBoxes.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\translations\MessageBoxes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MessageBoxes.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FormAddons.resx">
+      <DependentUpon>FormAddons.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormProfiles.resx">
       <DependentUpon>FormProfiles.cs</DependentUpon>
@@ -108,11 +128,29 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Properties\str.ru.resx" />
-    <EmbeddedResource Include="Properties\str.resx">
+    <EmbeddedResource Include="Properties\translations\MenuCategories.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>str.Designer.cs</LastGenOutput>
+      <LastGenOutput>MenuCategories.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\translations\MenuItems.ru.resx" />
+    <EmbeddedResource Include="Properties\translations\MenuItems.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MenuItems.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\translations\MenuCategories.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MenuCategories.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\translations\MessageBoxes.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MessageBoxes.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\translations\MessageBoxes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MessageBoxes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="json\addons\myOtherProgram.json" />
+    <None Include="json\addons\myProgram.json" />
     <None Include="json\engines\496450.json" />
     <None Include="json\engines\254430.json" />
     <None Include="json\engines\243750.json" />

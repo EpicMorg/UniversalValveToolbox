@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UniversalValveToolbox.Properties {
+namespace UniversalValveToolbox.Properties.translations {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace UniversalValveToolbox.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class str {
+    internal class MenuItems {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal str() {
+        internal MenuItems() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace UniversalValveToolbox.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UniversalValveToolbox.Properties.str", typeof(str).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UniversalValveToolbox.Properties.translations.MenuItems", typeof(MenuItems).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,47 +61,47 @@ namespace UniversalValveToolbox.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edit Configurations.
+        ///   Looks up a localized string similar to About.
         /// </summary>
-        internal static string strEditConfigurations {
+        internal static string itmAbout {
             get {
-                return ResourceManager.GetString("strEditConfigurations", resourceCulture);
+                return ResourceManager.GetString("itmAbout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Game Configurations.
+        /// </summary>
+        internal static string itmEditConfigurations {
+            get {
+                return ResourceManager.GetString("itmEditConfigurations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Plugins.
+        /// </summary>
+        internal static string itmEditPlugins {
+            get {
+                return ResourceManager.GetString("itmEditPlugins", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to GitHub Link.
         /// </summary>
-        internal static string strGitHubLink {
+        internal static string itmGitHubLink {
             get {
-                return ResourceManager.GetString("strGitHubLink", resourceCulture);
+                return ResourceManager.GetString("itmGitHubLink", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Info.
+        ///   Looks up a localized string similar to Open Settings.
         /// </summary>
-        internal static string strInfo {
+        internal static string itmOpenSettings {
             get {
-                return ResourceManager.GetString("strInfo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Settings.
-        /// </summary>
-        internal static string strSettings {
-            get {
-                return ResourceManager.GetString("strSettings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Web Links.
-        /// </summary>
-        internal static string strWebLinks {
-            get {
-                return ResourceManager.GetString("strWebLinks", resourceCulture);
+                return ResourceManager.GetString("itmOpenSettings", resourceCulture);
             }
         }
     }

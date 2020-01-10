@@ -117,19 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="strEditConfigurations" xml:space="preserve">
-    <value>Edit Configurations</value>
-  </data>
-  <data name="strGitHubLink" xml:space="preserve">
-    <value>GitHub Link</value>
-  </data>
-  <data name="strInfo" xml:space="preserve">
-    <value>Info</value>
-  </data>
-  <data name="strSettings" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="strWebLinks" xml:space="preserve">
-    <value>Web Links</value>
+  <data name="msgInfo" xml:space="preserve">
+    <value>Информация</value>
   </data>
 </root>

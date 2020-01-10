@@ -8,9 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UniversalValveToolbox {
-    public partial class FormProfilePropertie : Form {
-        public FormProfilePropertie() {
+namespace UniversalValveToolbox
+{
+    public partial class FormAddons : Form
+    {
+        public FormAddons()
+        {
             InitializeComponent();
         }
     }

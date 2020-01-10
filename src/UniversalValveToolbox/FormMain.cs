@@ -14,26 +14,77 @@ namespace UniversalValveToolbox {
         }
 
         private void FillBaseMenuItems() {
-            ListViewGroup listViewGroupSettings = new ListViewGroup(Properties.str.strSettings);
-            ListViewGroup listViewGroupWebLinks = new ListViewGroup(Properties.str.strWebLinks);
+            #region static content, do not edit
+            //creating groups (categores)
+            ListViewGroup listViewGroupAddons = new ListViewGroup(Properties.translations.MenuCategories.catAddons);
+            ListViewGroup listViewGroupCompileDecpmpile = new ListViewGroup(Properties.translations.MenuCategories.catCompileDecpmpile);
+            ListViewGroup listViewGroupContent = new ListViewGroup(Properties.translations.MenuCategories.catContent);
+            ListViewGroup listViewGroupDocs = new ListViewGroup(Properties.translations.MenuCategories.catDocs);
+            ListViewGroup listViewGroupLandscape = new ListViewGroup(Properties.translations.MenuCategories.catLandscape);
+            ListViewGroup listViewGroupMisc = new ListViewGroup(Properties.translations.MenuCategories.catMisc);
+            ListViewGroup listViewGroupSettings = new ListViewGroup(Properties.translations.MenuCategories.catSettings);
+            ListViewGroup listViewGroupSupport = new ListViewGroup(Properties.translations.MenuCategories.catSupport);
+            ListViewGroup listViewGroupTextures = new ListViewGroup(Properties.translations.MenuCategories.catTextures);
+            ListViewGroup listViewGroupTools = new ListViewGroup(Properties.translations.MenuCategories.catTools);
+            ListViewGroup listViewGroupUtils = new ListViewGroup(Properties.translations.MenuCategories.catUtils);
+            ListViewGroup listViewGroupWebLinks = new ListViewGroup(Properties.translations.MenuCategories.catWebLinks);
 
-            ListViewItem listViewItemSettings = new ListViewItem(Properties.str.strSettings, 2);
-            ListViewItem listViewItemEditConfigurations = new ListViewItem(Properties.str.strEditConfigurations, 3);
-            ListViewItem listViewItemGitHubLink = new ListViewItem(Properties.str.strGitHubLink, 0);
-
-            listViewGroupSettings.Header = Properties.str.strSettings;
+            //initialise some categories in menu
+            listViewGroupAddons.Header = Properties.translations.MenuCategories.catAddons;
+            listViewGroupCompileDecpmpile.Header = Properties.translations.MenuCategories.catCompileDecpmpile;
+            listViewGroupContent.Header = Properties.translations.MenuCategories.catContent;
+            listViewGroupDocs.Header = Properties.translations.MenuCategories.catDocs;
+            listViewGroupLandscape.Header = Properties.translations.MenuCategories.catLandscape;
+            listViewGroupMisc.Header = Properties.translations.MenuCategories.catMisc;
+            listViewGroupSettings.Header = Properties.translations.MenuCategories.catSettings;
+            listViewGroupSupport.Header = Properties.translations.MenuCategories.catSupport;
+            listViewGroupTextures.Header = Properties.translations.MenuCategories.catTextures;
+            listViewGroupTools.Header = Properties.translations.MenuCategories.catTools;
+            listViewGroupUtils.Header = Properties.translations.MenuCategories.catUtils;
+            listViewGroupWebLinks.Header = Properties.translations.MenuCategories.catWebLinks;
+            
+            //add names to categories
             listViewGroupSettings.Name = "ListViewGroupSettings";
-
-            listViewGroupWebLinks.Header = Properties.str.strWebLinks;
             listViewGroupWebLinks.Name = "ListViewGroupUrls";
+            #endregion
 
+            //creating permanent menu items
+            ListViewItem listViewItemSettings = new ListViewItem(Properties.translations.MenuItems.itmOpenSettings, 2);
+            ListViewItem listViewItemEditConfigurations = new ListViewItem(Properties.translations.MenuItems.itmEditConfigurations, 3);
+            ListViewItem listViewItemEditPlugins = new ListViewItem(Properties.translations.MenuItems.itmEditPlugins, 4);
+            ListViewItem listViewItemAbout = new ListViewItem(Properties.translations.MenuItems.itmAbout, 5);
+            ListViewItem listViewItemGitHubLink = new ListViewItem(Properties.translations.MenuItems.itmGitHubLink, 0);
+             
+            //add item to category(group)
             listViewItemSettings.Group = listViewGroupSettings;
             listViewItemEditConfigurations.Group = listViewGroupSettings;
+            listViewItemEditPlugins.Group = listViewGroupSettings;
 
-            listViewItemGitHubLink.Group = listViewGroupWebLinks;
+            listViewItemAbout.Group = listViewGroupSupport;
+            listViewItemGitHubLink.Group = listViewGroupSupport;
 
-            listView.Groups.AddRange(new ListViewGroup[] { listViewGroupSettings, listViewGroupWebLinks });
-            listView.Items.AddRange(new ListViewItem[] { listViewItemSettings, listViewItemEditConfigurations, listViewItemGitHubLink });
+            //draw items and categories in forms
+            listView.Groups.AddRange(new ListViewGroup[] {
+                listViewGroupAddons,
+                listViewGroupCompileDecpmpile,
+                listViewGroupContent,
+                listViewGroupDocs,
+                listViewGroupLandscape,
+                listViewGroupMisc,
+                listViewGroupSettings,
+                listViewGroupSupport,
+                listViewGroupTextures,
+                listViewGroupTools,
+                listViewGroupUtils,
+                listViewGroupWebLinks,
+            });
+            listView.Items.AddRange(new ListViewItem[] { 
+                listViewItemSettings, 
+                listViewItemEditConfigurations, 
+                listViewItemEditPlugins,
+                listViewItemGitHubLink,
+                listViewItemAbout
+            });
         }
 
         private void button_Launch_Click(object sender, EventArgs e) {
@@ -73,22 +124,22 @@ namespace UniversalValveToolbox {
                 if (rectangle.Contains(e.Location)) {
                     var selectedClient = listView.SelectedItems[0].Text;
 
-                    if (selectedClient == Properties.str.strSettings) {
-#if DEBUG
-                        MessageBox.Show(selectedClient, Properties.str.strInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-#endif
+                    if (selectedClient == Properties.translations.MenuItems.itmOpenSettings) {
+//#if DEBUG
+//                        MessageBox.Show(selectedClient, Properties.translations.MessageBoxes.msgInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+//#endif
                         var frmSettings = new FormSettings();
                         frmSettings.ShowDialog();
-                    } else if (selectedClient == Properties.str.strEditConfigurations) {
-#if DEBUG
-                        MessageBox.Show(selectedClient, Properties.str.strInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-#endif
+                    } else if (selectedClient == Properties.translations.MenuItems.itmEditConfigurations) {
+//#if DEBUG
+//                        MessageBox.Show(selectedClient, Properties.translations.MessageBoxes.msgInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+//#endif
                         var frmProfiles = new FormProfiles();
                         frmProfiles.ShowDialog();
-                    } else if (selectedClient == Properties.str.strGitHubLink) {
-#if DEBUG
-                        MessageBox.Show(selectedClient, Properties.str.strInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-#endif
+                    } else if (selectedClient == Properties.translations.MenuItems.itmGitHubLink) {
+//#if DEBUG
+//                        MessageBox.Show(selectedClient, Properties.translations.MessageBoxes.msgInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+//#endif
                         Process.Start("https://github.com/EpicMorg/UniversalValveToolbox");
                     }
                     return;

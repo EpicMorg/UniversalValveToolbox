@@ -112,6 +112,8 @@
             this.imageListLarge.Images.SetKeyName(1, "internet_24.png");
             this.imageListLarge.Images.SetKeyName(2, "settings_24.png");
             this.imageListLarge.Images.SetKeyName(3, "technical-support_24.png");
+            this.imageListLarge.Images.SetKeyName(4, "plug-silhouette_24.png");
+            this.imageListLarge.Images.SetKeyName(5, "info_24.png");
             // 
             // imageListSmall
             // 
@@ -121,6 +123,8 @@
             this.imageListSmall.Images.SetKeyName(1, "internet_16.png");
             this.imageListSmall.Images.SetKeyName(2, "settings_16.png");
             this.imageListSmall.Images.SetKeyName(3, "technical-support_16.png");
+            this.imageListSmall.Images.SetKeyName(4, "plug-silhouette_16.png");
+            this.imageListSmall.Images.SetKeyName(5, "info_16.png");
             // 
             // statusStrip
             // 
