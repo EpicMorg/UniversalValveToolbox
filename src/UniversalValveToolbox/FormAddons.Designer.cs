@@ -47,6 +47,9 @@
             this.labelArgs = new System.Windows.Forms.Label();
             this.buttonBrowse = new System.Windows.Forms.Button();
             this.labelDivider = new System.Windows.Forms.Label();
+            this.comboBoxCategory = new System.Windows.Forms.ComboBox();
+            this.labelCategory = new System.Windows.Forms.Label();
+            this.buttonApply = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEngines)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,6 +62,7 @@
             this.buttonCancel.TabIndex = 8;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonOK
             // 
@@ -166,11 +170,9 @@
             // 
             // textBoxName
             // 
-            this.textBoxName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxName.Location = new System.Drawing.Point(12, 65);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(390, 20);
+            this.textBoxName.Size = new System.Drawing.Size(168, 20);
             this.textBoxName.TabIndex = 15;
             // 
             // textBoxPath
@@ -218,6 +220,7 @@
             this.buttonBrowse.TabIndex = 20;
             this.buttonBrowse.Text = "Browse";
             this.buttonBrowse.UseVisualStyleBackColor = true;
+            this.buttonBrowse.Click += new System.EventHandler(this.buttonBrowse_Click);
             // 
             // labelDivider
             // 
@@ -229,11 +232,44 @@
             this.labelDivider.Size = new System.Drawing.Size(550, 2);
             this.labelDivider.TabIndex = 24;
             // 
+            // comboBoxCategory
+            // 
+            this.comboBoxCategory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCategory.FormattingEnabled = true;
+            this.comboBoxCategory.Location = new System.Drawing.Point(186, 65);
+            this.comboBoxCategory.Name = "comboBoxCategory";
+            this.comboBoxCategory.Size = new System.Drawing.Size(216, 21);
+            this.comboBoxCategory.TabIndex = 25;
+            // 
+            // labelCategory
+            // 
+            this.labelCategory.AutoSize = true;
+            this.labelCategory.Location = new System.Drawing.Point(183, 49);
+            this.labelCategory.Name = "labelCategory";
+            this.labelCategory.Size = new System.Drawing.Size(52, 13);
+            this.labelCategory.TabIndex = 26;
+            this.labelCategory.Text = "Category:";
+            // 
+            // buttonApply
+            // 
+            this.buttonApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonApply.Location = new System.Drawing.Point(408, 141);
+            this.buttonApply.Name = "buttonApply";
+            this.buttonApply.Size = new System.Drawing.Size(75, 23);
+            this.buttonApply.TabIndex = 27;
+            this.buttonApply.Text = "Apply";
+            this.buttonApply.UseVisualStyleBackColor = true;
+            // 
             // FormAddons
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(495, 417);
+            this.Controls.Add(this.buttonApply);
+            this.Controls.Add(this.labelCategory);
+            this.Controls.Add(this.comboBoxCategory);
             this.Controls.Add(this.labelDivider);
             this.Controls.Add(this.buttonBrowse);
             this.Controls.Add(this.textBoxArgs);
@@ -251,7 +287,9 @@
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.comboBox_Addon);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(511, 456);
             this.Name = "FormAddons";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Addons";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEngines)).EndInit();
@@ -280,5 +318,8 @@
         private System.Windows.Forms.Label labelArgs;
         private System.Windows.Forms.Button buttonBrowse;
         private System.Windows.Forms.Label labelDivider;
+        private System.Windows.Forms.ComboBox comboBoxCategory;
+        private System.Windows.Forms.Label labelCategory;
+        private System.Windows.Forms.Button buttonApply;
     }
 }

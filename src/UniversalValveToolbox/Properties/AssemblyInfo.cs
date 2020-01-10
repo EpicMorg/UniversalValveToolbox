@@ -1,17 +1,18 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
+﻿using System;
+using System.Reflection;
 using System.Runtime.InteropServices;
+
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("UniversalValveToolbox")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Universal Valve Toolbox")]
+[assembly: AssemblyDescription("Universal Valve Toolbox")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("UniversalValveToolbox")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("EpicMorg")]
+[assembly: AssemblyProduct("Universal Valve Toolbox")]
+[assembly: AssemblyCopyright("Copyright © EpicMorg")]
+[assembly: AssemblyTrademark("Valve")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible

@@ -7,6 +7,9 @@ namespace UniversalValveToolbox {
         public FormMain() {
             InitializeComponent();
             FillBaseMenuItems();
+            Text = VersionHelper.AssemblyTitle + VersionHelper.AssemblyVersion;
+            comboBoxEngine.SelectedIndex = 0;
+            comboBoxGameConfig.SelectedIndex = 0;
         }
 
         private void FormMain_Load(object sender, EventArgs e) {
@@ -42,7 +45,7 @@ namespace UniversalValveToolbox {
             listViewGroupTools.Header = Properties.translations.MenuCategories.catTools;
             listViewGroupUtils.Header = Properties.translations.MenuCategories.catUtils;
             listViewGroupWebLinks.Header = Properties.translations.MenuCategories.catWebLinks;
-            
+
             //add names to categories
             listViewGroupSettings.Name = "ListViewGroupSettings";
             listViewGroupWebLinks.Name = "ListViewGroupUrls";
@@ -54,7 +57,7 @@ namespace UniversalValveToolbox {
             ListViewItem listViewItemEditPlugins = new ListViewItem(Properties.translations.MenuItems.itmEditPlugins, 4);
             ListViewItem listViewItemAbout = new ListViewItem(Properties.translations.MenuItems.itmAbout, 5);
             ListViewItem listViewItemGitHubLink = new ListViewItem(Properties.translations.MenuItems.itmGitHubLink, 0);
-             
+
             //add item to category(group)
             listViewItemSettings.Group = listViewGroupSettings;
             listViewItemEditConfigurations.Group = listViewGroupSettings;
@@ -78,14 +81,16 @@ namespace UniversalValveToolbox {
                 listViewGroupUtils,
                 listViewGroupWebLinks,
             });
-            listView.Items.AddRange(new ListViewItem[] { 
-                listViewItemSettings, 
-                listViewItemEditConfigurations, 
+            listView.Items.AddRange(new ListViewItem[] {
+                listViewItemSettings,
+                listViewItemEditConfigurations,
                 listViewItemEditPlugins,
                 listViewItemGitHubLink,
                 listViewItemAbout
             });
         }
+
+
 
         private void button_Launch_Click(object sender, EventArgs e) {
             var frmSettings = new FormSettings();
@@ -123,23 +128,19 @@ namespace UniversalValveToolbox {
                 var rectangle = listView.GetItemRect(i);
                 if (rectangle.Contains(e.Location)) {
                     var selectedClient = listView.SelectedItems[0].Text;
-
                     if (selectedClient == Properties.translations.MenuItems.itmOpenSettings) {
-//#if DEBUG
-//                        MessageBox.Show(selectedClient, Properties.translations.MessageBoxes.msgInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-//#endif
                         var frmSettings = new FormSettings();
                         frmSettings.ShowDialog();
                     } else if (selectedClient == Properties.translations.MenuItems.itmEditConfigurations) {
-//#if DEBUG
-//                        MessageBox.Show(selectedClient, Properties.translations.MessageBoxes.msgInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-//#endif
                         var frmProfiles = new FormProfiles();
                         frmProfiles.ShowDialog();
+                    } else if (selectedClient == Properties.translations.MenuItems.itmEditPlugins) {
+                        var frmPlugins = new FormAddons();
+                        frmPlugins.ShowDialog();
+                    } else if (selectedClient == Properties.translations.MenuItems.itmAbout) {
+                        var frmAbout = new FormAbout();
+                        frmAbout.ShowDialog();
                     } else if (selectedClient == Properties.translations.MenuItems.itmGitHubLink) {
-//#if DEBUG
-//                        MessageBox.Show(selectedClient, Properties.translations.MessageBoxes.msgInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-//#endif
                         Process.Start("https://github.com/EpicMorg/UniversalValveToolbox");
                     }
                     return;

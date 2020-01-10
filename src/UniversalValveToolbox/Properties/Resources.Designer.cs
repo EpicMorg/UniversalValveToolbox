@@ -93,9 +93,39 @@ namespace UniversalValveToolbox.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap info_16 {
+            get {
+                object obj = ResourceManager.GetObject("info_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap plug_silhouette_16 {
+            get {
+                object obj = ResourceManager.GetObject("plug-silhouette_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap refresh_16 {
             get {
                 object obj = ResourceManager.GetObject("refresh_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap valve_64 {
+            get {
+                object obj = ResourceManager.GetObject("valve_64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
