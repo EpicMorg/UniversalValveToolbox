@@ -16,7 +16,7 @@ namespace UniversalValveToolbox {
 
         }
 
-        private void FillBaseMenuItems() {
+        public void FillBaseMenuItems() {
             #region static content, do not edit
             //creating groups (categores)
             ListViewGroup listViewGroupAddons = new ListViewGroup(Properties.translations.MenuCategories.catAddons);
