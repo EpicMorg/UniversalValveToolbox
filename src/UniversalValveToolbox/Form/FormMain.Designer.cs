@@ -52,7 +52,7 @@
             this.comboBoxGameConfig.Enabled = false;
             this.comboBoxGameConfig.FormattingEnabled = true;
             this.comboBoxGameConfig.Items.AddRange(new object[] {
-            "No game configurations configured"});
+            "No project configured"});
             this.comboBoxGameConfig.Location = new System.Drawing.Point(12, 392);
             this.comboBoxGameConfig.Name = "comboBoxGameConfig";
             this.comboBoxGameConfig.Size = new System.Drawing.Size(363, 21);

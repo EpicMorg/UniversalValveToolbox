@@ -120,7 +120,7 @@
   <data name="catAddons" xml:space="preserve">
     <value>Дополнения</value>
   </data>
-  <data name="catCompileDecpmpile" xml:space="preserve">
+  <data name="catCompileDecompile" xml:space="preserve">
     <value>Компиляция и Декомпиляция</value>
   </data>
   <data name="catContent" xml:space="preserve">

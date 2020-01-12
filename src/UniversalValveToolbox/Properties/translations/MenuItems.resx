@@ -121,7 +121,7 @@
     <value>About</value>
   </data>
   <data name="itmEditConfigurations" xml:space="preserve">
-    <value>Edit Game Configurations</value>
+    <value>Edit Projects</value>
   </data>
   <data name="itmEditPlugins" xml:space="preserve">
     <value>Edit Plugins</value>

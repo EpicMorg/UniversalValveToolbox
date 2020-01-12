@@ -27,5 +27,10 @@ namespace UniversalValveToolbox {
                 textBoxPath.Text = folderpath;
             }
         }
+
+        private void FormAddons_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

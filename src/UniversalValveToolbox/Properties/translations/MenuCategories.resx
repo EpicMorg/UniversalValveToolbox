@@ -120,8 +120,8 @@
   <data name="catAddons" xml:space="preserve">
     <value>Addons</value>
   </data>
-  <data name="catCompileDecpmpile" xml:space="preserve">
-    <value>Compile or Decpmpile</value>
+  <data name="catCompileDecompile" xml:space="preserve">
+    <value>Compile or Decompile</value>
   </data>
   <data name="catContent" xml:space="preserve">
     <value>Content</value>

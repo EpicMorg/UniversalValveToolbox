@@ -55,34 +55,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormAbout.cs">
+    <Compile Include="Form\FormAbout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAbout.Designer.cs">
+    <Compile Include="Form\FormAbout.Designer.cs">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAddons.cs">
+    <Compile Include="Form\FormAddons.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAddons.Designer.cs">
+    <Compile Include="Form\FormAddons.Designer.cs">
       <DependentUpon>FormAddons.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormProfiles.cs">
+    <Compile Include="Form\FormProfiles.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormProfiles.Designer.cs">
+    <Compile Include="Form\FormProfiles.Designer.cs">
       <DependentUpon>FormProfiles.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMain.cs">
+    <Compile Include="Form\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMain.Designer.cs">
+    <Compile Include="Form\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormSettings.cs">
+    <Compile Include="Form\FormSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormSettings.Designer.cs">
+    <Compile Include="Form\FormSettings.Designer.cs">
       <DependentUpon>FormSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -112,20 +112,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MessageBoxes.resx</DependentUpon>
     </Compile>
-    <Compile Include="VersionHelper.cs" />
-    <EmbeddedResource Include="FormAbout.resx">
+    <Compile Include="Util\VersionHelper.cs" />
+    <EmbeddedResource Include="Form\FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAddons.resx">
+    <EmbeddedResource Include="Form\FormAddons.resx">
       <DependentUpon>FormAddons.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormProfiles.resx">
+    <EmbeddedResource Include="Form\FormProfiles.resx">
       <DependentUpon>FormProfiles.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMain.resx">
+    <EmbeddedResource Include="Form\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormSettings.resx">
+    <EmbeddedResource Include="Form\FormSettings.resx">
       <DependentUpon>FormSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

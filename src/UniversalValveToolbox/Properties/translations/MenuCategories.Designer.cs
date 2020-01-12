@@ -70,11 +70,11 @@ namespace UniversalValveToolbox.Properties.translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Compile or Decpmpile.
+        ///   Looks up a localized string similar to Compile or Decompile.
         /// </summary>
-        internal static string catCompileDecpmpile {
+        internal static string catCompileDecompile {
             get {
-                return ResourceManager.GetString("catCompileDecpmpile", resourceCulture);
+                return ResourceManager.GetString("catCompileDecompile", resourceCulture);
             }
         }
         

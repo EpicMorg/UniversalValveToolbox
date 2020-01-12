@@ -121,10 +121,10 @@
     <value>О Программе</value>
   </data>
   <data name="itmEditConfigurations" xml:space="preserve">
-    <value>Редактирование Игровых Конфигураций</value>
+    <value>Редактор Проектов</value>
   </data>
   <data name="itmEditPlugins" xml:space="preserve">
-    <value>Редактирование Плагинов</value>
+    <value>Редактор Плагинов</value>
   </data>
   <data name="itmGitHubLink" xml:space="preserve">
     <value>Ссылка на GitHub</value>

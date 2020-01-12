@@ -70,7 +70,7 @@ namespace UniversalValveToolbox.Properties.translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edit Game Configurations.
+        ///   Looks up a localized string similar to Edit Projects.
         /// </summary>
         internal static string itmEditConfigurations {
             get {

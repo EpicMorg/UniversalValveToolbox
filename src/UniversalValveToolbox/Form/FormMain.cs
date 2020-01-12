@@ -20,7 +20,7 @@ namespace UniversalValveToolbox {
             #region static content, do not edit
             //creating groups (categores)
             ListViewGroup listViewGroupAddons = new ListViewGroup(Properties.translations.MenuCategories.catAddons);
-            ListViewGroup listViewGroupCompileDecpmpile = new ListViewGroup(Properties.translations.MenuCategories.catCompileDecpmpile);
+            ListViewGroup listViewGroupCompileDecpmpile = new ListViewGroup(Properties.translations.MenuCategories.catCompileDecompile);
             ListViewGroup listViewGroupContent = new ListViewGroup(Properties.translations.MenuCategories.catContent);
             ListViewGroup listViewGroupDocs = new ListViewGroup(Properties.translations.MenuCategories.catDocs);
             ListViewGroup listViewGroupLandscape = new ListViewGroup(Properties.translations.MenuCategories.catLandscape);
@@ -31,20 +31,6 @@ namespace UniversalValveToolbox {
             ListViewGroup listViewGroupTools = new ListViewGroup(Properties.translations.MenuCategories.catTools);
             ListViewGroup listViewGroupUtils = new ListViewGroup(Properties.translations.MenuCategories.catUtils);
             ListViewGroup listViewGroupWebLinks = new ListViewGroup(Properties.translations.MenuCategories.catWebLinks);
-
-            //initialise some categories in menu
-            listViewGroupAddons.Header = Properties.translations.MenuCategories.catAddons;
-            listViewGroupCompileDecpmpile.Header = Properties.translations.MenuCategories.catCompileDecpmpile;
-            listViewGroupContent.Header = Properties.translations.MenuCategories.catContent;
-            listViewGroupDocs.Header = Properties.translations.MenuCategories.catDocs;
-            listViewGroupLandscape.Header = Properties.translations.MenuCategories.catLandscape;
-            listViewGroupMisc.Header = Properties.translations.MenuCategories.catMisc;
-            listViewGroupSettings.Header = Properties.translations.MenuCategories.catSettings;
-            listViewGroupSupport.Header = Properties.translations.MenuCategories.catSupport;
-            listViewGroupTextures.Header = Properties.translations.MenuCategories.catTextures;
-            listViewGroupTools.Header = Properties.translations.MenuCategories.catTools;
-            listViewGroupUtils.Header = Properties.translations.MenuCategories.catUtils;
-            listViewGroupWebLinks.Header = Properties.translations.MenuCategories.catWebLinks;
 
             //add names to categories
             listViewGroupSettings.Name = "ListViewGroupSettings";
@@ -90,61 +76,32 @@ namespace UniversalValveToolbox {
             });
         }
 
-
-
         private void button_Launch_Click(object sender, EventArgs e) {
             var frmSettings = new FormSettings();
             frmSettings.ShowDialog();
         }
 
         private void listView_MouseDoubleClick(object sender, MouseEventArgs e) {
+            var selectItemText = listView.SelectedItems[0].Text;
 
-            /*
-             * Part of code by STAM. Sorry.
-             * 
-             * 
-             *                       = *
-             *                        +#%.                     
-             *                        @*.+@#####+              
-             *                       =%     % +
-             *                      :#.    *@                  
-             *         .%##        .#-    -#.     +##-         
-             *       .%##*.        %+    .#*       -###-       
-             *     .%##*          *###+-.=%          -###-     
-             *     +##+.         -#.   .=#.           -##@     
-             *      .%##+.       +@    .#-          -###.      
-             *        .%##*       =%.-%#*         -###-        
-             *          .* -       .#=.            .+-          
-             *                    ==
-             *                   *#                            
-             *                  .#-                            
-             *                 .@+
-             *                -##*                             
-             *                .= *
-             *                
-             *                           Nope. I'm really sorry.
-             */
-            for (int i = 0; i < listView.Items.Count; i++) {
-                var rectangle = listView.GetItemRect(i);
-                if (rectangle.Contains(e.Location)) {
-                    var selectedClient = listView.SelectedItems[0].Text;
-                    if (selectedClient == Properties.translations.MenuItems.itmOpenSettings) {
-                        var frmSettings = new FormSettings();
-                        frmSettings.ShowDialog();
-                    } else if (selectedClient == Properties.translations.MenuItems.itmEditConfigurations) {
-                        var frmProfiles = new FormProfiles();
-                        frmProfiles.ShowDialog();
-                    } else if (selectedClient == Properties.translations.MenuItems.itmEditPlugins) {
-                        var frmPlugins = new FormAddons();
-                        frmPlugins.ShowDialog();
-                    } else if (selectedClient == Properties.translations.MenuItems.itmAbout) {
-                        var frmAbout = new FormAbout();
-                        frmAbout.ShowDialog();
-                    } else if (selectedClient == Properties.translations.MenuItems.itmGitHubLink) {
-                        Process.Start("https://github.com/EpicMorg/UniversalValveToolbox");
-                    }
-                    return;
-                }
+            if (selectItemText == Properties.translations.MenuItems.itmOpenSettings) {
+                var frmSettings = new FormSettings();
+                frmSettings.ShowDialog();
+            }
+            else if (selectItemText == Properties.translations.MenuItems.itmEditConfigurations) {
+                var frmProfiles = new FormProfiles();
+                frmProfiles.ShowDialog();
+            }
+            else if (selectItemText == Properties.translations.MenuItems.itmEditPlugins) {
+                var frmPlugins = new FormAddons();
+                frmPlugins.ShowDialog();
+            }
+            else if (selectItemText == Properties.translations.MenuItems.itmAbout) {
+                var frmAbout = new FormAbout();
+                frmAbout.ShowDialog();
+            }
+            else if (selectItemText == Properties.translations.MenuItems.itmGitHubLink) {
+                Process.Start("https://github.com/EpicMorg/UniversalValveToolbox");
             }
         }
     }
