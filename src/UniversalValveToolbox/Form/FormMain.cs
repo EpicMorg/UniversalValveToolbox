@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Diagnostics;
 using System.Windows.Forms;
+using UniversalValveToolbox.Util;
+using UniversalValveToolbox.Util.Dto;
 
 namespace UniversalValveToolbox {
     public partial class FormMain : Form {
@@ -77,16 +80,14 @@ namespace UniversalValveToolbox {
         }
 
         private void button_Launch_Click(object sender, EventArgs e) {
-            var frmSettings = new FormSettings();
-            frmSettings.ShowDialog();
+            this.OpenSettings();
         }
 
         private void listView_MouseDoubleClick(object sender, MouseEventArgs e) {
             var selectItemText = listView.SelectedItems[0].Text;
 
             if (selectItemText == Properties.translations.MenuItems.itmOpenSettings) {
-                var frmSettings = new FormSettings();
-                frmSettings.ShowDialog();
+                this.OpenSettings();
             }
             else if (selectItemText == Properties.translations.MenuItems.itmEditConfigurations) {
                 var frmProfiles = new FormProfiles();
@@ -102,6 +103,20 @@ namespace UniversalValveToolbox {
             }
             else if (selectItemText == Properties.translations.MenuItems.itmGitHubLink) {
                 Process.Start("https://github.com/EpicMorg/UniversalValveToolbox");
+            }
+        }
+
+        private void OpenSettings() {
+            var dataManager = new DataManager();
+            var settingsDto = dataManager.ReadSettings();
+            var languageProvider = new LanguageProvider();
+
+            var settingsModel = new SettingsViewModel(settingsDto, languageProvider);
+
+            var frmSettings = new FormSettings(settingsModel);
+
+            if (frmSettings.ShowDialog() == DialogResult.OK) {
+                dataManager.SaveSettings(settingsDto);
             }
         }
     }

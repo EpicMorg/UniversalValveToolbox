@@ -2,7 +2,7 @@
   "vproject": {
     "engine": 243730, //linked avalible engine by id
     "path": "C:\\Test", //path for export to users's env
-    "name": "Test Project" //name for launcher
+    "name": "Test Project", //name for launcher
     "args": "" //run args
   }
 }

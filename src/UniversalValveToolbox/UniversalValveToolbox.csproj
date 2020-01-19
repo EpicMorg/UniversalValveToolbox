@@ -36,14 +36,11 @@
     <ApplicationIcon>valve.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EpicMorg.SteamPathsLib, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\EpicMorg.SteamPathsLib.1.1.0\lib\net48\EpicMorg.SteamPathsLib.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +50,14 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <PackageReference Include="EpicMorg.SteamPathsLib" Version="1.1.0" />
+    <PackageReference Include="kasthack.binding.wf">
+      <Version>1.2.26</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Form\FormAbout.cs">
@@ -112,6 +117,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MessageBoxes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Util\JsonReader.cs" />
     <Compile Include="Util\VersionHelper.cs" />
     <EmbeddedResource Include="Form\FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
@@ -183,7 +189,6 @@
     <None Include="json\settings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -193,9 +198,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cancel_16.png" />
