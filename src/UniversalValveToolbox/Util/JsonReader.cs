@@ -7,11 +7,12 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using UniversalValveToolbox.Util.Dto;
 
 namespace UniversalValveToolbox.Util {
     class DataManager {
-        private const string SettingsPath = "settings.json";
+        private readonly string SettingsPath = Path.Combine(Application.StartupPath, "json", "settings.json");
 
         public Settings ReadSettings() => this.ReadModel<Settings>(SettingsPath);
         public void SaveSettings(Settings settingsDto) => this.WriteModel(SettingsPath, settingsDto);
