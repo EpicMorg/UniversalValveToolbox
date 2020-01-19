@@ -1,16 +1,13 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using UniversalValveToolbox.Util.Dto;
+using UniversalValveToolbox.Utils.Dto;
+using Newtonsoft.Json;
 
-namespace UniversalValveToolbox.Util {
+namespace UniversalValveToolbox.Utils {
     class DataManager {
         private readonly string SettingsPath = Path.Combine(Application.StartupPath, "json", "settings.json");
 
@@ -23,7 +20,7 @@ namespace UniversalValveToolbox.Util {
     }
 }
 
-namespace UniversalValveToolbox.Util.Dto {
+namespace UniversalValveToolbox.Utils.Dto {
     public class Addon : BaseModel {
         private int[] engine;
 

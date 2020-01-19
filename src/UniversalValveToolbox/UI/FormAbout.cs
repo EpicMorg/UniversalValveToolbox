@@ -6,9 +6,9 @@ namespace UniversalValveToolbox {
     public partial class FormAbout : Form {
         public FormAbout() {
             InitializeComponent();
-            labelVersion.Text = VersionHelper.AssemblyVersion;
-            labelTitle.Text = VersionHelper.AssemblyTitle;
-            labelCopy.Text = VersionHelper.AssemblyCopyright;
+            labelVersion.Text = Utils.VersionHelper.AssemblyVersion;
+            labelTitle.Text = Utils.VersionHelper.AssemblyTitle;
+            labelCopy.Text = Utils.VersionHelper.AssemblyCopyright;
         }
 
         private void FormAbout_Load(object sender, EventArgs e) {

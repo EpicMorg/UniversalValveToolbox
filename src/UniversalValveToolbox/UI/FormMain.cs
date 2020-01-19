@@ -2,8 +2,8 @@
 using System;
 using System.Diagnostics;
 using System.Windows.Forms;
-using UniversalValveToolbox.Util;
-using UniversalValveToolbox.Util.Dto;
+using UniversalValveToolbox.Utils;
+using UniversalValveToolbox.Utils.Dto;
 
 namespace UniversalValveToolbox {
     public partial class FormMain : Form {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Reflection;
 
-namespace UniversalValveToolbox {
-    class VersionHelper {
+namespace UniversalValveToolbox.Utils {
+    internal static class VersionHelper {
         public static string AssemblyVersion {
             get {
                 return " " + Assembly.GetExecutingAssembly().GetName().Version.ToString();

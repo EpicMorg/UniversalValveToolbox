@@ -38,8 +38,8 @@
             this.linkLabelIconSite = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox = new System.Windows.Forms.GroupBox();
-            this.linkLabelFP = new System.Windows.Forms.LinkLabel();
             this.linkLabelTI = new System.Windows.Forms.LinkLabel();
+            this.linkLabelFP = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
@@ -142,17 +142,6 @@
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Icons by:";
             // 
-            // linkLabelFP
-            // 
-            this.linkLabelFP.AutoSize = true;
-            this.linkLabelFP.Location = new System.Drawing.Point(79, 21);
-            this.linkLabelFP.Name = "linkLabelFP";
-            this.linkLabelFP.Size = new System.Drawing.Size(42, 13);
-            this.linkLabelFP.TabIndex = 28;
-            this.linkLabelFP.TabStop = true;
-            this.linkLabelFP.Text = "Freepik";
-            this.linkLabelFP.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelFP_LinkClicked);
-            // 
             // linkLabelTI
             // 
             this.linkLabelTI.AutoSize = true;
@@ -163,6 +152,17 @@
             this.linkLabelTI.TabStop = true;
             this.linkLabelTI.Text = "Those Icons";
             this.linkLabelTI.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelTI_LinkClicked);
+            // 
+            // linkLabelFP
+            // 
+            this.linkLabelFP.AutoSize = true;
+            this.linkLabelFP.Location = new System.Drawing.Point(79, 21);
+            this.linkLabelFP.Name = "linkLabelFP";
+            this.linkLabelFP.Size = new System.Drawing.Size(42, 13);
+            this.linkLabelFP.TabIndex = 28;
+            this.linkLabelFP.TabStop = true;
+            this.linkLabelFP.Text = "Freepik";
+            this.linkLabelFP.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelFP_LinkClicked);
             // 
             // FormAbout
             // 

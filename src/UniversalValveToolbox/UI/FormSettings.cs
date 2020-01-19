@@ -1,7 +1,7 @@
 ﻿using kasthack.binding.wf;
 using System;
 using System.Windows.Forms;
-using UniversalValveToolbox.Util.Dto;
+using UniversalValveToolbox.Utils.Dto;
 
 namespace UniversalValveToolbox {
     public partial class FormSettings : Form {
