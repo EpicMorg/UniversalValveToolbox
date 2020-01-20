@@ -2,8 +2,9 @@
 using System;
 using System.Diagnostics;
 using System.Windows.Forms;
+using UniversalValveToolbox.Model.Provider;
+using UniversalValveToolbox.Model.VIewModel;
 using UniversalValveToolbox.Utils;
-using UniversalValveToolbox.Utils.Dto;
 
 namespace UniversalValveToolbox {
     public partial class FormMain : Form {
@@ -107,8 +108,8 @@ namespace UniversalValveToolbox {
         }
 
         private void OpenSettings() {
-            var dataManager = new DataManager();
-            var settingsDto = dataManager.ReadSettings();
+            var dataManager = new DataProvider();
+            var settingsDto = dataManager.Settings;
             var languageProvider = new LanguageProvider();
 
             var settingsModel = new SettingsViewModel(settingsDto, languageProvider);
@@ -116,7 +117,8 @@ namespace UniversalValveToolbox {
             var frmSettings = new FormSettings(settingsModel);
 
             if (frmSettings.ShowDialog() == DialogResult.OK) {
-                dataManager.SaveSettings(settingsDto);
+                dataManager.Settings = settingsDto;
+                Application.Restart();
             }
         }
     }

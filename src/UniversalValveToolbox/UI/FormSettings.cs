@@ -1,18 +1,24 @@
 ﻿using kasthack.binding.wf;
 using System;
+using System.Threading;
 using System.Windows.Forms;
-using UniversalValveToolbox.Utils.Dto;
+using UniversalValveToolbox.Model.VIewModel;
 
 namespace UniversalValveToolbox {
     public partial class FormSettings : Form {
         public FormSettings(SettingsViewModel settings) {
             InitializeComponent();
 
-            comboBoxLang.SelectedIndex = 0;
+            comboBoxLang.Items.Clear();
+            comboBoxLang.Items.AddRange(settings.Languages);
+            comboBoxLang.Bind(a => a.SelectedIndex, settings, a => a.SelectedLanguageIndex);
+
             comboBoxTheme.SelectedIndex = 0;
 
-            comboBoxLang.Bind(a => a.DataSource, settings, a => a.Languages);
-            comboBoxLang.Bind(a => a.SelectedIndex, settings, a => a.SelectedLanguageIndex);
+
+            //comboBoxLang.Bind(a => a.DataSource, settings, a => a.Languages);
+            //comboBoxLang.SelectedIndex = settings.SelectedLanguageIndex;
+
 
             //this.Bind(a => a.Text, settings, a => a.Language);
 

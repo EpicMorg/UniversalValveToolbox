@@ -1,11 +1,7 @@
 {
   "DefaultProject": null,
-  "AvalibleEnginies": null,
-  "Language": [
-    {
-      "selected": "en-US",
-      "available": [ "en-US", "ru-RU" ]
-    }
-  ],
+  "AvailableEnginies": null,
+  "Language": "en-US",
+  "AvailableLanguages": [ "en-US", "ru-RU" ],
   "Theme": null
 }

@@ -60,6 +60,16 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\translations\LangDict.Designer.cs">
+      <DependentUpon>LangDict.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\translations\LangDict.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LangDict.ru.resx</DependentUpon>
+    </Compile>
     <Compile Include="UI\FormAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,8 +127,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MessageBoxes.resx</DependentUpon>
     </Compile>
-    <Compile Include="Utils\JsonReader.cs" />
+    <Compile Include="Model\Dto\AddonDtoModel.cs" />
+    <Compile Include="Model\Provider\DataProvider.cs" />
+    <Compile Include="Model\Dto\EngineDtoModel.cs" />
+    <Compile Include="Base\DtoModel.cs" />
+    <Compile Include="Utils\JsonFileUtil.cs" />
+    <Compile Include="Utils\LanguageManager.cs" />
+    <Compile Include="Model\Dto\ToolDtoModel.cs" />
+    <Compile Include="Model\VIewModel\SettingsViewModel.cs" />
+    <Compile Include="Model\Dto\SettingsDtoModel.cs" />
+    <Compile Include="Model\Provider\LanguageProvider.cs" />
     <Compile Include="Utils\VersionHelper.cs" />
+    <Compile Include="Model\Dto\VProjectDtoModel.cs" />
+    <EmbeddedResource Include="Properties\translations\LangDict.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LangDict.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\translations\LangDict.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LangDict.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </EmbeddedResource>
@@ -166,28 +194,28 @@
       <LastGenOutput>MessageBoxes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="json\addons\myOtherProgram.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="json\addons\myProgram.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="json\engines\496450.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="json\engines\254430.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="json\engines\243750.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="json\engines\243730.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="json\projects\test project.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="json\settings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
