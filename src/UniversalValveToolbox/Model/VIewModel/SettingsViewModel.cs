@@ -3,7 +3,7 @@ using UniversalValveToolbox.Base;
 using UniversalValveToolbox.Model.Dto;
 using UniversalValveToolbox.Model.Provider;
 
-namespace UniversalValveToolbox.Model.VIewModel {
+namespace UniversalValveToolbox.Model.ViewModel {
     public class SettingsViewModel : DtoModel {
         private readonly SettingsDtoModel settings;
         private readonly LanguageProvider languageProvider;

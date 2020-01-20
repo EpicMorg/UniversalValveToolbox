@@ -134,6 +134,7 @@
             this.toolStripStatusLabelSteam.Name = "toolStripStatusLabelSteam";
             this.toolStripStatusLabelSteam.Size = new System.Drawing.Size(89, 20);
             this.toolStripStatusLabelSteam.Text = "Steam: none";
+            this.toolStripStatusLabelSteam.Click += new System.EventHandler(this.toolStripStatusLabelSteam_Click);
             // 
             // toolStripStatusLabelLogin
             // 

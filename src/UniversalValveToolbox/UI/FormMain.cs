@@ -3,7 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Windows.Forms;
 using UniversalValveToolbox.Model.Provider;
-using UniversalValveToolbox.Model.VIewModel;
+using UniversalValveToolbox.Model.ViewModel;
 using UniversalValveToolbox.Utils;
 
 namespace UniversalValveToolbox {
@@ -11,6 +11,8 @@ namespace UniversalValveToolbox {
         public FormMain() {
             InitializeComponent();
             FillBaseMenuItems();
+            InitSteamStatus();
+
             Text = VersionHelper.AssemblyTitle + VersionHelper.AssemblyVersion;
             comboBoxEngine.SelectedIndex = 0;
             comboBoxGameConfig.SelectedIndex = 0;
@@ -80,6 +82,26 @@ namespace UniversalValveToolbox {
             });
         }
 
+        private void InitSteamStatus() {
+            var steamData = SteamManager.SteamData;
+
+            if (steamData.SteamPid != 0) {
+                toolStripStatusLabelSteam.Image = Properties.Resources.checked_16;
+                toolStripStatusLabelSteam.Text = $"Steam PID: {steamData.SteamPid.ToString()}";
+            }
+            else {
+                toolStripStatusLabelSteam.Image = Properties.Resources.cancel_16;
+                toolStripStatusLabelSteam.Text = $"Steam PID: none";
+            }
+
+            if (steamData.UserNameSteam != null) {
+                toolStripStatusLabelLogin.Text = $"Login: {steamData.UserNameSteam}";
+            }
+            else {
+                toolStripStatusLabelLogin.Text = $"Login: none";
+            }
+        }
+
         private void button_Launch_Click(object sender, EventArgs e) {
             this.OpenSettings();
         }
@@ -120,6 +142,10 @@ namespace UniversalValveToolbox {
                 dataManager.Settings = settingsDto;
                 Application.Restart();
             }
+        }
+
+        private void toolStripStatusLabelSteam_Click(object sender, EventArgs e) {
+
         }
     }
 }

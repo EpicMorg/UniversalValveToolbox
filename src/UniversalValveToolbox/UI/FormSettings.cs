@@ -2,7 +2,7 @@
 using System;
 using System.Threading;
 using System.Windows.Forms;
-using UniversalValveToolbox.Model.VIewModel;
+using UniversalValveToolbox.Model.ViewModel;
 
 namespace UniversalValveToolbox {
     public partial class FormSettings : Form {
