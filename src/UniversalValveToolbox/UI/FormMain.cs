@@ -11,15 +11,22 @@ namespace UniversalValveToolbox {
         public FormMain() {
             InitializeComponent();
             FillBaseMenuItems();
-            InitSteamStatus();
+            GetInfoForToolbar();
 
             Text = VersionHelper.AssemblyTitle + VersionHelper.AssemblyVersion;
             comboBoxEngine.SelectedIndex = 0;
             comboBoxGameConfig.SelectedIndex = 0;
         }
-
         private void FormMain_Load(object sender, EventArgs e) {
 
+        }
+
+        private void GetInfoForToolbar() {
+            InitSteamStatus();
+        }
+         
+        private void toolStripStatusLabelRefresh_Click(object sender, EventArgs e) {
+            GetInfoForToolbar();
         }
 
         public void FillBaseMenuItems() {
@@ -87,18 +94,18 @@ namespace UniversalValveToolbox {
 
             if (steamData.SteamPid != 0) {
                 toolStripStatusLabelSteam.Image = Properties.Resources.checked_16;
-                toolStripStatusLabelSteam.Text = $"Steam PID: {steamData.SteamPid.ToString()}";
+                toolStripStatusLabelSteam.Text = $"Steam PID: {steamData.SteamPid.ToString()}"; //todo -> move strings to Propetries.translations.MenuItems.___
             }
             else {
                 toolStripStatusLabelSteam.Image = Properties.Resources.cancel_16;
-                toolStripStatusLabelSteam.Text = $"Steam PID: none";
+                toolStripStatusLabelSteam.Text = $"Steam PID: none"; //todo -> move strings to resources
             }
 
             if (steamData.UserNameSteam != null) {
-                toolStripStatusLabelLogin.Text = $"Login: {steamData.UserNameSteam}";
+                toolStripStatusLabelLogin.Text = $"Login: {steamData.UserNameSteam}"; //todo -> move strings to Propetries.translations.MenuItems.___
             }
             else {
-                toolStripStatusLabelLogin.Text = $"Login: none";
+                toolStripStatusLabelLogin.Text = $"Login: none"; //todo -> move strings to Propetries.translations.MenuItems.___
             }
         }
 
@@ -143,9 +150,6 @@ namespace UniversalValveToolbox {
                 Application.Restart();
             }
         }
-
-        private void toolStripStatusLabelSteam_Click(object sender, EventArgs e) {
-
-        }
+ 
     }
 }

@@ -55,7 +55,7 @@
             "No project configured"});
             this.comboBoxGameConfig.Location = new System.Drawing.Point(12, 392);
             this.comboBoxGameConfig.Name = "comboBoxGameConfig";
-            this.comboBoxGameConfig.Size = new System.Drawing.Size(363, 21);
+            this.comboBoxGameConfig.Size = new System.Drawing.Size(400, 21);
             this.comboBoxGameConfig.TabIndex = 1;
             // 
             // comboBoxEngine
@@ -69,7 +69,7 @@
             "No engine installed"});
             this.comboBoxEngine.Location = new System.Drawing.Point(12, 365);
             this.comboBoxEngine.Name = "comboBoxEngine";
-            this.comboBoxEngine.Size = new System.Drawing.Size(363, 21);
+            this.comboBoxEngine.Size = new System.Drawing.Size(400, 21);
             this.comboBoxEngine.TabIndex = 1;
             // 
             // listView
@@ -83,7 +83,7 @@
             this.listView.Location = new System.Drawing.Point(12, 12);
             this.listView.MultiSelect = false;
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(363, 347);
+            this.listView.Size = new System.Drawing.Size(400, 347);
             this.listView.SmallImageList = this.imageListSmall;
             this.listView.StateImageList = this.imageListLarge;
             this.listView.TabIndex = 4;
@@ -125,7 +125,7 @@
             this.toolStripStatusLabelRefresh});
             this.statusStrip.Location = new System.Drawing.Point(0, 421);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(387, 25);
+            this.statusStrip.Size = new System.Drawing.Size(424, 25);
             this.statusStrip.TabIndex = 5;
             // 
             // toolStripStatusLabelSteam
@@ -134,7 +134,6 @@
             this.toolStripStatusLabelSteam.Name = "toolStripStatusLabelSteam";
             this.toolStripStatusLabelSteam.Size = new System.Drawing.Size(89, 20);
             this.toolStripStatusLabelSteam.Text = "Steam: none";
-            this.toolStripStatusLabelSteam.Click += new System.EventHandler(this.toolStripStatusLabelSteam_Click);
             // 
             // toolStripStatusLabelLogin
             // 
@@ -155,8 +154,8 @@
             // 
             this.toolStripStatusLabel1.Image = global::UniversalValveToolbox.Properties.Resources.plug_silhouette_16;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(80, 20);
-            this.toolStripStatusLabel1.Text = "Plugins: 00";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(82, 20);
+            this.toolStripStatusLabel1.Text = "Addons: 00";
             this.toolStripStatusLabel1.ToolTipText = "Count of available plugins";
             // 
             // toolStripStatusLabelRefresh
@@ -171,12 +170,13 @@
             this.toolStripStatusLabelRefresh.IsLink = true;
             this.toolStripStatusLabelRefresh.Name = "toolStripStatusLabelRefresh";
             this.toolStripStatusLabelRefresh.Size = new System.Drawing.Size(20, 20);
+            this.toolStripStatusLabelRefresh.Click += new System.EventHandler(this.toolStripStatusLabelRefresh_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(387, 446);
+            this.ClientSize = new System.Drawing.Size(424, 446);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.comboBoxEngine);
