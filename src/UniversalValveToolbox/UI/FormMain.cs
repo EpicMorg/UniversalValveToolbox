@@ -94,18 +94,20 @@ namespace UniversalValveToolbox {
 
             if (steamData.SteamPid != 0) {
                 toolStripStatusLabelSteam.Image = Properties.Resources.checked_16;
-                toolStripStatusLabelSteam.Text = $"Steam PID: {steamData.SteamPid.ToString()}"; //todo -> move strings to Propetries.translations.MenuItems.___
+                toolStripStatusLabelSteam.Text = Properties.translations.MenuNavbar.menuStrSteam + Properties.translations.MenuNavbar.menuStrOnline;
+                toolStripStatusLabelSteam.ToolTipText = Properties.translations.MenuNavbar.menuStrSteam + $"PID: {steamData.SteamPid.ToString()}";
             }
             else {
                 toolStripStatusLabelSteam.Image = Properties.Resources.cancel_16;
-                toolStripStatusLabelSteam.Text = $"Steam PID: none"; //todo -> move strings to resources
+                toolStripStatusLabelSteam.ToolTipText = "";
+                toolStripStatusLabelSteam.Text = Properties.translations.MenuNavbar.menuStrSteam  + Properties.translations.MenuNavbar.menuStrOffline;
             }
 
             if (steamData.UserNameSteam != null) {
-                toolStripStatusLabelLogin.Text = $"Login: {steamData.UserNameSteam}"; //todo -> move strings to Propetries.translations.MenuItems.___
+                toolStripStatusLabelLogin.Text = Properties.translations.MenuNavbar.menuStrLogin + $"{steamData.UserNameSteam}";
             }
             else {
-                toolStripStatusLabelLogin.Text = $"Login: none"; //todo -> move strings to Propetries.translations.MenuItems.___
+                toolStripStatusLabelLogin.Text = Properties.translations.MenuNavbar.menuStrLogin + Properties.translations.MenuNavbar.menuStrNone;
             }
         }
 
@@ -150,6 +152,7 @@ namespace UniversalValveToolbox {
                 Application.Restart();
             }
         }
- 
+
+       
     }
 }

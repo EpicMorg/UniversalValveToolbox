@@ -125,6 +125,7 @@
             this.toolStripStatusLabelRefresh});
             this.statusStrip.Location = new System.Drawing.Point(0, 421);
             this.statusStrip.Name = "statusStrip";
+            this.statusStrip.ShowItemToolTips = true;
             this.statusStrip.Size = new System.Drawing.Size(424, 25);
             this.statusStrip.TabIndex = 5;
             // 
@@ -134,6 +135,7 @@
             this.toolStripStatusLabelSteam.Name = "toolStripStatusLabelSteam";
             this.toolStripStatusLabelSteam.Size = new System.Drawing.Size(89, 20);
             this.toolStripStatusLabelSteam.Text = "Steam: none";
+            this.toolStripStatusLabelSteam.ToolTipText = "666";
             // 
             // toolStripStatusLabelLogin
             // 

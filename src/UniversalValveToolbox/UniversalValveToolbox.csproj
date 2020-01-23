@@ -71,6 +71,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LangDict.ru.resx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\translations\MenuNavbar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MenuNavbar.resx</DependentUpon>
+    </Compile>
     <Compile Include="UI\FormAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +153,10 @@
     <EmbeddedResource Include="Properties\translations\LangDict.ru.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LangDict.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\translations\MenuNavbar.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MenuNavbar.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
