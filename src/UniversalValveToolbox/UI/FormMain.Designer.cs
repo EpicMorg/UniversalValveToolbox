@@ -172,6 +172,7 @@
             this.toolStripStatusLabelRefresh.IsLink = true;
             this.toolStripStatusLabelRefresh.Name = "toolStripStatusLabelRefresh";
             this.toolStripStatusLabelRefresh.Size = new System.Drawing.Size(20, 20);
+            this.toolStripStatusLabelRefresh.ToolTipText = "Refresh";
             this.toolStripStatusLabelRefresh.Click += new System.EventHandler(this.toolStripStatusLabelRefresh_Click);
             // 
             // FormMain
