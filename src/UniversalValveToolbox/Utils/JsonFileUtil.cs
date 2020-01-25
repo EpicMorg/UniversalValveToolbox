@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 namespace UniversalValveToolbox.Utils {
     static class JsonFileUtil {
         public static T ReadValue<T>(string path) => JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
+
+        public static T[] ReadValues<T>(string directoryPath) => Directory.GetFiles(directoryPath, "*").Select(path => ReadValue<T>(path)).ToArray();
+
         public static void WriteValue<T>(string path, T value) => File.WriteAllText(path, JsonConvert.SerializeObject(value, Formatting.Indented));
     }
 }

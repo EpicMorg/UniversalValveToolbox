@@ -145,7 +145,7 @@
     <Compile Include="Model\Provider\LanguageProvider.cs" />
     <Compile Include="Utils\SteamManager.cs" />
     <Compile Include="Utils\VersionHelper.cs" />
-    <Compile Include="Model\Dto\VProjectDtoModel.cs" />
+    <Compile Include="Model\Dto\ProjectDtoModel.cs" />
     <EmbeddedResource Include="Properties\translations\LangDict.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LangDict.Designer.cs</LastGenOutput>

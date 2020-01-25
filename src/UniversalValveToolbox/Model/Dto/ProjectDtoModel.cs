@@ -1,7 +1,7 @@
 ﻿using UniversalValveToolbox.Base;
 
 namespace UniversalValveToolbox.Model.Dto {
-    public class VProjectDtoModel : DtoModel {
+    public class ProjectDtoModel : DtoModel {
         private int engine;
         private string path;
         private string name;

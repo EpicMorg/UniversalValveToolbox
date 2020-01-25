@@ -1,36 +1,36 @@
 ﻿using UniversalValveToolbox.Base;
 
-namespace UniversalValveToolbox.Utils.Dto {
+namespace UniversalValveToolbox.Model.Dto {
     public class AddonDtoModel : DtoModel {
-        private int[] engine;
+        private int[] engines;
         private string args;
         private string bin;
         private string name;
         private string category;
 
-        public int[] Engine {
-            get => this.engine;
-            set => this.UpdateField(value, ref this.engine);
+        public int[] Engines {
+            get => engines;
+            set => UpdateField(value, ref engines);
         }
 
         public string Name {
-            get => this.name;
-            set => this.UpdateField(value, ref this.name);
+            get => name;
+            set => UpdateField(value, ref name);
         }
 
         public string Category {
-            get => this.category;
-            set => this.UpdateField(value, ref this.category);
+            get => category;
+            set => UpdateField(value, ref category);
         }
 
         public string Bin {
-            get => this.bin;
-            set => this.UpdateField(value, ref this.bin);
+            get => bin;
+            set => UpdateField(value, ref bin);
         }
 
         public string Args {
-            get => this.args;
-            set => this.UpdateField(value, ref this.args);
+            get => args;
+            set => UpdateField(value, ref args);
         }
     }
 
