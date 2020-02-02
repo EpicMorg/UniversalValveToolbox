@@ -23,6 +23,8 @@ namespace UniversalValveToolbox {
         private ListViewGroup listViewGroupAddons;
         private ListViewGroup listViewGroupTools;
 
+        private EngineDtoModel SelectedEngine { get => Engines[comboBoxEngine.SelectedIndex]; }
+
         public FormMain() {
             InitializeComponent();
             FillBaseMenuItems();
@@ -148,8 +150,7 @@ namespace UniversalValveToolbox {
         }
 
         private void UpdateToolsList() {
-            var selectEngine = Engines[comboBoxEngine.SelectedIndex];
-            var pathSelectedEngine = SteamPathsUtil.GetSteamAppManifestDataById(selectEngine.Appid)?.Path;
+            var pathSelectedEngine = SteamPathsUtil.GetSteamAppManifestDataById(SelectedEngine.Appid)?.Path;
 
             var removeItem = new List<ListViewItem>();
 
@@ -160,7 +161,7 @@ namespace UniversalValveToolbox {
             removeItem.ForEach(item => listView.Items.Remove(item));
 
             if (pathSelectedEngine != null) {
-                var pairPathIconTools = selectEngine.Tools.Select(tool => {
+                var pairPathIconTools = SelectedEngine.Tools.Select(tool => {
                     var keyByPath = Path.Combine(pathSelectedEngine, tool.Bin);
                     var icon = Icon.ExtractAssociatedIcon(Path.Combine(pathSelectedEngine, tool.Bin));
 
@@ -173,7 +174,7 @@ namespace UniversalValveToolbox {
                 }
             }
 
-            var itemsTools = selectEngine.Tools.Select(tool => {
+            var itemsTools = SelectedEngine.Tools.Select(tool => {
                 string keyByPath = null;
 
                 if (pathSelectedEngine != null)
@@ -191,9 +192,8 @@ namespace UniversalValveToolbox {
         }
 
         private void UpdateAddonsList() {
-            var selectEngine = Engines[comboBoxEngine.SelectedIndex];
-            var pathSelectedEngine = SteamPathsUtil.GetSteamAppManifestDataById(selectEngine.Appid)?.Path;
-            var addonsSelectedEngine = dataProvider.Addons.Where(a => a.Engines.Contains(selectEngine.Appid));
+            var pathSelectedEngine = SteamPathsUtil.GetSteamAppManifestDataById(SelectedEngine.Appid)?.Path;
+            var addonsSelectedEngine = dataProvider.Addons.Where(a => a.Engines.Contains(SelectedEngine.Appid));
 
             var removeItem = new List<ListViewItem>();
 
@@ -225,10 +225,10 @@ namespace UniversalValveToolbox {
                     keyByPath = Path.Combine(pathSelectedEngine, addons.Bin);
 
                 if (keyByPath == null) {
-                    return new ListViewItem(addons.Name, listViewGroupTools);
+                    return new ListViewItem(addons.Name, listViewGroupAddons);
                 }
                 else {
-                    return new ListViewItem(addons.Name, keyByPath, listViewGroupTools);
+                    return new ListViewItem(addons.Name, keyByPath, listViewGroupAddons);
                 }
 
             }).ToArray();
@@ -263,9 +263,43 @@ namespace UniversalValveToolbox {
         }
 
         private void listView_MouseDoubleClick(object sender, MouseEventArgs e) {
-            var selectItemText = listView.SelectedItems[0].Text;
+            var selectItem = listView.SelectedItems[0];
 
-            if (selectItemText == Properties.translations.MenuItems.itmOpenSettings) {
+            var selectItemText = selectItem.Text;
+
+            if (selectItem.Group == listViewGroupTools) {
+                var selectedTool = SelectedEngine.Tools.FirstOrDefault(tool => tool.Name == selectItemText);
+                if (selectedTool != null) {
+                    var selectedEnginePath = SteamPathsUtil.GetSteamAppManifestDataById(SelectedEngine.Appid)?.Path;
+
+                    if (selectedEnginePath != null) {
+                        var toolPath = Path.Combine(selectedEnginePath, selectedTool.Bin);
+
+                        if (File.Exists(toolPath))
+                            Process.Start(toolPath, selectedTool.Args);
+                        else
+                            MessageBox.Show($"\"{selectedTool.Name}\" no found.\n{toolPath}", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else {
+                        MessageBox.Show($"\"{SelectedEngine.Name}\" not install", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                } 
+
+            }
+            else if (selectItem.Group == listViewGroupAddons) {
+                var selectedAddons = dataProvider.Addons.FirstOrDefault(addon => addon.Name == selectItemText);
+                if (selectedAddons != null) {
+                    var addonPath = Path.Combine(selectedAddons.Bin);
+
+                    if (File.Exists(addonPath))
+                        Process.Start(addonPath, selectedAddons.Args);
+                    else
+                        MessageBox.Show($"\"{selectedAddons.Name}\" no found.\n{addonPath}", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                }
+            }
+
+            else if (selectItemText == Properties.translations.MenuItems.itmOpenSettings) {
                 this.OpenSettings();
             }
             else if (selectItemText == Properties.translations.MenuItems.itmEditConfigurations) {
@@ -299,7 +333,5 @@ namespace UniversalValveToolbox {
                 Application.Restart();
             }
         }
-
-
     }
 }
