@@ -1,8 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using EpicMorg.SteamPathsLib;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Web.UI;
 using System.Windows.Forms;
 using UniversalValveToolbox.Model.Dto;
 using UniversalValveToolbox.Model.Provider;
@@ -145,6 +149,7 @@ namespace UniversalValveToolbox {
 
         private void UpdateToolsList() {
             var selectEngine = Engines[comboBoxEngine.SelectedIndex];
+            var pathSelectedEngine = SteamPathsUtil.GetSteamAppManifestDataById(selectEngine.Appid)?.Path;
 
             var removeItem = new List<ListViewItem>();
 
@@ -154,13 +159,41 @@ namespace UniversalValveToolbox {
 
             removeItem.ForEach(item => listView.Items.Remove(item));
 
+            if (pathSelectedEngine != null) {
+                var pairPathIconTools = selectEngine.Tools.Select(tool => {
+                    var keyByPath = Path.Combine(pathSelectedEngine, tool.Bin);
+                    var icon = Icon.ExtractAssociatedIcon(Path.Combine(pathSelectedEngine, tool.Bin));
 
-            var itemsTools = selectEngine.Tools.Select(tool => new ListViewItem(tool.Name, listViewGroupTools)).ToArray();
+                    return new Pair(keyByPath, icon);
+                });
+
+                foreach (var pair in pairPathIconTools) {
+                    listView.SmallImageList.Images.Add((string)pair.First, (Icon)pair.Second);
+                    listView.LargeImageList.Images.Add((string)pair.First, (Icon)pair.Second);
+                }
+            }
+
+            var itemsTools = selectEngine.Tools.Select(tool => {
+                string keyByPath = null;
+
+                if (pathSelectedEngine != null)
+                    keyByPath = Path.Combine(pathSelectedEngine, tool.Bin);
+
+                if (keyByPath == null) {
+                    return new ListViewItem(tool.Name, listViewGroupTools);
+                }
+                else {
+                    return new ListViewItem(tool.Name, keyByPath, listViewGroupTools);
+                }
+
+            }).ToArray();
             listView.Items.AddRange(itemsTools);
         }
 
         private void UpdateAddonsList() {
             var selectEngine = Engines[comboBoxEngine.SelectedIndex];
+            var pathSelectedEngine = SteamPathsUtil.GetSteamAppManifestDataById(selectEngine.Appid)?.Path;
+            var addonsSelectedEngine = dataProvider.Addons.Where(a => a.Engines.Contains(selectEngine.Appid));
 
             var removeItem = new List<ListViewItem>();
 
@@ -170,7 +203,36 @@ namespace UniversalValveToolbox {
 
             removeItem.ForEach(item => listView.Items.Remove(item));
 
-            var itemsAddons = dataProvider.Addons.Where(a => a.Engines.Contains(selectEngine.Appid)).Select(tool => new ListViewItem(tool.Name, listViewGroupAddons)).ToArray();
+
+            if (pathSelectedEngine != null) {
+                var pairPathIconTools = addonsSelectedEngine.Select(addons => {
+                    var keyByPath = Path.Combine(pathSelectedEngine, addons.Bin);
+                    var icon = Icon.ExtractAssociatedIcon(Path.Combine(pathSelectedEngine, addons.Bin));
+
+                    return new Pair(keyByPath, icon);
+                });
+
+                foreach (var pair in pairPathIconTools) {
+                    listView.SmallImageList.Images.Add((string)pair.First, (Icon)pair.Second);
+                    listView.LargeImageList.Images.Add((string)pair.First, (Icon)pair.Second);
+                }
+            }
+
+            var itemsAddons = addonsSelectedEngine.Select(addons => {
+                string keyByPath = null;
+
+                if (pathSelectedEngine != null)
+                    keyByPath = Path.Combine(pathSelectedEngine, addons.Bin);
+
+                if (keyByPath == null) {
+                    return new ListViewItem(addons.Name, listViewGroupTools);
+                }
+                else {
+                    return new ListViewItem(addons.Name, keyByPath, listViewGroupTools);
+                }
+
+            }).ToArray();
+
             listView.Items.AddRange(itemsAddons);
         }
 
