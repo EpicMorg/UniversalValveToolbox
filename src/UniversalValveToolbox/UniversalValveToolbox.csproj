@@ -61,7 +61,8 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\VIewModel\SteamDataViewModel.cs" />
+    <Compile Include="Model\ViewModel\FormProjectViewModel.cs" />
+    <Compile Include="Model\ViewModel\SteamDataViewModel.cs" />
     <Compile Include="Properties\translations\LangDict.Designer.cs">
       <DependentUpon>LangDict.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -145,7 +146,7 @@
     <Compile Include="Utils\JsonFileUtil.cs" />
     <Compile Include="Utils\LanguageManager.cs" />
     <Compile Include="Model\Dto\ToolDtoModel.cs" />
-    <Compile Include="Model\VIewModel\SettingsViewModel.cs" />
+    <Compile Include="Model\ViewModel\SettingsViewModel.cs" />
     <Compile Include="Model\Dto\SettingsDtoModel.cs" />
     <Compile Include="Model\Provider\LanguageProvider.cs" />
     <Compile Include="Utils\SteamManager.cs" />

@@ -26,5 +26,7 @@ namespace UniversalValveToolbox.Model.Dto {
             get => args;
             set => UpdateField(value, ref args);
         }
+
+        public override string ToString() => name;
     }
 }

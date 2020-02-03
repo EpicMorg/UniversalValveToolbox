@@ -161,7 +161,8 @@ namespace UniversalValveToolbox {
             removeItem.ForEach(item => listView.Items.Remove(item));
 
             if (pathSelectedEngine != null) {
-                var pairPathIconTools = SelectedEngine.Tools.Select(tool => {
+                var pairPathIconTools = SelectedEngine.Tools
+                    .Select(tool => {
                     var keyByPath = Path.Combine(pathSelectedEngine, tool.Bin);
                     var icon = Icon.ExtractAssociatedIcon(Path.Combine(pathSelectedEngine, tool.Bin));
 
@@ -204,18 +205,23 @@ namespace UniversalValveToolbox {
             removeItem.ForEach(item => listView.Items.Remove(item));
 
 
-            if (pathSelectedEngine != null) {
-                var pairPathIconTools = addonsSelectedEngine.Select(addons => {
-                    var keyByPath = Path.Combine(pathSelectedEngine, addons.Bin);
-                    var icon = Icon.ExtractAssociatedIcon(Path.Combine(pathSelectedEngine, addons.Bin));
+            var pairPathIconTools = addonsSelectedEngine
+                .Where(addon => {
+                    var path = addon.Bin;
+
+                    return File.Exists(path);
+
+                })
+                .Select(addons => {
+                    var keyByPath = addons.Bin;
+                    var icon = Icon.ExtractAssociatedIcon(keyByPath);
 
                     return new Pair(keyByPath, icon);
                 });
 
-                foreach (var pair in pairPathIconTools) {
-                    listView.SmallImageList.Images.Add((string)pair.First, (Icon)pair.Second);
-                    listView.LargeImageList.Images.Add((string)pair.First, (Icon)pair.Second);
-                }
+            foreach (var pair in pairPathIconTools) {
+                listView.SmallImageList.Images.Add((string)pair.First, (Icon)pair.Second);
+                listView.LargeImageList.Images.Add((string)pair.First, (Icon)pair.Second);
             }
 
             var itemsAddons = addonsSelectedEngine.Select(addons => {
@@ -283,7 +289,7 @@ namespace UniversalValveToolbox {
                     else {
                         MessageBox.Show($"\"{SelectedEngine.Name}\" not install", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                } 
+                }
 
             }
             else if (selectItem.Group == listViewGroupAddons) {
