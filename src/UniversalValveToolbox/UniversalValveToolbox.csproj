@@ -51,7 +51,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <PackageReference Include="EpicMorg.SteamPathsLib" Version="1.1.0.1" />
+    <PackageReference Include="EpicMorg.SteamPathsLib" Version="1.1.0.2" />
     <PackageReference Include="kasthack.binding.wf">
       <Version>1.2.26</Version>
     </PackageReference>
