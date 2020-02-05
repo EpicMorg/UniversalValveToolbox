@@ -11,8 +11,8 @@ namespace UniversalValveToolbox.Utils {
         public static SteamDataViewModel SteamData {
             get {
                 var result = new SteamDataViewModel();
-                result.SteamPid = SteamPathsUtil.GetActiveProcessSteamData().PID;
-                result.UserNameSteam = SteamPathsUtil.GetSteamData().LastGameNameUsed;
+                result.SteamPid = SteamPathsUtil.GetActiveProcessSteamData()?.PID ?? 0;
+                result.UserNameSteam = SteamPathsUtil.GetSteamData()?.LastGameNameUsed ?? null;
 
                 return result;
             }            
