@@ -8,6 +8,14 @@ namespace UniversalValveToolbox.Model.Dto {
         private string name;
         private string category;
 
+        public AddonDtoModel() {
+            this.engines = new int[0];
+            this.args = "";
+            this.bin = "";
+            this.name = "";
+            this.category = "";
+        }
+
         public int[] Engines {
             get => engines;
             set => UpdateField(value, ref engines);

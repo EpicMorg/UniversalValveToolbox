@@ -5,6 +5,8 @@ using UniversalValveToolbox.Model.ViewModel;
 using UniversalValveToolbox.Model.Dto;
 using kasthack.binding.wf;
 using System.Linq;
+using System.Collections.Generic;
+using UniversalValveToolbox.Utils;
 
 namespace UniversalValveToolbox {
     public partial class FormAddons : Form {
@@ -17,17 +19,12 @@ namespace UniversalValveToolbox {
         public FormAddons() {
             InitializeComponent();
 
-            model = new FormAddonViewModel();
-            model.SelectAddon = new AddonDtoModel();
+            model = new FormAddonViewModel(dataProvider.Addons, dataProvider.Engines);
 
-            var addons = dataProvider.Addons;
-            arrayAddon = new AddonDtoModel[addons.Length + 1];
-            arrayAddon[0] = model.SelectAddon;
-            Array.Copy(addons, 0, arrayAddon, 1, addons.Length);
+            UpdateAddonsComboBox();
+            InitEnginesListView();
 
-            comboBox_Addon.Items.Clear();
-            comboBox_Addon.Items.AddRange(arrayAddon);
-            comboBox_Addon.SelectedIndex = 0;
+            comboBox_Addon.Bind(a => a.SelectedIndex, model, a => a.SelectAddonIndex);
 
             textBoxName.Bind(a => a.Text, model, a => a.SelectAddon.Name);
             textBoxPath.Bind(a => a.Text, model, a => a.SelectAddon.Bin);
@@ -37,25 +34,49 @@ namespace UniversalValveToolbox {
         }
 
         private void Model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e) {
-            var availableEngines = dataProvider.Engines.Select(engine => {
+            UpdateEnginesListView();
+        }
+
+
+        private void EngineListView_ItemChecked(object sender, System.Windows.Forms.ItemCheckedEventArgs e) {
+            var listCheckedIndex = new List<int>();
+
+            if (engineListView.Items == null)
+                return;
+
+            foreach (ListViewItem item in engineListView.Items) {
+                if (item?.Checked ?? false) {
+                    listCheckedIndex.Add(item.Index);
+                }
+            }
+
+            model.ArraySelectAddonIndex = listCheckedIndex.ToArray();
+        }
+
+
+        private void InitEnginesListView() {
+            var checkedEngineListItem = dataProvider.Engines.Select(engine => {
                 var item = new ListViewItem(engine.Name);
                 item.Checked = model.SelectAddon.Engines.Contains(engine.Appid);
                 return item;
             }).ToArray();
 
-
             engineListView.Items.Clear();
-            engineListView.Items.AddRange(availableEngines);
+            engineListView.Items.AddRange(checkedEngineListItem);
+        }
 
-            
-            
-            //dataGridViewEngines.Rows.add
-            //var index = availableEngines.ToList().FindIndex(engine => engine.Appid == model.SelectProject.Engine);
+        private void UpdateAddonsComboBox() {
+            comboBox_Addon.Items.Clear();
+            comboBox_Addon.Items.AddRange(model.Addons);
+            comboBox_Addon.SelectedIndex = 0;
+        }
 
-            //comboBoxEngine.Items.Clear();
-            //comboBoxEngine.Items.AddRange(availableEngines);
+        private void UpdateEnginesListView() {
+            var indexs = model.ArraySelectAddonIndex;
 
-            //comboBoxEngine.SelectedIndex = index;
+            for (var i = 0; i < model.Engines.Length; i++) {
+                engineListView.Items[i].Checked = indexs.Contains(i);
+            }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e) {
@@ -79,18 +100,61 @@ namespace UniversalValveToolbox {
             }
         }
 
-        private void FormAddons_Load(object sender, EventArgs e)
-        {
+        private void FormAddons_Load(object sender, EventArgs e) {
 
         }
 
         private void comboBox_Addon_SelectedIndexChanged(object sender, EventArgs e) {
-            var selectAddon = arrayAddon.First(addon => addon.Name == ((AddonDtoModel)comboBox_Addon.SelectedItem).Name);
-            model.SelectAddon = selectAddon;
+            model.SelectAddonIndex = comboBox_Addon.SelectedIndex;
         }
 
         private void engineListView_SelectedIndexChanged(object sender, EventArgs e) {
 
+        }
+
+        private void Remove() {
+            var newAddonList = new List<AddonDtoModel>(model.Addons);
+            newAddonList.RemoveAt(model.SelectAddonIndex);
+
+            model.Addons = newAddonList.ToArray();
+
+            UpdateAddonsComboBox();
+        }
+
+        private void New() {
+            var newAddon = new AddonDtoModel();
+            newAddon.Name = "<new addon>";
+
+            var newAddonList = new List<AddonDtoModel>(model.Addons);
+            newAddonList.Insert(0, newAddon);
+
+            model.Addons = newAddonList.ToArray();
+
+            UpdateAddonsComboBox();
+        }
+
+        private void Save() {
+
+
+            JsonFileUtil.SaveValues(DataProvider.AddonsPath, "json", model.Addons.ToList());
+        }
+
+        private void buttonRemove_Click(object sender, EventArgs e) {
+            Remove();
+        }
+
+        private void buttonNew_Click(object sender, EventArgs e) {
+            New();
+        }
+
+        private void buttonApply_Click(object sender, EventArgs e) {
+            Save();
+        }
+
+        private void buttonOK_Click(object sender, EventArgs e) {
+            Save();
+
+            Close();
         }
     }
 }

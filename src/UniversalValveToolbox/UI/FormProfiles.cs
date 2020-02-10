@@ -29,16 +29,9 @@ namespace UniversalValveToolbox {
 
             comboBox_Mod.Bind(a => a.SelectedIndex, model, a => a.SelectProjectIndex);
             comboBoxEngine.Bind(a => a.SelectedIndex, model, a => a.SelectEngineIndex);
-
-            //model.PropertyChanged += Model_PropertyChanged;
-
-            UpdateComboBoxEngine();
-
-            //comboBox_Mod.SelectedIndex = 0;
         }
 
         private void Model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e) {
-
             UpdateComboBoxEngine();
         }
 
@@ -111,8 +104,6 @@ namespace UniversalValveToolbox {
         }
 
         private void Save() {
-            var selectProject = model.SelectProject;
-
             JsonFileUtil.SaveValues(DataProvider.ProjectsPath, "json", model.Projects.ToList());
         }
 

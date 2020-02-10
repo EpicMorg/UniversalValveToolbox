@@ -70,6 +70,7 @@
             this.buttonOK.TabIndex = 7;
             this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = true;
+            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // comboBox_Addon
             // 
@@ -92,6 +93,7 @@
             this.buttonRemove.TabIndex = 10;
             this.buttonRemove.Text = "Remove";
             this.buttonRemove.UseVisualStyleBackColor = true;
+            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
             // 
             // buttonNew
             // 
@@ -102,6 +104,7 @@
             this.buttonNew.TabIndex = 9;
             this.buttonNew.Text = "New";
             this.buttonNew.UseVisualStyleBackColor = true;
+            this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
             // 
             // labelAddon
             // 
@@ -223,6 +226,7 @@
             this.buttonApply.TabIndex = 27;
             this.buttonApply.Text = "Apply";
             this.buttonApply.UseVisualStyleBackColor = true;
+            this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
             // 
             // engineListView
             // 
@@ -236,6 +240,7 @@
             this.engineListView.UseCompatibleStateImageBehavior = false;
             this.engineListView.View = System.Windows.Forms.View.List;
             this.engineListView.SelectedIndexChanged += new System.EventHandler(this.engineListView_SelectedIndexChanged);
+            this.engineListView.ItemChecked += EngineListView_ItemChecked;
             // 
             // FormAddons
             // 
@@ -272,6 +277,7 @@
             this.PerformLayout();
 
         }
+
 
         #endregion
 
