@@ -46,7 +46,7 @@ namespace UniversalValveToolbox {
             comboBoxEngine.Items.Clear();
             comboBoxEngine.Items.AddRange(model.Engines);
 
-            comboBox_Mod.SelectedIndex = model.SelectEngineIndex;
+            comboBoxEngine.SelectedIndex = model.SelectEngineIndex;
         }
 
         private void FormEditProfile_Load(object sender, EventArgs e) {
