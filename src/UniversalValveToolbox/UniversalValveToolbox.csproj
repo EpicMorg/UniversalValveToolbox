@@ -61,6 +61,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\ViewModel\FormAddonViewModel.cs" />
     <Compile Include="Model\ViewModel\FormProjectViewModel.cs" />
     <Compile Include="Model\ViewModel\SteamDataViewModel.cs" />
     <Compile Include="Properties\translations\LangDict.Designer.cs">

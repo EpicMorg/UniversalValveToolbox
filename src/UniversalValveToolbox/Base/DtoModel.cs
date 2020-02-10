@@ -8,6 +8,13 @@ using Newtonsoft.Json;
 namespace UniversalValveToolbox.Base {
     public abstract class DtoModel : INotifyPropertyChanged {
 
+        protected bool ForceUpdateField<T>(T value, ref T field, [CallerMemberName]string name = null) {
+            field = value;
+            OnPropertyChanged(name);
+
+            return true;
+        }
+
         protected bool UpdateField<T>(T value, ref T field, [CallerMemberName]string name = null) {
             var updated = !EqualityComparer<T>.Default.Equals(value, field);
             if (updated) {

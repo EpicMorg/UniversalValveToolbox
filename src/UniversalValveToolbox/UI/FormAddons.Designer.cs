@@ -36,9 +36,6 @@
             this.buttonNew = new System.Windows.Forms.Button();
             this.labelAddon = new System.Windows.Forms.Label();
             this.labelLinkedEngine = new System.Windows.Forms.Label();
-            this.dataGridViewEngines = new System.Windows.Forms.DataGridView();
-            this.ColumnEngineName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAppID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelName = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxPath = new System.Windows.Forms.TextBox();
@@ -50,7 +47,7 @@
             this.comboBoxCategory = new System.Windows.Forms.ComboBox();
             this.labelCategory = new System.Windows.Forms.Label();
             this.buttonApply = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEngines)).BeginInit();
+            this.engineListView = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // buttonCancel
@@ -84,6 +81,7 @@
             this.comboBox_Addon.Name = "comboBox_Addon";
             this.comboBox_Addon.Size = new System.Drawing.Size(390, 21);
             this.comboBox_Addon.TabIndex = 6;
+            this.comboBox_Addon.SelectedIndexChanged += new System.EventHandler(this.comboBox_Addon_SelectedIndexChanged);
             // 
             // buttonRemove
             // 
@@ -122,42 +120,6 @@
             this.labelLinkedEngine.Size = new System.Drawing.Size(78, 13);
             this.labelLinkedEngine.TabIndex = 12;
             this.labelLinkedEngine.Text = "Linked Engine:";
-            // 
-            // dataGridViewEngines
-            // 
-            this.dataGridViewEngines.AllowUserToAddRows = false;
-            this.dataGridViewEngines.AllowUserToDeleteRows = false;
-            this.dataGridViewEngines.AllowUserToOrderColumns = true;
-            this.dataGridViewEngines.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewEngines.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridViewEngines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEngines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnEngineName,
-            this.ColumnAppID});
-            this.dataGridViewEngines.Location = new System.Drawing.Point(12, 182);
-            this.dataGridViewEngines.Name = "dataGridViewEngines";
-            this.dataGridViewEngines.ReadOnly = true;
-            this.dataGridViewEngines.Size = new System.Drawing.Size(471, 180);
-            this.dataGridViewEngines.TabIndex = 13;
-            // 
-            // ColumnEngineName
-            // 
-            this.ColumnEngineName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnEngineName.HeaderText = "Engine";
-            this.ColumnEngineName.Name = "ColumnEngineName";
-            this.ColumnEngineName.ReadOnly = true;
-            this.ColumnEngineName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // ColumnAppID
-            // 
-            this.ColumnAppID.FillWeight = 256F;
-            this.ColumnAppID.HeaderText = "AppID";
-            this.ColumnAppID.Name = "ColumnAppID";
-            this.ColumnAppID.ReadOnly = true;
-            this.ColumnAppID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ColumnAppID.Width = 62;
             // 
             // labelName
             // 
@@ -262,11 +224,25 @@
             this.buttonApply.Text = "Apply";
             this.buttonApply.UseVisualStyleBackColor = true;
             // 
+            // engineListView
+            // 
+            this.engineListView.CheckBoxes = true;
+            this.engineListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.engineListView.HideSelection = false;
+            this.engineListView.Location = new System.Drawing.Point(15, 182);
+            this.engineListView.Name = "engineListView";
+            this.engineListView.Size = new System.Drawing.Size(387, 188);
+            this.engineListView.TabIndex = 28;
+            this.engineListView.UseCompatibleStateImageBehavior = false;
+            this.engineListView.View = System.Windows.Forms.View.List;
+            this.engineListView.SelectedIndexChanged += new System.EventHandler(this.engineListView_SelectedIndexChanged);
+            // 
             // FormAddons
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(495, 417);
+            this.Controls.Add(this.engineListView);
             this.Controls.Add(this.buttonApply);
             this.Controls.Add(this.labelCategory);
             this.Controls.Add(this.comboBoxCategory);
@@ -278,7 +254,6 @@
             this.Controls.Add(this.labelPath);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.labelName);
-            this.Controls.Add(this.dataGridViewEngines);
             this.Controls.Add(this.labelLinkedEngine);
             this.Controls.Add(this.labelAddon);
             this.Controls.Add(this.buttonRemove);
@@ -293,7 +268,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Edit Addons";
             this.Load += new System.EventHandler(this.FormAddons_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEngines)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -308,9 +282,6 @@
         private System.Windows.Forms.Button buttonNew;
         private System.Windows.Forms.Label labelAddon;
         private System.Windows.Forms.Label labelLinkedEngine;
-        private System.Windows.Forms.DataGridView dataGridViewEngines;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnEngineName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAppID;
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.TextBox textBoxPath;
@@ -322,5 +293,6 @@
         private System.Windows.Forms.ComboBox comboBoxCategory;
         private System.Windows.Forms.Label labelCategory;
         private System.Windows.Forms.Button buttonApply;
+        private System.Windows.Forms.ListView engineListView;
     }
 }

@@ -36,7 +36,8 @@ namespace UniversalValveToolbox {
             UpdateAddonsList();
 
             Text = VersionHelper.AssemblyTitle + VersionHelper.AssemblyVersion;
-            comboBoxGameConfig.SelectedIndex = 0;
+
+           
 
             comboBoxEngine.SelectedIndexChanged += (s, e) => {
                 UpdateProjectList();

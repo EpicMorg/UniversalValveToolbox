@@ -1,4 +1,6 @@
-﻿namespace UniversalValveToolbox {
+﻿using System;
+
+namespace UniversalValveToolbox {
     partial class FormProfiles {
         /// <summary>
         /// Required designer variable.
@@ -53,6 +55,7 @@
             this.comboBox_Mod.Name = "comboBox_Mod";
             this.comboBox_Mod.Size = new System.Drawing.Size(395, 21);
             this.comboBox_Mod.TabIndex = 3;
+            this.comboBox_Mod.SelectedIndexChanged += new System.EventHandler(this.comboBox_Mod_SelectedIndexChanged);
             // 
             // buttonOK
             // 
@@ -63,6 +66,7 @@
             this.buttonOK.TabIndex = 4;
             this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = true;
+            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // buttonCancel
             // 
@@ -84,6 +88,7 @@
             this.buttonNew.TabIndex = 7;
             this.buttonNew.Text = "New";
             this.buttonNew.UseVisualStyleBackColor = true;
+            this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
             // 
             // buttonRemove
             // 
@@ -94,6 +99,7 @@
             this.buttonRemove.TabIndex = 8;
             this.buttonRemove.Text = "Remove";
             this.buttonRemove.UseVisualStyleBackColor = true;
+            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
             // 
             // buttonBrowse
             // 
@@ -134,6 +140,7 @@
             this.comboBoxEngine.Name = "comboBoxEngine";
             this.comboBoxEngine.Size = new System.Drawing.Size(395, 21);
             this.comboBoxEngine.TabIndex = 15;
+            this.comboBoxEngine.SelectedIndexChanged += new System.EventHandler(this.comboBoxEngine_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -190,6 +197,7 @@
             this.buttonApply.TabIndex = 28;
             this.buttonApply.Text = "Apply";
             this.buttonApply.UseVisualStyleBackColor = true;
+            this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
             // 
             // textBoxArgs
             // 
@@ -242,6 +250,7 @@
             this.PerformLayout();
 
         }
+
 
         #endregion
 

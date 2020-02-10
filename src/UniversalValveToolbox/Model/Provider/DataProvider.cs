@@ -11,10 +11,10 @@ using UniversalValveToolbox.Utils;
 namespace UniversalValveToolbox.Model.Provider {
     class DataProvider {
 
-        private readonly string SettingsPath = Path.Combine(Application.StartupPath, "json", "settings.json");
-        private readonly string EnginesPath = Path.Combine(Application.StartupPath, "json", "engines");
-        private readonly string ProjectsPath = Path.Combine(Application.StartupPath, "json", "projects");
-        private readonly string AddonsPath = Path.Combine(Application.StartupPath, "json", "addons");
+        public static readonly string SettingsPath = Path.Combine(Application.StartupPath, "json", "settings.json");
+        public static readonly string EnginesPath = Path.Combine(Application.StartupPath, "json", "engines");
+        public static readonly string ProjectsPath = Path.Combine(Application.StartupPath, "json", "projects");
+        public static readonly string AddonsPath = Path.Combine(Application.StartupPath, "json", "addons");
 
 
         public SettingsDtoModel Settings {
