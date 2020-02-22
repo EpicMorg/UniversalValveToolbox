@@ -311,11 +311,15 @@ namespace UniversalValveToolbox {
             }
             else if (selectItemText == Properties.translations.MenuItems.itmEditConfigurations) {
                 var frmProfiles = new FormProfiles();
-                frmProfiles.ShowDialog();
+                if (frmProfiles.ShowDialog() == DialogResult.OK) {
+                    Application.Restart();
+                }
             }
             else if (selectItemText == Properties.translations.MenuItems.itmEditPlugins) {
                 var frmPlugins = new FormAddons();
-                frmPlugins.ShowDialog();
+                if (frmPlugins.ShowDialog() == DialogResult.OK) {
+                    Application.Restart();
+                }
             }
             else if (selectItemText == Properties.translations.MenuItems.itmAbout) {
                 var frmAbout = new FormAbout();

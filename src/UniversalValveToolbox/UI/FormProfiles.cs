@@ -10,6 +10,8 @@ using UniversalValveToolbox.Utils;
 
 namespace UniversalValveToolbox {
     public partial class FormProfiles : Form {
+        private bool needRestart = false;
+
         private DataProvider dataProvider = new DataProvider();
 
         private FormProjectViewModel model;
@@ -54,6 +56,10 @@ namespace UniversalValveToolbox {
         }
 
         private void buttonCancel_Click(object sender, EventArgs e) {
+            if (needRestart) {
+                DialogResult = DialogResult.OK;
+            }
+
             Close();
         }
 
@@ -115,6 +121,8 @@ namespace UniversalValveToolbox {
 
         private void buttonApply_Click(object sender, EventArgs e) {
             Save();
+
+            needRestart = true;
         }
 
         private void buttonNew_Click(object sender, EventArgs e) {

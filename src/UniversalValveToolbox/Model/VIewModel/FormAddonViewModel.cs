@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UniversalValveToolbox.Base;
 using UniversalValveToolbox.Model.Dto;
+using static System.Windows.Forms.ListView;
 
 namespace UniversalValveToolbox.Model.ViewModel {
     class FormAddonViewModel: DtoModel {
@@ -12,7 +13,6 @@ namespace UniversalValveToolbox.Model.ViewModel {
         private int selectAddonIndex = 0;
 
         private EngineDtoModel[] engines;
-        private List<int> arraySelectAddonIndex = new List<int>();
 
         public FormAddonViewModel(AddonDtoModel[] addons, EngineDtoModel[] engines) {
             this.addons = addons;
@@ -33,9 +33,6 @@ namespace UniversalValveToolbox.Model.ViewModel {
             set {
                 ForceUpdateField(value, ref selectAddonIndex);
                 OnPropertyChanged(nameof(SelectAddon));
-
-                var indexs = SelectAddon.Engines;
-                ArraySelectAddonIndex = indexs;
             }
         }
 
@@ -47,24 +44,5 @@ namespace UniversalValveToolbox.Model.ViewModel {
                 UpdateField(value, ref engines);
             }
         }
-
-        public int[] ArraySelectAddonIndex {
-            get => arraySelectAddonIndex.ToArray();
-            set {
-                ForceUpdateField(value.ToList(), ref arraySelectAddonIndex);
-                //OnPropertyChanged(nameof(ArraySelectEngine));
-            }
-        }
-
-        //public EngineDtoModel[] ArraySelectEngine {
-        //    get {
-        //        List<EngineDtoModel> result = new List<EngineDtoModel>();
-        //        foreach (var index in arraySelectAddonIndex) {
-        //            result.Add(engines[index]);
-        //        }
-
-        //        return result.ToArray();
-        //    }
-        //}
     }
 }

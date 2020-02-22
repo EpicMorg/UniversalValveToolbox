@@ -47,12 +47,13 @@
             this.comboBoxCategory = new System.Windows.Forms.ComboBox();
             this.labelCategory = new System.Windows.Forms.Label();
             this.buttonApply = new System.Windows.Forms.Button();
-            this.engineListView = new System.Windows.Forms.ListView();
+            this.engineCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
             // buttonCancel
             // 
             this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancel.Location = new System.Drawing.Point(327, 382);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
@@ -64,6 +65,7 @@
             // buttonOK
             // 
             this.buttonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonOK.Location = new System.Drawing.Point(246, 382);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
@@ -228,26 +230,21 @@
             this.buttonApply.UseVisualStyleBackColor = true;
             this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
             // 
-            // engineListView
+            // engineCheckedListBox
             // 
-            this.engineListView.CheckBoxes = true;
-            this.engineListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.engineListView.HideSelection = false;
-            this.engineListView.Location = new System.Drawing.Point(15, 182);
-            this.engineListView.Name = "engineListView";
-            this.engineListView.Size = new System.Drawing.Size(387, 188);
-            this.engineListView.TabIndex = 28;
-            this.engineListView.UseCompatibleStateImageBehavior = false;
-            this.engineListView.View = System.Windows.Forms.View.List;
-            this.engineListView.SelectedIndexChanged += new System.EventHandler(this.engineListView_SelectedIndexChanged);
-            this.engineListView.ItemChecked += EngineListView_ItemChecked;
+            this.engineCheckedListBox.CheckOnClick = true;
+            this.engineCheckedListBox.FormattingEnabled = true;
+            this.engineCheckedListBox.Location = new System.Drawing.Point(15, 182);
+            this.engineCheckedListBox.Name = "engineCheckedListBox";
+            this.engineCheckedListBox.Size = new System.Drawing.Size(387, 169);
+            this.engineCheckedListBox.TabIndex = 28;
             // 
             // FormAddons
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(495, 417);
-            this.Controls.Add(this.engineListView);
+            this.Controls.Add(this.engineCheckedListBox);
             this.Controls.Add(this.buttonApply);
             this.Controls.Add(this.labelCategory);
             this.Controls.Add(this.comboBoxCategory);
@@ -299,6 +296,6 @@
         private System.Windows.Forms.ComboBox comboBoxCategory;
         private System.Windows.Forms.Label labelCategory;
         private System.Windows.Forms.Button buttonApply;
-        private System.Windows.Forms.ListView engineListView;
+        private System.Windows.Forms.CheckedListBox engineCheckedListBox;
     }
 }
