@@ -36,12 +36,12 @@
             this.imageListLarge = new System.Windows.Forms.ImageList(this.components);
             this.imageListSmall = new System.Windows.Forms.ImageList(this.components);
             this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.runProjectButton = new System.Windows.Forms.Button();
             this.toolStripStatusLabelSteam = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelLogin = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelEngines = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelRefresh = new System.Windows.Forms.ToolStripStatusLabel();
+            this.runProjectButton = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -134,20 +134,6 @@
             this.statusStrip.Size = new System.Drawing.Size(431, 25);
             this.statusStrip.TabIndex = 5;
             // 
-            // runProjectButton
-            // 
-            this.runProjectButton.Image = global::UniversalValveToolbox.Properties.Resources.run_16;
-            this.runProjectButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.runProjectButton.Location = new System.Drawing.Point(341, 403);
-            this.runProjectButton.Margin = new System.Windows.Forms.Padding(0);
-            this.runProjectButton.Name = "runProjectButton";
-            this.runProjectButton.Size = new System.Drawing.Size(78, 21);
-            this.runProjectButton.TabIndex = 6;
-            this.runProjectButton.Text = "Run";
-            this.runProjectButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.runProjectButton.UseVisualStyleBackColor = true;
-            this.runProjectButton.Click += new System.EventHandler(this.runProjectButton_Click);
-            // 
             // toolStripStatusLabelSteam
             // 
             this.toolStripStatusLabelSteam.Image = global::UniversalValveToolbox.Properties.Resources.cancel_16;
@@ -193,6 +179,20 @@
             this.toolStripStatusLabelRefresh.Size = new System.Drawing.Size(20, 20);
             this.toolStripStatusLabelRefresh.ToolTipText = "Refresh";
             this.toolStripStatusLabelRefresh.Click += new System.EventHandler(this.toolStripStatusLabelRefresh_Click);
+            // 
+            // runProjectButton
+            // 
+            this.runProjectButton.Image = global::UniversalValveToolbox.Properties.Resources.run_16;
+            this.runProjectButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.runProjectButton.Location = new System.Drawing.Point(343, 402);
+            this.runProjectButton.Margin = new System.Windows.Forms.Padding(0);
+            this.runProjectButton.Name = "runProjectButton";
+            this.runProjectButton.Size = new System.Drawing.Size(77, 23);
+            this.runProjectButton.TabIndex = 6;
+            this.runProjectButton.Text = "Run";
+            this.runProjectButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.runProjectButton.UseVisualStyleBackColor = true;
+            this.runProjectButton.Click += new System.EventHandler(this.runProjectButton_Click);
             // 
             // openFileDialog1
             // 

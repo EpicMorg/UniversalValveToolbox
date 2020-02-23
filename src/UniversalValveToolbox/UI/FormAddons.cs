@@ -7,6 +7,8 @@ using kasthack.binding.wf;
 using System.Linq;
 using System.Collections.Generic;
 using UniversalValveToolbox.Utils;
+using System.Globalization;
+using System.Collections;
 
 namespace UniversalValveToolbox {
     public partial class FormAddons : Form {
@@ -21,12 +23,20 @@ namespace UniversalValveToolbox {
         public FormAddons() {
             InitializeComponent();
 
-            model = new FormAddonViewModel(dataProvider.Addons, dataProvider.Engines);
+            var categories = Properties.translations.MenuCategories
+                .ResourceManager
+                .GetResourceSet(CultureInfo.CurrentCulture, false, true)
+                .Cast<DictionaryEntry>()
+                .ToArray();
+
+            model = new FormAddonViewModel(dataProvider.Addons, dataProvider.Engines, categories);
 
             UpdateAddonsComboBox();
+            UpdateAddonCategoryComboBox();
             UpdateEngineCheckedListView();
 
             comboBox_Addon.Bind(a => a.SelectedIndex, model, a => a.SelectAddonIndex);
+            comboBoxCategory.Bind(a => a.SelectedIndex, model, a => a.SelectCategoryIndex);
 
             textBoxName.Bind(a => a.Text, model, a => a.SelectAddon.Name);
             textBoxPath.Bind(a => a.Text, model, a => a.SelectAddon.Bin);
@@ -82,6 +92,13 @@ namespace UniversalValveToolbox {
             comboBox_Addon.SelectedIndex = 0;
         }
 
+        private void UpdateAddonCategoryComboBox() {
+            comboBoxCategory.Items.Clear();
+            comboBoxCategory.Items.AddRange(model.Categories.Select(c => c.Value).ToArray());
+
+            var index = Array.IndexOf(model.Categories.Select(c => c.Key).ToArray(), model.SelectAddon.Category);
+            comboBoxCategory.SelectedIndex = index;
+        }
 
         private void buttonCancel_Click(object sender, EventArgs e) {
             Close();
@@ -152,6 +169,10 @@ namespace UniversalValveToolbox {
             Save();
 
             Close();
+        }
+
+        private void comboBoxCategory_SelectedIndexChanged(object sender, EventArgs e) {
+
         }
     }
 }

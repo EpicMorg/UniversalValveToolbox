@@ -17,6 +17,7 @@ namespace UniversalValveToolbox {
     public partial class FormMain : Form {
         private EngineDtoModel[] Engines;
         private ProjectDtoModel[] Projects;
+        private ProjectDtoModel[] AvailableProjects;
 
         private DataProvider dataProvider = new DataProvider();
 
@@ -25,9 +26,9 @@ namespace UniversalValveToolbox {
 
         private EngineDtoModel SelectedEngine { get => Engines[comboBoxEngine.SelectedIndex]; }
         private ProjectDtoModel SelectedProject {
-            get => (comboBoxGameConfig.Enabled)
-                ? Projects.First(project => comboBoxGameConfig.SelectedItem.ToString() == project.Name)
-                : null; 
+            get => (ProjectDtoModel)((comboBoxGameConfig.Enabled)
+                ?  comboBoxGameConfig.SelectedItem
+                : null); 
                 }
 
         public FormMain() {
@@ -41,8 +42,6 @@ namespace UniversalValveToolbox {
             UpdateAddonsList();
 
             Text = VersionHelper.AssemblyTitle + VersionHelper.AssemblyVersion;
-
-           
 
             comboBoxEngine.SelectedIndexChanged += (s, e) => {
                 UpdateProjectList();
@@ -139,14 +138,14 @@ namespace UniversalValveToolbox {
             Projects = dataProvider.Projects;
 
             var selectEngine = Engines[comboBoxEngine.SelectedIndex];
-            var availableProject = Projects.Where(project => project.Engine == selectEngine.Appid).ToArray();
+            AvailableProjects = Projects.Where(project => project.Engine == selectEngine.Appid).ToArray();
 
-            if (availableProject != null && availableProject.Length != 0) {
+            if (AvailableProjects != null && AvailableProjects.Length != 0) {
                 comboBoxGameConfig.Enabled = true;
                 runProjectButton.Enabled = true;
 
                 comboBoxGameConfig.Items.Clear();
-                comboBoxGameConfig.Items.AddRange(availableProject.Select(project => project.Name).ToArray());
+                comboBoxGameConfig.Items.AddRange(AvailableProjects.ToArray());
 
                 comboBoxGameConfig.SelectedIndex = 0;
             }
