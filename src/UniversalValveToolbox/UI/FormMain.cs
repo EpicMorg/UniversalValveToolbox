@@ -24,6 +24,11 @@ namespace UniversalValveToolbox {
         private ListViewGroup listViewGroupTools;
 
         private EngineDtoModel SelectedEngine { get => Engines[comboBoxEngine.SelectedIndex]; }
+        private ProjectDtoModel SelectedProject {
+            get => (comboBoxGameConfig.Enabled)
+                ? Projects.First(project => comboBoxGameConfig.SelectedItem.ToString() == project.Name)
+                : null; 
+                }
 
         public FormMain() {
             InitializeComponent();
@@ -138,6 +143,7 @@ namespace UniversalValveToolbox {
 
             if (availableProject != null && availableProject.Length != 0) {
                 comboBoxGameConfig.Enabled = true;
+                runProjectButton.Enabled = true;
 
                 comboBoxGameConfig.Items.Clear();
                 comboBoxGameConfig.Items.AddRange(availableProject.Select(project => project.Name).ToArray());
@@ -146,6 +152,7 @@ namespace UniversalValveToolbox {
             }
             else {
                 comboBoxGameConfig.Enabled = false;
+                runProjectButton.Enabled = false;
                 comboBoxGameConfig.Items.Clear();
             }
         }
@@ -343,6 +350,16 @@ namespace UniversalValveToolbox {
                 dataManager.Settings = settingsDto;
                 Application.Restart();
             }
+        }
+
+        private void runProjectButton_Click(object sender, EventArgs e) {
+            var pathEngineBin = Path.Combine(SteamPathsUtil.GetSteamAppManifestDataById(SelectedEngine.Appid).Path, SelectedEngine.Bin);
+
+            Process.Start(pathEngineBin, $"-game {SelectedProject.Path} {SelectedProject.Args}");
+        }
+
+        private void comboBoxGameConfig_SelectedIndexChanged(object sender, EventArgs e) {
+
         }
     }
 }

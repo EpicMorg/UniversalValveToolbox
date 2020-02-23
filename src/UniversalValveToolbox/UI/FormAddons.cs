@@ -72,7 +72,7 @@ namespace UniversalValveToolbox {
                     engineCheckedListBox.SetItemChecked(i, true);
                 }
             }
-            
+
             isEnableListBoxCheckListener = true;
         }
 
@@ -88,19 +88,16 @@ namespace UniversalValveToolbox {
         }
 
         private void buttonBrowse_Click(object sender, EventArgs e) {
-            string folderpath = "";
-            FolderBrowserDialog fbd = new FolderBrowserDialog {
-                ShowNewFolderButton = false,
-                RootFolder = Environment.SpecialFolder.MyComputer
+            OpenFileDialog dialog = new OpenFileDialog {
+                InitialDirectory = @"C:\",
+                DefaultExt = "exe",
+                Filter = "Exe file (*.exe) | *.exe",
+                Multiselect = false,
+                RestoreDirectory = true
             };
-            DialogResult dr = fbd.ShowDialog();
 
-            if (dr == DialogResult.OK) {
-                folderpath = fbd.SelectedPath;
-            }
-
-            if (folderpath != "") {
-                textBoxPath.Text = folderpath;
+            if (dialog.ShowDialog() == DialogResult.OK) {
+                textBoxPath.Text = dialog.FileName;
             }
         }
 

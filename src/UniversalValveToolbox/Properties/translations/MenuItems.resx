@@ -124,7 +124,7 @@
     <value>Edit Projects</value>
   </data>
   <data name="itmEditPlugins" xml:space="preserve">
-    <value>Edit Plugins</value>
+    <value>Edit Addons</value>
   </data>
   <data name="itmGitHubLink" xml:space="preserve">
     <value>GitHub Link</value>

@@ -36,11 +36,13 @@
             this.imageListLarge = new System.Windows.Forms.ImageList(this.components);
             this.imageListSmall = new System.Windows.Forms.ImageList(this.components);
             this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.runProjectButton = new System.Windows.Forms.Button();
             this.toolStripStatusLabelSteam = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelLogin = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelEngines = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelRefresh = new System.Windows.Forms.ToolStripStatusLabel();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,12 +53,14 @@
             this.comboBoxGameConfig.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxGameConfig.Enabled = false;
             this.comboBoxGameConfig.FormattingEnabled = true;
+            this.comboBoxGameConfig.ItemHeight = 13;
             this.comboBoxGameConfig.Items.AddRange(new object[] {
             "No project configured"});
-            this.comboBoxGameConfig.Location = new System.Drawing.Point(12, 392);
+            this.comboBoxGameConfig.Location = new System.Drawing.Point(12, 403);
             this.comboBoxGameConfig.Name = "comboBoxGameConfig";
-            this.comboBoxGameConfig.Size = new System.Drawing.Size(400, 21);
+            this.comboBoxGameConfig.Size = new System.Drawing.Size(326, 21);
             this.comboBoxGameConfig.TabIndex = 1;
+            this.comboBoxGameConfig.SelectedIndexChanged += new System.EventHandler(this.comboBoxGameConfig_SelectedIndexChanged);
             // 
             // comboBoxEngine
             // 
@@ -67,9 +71,9 @@
             this.comboBoxEngine.FormattingEnabled = true;
             this.comboBoxEngine.Items.AddRange(new object[] {
             "No engine installed"});
-            this.comboBoxEngine.Location = new System.Drawing.Point(12, 365);
+            this.comboBoxEngine.Location = new System.Drawing.Point(12, 376);
             this.comboBoxEngine.Name = "comboBoxEngine";
-            this.comboBoxEngine.Size = new System.Drawing.Size(400, 21);
+            this.comboBoxEngine.Size = new System.Drawing.Size(407, 21);
             this.comboBoxEngine.TabIndex = 1;
             // 
             // listView
@@ -81,9 +85,10 @@
             this.listView.HideSelection = false;
             this.listView.LargeImageList = this.imageListLarge;
             this.listView.Location = new System.Drawing.Point(12, 12);
+            this.listView.Margin = new System.Windows.Forms.Padding(0);
             this.listView.MultiSelect = false;
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(400, 347);
+            this.listView.Size = new System.Drawing.Size(407, 358);
             this.listView.SmallImageList = this.imageListSmall;
             this.listView.StateImageList = this.imageListLarge;
             this.listView.TabIndex = 4;
@@ -123,11 +128,25 @@
             this.toolStripStatusLabelEngines,
             this.toolStripStatusLabel1,
             this.toolStripStatusLabelRefresh});
-            this.statusStrip.Location = new System.Drawing.Point(0, 421);
+            this.statusStrip.Location = new System.Drawing.Point(0, 432);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.ShowItemToolTips = true;
-            this.statusStrip.Size = new System.Drawing.Size(424, 25);
+            this.statusStrip.Size = new System.Drawing.Size(431, 25);
             this.statusStrip.TabIndex = 5;
+            // 
+            // runProjectButton
+            // 
+            this.runProjectButton.Image = global::UniversalValveToolbox.Properties.Resources.run_16;
+            this.runProjectButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.runProjectButton.Location = new System.Drawing.Point(341, 403);
+            this.runProjectButton.Margin = new System.Windows.Forms.Padding(0);
+            this.runProjectButton.Name = "runProjectButton";
+            this.runProjectButton.Size = new System.Drawing.Size(78, 21);
+            this.runProjectButton.TabIndex = 6;
+            this.runProjectButton.Text = "Run";
+            this.runProjectButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.runProjectButton.UseVisualStyleBackColor = true;
+            this.runProjectButton.Click += new System.EventHandler(this.runProjectButton_Click);
             // 
             // toolStripStatusLabelSteam
             // 
@@ -175,11 +194,16 @@
             this.toolStripStatusLabelRefresh.ToolTipText = "Refresh";
             this.toolStripStatusLabelRefresh.Click += new System.EventHandler(this.toolStripStatusLabelRefresh_Click);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(424, 446);
+            this.ClientSize = new System.Drawing.Size(431, 457);
+            this.Controls.Add(this.runProjectButton);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.comboBoxEngine);
@@ -210,6 +234,8 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelRefresh;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelEngines;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.Button runProjectButton;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

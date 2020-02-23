@@ -253,6 +253,7 @@
     <None Include="Resources\valve_64.png" />
     <None Include="Resources\info_16.png" />
     <None Include="Resources\plug-silhouette_16.png" />
+    <None Include="Resources\run_16.png" />
     <Content Include="valve.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -79,7 +79,7 @@ namespace UniversalValveToolbox.Properties.translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edit Plugins.
+        ///   Looks up a localized string similar to Edit Addons.
         /// </summary>
         internal static string itmEditPlugins {
             get {
