@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="menuStrAddons" xml:space="preserve">
+    <value>Addons: </value>
+  </data>
+  <data name="menuStrEngines" xml:space="preserve">
+    <value>Engines: </value>
+  </data>
   <data name="menuStrLogin" xml:space="preserve">
     <value>Login: </value>
   </data>
@@ -128,6 +134,9 @@
   </data>
   <data name="menuStrOnline" xml:space="preserve">
     <value>online</value>
+  </data>
+  <data name="menuStrProjects" xml:space="preserve">
+    <value>Projects: </value>
   </data>
   <data name="menuStrSteam" xml:space="preserve">
     <value>Steam: </value>

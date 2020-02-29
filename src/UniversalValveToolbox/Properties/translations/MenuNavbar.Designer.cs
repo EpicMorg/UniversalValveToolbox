@@ -61,6 +61,24 @@ namespace UniversalValveToolbox.Properties.translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Addons: .
+        /// </summary>
+        internal static string menuStrAddons {
+            get {
+                return ResourceManager.GetString("menuStrAddons", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Engines: .
+        /// </summary>
+        internal static string menuStrEngines {
+            get {
+                return ResourceManager.GetString("menuStrEngines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login: .
         /// </summary>
         internal static string menuStrLogin {
@@ -93,6 +111,15 @@ namespace UniversalValveToolbox.Properties.translations {
         internal static string menuStrOnline {
             get {
                 return ResourceManager.GetString("menuStrOnline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Projects: .
+        /// </summary>
+        internal static string menuStrProjects {
+            get {
+                return ResourceManager.GetString("menuStrProjects", resourceCulture);
             }
         }
         

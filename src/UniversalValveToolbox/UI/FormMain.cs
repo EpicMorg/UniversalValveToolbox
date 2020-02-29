@@ -15,6 +15,8 @@ using UniversalValveToolbox.Utils;
 
 namespace UniversalValveToolbox {
     public partial class FormMain : Form {
+        private readonly string RUN_PROJECT_ID = "RUN_PROJECT_ID";
+
         private EngineDtoModel[] Engines;
         private ProjectDtoModel[] Projects;
         private ProjectDtoModel[] AvailableProjects;
@@ -34,12 +36,8 @@ namespace UniversalValveToolbox {
         public FormMain() {
             InitializeComponent();
             FillBaseMenuItems();
-            GetInfoForToolbar();
 
-            UpdateEngineList();
-            UpdateProjectList();
-            UpdateToolsList();
-            UpdateAddonsList();
+            UpdateFormData();
 
             Text = VersionHelper.AssemblyTitle + VersionHelper.AssemblyVersion;
 
@@ -53,12 +51,21 @@ namespace UniversalValveToolbox {
 
         }
 
-        private void GetInfoForToolbar() {
-            UpdateteamStatus();
+        private void UpdateFormData() {
+            UpdateEngineList();
+            UpdateProjectList();
+            UpdateToolsList();
+            UpdateAddonsList();
+            UpdateNavigationBar();
+        }
+
+        private void UpdateNavigationBar() {
+            UpdateLogInStatus();
+            UpdateInfoNavigationBar();
         }
 
         private void toolStripStatusLabelRefresh_Click(object sender, EventArgs e) {
-            GetInfoForToolbar();
+            UpdateFormData();
         }
 
         public void FillBaseMenuItems() {
@@ -142,7 +149,6 @@ namespace UniversalValveToolbox {
 
             if (AvailableProjects != null && AvailableProjects.Length != 0) {
                 comboBoxGameConfig.Enabled = true;
-                runProjectButton.Enabled = true;
 
                 comboBoxGameConfig.Items.Clear();
                 comboBoxGameConfig.Items.AddRange(AvailableProjects.ToArray());
@@ -151,7 +157,7 @@ namespace UniversalValveToolbox {
             }
             else {
                 comboBoxGameConfig.Enabled = false;
-                runProjectButton.Enabled = false;
+
                 comboBoxGameConfig.Items.Clear();
             }
         }
@@ -197,6 +203,23 @@ namespace UniversalValveToolbox {
 
             }).ToArray();
             listView.Items.AddRange(itemsTools);
+
+
+            var engineData = SteamPathsUtil.GetSteamAppManifestDataById(SelectedEngine.Appid);
+            var isAvailableProjectBySelectEngine = Projects.Any(project => project.Engine == SelectedEngine.Appid);
+
+            if (engineData != null && isAvailableProjectBySelectEngine) {
+                var enginePath = engineData.Path;
+
+                if (enginePath != null) {
+                    var iconPathEngine = Path.Combine(enginePath, SelectedEngine.Bin);
+
+                    var runProjectListViewItem = new ListViewItem(Properties.translations.MenuItems.itmRunProject, iconPathEngine, listViewGroupTools);
+                    runProjectListViewItem.Tag = RUN_PROJECT_ID;
+
+                    listView.Items.Add(runProjectListViewItem);
+                }
+            }
         }
 
         private void UpdateAddonsList() {
@@ -249,7 +272,16 @@ namespace UniversalValveToolbox {
             listView.Items.AddRange(itemsAddons);
         }
 
-        private void UpdateteamStatus() {
+        private void UpdateInfoNavigationBar() {
+            var countAvailableEngines = dataProvider.Engines.Length;
+            var countAvailableProjects = dataProvider.Projects.Length;
+            var countAvailableAddons = dataProvider.Addons.Length;
+
+            toolStripStatusLabelEngines.Text = Properties.translations.MenuNavbar.menuStrEngines + $"{countAvailableEngines}";
+            toolStripStatusLabelAddons.Text = Properties.translations.MenuNavbar.menuStrAddons + $"{countAvailableAddons}";
+        }
+
+        private void UpdateLogInStatus() {
             var steamData = SteamManager.SteamData;
 
             if (steamData.SteamPid != 0) {
@@ -281,6 +313,12 @@ namespace UniversalValveToolbox {
             var selectItemText = selectItem.Text;
 
             if (selectItem.Group == listViewGroupTools) {
+                if (RUN_PROJECT_ID.Equals(selectItem.Tag) && SelectedProject != null) {
+                    var pathEngineBin = Path.Combine(SteamPathsUtil.GetSteamAppManifestDataById(SelectedEngine.Appid).Path, SelectedEngine.Bin);
+
+                    Process.Start(pathEngineBin, $"-game {SelectedProject.Path} {SelectedProject.Args}");
+                }
+
                 var selectedTool = SelectedEngine.Tools.FirstOrDefault(tool => tool.Name == selectItemText);
                 if (selectedTool != null) {
                     var selectedEnginePath = SteamPathsUtil.GetSteamAppManifestDataById(SelectedEngine.Appid)?.Path;
@@ -349,12 +387,6 @@ namespace UniversalValveToolbox {
                 dataManager.Settings = settingsDto;
                 Application.Restart();
             }
-        }
-
-        private void runProjectButton_Click(object sender, EventArgs e) {
-            var pathEngineBin = Path.Combine(SteamPathsUtil.GetSteamAppManifestDataById(SelectedEngine.Appid).Path, SelectedEngine.Bin);
-
-            Process.Start(pathEngineBin, $"-game {SelectedProject.Path} {SelectedProject.Args}");
         }
 
         private void comboBoxGameConfig_SelectedIndexChanged(object sender, EventArgs e) {

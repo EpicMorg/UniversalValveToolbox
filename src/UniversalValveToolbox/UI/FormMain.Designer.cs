@@ -39,9 +39,8 @@
             this.toolStripStatusLabelSteam = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelLogin = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelEngines = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelAddons = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelRefresh = new System.Windows.Forms.ToolStripStatusLabel();
-            this.runProjectButton = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -56,9 +55,9 @@
             this.comboBoxGameConfig.ItemHeight = 13;
             this.comboBoxGameConfig.Items.AddRange(new object[] {
             "No project configured"});
-            this.comboBoxGameConfig.Location = new System.Drawing.Point(12, 403);
+            this.comboBoxGameConfig.Location = new System.Drawing.Point(12, 412);
             this.comboBoxGameConfig.Name = "comboBoxGameConfig";
-            this.comboBoxGameConfig.Size = new System.Drawing.Size(326, 21);
+            this.comboBoxGameConfig.Size = new System.Drawing.Size(449, 21);
             this.comboBoxGameConfig.TabIndex = 1;
             this.comboBoxGameConfig.SelectedIndexChanged += new System.EventHandler(this.comboBoxGameConfig_SelectedIndexChanged);
             // 
@@ -71,9 +70,9 @@
             this.comboBoxEngine.FormattingEnabled = true;
             this.comboBoxEngine.Items.AddRange(new object[] {
             "No engine installed"});
-            this.comboBoxEngine.Location = new System.Drawing.Point(12, 376);
+            this.comboBoxEngine.Location = new System.Drawing.Point(12, 385);
             this.comboBoxEngine.Name = "comboBoxEngine";
-            this.comboBoxEngine.Size = new System.Drawing.Size(407, 21);
+            this.comboBoxEngine.Size = new System.Drawing.Size(449, 21);
             this.comboBoxEngine.TabIndex = 1;
             // 
             // listView
@@ -88,7 +87,7 @@
             this.listView.Margin = new System.Windows.Forms.Padding(0);
             this.listView.MultiSelect = false;
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(407, 358);
+            this.listView.Size = new System.Drawing.Size(449, 367);
             this.listView.SmallImageList = this.imageListSmall;
             this.listView.StateImageList = this.imageListLarge;
             this.listView.TabIndex = 4;
@@ -126,17 +125,18 @@
             this.toolStripStatusLabelSteam,
             this.toolStripStatusLabelLogin,
             this.toolStripStatusLabelEngines,
-            this.toolStripStatusLabel1,
+            this.toolStripStatusLabelAddons,
             this.toolStripStatusLabelRefresh});
-            this.statusStrip.Location = new System.Drawing.Point(0, 432);
+            this.statusStrip.Location = new System.Drawing.Point(0, 441);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.ShowItemToolTips = true;
-            this.statusStrip.Size = new System.Drawing.Size(431, 25);
+            this.statusStrip.Size = new System.Drawing.Size(473, 25);
             this.statusStrip.TabIndex = 5;
             // 
             // toolStripStatusLabelSteam
             // 
             this.toolStripStatusLabelSteam.Image = global::UniversalValveToolbox.Properties.Resources.cancel_16;
+            this.toolStripStatusLabelSteam.Margin = new System.Windows.Forms.Padding(11, 3, 0, 2);
             this.toolStripStatusLabelSteam.Name = "toolStripStatusLabelSteam";
             this.toolStripStatusLabelSteam.Size = new System.Drawing.Size(89, 20);
             this.toolStripStatusLabelSteam.Text = "Steam: none";
@@ -157,13 +157,13 @@
             this.toolStripStatusLabelEngines.Text = "Engines: 00";
             this.toolStripStatusLabelEngines.ToolTipText = "Count of available engines";
             // 
-            // toolStripStatusLabel1
+            // toolStripStatusLabelAddons
             // 
-            this.toolStripStatusLabel1.Image = global::UniversalValveToolbox.Properties.Resources.plug_silhouette_16;
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(82, 20);
-            this.toolStripStatusLabel1.Text = "Addons: 00";
-            this.toolStripStatusLabel1.ToolTipText = "Count of available plugins";
+            this.toolStripStatusLabelAddons.Image = global::UniversalValveToolbox.Properties.Resources.plug_silhouette_16;
+            this.toolStripStatusLabelAddons.Name = "toolStripStatusLabelAddons";
+            this.toolStripStatusLabelAddons.Size = new System.Drawing.Size(82, 20);
+            this.toolStripStatusLabelAddons.Text = "Addons: 00";
+            this.toolStripStatusLabelAddons.ToolTipText = "Count of available plugins";
             // 
             // toolStripStatusLabelRefresh
             // 
@@ -180,20 +180,6 @@
             this.toolStripStatusLabelRefresh.ToolTipText = "Refresh";
             this.toolStripStatusLabelRefresh.Click += new System.EventHandler(this.toolStripStatusLabelRefresh_Click);
             // 
-            // runProjectButton
-            // 
-            this.runProjectButton.Image = global::UniversalValveToolbox.Properties.Resources.run_16;
-            this.runProjectButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.runProjectButton.Location = new System.Drawing.Point(343, 402);
-            this.runProjectButton.Margin = new System.Windows.Forms.Padding(0);
-            this.runProjectButton.Name = "runProjectButton";
-            this.runProjectButton.Size = new System.Drawing.Size(77, 23);
-            this.runProjectButton.TabIndex = 6;
-            this.runProjectButton.Text = "Run";
-            this.runProjectButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.runProjectButton.UseVisualStyleBackColor = true;
-            this.runProjectButton.Click += new System.EventHandler(this.runProjectButton_Click);
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -202,8 +188,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(431, 457);
-            this.Controls.Add(this.runProjectButton);
+            this.ClientSize = new System.Drawing.Size(473, 466);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.comboBoxEngine);
@@ -233,8 +218,7 @@
         private System.Windows.Forms.ImageList imageListSmall;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelRefresh;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelEngines;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.Button runProjectButton;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelAddons;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

@@ -104,5 +104,14 @@ namespace UniversalValveToolbox.Properties.translations {
                 return ResourceManager.GetString("itmOpenSettings", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Run Project.
+        /// </summary>
+        internal static string itmRunProject {
+            get {
+                return ResourceManager.GetString("itmRunProject", resourceCulture);
+            }
+        }
     }
 }

@@ -132,4 +132,7 @@
   <data name="itmOpenSettings" xml:space="preserve">
     <value>Open Settings</value>
   </data>
+  <data name="itmRunProject" xml:space="preserve">
+    <value>Run Project</value>
+  </data>
 </root>
