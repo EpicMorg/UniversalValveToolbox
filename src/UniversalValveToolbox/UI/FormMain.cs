@@ -316,7 +316,7 @@ namespace UniversalValveToolbox {
                 if (RUN_PROJECT_ID.Equals(selectItem.Tag) && SelectedProject != null) {
                     var pathEngineBin = Path.Combine(SteamPathsUtil.GetSteamAppManifestDataById(SelectedEngine.Appid).Path, SelectedEngine.Bin);
 
-                    Process.Start(pathEngineBin, $"-game {SelectedProject.Path} {SelectedProject.Args}");
+                    Process.Start(pathEngineBin, $"-game \"{SelectedProject.Path}\" {SelectedProject.Args}");
                 }
 
                 var selectedTool = SelectedEngine.Tools.FirstOrDefault(tool => tool.Name == selectItemText);
@@ -327,7 +327,7 @@ namespace UniversalValveToolbox {
                         var toolPath = Path.Combine(selectedEnginePath, selectedTool.Bin);
 
                         if (File.Exists(toolPath))
-                            Process.Start(toolPath, selectedTool.Args);
+                            Process.Start(toolPath, $"{selectedTool.Args} -game \"{SelectedProject.Path}\"");
                         else
                             MessageBox.Show($"\"{selectedTool.Name}\" no found.\n{toolPath}", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
