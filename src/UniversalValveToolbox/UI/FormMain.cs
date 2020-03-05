@@ -332,7 +332,12 @@ namespace UniversalValveToolbox {
                             MessageBox.Show($"\"{selectedTool.Name}\" no found.\n{toolPath}", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else {
-                        MessageBox.Show($"\"{SelectedEngine.Name}\" not install", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        DialogResult dialogResult = MessageBox.Show($"\"{SelectedEngine.Name}\" with app id \"{SelectedEngine.Appid}\" not installed. Do you want to install it?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (dialogResult == DialogResult.Yes) {
+                            Process.Start($"steam://install/{SelectedEngine.Appid}");
+                        } else if (dialogResult == DialogResult.No) {
+                            MessageBox.Show($"Installation of \"{SelectedEngine.Name}\" with app id \"{SelectedEngine.Appid}\" canceled.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        }
                     }
                 }
 
