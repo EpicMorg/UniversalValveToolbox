@@ -130,7 +130,7 @@ namespace UniversalValveToolbox {
 
         private void UpdateEngineList() {
             var dataProvider = new DataProvider();
-            Engines = dataProvider.Engines;
+            Engines = dataProvider.Engines.Where(engine => SteamPathsUtil.GetSteamAppManifestDataById(engine.Appid) != null).ToArray();
 
             if (Engines != null && Engines.Length != 0) {
                 comboBoxEngine.Enabled = true;
