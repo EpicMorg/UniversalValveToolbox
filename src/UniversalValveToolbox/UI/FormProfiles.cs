@@ -38,10 +38,12 @@ namespace UniversalValveToolbox {
         }
 
         private void UpdateComboBoxProject() {
-            comboBox_Mod.Items.Clear();
-            comboBox_Mod.Items.AddRange(model.Projects);
-
-            comboBox_Mod.SelectedIndex = model.SelectProjectIndex;
+            if (model.Projects.Length == 0) {
+                New();
+            } else {
+                comboBox_Mod.Items.Clear();
+                comboBox_Mod.Items.AddRange(model.Projects);
+            }
         }
 
         private void UpdateComboBoxEngine() {
@@ -98,8 +100,7 @@ namespace UniversalValveToolbox {
         }
 
         private void New() {
-            var newProject = new ProjectDtoModel();
-            newProject.Name = "<new project>";
+            var newProject = CreateNewEmptyProject();
 
             var newProjectList = new List<ProjectDtoModel>(model.Projects);
             newProjectList.Insert(0, newProject);
@@ -107,6 +108,13 @@ namespace UniversalValveToolbox {
             model.Projects = newProjectList.ToArray();
 
             UpdateComboBoxProject();
+        }
+
+        private ProjectDtoModel CreateNewEmptyProject() {
+            var newProject = new ProjectDtoModel();
+            newProject.Name = Properties.translations.VarStrings.strNewProject;
+
+            return newProject;
         }
 
         private void Save() {

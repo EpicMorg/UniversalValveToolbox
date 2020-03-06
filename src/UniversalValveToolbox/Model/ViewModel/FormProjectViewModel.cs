@@ -40,7 +40,14 @@ namespace UniversalValveToolbox.Model.ViewModel {
             }
         }
 
-        public ProjectDtoModel SelectProject => projects[selectProjectIndex];
+        public ProjectDtoModel SelectProject {
+            get {
+                if (projects == null || projects.Length == 0)
+                    return null;
+
+                return projects[selectProjectIndex];
+            }
+        }
 
         public EngineDtoModel[] Engines {
             get => engines;

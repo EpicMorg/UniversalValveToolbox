@@ -79,6 +79,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MenuNavbar.resx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\translations\VarStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VarStrings.resx</DependentUpon>
+    </Compile>
     <Compile Include="UI\FormAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +170,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>MenuNavbar.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\translations\VarStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>VarStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\translations\VarStrings.ru.resx" />
     <EmbeddedResource Include="UI\FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </EmbeddedResource>
