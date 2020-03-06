@@ -43,6 +43,8 @@ namespace UniversalValveToolbox {
             } else {
                 comboBox_Mod.Items.Clear();
                 comboBox_Mod.Items.AddRange(model.Projects);
+
+                comboBox_Mod.SelectedIndex = model.SelectProjectIndex;
             }
         }
 
