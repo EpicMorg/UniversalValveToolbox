@@ -75,11 +75,18 @@ namespace UniversalValveToolbox {
             engineCheckedListBox.Items.Clear();
             engineCheckedListBox.Items.AddRange(model.Engines);
 
-            for (var i = 0; i < model.Engines.Length; i++) {
-                var engine = model.Engines[i];
+            if (model.SelectAddon != null) {
+                for (var i = 0; i < model.Engines.Length; i++) {
+                    var engine = model.Engines[i];
 
-                if (model.SelectAddon.Engines.Contains(engine.Appid)) {
-                    engineCheckedListBox.SetItemChecked(i, true);
+                    if (model.SelectAddon.Engines.Contains(engine.Appid)) {
+                        engineCheckedListBox.SetItemChecked(i, true);
+                    }
+                }
+            }
+            else {
+                for (var i = 0; i < model.Engines.Length; i++) {
+                    engineCheckedListBox.SetItemChecked(i, false);
                 }
             }
 
@@ -87,9 +94,15 @@ namespace UniversalValveToolbox {
         }
 
         private void UpdateAddonsComboBox() {
-            comboBox_Addon.Items.Clear();
-            comboBox_Addon.Items.AddRange(model.Addons);
-            comboBox_Addon.SelectedIndex = 0;
+            if (model.Addons.Length == 0) {
+                New();
+            }
+            else {
+                comboBox_Addon.Items.Clear();
+                comboBox_Addon.Items.AddRange(model.Addons);
+
+                comboBox_Addon.SelectedIndex = 0;
+            }
         }
 
         private void UpdateAddonCategoryComboBox() {
@@ -136,8 +149,7 @@ namespace UniversalValveToolbox {
         }
 
         private void New() {
-            var newAddon = new AddonDtoModel();
-            newAddon.Name = "<new addon>";
+            var newAddon = CreateNewEmptyAddon();
 
             var newAddonList = new List<AddonDtoModel>(model.Addons);
             newAddonList.Insert(0, newAddon);
@@ -145,6 +157,13 @@ namespace UniversalValveToolbox {
             model.Addons = newAddonList.ToArray();
 
             UpdateAddonsComboBox();
+        }
+
+        private AddonDtoModel CreateNewEmptyAddon() {
+            var newAddon = new AddonDtoModel();
+            newAddon.Name = Properties.translations.VarStrings.strNewAddon;
+
+            return newAddon;
         }
 
         private void Save() {

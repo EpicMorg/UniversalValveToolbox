@@ -61,7 +61,16 @@ namespace UniversalValveToolbox.Properties.translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;new project&gt;.
+        ///   Looks up a localized string similar to &lt;New Addon&gt;.
+        /// </summary>
+        internal static string strNewAddon {
+            get {
+                return ResourceManager.GetString("strNewAddon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;New Project&gt;.
         /// </summary>
         internal static string strNewProject {
             get {

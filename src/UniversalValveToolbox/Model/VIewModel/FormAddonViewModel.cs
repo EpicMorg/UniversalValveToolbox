@@ -57,7 +57,14 @@ namespace UniversalValveToolbox.Model.ViewModel {
             }
         }
 
-        public AddonDtoModel SelectAddon => addons[selectAddonIndex];
+        public AddonDtoModel SelectAddon {
+            get {
+                if (addons == null || addons.Length == 0)
+                    return null;
+                
+                return addons[selectAddonIndex]; 
+            }
+        }
 
         public DictionaryEntry SelectCategory {
             get { return categories[selectCategoryIndex]; }
