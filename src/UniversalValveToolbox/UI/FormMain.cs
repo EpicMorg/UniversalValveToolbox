@@ -327,7 +327,7 @@ namespace UniversalValveToolbox {
                         var toolPath = Path.Combine(selectedEnginePath, selectedTool.Bin);
 
                         if (File.Exists(toolPath))
-                            Process.Start(toolPath, $"{selectedTool.Args} -game \"{SelectedProject.Path}\"");
+                            Process.Start(toolPath, $"{selectedTool.Args} -game \"{SelectedProject?.Path ?? ""}\"");
                         else
                             MessageBox.Show($"\"{selectedTool.Name}\" no found.\n{toolPath}", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
