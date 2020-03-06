@@ -34,7 +34,7 @@ namespace UniversalValveToolbox.Model.ViewModel {
                 ForceUpdateField(value, ref selectProjectIndex);
                 OnPropertyChanged(nameof(SelectProject));
 
-                var index = Math.Max(engines.ToList().FindIndex(engine => engine.Appid == SelectProject.Engine), 0);
+                var index = Math.Max(engines.ToList().FindIndex(engine => engine.Appid == SelectProject?.Engine), -1);
   
                 SelectEngineIndex = index;
             }

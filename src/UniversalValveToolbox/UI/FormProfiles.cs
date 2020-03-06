@@ -85,7 +85,8 @@ namespace UniversalValveToolbox {
         }
 
         private void comboBoxEngine_SelectedIndexChanged(object sender, EventArgs e) {
-            model.SelectProject.Engine = ((EngineDtoModel)comboBoxEngine.SelectedItem).Appid;
+            if (model.SelectProject != null)
+                model.SelectProject.Engine = ((EngineDtoModel)comboBoxEngine.SelectedItem).Appid;
         }
 
         private void comboBox_Mod_SelectedIndexChanged(object sender, EventArgs e) {
