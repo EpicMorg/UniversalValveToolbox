@@ -10,7 +10,13 @@ namespace UniversalValveToolbox.Utils {
     static class JsonFileUtil {
         public static T ReadValue<T>(string path) => JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
 
-        public static T[] ReadValues<T>(string directoryPath) => Directory.GetFiles(directoryPath, "*").Select(path => ReadValue<T>(path)).ToArray();
+        public static T[] ReadValues<T>(string directoryPath) {
+            if (!Directory.Exists(directoryPath)) {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            return Directory.GetFiles(directoryPath, "*").Select(path => ReadValue<T>(path)).ToArray();
+        }
 
         public static List<T> ReadListValues<T>(string directoryPath) => new List<T>(ReadValues<T>(directoryPath));
 
