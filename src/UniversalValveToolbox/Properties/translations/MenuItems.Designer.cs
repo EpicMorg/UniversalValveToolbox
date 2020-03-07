@@ -88,11 +88,20 @@ namespace UniversalValveToolbox.Properties.translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GitHub Link.
+        ///   Looks up a localized string similar to Sources on GitHub (link).
         /// </summary>
         internal static string itmGitHubLink {
             get {
                 return ResourceManager.GetString("itmGitHubLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report Issue, Bug, Feature Request, etc (link).
+        /// </summary>
+        internal static string itmGitHubReport {
+            get {
+                return ResourceManager.GetString("itmGitHubReport", resourceCulture);
             }
         }
         

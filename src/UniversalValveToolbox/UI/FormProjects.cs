@@ -9,7 +9,7 @@ using UniversalValveToolbox.Model.ViewModel;
 using UniversalValveToolbox.Utils;
 
 namespace UniversalValveToolbox {
-    public partial class FormProfiles : Form {
+    public partial class FormProjects : Form {
         private bool needRestart = false;
 
         private DataProvider dataProvider = new DataProvider();
@@ -17,7 +17,7 @@ namespace UniversalValveToolbox {
         private FormProjectViewModel model;
 
 
-        public FormProfiles() {
+        public FormProjects() {
             InitializeComponent();
 
             model = new FormProjectViewModel(dataProvider.Projects, dataProvider.Engines);

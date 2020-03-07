@@ -31,7 +31,6 @@
             this.comboBoxLang = new System.Windows.Forms.ComboBox();
             this.comboBoxTheme = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.SuspendLayout();
             // 
             // labelDivider
@@ -110,21 +109,11 @@
             this.label6.TabIndex = 31;
             this.label6.Text = "Theme:";
             // 
-            // elementHost1
-            // 
-            this.elementHost1.Location = new System.Drawing.Point(12, 93);
-            this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(287, 176);
-            this.elementHost1.TabIndex = 33;
-            this.elementHost1.Text = "elementHost1";
-            this.elementHost1.Child = null;
-            // 
             // FormSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(311, 319);
-            this.Controls.Add(this.elementHost1);
             this.Controls.Add(this.comboBoxTheme);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBoxLang);
@@ -154,6 +143,5 @@
         private System.Windows.Forms.ComboBox comboBoxLang;
         private System.Windows.Forms.ComboBox comboBoxTheme;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Integration.ElementHost elementHost1;
     }
 }

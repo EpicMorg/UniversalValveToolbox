@@ -127,7 +127,10 @@
     <value>Edit Addons</value>
   </data>
   <data name="itmGitHubLink" xml:space="preserve">
-    <value>GitHub Link</value>
+    <value>Sources on GitHub (link)</value>
+  </data>
+  <data name="itmGitHubReport" xml:space="preserve">
+    <value>Report Issue, Bug, Feature Request, etc (link)</value>
   </data>
   <data name="itmOpenSettings" xml:space="preserve">
     <value>Open Settings</value>

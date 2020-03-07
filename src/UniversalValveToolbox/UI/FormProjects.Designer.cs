@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace UniversalValveToolbox {
-    partial class FormProfiles {
+    partial class FormProjects {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -25,7 +25,7 @@ namespace UniversalValveToolbox {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProfiles));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProjects));
             this.comboBox_Mod = new System.Windows.Forms.ComboBox();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
@@ -84,7 +84,7 @@ namespace UniversalValveToolbox {
             // buttonNew
             // 
             this.buttonNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonNew.Location = new System.Drawing.Point(413, 52);
+            this.buttonNew.Location = new System.Drawing.Point(413, 63);
             this.buttonNew.Name = "buttonNew";
             this.buttonNew.Size = new System.Drawing.Size(75, 23);
             this.buttonNew.TabIndex = 7;
@@ -192,7 +192,7 @@ namespace UniversalValveToolbox {
             // 
             // buttonApply
             // 
-            this.buttonApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonApply.Location = new System.Drawing.Point(413, 225);
             this.buttonApply.Name = "buttonApply";
             this.buttonApply.Size = new System.Drawing.Size(75, 23);
@@ -219,7 +219,7 @@ namespace UniversalValveToolbox {
             this.labelArgs.TabIndex = 29;
             this.labelArgs.Text = "Arguments:";
             // 
-            // FormProfiles
+            // FormProjects
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -243,7 +243,7 @@ namespace UniversalValveToolbox {
             this.Controls.Add(this.comboBox_Mod);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(516, 259);
-            this.Name = "FormProfiles";
+            this.Name = "FormProjects";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Edit Projects";

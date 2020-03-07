@@ -124,15 +124,18 @@
     <value>Редактор Проектов</value>
   </data>
   <data name="itmEditPlugins" xml:space="preserve">
-    <value>Редактор Плагинов</value>
+    <value>Редактор Дополнений</value>
   </data>
   <data name="itmGitHubLink" xml:space="preserve">
-    <value>Ссылка на GitHub</value>
+    <value>Исходный код на GitHub (ссылка)</value>
+  </data>
+  <data name="itmGitHubReport" xml:space="preserve">
+    <value>Сообщить об ошибке, создать запрос, и тд (ссылка)</value>
   </data>
   <data name="itmOpenSettings" xml:space="preserve">
     <value>Открыть Настройки</value>
   </data>
   <data name="itmRunProject" xml:space="preserve">
-    <value>Run Project</value>
+    <value>Запуск Проекта</value>
   </data>
 </root>

@@ -96,11 +96,11 @@
     <Compile Include="UI\FormAddons.Designer.cs">
       <DependentUpon>FormAddons.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FormProfiles.cs">
+    <Compile Include="UI\FormProjects.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FormProfiles.Designer.cs">
-      <DependentUpon>FormProfiles.cs</DependentUpon>
+    <Compile Include="UI\FormProjects.Designer.cs">
+      <DependentUpon>FormProjects.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FormMain.cs">
       <SubType>Form</SubType>
@@ -181,8 +181,8 @@
     <EmbeddedResource Include="UI\FormAddons.resx">
       <DependentUpon>FormAddons.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FormProfiles.resx">
-      <DependentUpon>FormProfiles.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FormProjects.resx">
+      <DependentUpon>FormProjects.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>

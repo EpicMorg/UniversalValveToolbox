@@ -100,7 +100,7 @@
             // buttonNew
             // 
             this.buttonNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonNew.Location = new System.Drawing.Point(408, 52);
+            this.buttonNew.Location = new System.Drawing.Point(408, 63);
             this.buttonNew.Name = "buttonNew";
             this.buttonNew.Size = new System.Drawing.Size(75, 23);
             this.buttonNew.TabIndex = 9;
@@ -222,7 +222,7 @@
             // 
             // buttonApply
             // 
-            this.buttonApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonApply.Location = new System.Drawing.Point(408, 382);
             this.buttonApply.Name = "buttonApply";
             this.buttonApply.Size = new System.Drawing.Size(75, 23);
@@ -233,6 +233,9 @@
             // 
             // engineCheckedListBox
             // 
+            this.engineCheckedListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.engineCheckedListBox.CheckOnClick = true;
             this.engineCheckedListBox.FormattingEnabled = true;
             this.engineCheckedListBox.Location = new System.Drawing.Point(15, 182);

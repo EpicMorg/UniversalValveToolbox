@@ -95,6 +95,7 @@ namespace UniversalValveToolbox {
             ListViewItem listViewItemEditPlugins = new ListViewItem(Properties.translations.MenuItems.itmEditPlugins, 4);
             ListViewItem listViewItemAbout = new ListViewItem(Properties.translations.MenuItems.itmAbout, 5);
             ListViewItem listViewItemGitHubLink = new ListViewItem(Properties.translations.MenuItems.itmGitHubLink, 0);
+            ListViewItem listViewItemGitHubReport = new ListViewItem(Properties.translations.MenuItems.itmGitHubReport, 0);
 
             //add item to category(group)
             listViewItemSettings.Group = listViewGroupSettings;
@@ -103,6 +104,7 @@ namespace UniversalValveToolbox {
 
             listViewItemAbout.Group = listViewGroupSupport;
             listViewItemGitHubLink.Group = listViewGroupSupport;
+            listViewItemGitHubReport.Group = listViewGroupSupport;
 
             //draw items and categories in forms
             listView.Groups.AddRange(new ListViewGroup[] {
@@ -124,6 +126,7 @@ namespace UniversalValveToolbox {
                 listViewItemEditConfigurations,
                 listViewItemEditPlugins,
                 listViewItemGitHubLink,
+                listViewItemGitHubReport,
                 listViewItemAbout
             });
         }
@@ -359,7 +362,7 @@ namespace UniversalValveToolbox {
                 this.OpenSettings();
             }
             else if (selectItemText == Properties.translations.MenuItems.itmEditConfigurations) {
-                var frmProfiles = new FormProfiles();
+                var frmProfiles = new FormProjects();
                 if (frmProfiles.ShowDialog() == DialogResult.OK) {
                     Application.Restart();
                 }
@@ -376,6 +379,8 @@ namespace UniversalValveToolbox {
             }
             else if (selectItemText == Properties.translations.MenuItems.itmGitHubLink) {
                 Process.Start("https://github.com/EpicMorg/UniversalValveToolbox");
+            } else if (selectItemText == Properties.translations.MenuItems.itmGitHubReport) {
+                Process.Start("https://github.com/EpicMorg/UniversalValveToolbox/issues/new/choose");
             }
         }
 
