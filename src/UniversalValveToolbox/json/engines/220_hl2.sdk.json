@@ -1,13 +1,8 @@
 {
-  "appid": 280740,
-  "name": "Aperture Tag: SDK",
-  "bin": "portal2.exe",
+  "appid": 220,
+  "name": "Half-Life 2: SDK",
+  "bin": "hl2.exe",
   "tools": [
-    {
-      "args": "-steam -game aperturetag",
-      "bin": "bin//SDKLauncher.exe",
-      "name": "Authoring Tools Launcher"
-    },
     {
       "args": "",
       "bin": "bin//hammer.exe",
@@ -29,13 +24,13 @@
       "name": "QC Eyes"
     },
     {
-      "args": "-steam -game aperturetag",
-      "bin": "bin//p2map_publish.exe",
-      "name": "Aperture Tag Publish Tool"
+      "args": "-tools -steam -game hl2",
+      "bin": "hl2.exe",
+      "name": "Engine Tools"
     },
     {
-      "args": "-steam -game aperturetag",
-      "bin": "portal2.exe",
+      "args": "-steam -game hl2",
+      "bin": "hl2.exe",
       "name": "Run Game"
     }
   ]

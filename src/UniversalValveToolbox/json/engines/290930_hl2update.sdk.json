@@ -1,0 +1,17 @@
+{
+  "appid": 290930,
+  "name": "Half-Life 2 Update: SDK",
+  "bin": "hl2.exe",
+  "tools": [
+    {
+      "args": "-tools -steam -game hl2",
+      "bin": "hl2.exe",
+      "name": "Engine Tools"
+    },
+    {
+      "args": "-steam -game hl2",
+      "bin": "hl2.exe",
+      "name": "Run Game"
+    }
+  ]
+}
