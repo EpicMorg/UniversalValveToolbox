@@ -1,4 +1,5 @@
-﻿using kasthack.binding.wf;
+﻿using EpicMorg.SteamPathsLib;
+using kasthack.binding.wf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,8 +20,8 @@ namespace UniversalValveToolbox {
 
         public FormProjects() {
             InitializeComponent();
-
-            model = new FormProjectViewModel(dataProvider.Projects, dataProvider.Engines);
+             
+            model = new FormProjectViewModel(dataProvider.Projects, dataProvider.Engines.Where(engine => SteamPathsUtil.GetSteamAppDataById(engine.Appid) != null).ToArray());
 
             UpdateComboBoxProject();
             UpdateComboBoxEngine();
