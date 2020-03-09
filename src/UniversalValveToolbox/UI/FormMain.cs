@@ -29,9 +29,9 @@ namespace UniversalValveToolbox {
         private EngineDtoModel SelectedEngine { get => Engines[comboBoxEngine.SelectedIndex]; }
         private ProjectDtoModel SelectedProject {
             get => (ProjectDtoModel)((comboBoxGameConfig.Enabled)
-                ?  comboBoxGameConfig.SelectedItem
-                : null); 
-                }
+                ? comboBoxGameConfig.SelectedItem
+                : null);
+        }
 
         public FormMain() {
             InitializeComponent();
@@ -178,12 +178,13 @@ namespace UniversalValveToolbox {
 
             if (pathSelectedEngine != null) {
                 var pairPathIconTools = SelectedEngine.Tools
+                    .Where(tool => File.Exists(Path.Combine(pathSelectedEngine, tool.Bin)))
                     .Select(tool => {
-                    var keyByPath = Path.Combine(pathSelectedEngine, tool.Bin);
-                    var icon = Icon.ExtractAssociatedIcon(Path.Combine(pathSelectedEngine, tool.Bin));
+                        var keyByPath = Path.Combine(pathSelectedEngine, tool.Bin);
+                        var icon = Icon.ExtractAssociatedIcon(Path.Combine(pathSelectedEngine, tool.Bin));
 
-                    return new Pair(keyByPath, icon);
-                });
+                        return new Pair(keyByPath, icon);
+                    });
 
                 foreach (var pair in pairPathIconTools) {
                     listView.SmallImageList.Images.Add((string)pair.First, (Icon)pair.Second);
@@ -191,20 +192,23 @@ namespace UniversalValveToolbox {
                 }
             }
 
-            var itemsTools = SelectedEngine.Tools.Select(tool => {
-                string keyByPath = null;
+            var itemsTools = SelectedEngine.Tools
+                .Where(tool => File.Exists(Path.Combine(pathSelectedEngine, tool.Bin)))
 
-                if (pathSelectedEngine != null)
-                    keyByPath = Path.Combine(pathSelectedEngine, tool.Bin);
+                .Select(tool => {
+                    string keyByPath = null;
 
-                if (keyByPath == null) {
-                    return new ListViewItem(tool.Name, listViewGroupTools);
-                }
-                else {
-                    return new ListViewItem(tool.Name, keyByPath, listViewGroupTools);
-                }
+                    if (pathSelectedEngine != null)
+                        keyByPath = Path.Combine(pathSelectedEngine, tool.Bin);
 
-            }).ToArray();
+                    if (keyByPath == null) {
+                        return new ListViewItem(tool.Name, listViewGroupTools);
+                    }
+                    else {
+                        return new ListViewItem(tool.Name, keyByPath, listViewGroupTools);
+                    }
+
+                }).ToArray();
             listView.Items.AddRange(itemsTools);
 
 
@@ -329,8 +333,15 @@ namespace UniversalValveToolbox {
                     if (selectedEnginePath != null) {
                         var toolPath = Path.Combine(selectedEnginePath, selectedTool.Bin);
 
-                        if (File.Exists(toolPath))
-                            Process.Start(toolPath, $"-steam -game \"{SelectedProject?.Path ?? ""}\" {selectedTool.Args}");
+                        if (File.Exists(toolPath)) {
+                            string finalArg = $"-steam {selectedTool.Args}";
+
+                            if (!finalArg.Contains("-game")) {
+                                finalArg += $"-game \"{SelectedProject?.Path ?? ""}\"";
+                            }                         
+
+                            Process.Start(toolPath, finalArg);
+                        }
                         else
                             MessageBox.Show($"\"{selectedTool.Name}\" no found.\n{toolPath}", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
@@ -338,7 +349,8 @@ namespace UniversalValveToolbox {
                         DialogResult dialogResult = MessageBox.Show($"\"{SelectedEngine.Name}\" with app id \"{SelectedEngine.Appid}\" not installed. Do you want to install it?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                         if (dialogResult == DialogResult.Yes) {
                             Process.Start($"steam://install/{SelectedEngine.Appid}");
-                        } else if (dialogResult == DialogResult.No) {
+                        }
+                        else if (dialogResult == DialogResult.No) {
                             MessageBox.Show($"Installation of \"{SelectedEngine.Name}\" with app id \"{SelectedEngine.Appid}\" canceled.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         }
                     }
@@ -379,7 +391,8 @@ namespace UniversalValveToolbox {
             }
             else if (selectItemText == Properties.translations.MenuItems.itmGitHubLink) {
                 Process.Start("https://github.com/EpicMorg/UniversalValveToolbox");
-            } else if (selectItemText == Properties.translations.MenuItems.itmGitHubReport) {
+            }
+            else if (selectItemText == Properties.translations.MenuItems.itmGitHubReport) {
                 Process.Start("https://github.com/EpicMorg/UniversalValveToolbox/issues/new/choose");
             }
         }
