@@ -376,13 +376,13 @@ namespace UniversalValveToolbox {
             else if (selectItemText == Properties.translations.MenuItems.itmEditConfigurations) {
                 var frmProfiles = new FormProjects();
                 if (frmProfiles.ShowDialog() == DialogResult.OK) {
-                    Application.Restart();
+                    UpdateFormData();
                 }
             }
             else if (selectItemText == Properties.translations.MenuItems.itmEditPlugins) {
                 var frmPlugins = new FormAddons();
                 if (frmPlugins.ShowDialog() == DialogResult.OK) {
-                    Application.Restart();
+                    UpdateFormData();
                 }
             }
             else if (selectItemText == Properties.translations.MenuItems.itmAbout) {
