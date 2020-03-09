@@ -28,8 +28,8 @@ namespace UniversalValveToolbox {
 
         private EngineDtoModel SelectedEngine { get => Engines[comboBoxEngine.SelectedIndex]; }
         private ProjectDtoModel SelectedProject {
-            get => (ProjectDtoModel)((comboBoxGameConfig.Enabled)
-                ? comboBoxGameConfig.SelectedItem
+            get => (ProjectDtoModel)((comboBoxProjects.Enabled)
+                ? Projects.First(project => project.Name.Equals(comboBoxProjects.SelectedItem))
                 : null);
         }
 
@@ -47,9 +47,25 @@ namespace UniversalValveToolbox {
                 UpdateAddonsList();
             };
         }
+
         private void FormMain_Load(object sender, EventArgs e) {
 
         }
+
+        private void UpdateLastSelectedProject() {
+            var lastSelectedProject = dataProvider.Projects.First(project => project.Name.Equals(dataProvider.Settings.LastSelectedProject));
+
+            if (lastSelectedProject != null) {
+                var indexEngine = comboBoxEngine.Items.IndexOf(Engines.First(engine => engine.Appid.Equals(lastSelectedProject.Engine)).Name);
+                comboBoxEngine.SelectedIndex = indexEngine;
+
+                UpdateProjectList();
+
+                var indexProject = comboBoxProjects.Items.IndexOf(lastSelectedProject.Name);
+                comboBoxProjects.SelectedIndex = indexProject;
+            }
+        }
+
 
         private void UpdateFormData() {
             UpdateEngineList();
@@ -57,6 +73,8 @@ namespace UniversalValveToolbox {
             UpdateToolsList();
             UpdateAddonsList();
             UpdateNavigationBar();
+
+            UpdateLastSelectedProject();
         }
 
         private void UpdateNavigationBar() {
@@ -66,6 +84,12 @@ namespace UniversalValveToolbox {
 
         private void toolStripStatusLabelRefresh_Click(object sender, EventArgs e) {
             UpdateFormData();
+        }
+
+        private void QuickSaveSettings() {
+            var settings = dataProvider.Settings;
+            settings.LastSelectedProject = SelectedProject.Name;
+            dataProvider.Settings = settings;
         }
 
         public void FillBaseMenuItems() {
@@ -151,17 +175,17 @@ namespace UniversalValveToolbox {
             AvailableProjects = Projects.Where(project => project.Engine == selectEngine.Appid).ToArray();
 
             if (AvailableProjects != null && AvailableProjects.Length != 0) {
-                comboBoxGameConfig.Enabled = true;
+                comboBoxProjects.Enabled = true;
 
-                comboBoxGameConfig.Items.Clear();
-                comboBoxGameConfig.Items.AddRange(AvailableProjects.ToArray());
+                comboBoxProjects.Items.Clear();
+                comboBoxProjects.Items.AddRange(AvailableProjects.Select(project => project.Name).ToArray());
 
-                comboBoxGameConfig.SelectedIndex = 0;
+                comboBoxProjects.SelectedIndex = 0;
             }
             else {
-                comboBoxGameConfig.Enabled = false;
+                comboBoxProjects.Enabled = false;
 
-                comboBoxGameConfig.Items.Clear();
+                comboBoxProjects.Items.Clear();
             }
         }
 
@@ -338,7 +362,7 @@ namespace UniversalValveToolbox {
 
                             if (!finalArg.Contains("-game")) {
                                 finalArg += $"-game \"{SelectedProject?.Path ?? ""}\"";
-                            }                         
+                            }
 
                             Process.Start(toolPath, finalArg);
                         }
@@ -413,7 +437,19 @@ namespace UniversalValveToolbox {
         }
 
         private void comboBoxGameConfig_SelectedIndexChanged(object sender, EventArgs e) {
+            QuickSaveSettings();
+        }
 
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e) {
+            QuickSaveSettings();
+        }
+
+        private void comboBoxProjects_SelectionChangeCommitted(object sender, EventArgs e) {
+            QuickSaveSettings();
+        }
+
+        private void comboBoxProjects_SelectedValueChanged(object sender, EventArgs e) {
+            QuickSaveSettings();
         }
     }
 }

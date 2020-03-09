@@ -2,20 +2,14 @@
 
 namespace UniversalValveToolbox.Model.Dto {
     public class SettingsDtoModel : DtoModel {
-        private string defaultProject;
-        private int[] availableEnginies;
+        private string lastSelectedProject;
         private string[] availableLanguages;
         private string language;
         private string theme;
 
-        public string DefaultProject {
-            get => defaultProject;
-            set => UpdateField(value, ref defaultProject);
-        }
-
-        public int[] AvailableEnginies {
-            get => availableEnginies;
-            set => UpdateField(value, ref availableEnginies);
+        public string LastSelectedProject {
+            get => lastSelectedProject;
+            set => UpdateField(value, ref lastSelectedProject);
         }
 
         public string[] AvailableLanguages {
@@ -26,11 +20,6 @@ namespace UniversalValveToolbox.Model.Dto {
         public string Language {
             get => language;
             set => UpdateField(value, ref language);
-        }
-
-        public string Theme {
-            get => theme;
-            set => UpdateField(value, ref theme);
         }
     }
 }

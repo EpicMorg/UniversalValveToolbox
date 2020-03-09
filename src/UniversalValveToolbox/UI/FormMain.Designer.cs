@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            this.comboBoxGameConfig = new System.Windows.Forms.ComboBox();
+            this.comboBoxProjects = new System.Windows.Forms.ComboBox();
             this.comboBoxEngine = new System.Windows.Forms.ComboBox();
             this.listView = new System.Windows.Forms.ListView();
             this.imageListLarge = new System.Windows.Forms.ImageList(this.components);
@@ -45,21 +45,23 @@
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // comboBoxGameConfig
+            // comboBoxProjects
             // 
-            this.comboBoxGameConfig.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.comboBoxProjects.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxGameConfig.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxGameConfig.Enabled = false;
-            this.comboBoxGameConfig.FormattingEnabled = true;
-            this.comboBoxGameConfig.ItemHeight = 13;
-            this.comboBoxGameConfig.Items.AddRange(new object[] {
+            this.comboBoxProjects.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxProjects.Enabled = false;
+            this.comboBoxProjects.FormattingEnabled = true;
+            this.comboBoxProjects.ItemHeight = 13;
+            this.comboBoxProjects.Items.AddRange(new object[] {
             "No project configured"});
-            this.comboBoxGameConfig.Location = new System.Drawing.Point(12, 412);
-            this.comboBoxGameConfig.Name = "comboBoxGameConfig";
-            this.comboBoxGameConfig.Size = new System.Drawing.Size(449, 21);
-            this.comboBoxGameConfig.TabIndex = 1;
-            this.comboBoxGameConfig.SelectedIndexChanged += new System.EventHandler(this.comboBoxGameConfig_SelectedIndexChanged);
+            this.comboBoxProjects.Location = new System.Drawing.Point(12, 412);
+            this.comboBoxProjects.Name = "comboBoxProjects";
+            this.comboBoxProjects.Size = new System.Drawing.Size(449, 21);
+            this.comboBoxProjects.TabIndex = 1;
+            this.comboBoxProjects.SelectedIndexChanged += new System.EventHandler(this.comboBoxGameConfig_SelectedIndexChanged);
+            this.comboBoxProjects.SelectionChangeCommitted += new System.EventHandler(this.comboBoxProjects_SelectionChangeCommitted);
+            this.comboBoxProjects.SelectedValueChanged += new System.EventHandler(this.comboBoxProjects_SelectedValueChanged);
             // 
             // comboBoxEngine
             // 
@@ -192,13 +194,14 @@
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.comboBoxEngine);
-            this.Controls.Add(this.comboBoxGameConfig);
+            this.Controls.Add(this.comboBoxProjects);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(373, 474);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Universal Valve Toolbox";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
@@ -208,7 +211,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox comboBoxGameConfig;
+        private System.Windows.Forms.ComboBox comboBoxProjects;
         private System.Windows.Forms.ComboBox comboBoxEngine;
         private System.Windows.Forms.ListView listView;
         private System.Windows.Forms.StatusStrip statusStrip;
