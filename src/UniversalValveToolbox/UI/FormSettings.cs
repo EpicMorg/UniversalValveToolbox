@@ -12,8 +12,7 @@ namespace UniversalValveToolbox {
             comboBoxLang.Items.Clear();
             comboBoxLang.Items.AddRange(settings.Languages);
             comboBoxLang.Bind(a => a.SelectedIndex, settings, a => a.SelectedLanguageIndex);
-
-            comboBoxTheme.SelectedIndex = 0;
+ 
         }
 
         private void buttonCancel_Click(object sender, EventArgs e) {
