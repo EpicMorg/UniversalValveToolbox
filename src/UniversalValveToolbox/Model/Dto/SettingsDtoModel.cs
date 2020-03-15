@@ -5,7 +5,6 @@ namespace UniversalValveToolbox.Model.Dto {
         private string lastSelectedProject;
         private string[] availableLanguages;
         private string language;
-        private string theme;
 
         public string LastSelectedProject {
             get => lastSelectedProject;

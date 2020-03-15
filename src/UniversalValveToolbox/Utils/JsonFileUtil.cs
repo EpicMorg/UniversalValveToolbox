@@ -8,14 +8,32 @@ using System.Threading.Tasks;
 
 namespace UniversalValveToolbox.Utils {
     static class JsonFileUtil {
-        public static T ReadValue<T>(string path) => JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
+        public static T ReadValue<T>(string path) {
+            try {
+                var result = JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
+                return result;
+            } catch (Exception) {
+                return default(T);
+            }
+        }
+
+        public static T ReadValue<T>(string path, T fileDefaultValue) {
+            try {
+                var result = JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
+                return result;
+            } catch (Exception) {
+                WriteValue(path, fileDefaultValue);
+
+                return fileDefaultValue;
+            }
+        }
 
         public static T[] ReadValues<T>(string directoryPath) {
             if (!Directory.Exists(directoryPath)) {
                 Directory.CreateDirectory(directoryPath);
             }
 
-            return Directory.GetFiles(directoryPath, "*").Select(path => ReadValue<T>(path)).ToArray();
+            return Directory.GetFiles(directoryPath, "*").Select(path => ReadValue<T>(path)).Where(value => value != null).ToArray();
         }
 
         public static List<T> ReadListValues<T>(string directoryPath) => new List<T>(ReadValues<T>(directoryPath));

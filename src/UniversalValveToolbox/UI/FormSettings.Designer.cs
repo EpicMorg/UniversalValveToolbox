@@ -29,8 +29,6 @@
             this.buttonOK = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBoxLang = new System.Windows.Forms.ComboBox();
-            this.comboBoxTheme = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelDivider
@@ -38,7 +36,7 @@
             this.labelDivider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelDivider.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelDivider.Location = new System.Drawing.Point(-21, 272);
+            this.labelDivider.Location = new System.Drawing.Point(-21, 114);
             this.labelDivider.Name = "labelDivider";
             this.labelDivider.Size = new System.Drawing.Size(385, 2);
             this.labelDivider.TabIndex = 26;
@@ -46,7 +44,7 @@
             // buttonCancel
             // 
             this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCancel.Location = new System.Drawing.Point(224, 284);
+            this.buttonCancel.Location = new System.Drawing.Point(224, 126);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 25;
@@ -58,7 +56,7 @@
             // 
             this.buttonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonOK.Location = new System.Drawing.Point(143, 284);
+            this.buttonOK.Location = new System.Drawing.Point(143, 126);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
             this.buttonOK.TabIndex = 24;
@@ -87,35 +85,11 @@
             this.comboBoxLang.Size = new System.Drawing.Size(287, 21);
             this.comboBoxLang.TabIndex = 30;
             // 
-            // comboBoxTheme
-            // 
-            this.comboBoxTheme.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxTheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxTheme.FormattingEnabled = true;
-            this.comboBoxTheme.Items.AddRange(new object[] {
-            "None"});
-            this.comboBoxTheme.Location = new System.Drawing.Point(12, 65);
-            this.comboBoxTheme.Name = "comboBoxTheme";
-            this.comboBoxTheme.Size = new System.Drawing.Size(287, 21);
-            this.comboBoxTheme.TabIndex = 32;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 49);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 13);
-            this.label6.TabIndex = 31;
-            this.label6.Text = "Theme:";
-            // 
             // FormSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(311, 319);
-            this.Controls.Add(this.comboBoxTheme);
-            this.Controls.Add(this.label6);
+            this.ClientSize = new System.Drawing.Size(311, 161);
             this.Controls.Add(this.comboBoxLang);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.labelDivider);
@@ -141,7 +115,5 @@
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBoxLang;
-        private System.Windows.Forms.ComboBox comboBoxTheme;
-        private System.Windows.Forms.Label label6;
     }
 }
