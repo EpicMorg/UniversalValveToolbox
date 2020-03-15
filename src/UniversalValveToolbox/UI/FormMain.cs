@@ -26,7 +26,14 @@ namespace UniversalValveToolbox {
         private ListViewGroup listViewGroupAddons;
         private ListViewGroup listViewGroupTools;
 
-        private EngineDtoModel SelectedEngine { get => Engines[comboBoxEngine.SelectedIndex]; }
+        private EngineDtoModel SelectedEngine {
+            get {
+                if (Engines.Length == 0)
+                    return null;
+
+                return Engines[comboBoxEngine.SelectedIndex];
+            }
+        }
         private ProjectDtoModel SelectedProject {
             get => (ProjectDtoModel)((comboBoxProjects.Enabled)
                 ? Projects.First(project => project.Name.Equals(comboBoxProjects.SelectedItem))
@@ -55,7 +62,7 @@ namespace UniversalValveToolbox {
         private void UpdateLastSelectedProject() {
             var lastSelectedProject = dataProvider.Projects.FirstOrDefault(project => project.Name.Equals(dataProvider.Settings.LastSelectedProject));
 
-            if (lastSelectedProject != null) {
+            if (lastSelectedProject != null && Engines.Length != 0) {
                 var indexEngine = comboBoxEngine.Items.IndexOf(Engines.First(engine => engine.Appid.Equals(lastSelectedProject.Engine)).Name);
                 comboBoxEngine.SelectedIndex = indexEngine;
 
@@ -169,6 +176,14 @@ namespace UniversalValveToolbox {
         }
 
         private void UpdateProjectList() {
+            if (Engines.Length == 0) {
+                comboBoxProjects.Enabled = false;
+
+                comboBoxProjects.Items.Clear();
+
+                return;
+            }
+
             Projects = dataProvider.Projects;
 
             var selectEngine = Engines[comboBoxEngine.SelectedIndex];
@@ -190,8 +205,6 @@ namespace UniversalValveToolbox {
         }
 
         private void UpdateToolsList() {
-            var pathSelectedEngine = SteamPathsUtil.GetSteamAppManifestDataById(SelectedEngine.Appid)?.Path;
-
             var removeItem = new List<ListViewItem>();
 
             foreach (ListViewItem item in listViewGroupTools.Items) {
@@ -199,6 +212,11 @@ namespace UniversalValveToolbox {
             }
 
             removeItem.ForEach(item => listView.Items.Remove(item));
+
+            if (SelectedEngine == null)
+                return;
+
+            var pathSelectedEngine = SteamPathsUtil.GetSteamAppManifestDataById(SelectedEngine.Appid)?.Path;
 
             if (pathSelectedEngine != null) {
                 var pairPathIconTools = SelectedEngine.Tools
@@ -254,9 +272,6 @@ namespace UniversalValveToolbox {
         }
 
         private void UpdateAddonsList() {
-            var pathSelectedEngine = SteamPathsUtil.GetSteamAppManifestDataById(SelectedEngine.Appid)?.Path;
-            var addonsSelectedEngine = dataProvider.Addons.Where(a => a.Engines.Contains(SelectedEngine.Appid));
-
             var removeItem = new List<ListViewItem>();
 
             foreach (ListViewItem item in listViewGroupAddons.Items) {
@@ -264,6 +279,12 @@ namespace UniversalValveToolbox {
             }
 
             removeItem.ForEach(item => listView.Items.Remove(item));
+
+            if (SelectedEngine == null)
+                return;
+
+            var pathSelectedEngine = SteamPathsUtil.GetSteamAppManifestDataById(SelectedEngine.Appid)?.Path;
+            var addonsSelectedEngine = dataProvider.Addons.Where(a => a.Engines.Contains(SelectedEngine.Appid));
 
 
             var pairPathIconTools = addonsSelectedEngine
