@@ -71,6 +71,9 @@ namespace UniversalValveToolbox {
 
                 var indexProject = comboBoxProjects.Items.IndexOf(lastSelectedProject.Name);
                 comboBoxProjects.SelectedIndex = indexProject;
+
+                EnvUtils.PrepareVProject($"{SelectedProject?.Path ?? ""}");
+                EnvUtils.PrepareSFMData($"{SelectedProject?.Path ?? ""}");
             }
         }
         private void SaveLastSelectedProject() {
@@ -363,11 +366,14 @@ namespace UniversalValveToolbox {
             var selectItem = listView.SelectedItems[0];
 
             var selectItemText = selectItem.Text;
+            EnvUtils.PrepareVProject($"{SelectedProject?.Path ?? ""}");
+            EnvUtils.PrepareSFMData($"{SelectedProject?.Path ?? ""}");
 
             if (selectItem.Group == listViewGroupTools) {
                 if (RUN_PROJECT_ID.Equals(selectItem.Tag) && SelectedProject != null) {
                     var pathEngineBin = Path.Combine(SteamPathsUtil.GetSteamAppManifestDataById(SelectedEngine.Appid).Path, SelectedEngine.Bin);
 
+                    
                     Process.Start(pathEngineBin, $"-steam -game \"{SelectedProject?.Path ?? ""}\" {SelectedProject.Args}");
                 }
 

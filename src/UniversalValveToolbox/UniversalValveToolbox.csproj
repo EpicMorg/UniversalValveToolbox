@@ -154,6 +154,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UI\View\IconComboBoxItem.cs" />
+    <Compile Include="Utils\EnvUtils.cs" />
     <Compile Include="Utils\JsonFileUtil.cs" />
     <Compile Include="Utils\LanguageManager.cs" />
     <Compile Include="Model\Dto\ToolDtoModel.cs" />
