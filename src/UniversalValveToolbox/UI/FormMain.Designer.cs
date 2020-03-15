@@ -59,9 +59,6 @@
             this.comboBoxProjects.Name = "comboBoxProjects";
             this.comboBoxProjects.Size = new System.Drawing.Size(449, 21);
             this.comboBoxProjects.TabIndex = 1;
-            this.comboBoxProjects.SelectedIndexChanged += new System.EventHandler(this.comboBoxGameConfig_SelectedIndexChanged);
-            this.comboBoxProjects.SelectionChangeCommitted += new System.EventHandler(this.comboBoxProjects_SelectionChangeCommitted);
-            this.comboBoxProjects.SelectedValueChanged += new System.EventHandler(this.comboBoxProjects_SelectedValueChanged);
             // 
             // comboBoxEngine
             // 

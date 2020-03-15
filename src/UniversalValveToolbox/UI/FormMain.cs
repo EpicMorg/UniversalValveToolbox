@@ -53,7 +53,7 @@ namespace UniversalValveToolbox {
         }
 
         private void UpdateLastSelectedProject() {
-            var lastSelectedProject = dataProvider.Projects.First(project => project.Name.Equals(dataProvider.Settings.LastSelectedProject));
+            var lastSelectedProject = dataProvider.Projects.FirstOrDefault(project => project.Name.Equals(dataProvider.Settings.LastSelectedProject));
 
             if (lastSelectedProject != null) {
                 var indexEngine = comboBoxEngine.Items.IndexOf(Engines.First(engine => engine.Appid.Equals(lastSelectedProject.Engine)).Name);
@@ -64,6 +64,11 @@ namespace UniversalValveToolbox {
                 var indexProject = comboBoxProjects.Items.IndexOf(lastSelectedProject.Name);
                 comboBoxProjects.SelectedIndex = indexProject;
             }
+        }
+        private void SaveLastSelectedProject() {
+            var settings = dataProvider.Settings;
+            settings.LastSelectedProject = SelectedProject?.Name;
+            dataProvider.Settings = settings;
         }
 
 
@@ -84,12 +89,6 @@ namespace UniversalValveToolbox {
 
         private void toolStripStatusLabelRefresh_Click(object sender, EventArgs e) {
             UpdateFormData();
-        }
-
-        private void QuickSaveSettings() {
-            var settings = dataProvider.Settings;
-            settings.LastSelectedProject = SelectedProject.Name;
-            dataProvider.Settings = settings;
         }
 
         public void FillBaseMenuItems() {
@@ -436,20 +435,8 @@ namespace UniversalValveToolbox {
             }
         }
 
-        private void comboBoxGameConfig_SelectedIndexChanged(object sender, EventArgs e) {
-            QuickSaveSettings();
-        }
-
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e) {
-            QuickSaveSettings();
-        }
-
-        private void comboBoxProjects_SelectionChangeCommitted(object sender, EventArgs e) {
-            QuickSaveSettings();
-        }
-
-        private void comboBoxProjects_SelectedValueChanged(object sender, EventArgs e) {
-            QuickSaveSettings();
+            SaveLastSelectedProject();
         }
     }
 }
