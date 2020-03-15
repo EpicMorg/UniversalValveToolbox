@@ -60,6 +60,7 @@ namespace UniversalValveToolbox {
                 comboBoxEngine.SelectedIndex = indexEngine;
 
                 UpdateProjectList();
+                UpdateToolsList();
 
                 var indexProject = comboBoxProjects.Items.IndexOf(lastSelectedProject.Name);
                 comboBoxProjects.SelectedIndex = indexProject;
