@@ -34,7 +34,7 @@ namespace UniversalValveToolbox.Utils {
             if (SFMpath == null)
                 return;
 
-            PrepareVMod(Path.GetDirectoryName(pathProject));
+            PrepareVMod(new DirectoryInfo(pathProject).Name);
             PrepareVProject(pathProject);
             PrepareVContent(Path.Combine(SFMpath, "content"));
             PrepareVGame(Path.Combine(SFMpath, "game"));
