@@ -1,35 +1,46 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace UniversalValveToolbox.Utils
+{
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using Newtonsoft.Json;
 
-namespace UniversalValveToolbox.Utils {
-    static class JsonFileUtil {
-        public static T ReadValue<T>(string path) {
-            try {
+    internal static class JsonFileUtil
+    {
+        public static T ReadValue<T>(string path)
+        {
+            try
+            {
                 var result = JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
                 return result;
-            } catch (Exception) {
-                return default(T);
+            }
+            catch (Exception)
+            {
+                return default;
             }
         }
 
-        public static T ReadValue<T>(string path, T fileDefaultValue) {
-            try {
+        public static T ReadValue<T>(string path, T fileDefaultValue)
+        {
+            try
+            {
                 var result = JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
                 return result;
-            } catch (Exception) {
+            }
+            catch (Exception)
+            {
                 WriteValue(path, fileDefaultValue);
 
                 return fileDefaultValue;
             }
         }
 
-        public static T[] ReadValues<T>(string directoryPath) {
-            if (!Directory.Exists(directoryPath)) {
+        public static T[] ReadValues<T>(string directoryPath)
+        {
+            if (!Directory.Exists(directoryPath))
+            {
                 Directory.CreateDirectory(directoryPath);
             }
 
@@ -40,19 +51,25 @@ namespace UniversalValveToolbox.Utils {
 
         public static void WriteValue<T>(string path, T value) => File.WriteAllText(path, JsonConvert.SerializeObject(value, Formatting.Indented));
 
-        public static void SaveValues<T>(string folderPath, string fileExtension, List<T> values) {
-            DirectoryInfo di = new DirectoryInfo(folderPath);
+        public static void SaveValues<T>(string folderPath, string fileExtension, List<T> values)
+        {
+            var di = new DirectoryInfo(folderPath);
 
-            foreach (FileInfo file in di.GetFiles()) {
+            foreach (var file in di.GetFiles())
+            {
                 file.Delete();
             }
-            foreach (DirectoryInfo dir in di.GetDirectories()) {
+
+            foreach (var dir in di.GetDirectories())
+            {
                 dir.Delete(true);
             }
 
-            foreach (var item in values) {
-                StringBuilder fileName = new StringBuilder(item.ToString().ToLower());
-                foreach (char c in System.IO.Path.GetInvalidFileNameChars()) {
+            foreach (var item in values)
+            {
+                var fileName = new StringBuilder(item.ToString().ToLower());
+                foreach (var c in Path.GetInvalidFileNameChars())
+                {
                     fileName = fileName.Replace(c, '_');
                 }
 

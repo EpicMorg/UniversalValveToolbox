@@ -1,26 +1,25 @@
-﻿using kasthack.binding.wf;
-using System;
-using System.Threading;
-using System.Windows.Forms;
-using UniversalValveToolbox.Model.ViewModel;
+﻿namespace UniversalValveToolbox
+{
+    using System;
+    using System.Windows.Forms;
+    using kasthack.binding.wf;
+    using UniversalValveToolbox.Model.ViewModel;
 
-namespace UniversalValveToolbox {
-    public partial class FormSettings : Form {
-        public FormSettings(SettingsViewModel settings) {
-            InitializeComponent();
+    public partial class FormSettings : Form
+    {
+        public FormSettings(SettingsViewModel settings)
+        {
+            this.InitializeComponent();
 
-            comboBoxLang.Items.Clear();
-            comboBoxLang.Items.AddRange(settings.Languages);
-            comboBoxLang.Bind(a => a.SelectedIndex, settings, a => a.SelectedLanguageIndex);
- 
+            this.comboBoxLang.Items.Clear();
+            this.comboBoxLang.Items.AddRange(settings.Languages);
+            this.comboBoxLang.Bind(a => a.SelectedIndex, settings, a => a.SelectedLanguageIndex);
         }
 
-        private void buttonCancel_Click(object sender, EventArgs e) {
-            Close();
-        }
+        private void ButtonCancel_Click(object sender, EventArgs e) => this.Close();
 
-        private void FormSettings_Load(object sender, EventArgs e) {
-
+        private void FormSettings_Load(object sender, EventArgs e)
+        {
         }
     }
 }

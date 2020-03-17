@@ -1,4 +1,6 @@
-﻿namespace UniversalValveToolbox
+﻿using Properties;
+
+namespace UniversalValveToolbox
 {
     partial class FormAbout
     {
@@ -53,7 +55,7 @@
             // 
             resources.ApplyResources(this.pictureBoxLogo, "pictureBoxLogo");
             this.pictureBoxLogo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBoxLogo.Image = global::UniversalValveToolbox.Properties.Resources.valve_64;
+            this.pictureBoxLogo.Image = Resources.valve_64;
             this.pictureBoxLogo.Name = "pictureBoxLogo";
             this.pictureBoxLogo.TabStop = false;
             // 
@@ -78,14 +80,14 @@
             resources.ApplyResources(this.buttonOK, "buttonOK");
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.UseVisualStyleBackColor = true;
-            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            this.buttonOK.Click += new System.EventHandler(this.ButtonOK_Click);
             // 
             // linkLabelIconSite
             // 
             resources.ApplyResources(this.linkLabelIconSite, "linkLabelIconSite");
             this.linkLabelIconSite.Name = "linkLabelIconSite";
             this.linkLabelIconSite.TabStop = true;
-            this.linkLabelIconSite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelIconSite_LinkClicked);
+            this.linkLabelIconSite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabelIconSite_LinkClicked);
             // 
             // label1
             // 
@@ -106,14 +108,14 @@
             resources.ApplyResources(this.linkLabelTI, "linkLabelTI");
             this.linkLabelTI.Name = "linkLabelTI";
             this.linkLabelTI.TabStop = true;
-            this.linkLabelTI.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelTI_LinkClicked);
+            this.linkLabelTI.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabelTI_LinkClicked);
             // 
             // linkLabelFP
             // 
             resources.ApplyResources(this.linkLabelFP, "linkLabelFP");
             this.linkLabelFP.Name = "linkLabelFP";
             this.linkLabelFP.TabStop = true;
-            this.linkLabelFP.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelFP_LinkClicked);
+            this.linkLabelFP.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabelFP_LinkClicked);
             // 
             // FormAbout
             // 

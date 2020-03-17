@@ -1,39 +1,46 @@
-﻿using UniversalValveToolbox.Base;
+﻿namespace UniversalValveToolbox.Model.Dto
+{
+    using UniversalValveToolbox.Base;
 
-namespace UniversalValveToolbox.Model.Dto {
-    public class ProjectDtoModel : DtoModel {
+    public class ProjectDtoModel : DtoModel
+    {
         private int engine;
         private string path;
         private string name;
         private string args;
 
-        public ProjectDtoModel() {
+        public ProjectDtoModel()
+        {
             this.engine = 0;
-            this.path = "";
-            this.name = "";
-            this.args = "";
+            this.path = string.Empty;
+            this.name = string.Empty;
+            this.args = string.Empty;
         }
 
-        public int Engine {
-            get => engine;
-            set => UpdateField(value, ref engine);
+        public int Engine
+        {
+            get => this.engine;
+            set => this.UpdateField(value, ref this.engine);
         }
 
-        public string Path {
-            get => path;
-            set => UpdateField(value, ref path);
+        public string Path
+        {
+            get => this.path;
+            set => this.UpdateField(value, ref this.path);
         }
 
-        public string Name {
-            get => name;
-            set => UpdateField(value, ref name);
+        public string Name
+        {
+            get => this.name;
+            set => this.UpdateField(value, ref this.name);
         }
 
-        public string Args {
-            get => args;
-            set => UpdateField(value, ref args);
+        public string Args
+        {
+            get => this.args;
+            set => this.UpdateField(value, ref this.args);
         }
 
-        public override string ToString() => name ?? "";
+        public override string ToString() => this.name ?? string.Empty;
     }
 }

@@ -1,71 +1,72 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UniversalValveToolbox.Base;
-using UniversalValveToolbox.Model.Dto;
+﻿namespace UniversalValveToolbox.Model.ViewModel
+{
+    using System;
+    using System.Linq;
+    using UniversalValveToolbox.Base;
+    using UniversalValveToolbox.Model.Dto;
 
-namespace UniversalValveToolbox.Model.ViewModel {
-    class FormProjectViewModel: DtoModel {
+    internal class FormProjectViewModel : DtoModel
+    {
         private ProjectDtoModel[] projects;
         private int selectProjectIndex = 0;
 
         private EngineDtoModel[] engines;
         private int selectEngineIndex = 0;
 
-        public FormProjectViewModel(ProjectDtoModel[] projects, EngineDtoModel[] engines) {
+        public FormProjectViewModel(ProjectDtoModel[] projects, EngineDtoModel[] engines)
+        {
             this.projects = projects;
             this.engines = engines;
         }
 
-        public ProjectDtoModel[] Projects {
-            get => projects;
-            set {
-                UpdateField(value, ref projects);
+        public ProjectDtoModel[] Projects
+        {
+            get => this.projects;
+            set
+            {
+                this.UpdateField(value, ref this.projects);
 
-                SelectProjectIndex = 0;
+                this.SelectProjectIndex = 0;
             }
         }
 
-        public int SelectProjectIndex {
-            get => selectProjectIndex;
-            set {
-                ForceUpdateField(value, ref selectProjectIndex);
-                OnPropertyChanged(nameof(SelectProject));
+        public int SelectProjectIndex
+        {
+            get => this.selectProjectIndex;
+            set
+            {
+                this.ForceUpdateField(value, ref this.selectProjectIndex);
+                this.OnPropertyChanged(nameof(this.SelectProject));
 
-                var index = Math.Max(engines.ToList().FindIndex(engine => engine.Appid == SelectProject?.Engine), -1);
-  
-                SelectEngineIndex = index;
+                var index = Math.Max(this.engines.ToList().FindIndex(engine => engine.Appid == this.SelectProject?.Engine), -1);
+
+                this.SelectEngineIndex = index;
             }
         }
 
-        public ProjectDtoModel SelectProject {
-            get {
-                if (projects == null || projects.Length == 0)
-                    return null;
+        public ProjectDtoModel SelectProject => this.projects == null || this.projects.Length == 0 ? null : this.projects[this.selectProjectIndex];
 
-                return projects[selectProjectIndex];
+        public EngineDtoModel[] Engines
+        {
+            get => this.engines;
+            set
+            {
+                this.UpdateField(value, ref this.engines);
+
+                this.SelectEngineIndex = 0;
             }
         }
 
-        public EngineDtoModel[] Engines {
-            get => engines;
-            set {
-                UpdateField(value, ref engines);
-
-                SelectEngineIndex = 0;
+        public int SelectEngineIndex
+        {
+            get => this.selectEngineIndex;
+            set
+            {
+                this.ForceUpdateField(value, ref this.selectEngineIndex);
+                this.OnPropertyChanged(nameof(this.SelectEngine));
             }
         }
 
-        public int SelectEngineIndex {
-            get => selectEngineIndex;
-            set {
-                ForceUpdateField(value, ref selectEngineIndex);
-                OnPropertyChanged(nameof(SelectEngine));
-            }
-        }
-
-        public EngineDtoModel SelectEngine => engines[selectEngineIndex];
+        public EngineDtoModel SelectEngine => this.engines[this.selectEngineIndex];
     }
 }

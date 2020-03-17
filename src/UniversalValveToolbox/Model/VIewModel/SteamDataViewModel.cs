@@ -1,23 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UniversalValveToolbox.Base;
+﻿namespace UniversalValveToolbox.Model.ViewModel
+{
+    using UniversalValveToolbox.Base;
 
-namespace UniversalValveToolbox.Model.ViewModel {
-    class SteamDataViewModel : DtoModel {
+    internal class SteamDataViewModel : DtoModel
+    {
         private int steamPid;
         private string userNameSteam;
 
-        public int SteamPid {
-            get => steamPid;
-            set => UpdateField(value, ref steamPid);
+        public int SteamPid
+        {
+            get => this.steamPid;
+            set => this.UpdateField(value, ref this.steamPid);
         }
 
-        public string UserNameSteam {
-            get => userNameSteam;
-            set => UpdateField(value, ref userNameSteam);
+        public string UserNameSteam
+        {
+            get => this.userNameSteam;
+            set => this.UpdateField(value, ref this.userNameSteam);
         }
     }
 }

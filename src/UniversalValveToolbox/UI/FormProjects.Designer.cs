@@ -51,7 +51,7 @@ namespace UniversalValveToolbox {
             this.comboBox_Mod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Mod.FormattingEnabled = true;
             this.comboBox_Mod.Name = "comboBox_Mod";
-            this.comboBox_Mod.SelectedIndexChanged += new System.EventHandler(this.comboBox_Mod_SelectedIndexChanged);
+            this.comboBox_Mod.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Mod_SelectedIndexChanged);
             // 
             // buttonOK
             // 
@@ -59,7 +59,7 @@ namespace UniversalValveToolbox {
             this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.UseVisualStyleBackColor = true;
-            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            this.buttonOK.Click += new System.EventHandler(this.ButtonOK_Click);
             // 
             // buttonCancel
             // 
@@ -67,28 +67,28 @@ namespace UniversalValveToolbox {
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            this.buttonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
             // 
             // buttonNew
             // 
             resources.ApplyResources(this.buttonNew, "buttonNew");
             this.buttonNew.Name = "buttonNew";
             this.buttonNew.UseVisualStyleBackColor = true;
-            this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
+            this.buttonNew.Click += new System.EventHandler(this.ButtonNew_Click);
             // 
             // buttonRemove
             // 
             resources.ApplyResources(this.buttonRemove, "buttonRemove");
             this.buttonRemove.Name = "buttonRemove";
             this.buttonRemove.UseVisualStyleBackColor = true;
-            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
+            this.buttonRemove.Click += new System.EventHandler(this.ButtonRemove_Click);
             // 
             // buttonBrowse
             // 
             resources.ApplyResources(this.buttonBrowse, "buttonBrowse");
             this.buttonBrowse.Name = "buttonBrowse";
             this.buttonBrowse.UseVisualStyleBackColor = true;
-            this.buttonBrowse.Click += new System.EventHandler(this.buttonBrowse_Click);
+            this.buttonBrowse.Click += new System.EventHandler(this.ButtonBrowse_Click);
             // 
             // textBoxPath
             // 
@@ -106,7 +106,7 @@ namespace UniversalValveToolbox {
             this.comboBoxEngine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEngine.FormattingEnabled = true;
             this.comboBoxEngine.Name = "comboBoxEngine";
-            this.comboBoxEngine.SelectedIndexChanged += new System.EventHandler(this.comboBoxEngine_SelectedIndexChanged);
+            this.comboBoxEngine.SelectedIndexChanged += new System.EventHandler(this.ComboBoxEngine_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -139,7 +139,7 @@ namespace UniversalValveToolbox {
             resources.ApplyResources(this.buttonApply, "buttonApply");
             this.buttonApply.Name = "buttonApply";
             this.buttonApply.UseVisualStyleBackColor = true;
-            this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
+            this.buttonApply.Click += new System.EventHandler(this.ButtonApply_Click);
             // 
             // textBoxArgs
             // 

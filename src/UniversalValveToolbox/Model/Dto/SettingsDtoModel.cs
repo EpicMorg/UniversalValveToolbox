@@ -1,24 +1,29 @@
-﻿using UniversalValveToolbox.Base;
+﻿namespace UniversalValveToolbox.Model.Dto
+{
+    using UniversalValveToolbox.Base;
 
-namespace UniversalValveToolbox.Model.Dto {
-    public class SettingsDtoModel : DtoModel {
+    public class SettingsDtoModel : DtoModel
+    {
         private string lastSelectedProject;
         private string[] availableLanguages;
         private string language;
 
-        public string LastSelectedProject {
-            get => lastSelectedProject;
-            set => UpdateField(value, ref lastSelectedProject);
+        public string LastSelectedProject
+        {
+            get => this.lastSelectedProject;
+            set => this.UpdateField(value, ref this.lastSelectedProject);
         }
 
-        public string[] AvailableLanguages {
-            get => availableLanguages;
-            set => UpdateField(value, ref availableLanguages);
+        public string[] AvailableLanguages
+        {
+            get => this.availableLanguages;
+            set => this.UpdateField(value, ref this.availableLanguages);
         }
 
-        public string Language {
-            get => language;
-            set => UpdateField(value, ref language);
+        public string Language
+        {
+            get => this.language;
+            set => this.UpdateField(value, ref this.language);
         }
     }
 }

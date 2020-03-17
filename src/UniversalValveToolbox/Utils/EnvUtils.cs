@@ -1,34 +1,29 @@
-﻿using EpicMorg.SteamPathsLib;
-using System;
-using System.IO;
+﻿namespace UniversalValveToolbox.Utils
+{
+    using System;
+    using System.IO;
+    using EpicMorg.SteamPathsLib;
 
-namespace UniversalValveToolbox.Utils {
-    class EnvUtils {
-        public static void PrepareVProject(string data) {
-            Environment.SetEnvironmentVariable("VProject", data, EnvironmentVariableTarget.User);
-        }
+    internal class EnvUtils
+    {
+        public static void PrepareVProject(string data) => Environment.SetEnvironmentVariable("VProject", data, EnvironmentVariableTarget.User);
 
-        public static void PrepareVMod(string data) {
-            Environment.SetEnvironmentVariable("VMod", data, EnvironmentVariableTarget.User);
-        }
+        public static void PrepareVMod(string data) => Environment.SetEnvironmentVariable("VMod", data, EnvironmentVariableTarget.User);
 
-        public static void PrepareVGame(string data) {
-            Environment.SetEnvironmentVariable("VGame", data, EnvironmentVariableTarget.User);
-        }
+        public static void PrepareVGame(string data) => Environment.SetEnvironmentVariable("VGame", data, EnvironmentVariableTarget.User);
 
-        public static void PrepareVContent(string data) {
-            Environment.SetEnvironmentVariable("VContent", data, EnvironmentVariableTarget.User);
-        }
+        public static void PrepareVContent(string data) => Environment.SetEnvironmentVariable("VContent", data, EnvironmentVariableTarget.User);
 
-        public static void PrepareVTools(string data) {
-            Environment.SetEnvironmentVariable("VTools", data, EnvironmentVariableTarget.User);
-        }
+        public static void PrepareVTools(string data) => Environment.SetEnvironmentVariable("VTools", data, EnvironmentVariableTarget.User);
 
-        public static void PrepareSFMData(string pathProject) {
+        public static void PrepareSFMData(string pathProject)
+        {
             var SFMpath = SteamPathsUtil.GetSteamAppManifestDataById(1840)?.Path;
 
             if (SFMpath == null)
+            {
                 return;
+            }
 
             PrepareVMod(new DirectoryInfo(pathProject).Name);
             PrepareVProject(pathProject);

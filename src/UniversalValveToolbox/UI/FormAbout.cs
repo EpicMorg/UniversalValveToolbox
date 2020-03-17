@@ -1,34 +1,29 @@
-﻿using System;
-using System.Diagnostics;
-using System.Windows.Forms;
+﻿namespace UniversalValveToolbox
+{
+    using System;
+    using System.Diagnostics;
+    using System.Windows.Forms;
 
-namespace UniversalValveToolbox {
-    public partial class FormAbout : Form {
-        public FormAbout() {
-            InitializeComponent();
-            labelVersion.Text = Utils.VersionHelper.AssemblyVersion;
-            labelTitle.Text = Utils.VersionHelper.AssemblyTitle;
-            labelCopy.Text = Utils.VersionHelper.AssemblyCopyright;
+    public partial class FormAbout : Form
+    {
+        public FormAbout()
+        {
+            this.InitializeComponent();
+            this.labelVersion.Text = Utils.VersionHelper.AssemblyVersion;
+            this.labelTitle.Text = Utils.VersionHelper.AssemblyTitle;
+            this.labelCopy.Text = Utils.VersionHelper.AssemblyCopyright;
         }
 
-        private void FormAbout_Load(object sender, EventArgs e) {
-
+        private void FormAbout_Load(object sender, EventArgs e)
+        {
         }
 
-        private void buttonOK_Click(object sender, EventArgs e) {
-            Close();
-        }
+        private void ButtonOK_Click(object sender, EventArgs e) => this.Close();
 
-        private void linkLabelIconSite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-            Process.Start("https://www.flaticon.com/");
-        }
+        private void LinkLabelIconSite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => Process.Start("https://www.flaticon.com/");
 
-        private void linkLabelFP_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-            Process.Start("https://www.flaticon.com/authors/freepik");
-        }
+        private void LinkLabelFP_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => Process.Start("https://www.flaticon.com/authors/freepik");
 
-        private void linkLabelTI_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-            Process.Start("https://www.flaticon.com/authors/those-icons");
-        }
+        private void LinkLabelTI_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => Process.Start("https://www.flaticon.com/authors/those-icons");
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace UniversalValveToolbox
+﻿using Properties;
+
+namespace UniversalValveToolbox
 {
     partial class FormMain
     {
@@ -76,7 +78,7 @@
             this.listView.TileSize = new System.Drawing.Size(320, 30);
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Tile;
-            this.listView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView_MouseDoubleClick);
+            this.listView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListView_MouseDoubleClick);
             // 
             // imageListLarge
             // 
@@ -116,26 +118,26 @@
             // toolStripStatusLabelSteam
             // 
             resources.ApplyResources(this.toolStripStatusLabelSteam, "toolStripStatusLabelSteam");
-            this.toolStripStatusLabelSteam.Image = global::UniversalValveToolbox.Properties.Resources.cancel_16;
+            this.toolStripStatusLabelSteam.Image = Resources.cancel_16;
             this.toolStripStatusLabelSteam.Margin = new System.Windows.Forms.Padding(11, 3, 0, 2);
             this.toolStripStatusLabelSteam.Name = "toolStripStatusLabelSteam";
             // 
             // toolStripStatusLabelLogin
             // 
             resources.ApplyResources(this.toolStripStatusLabelLogin, "toolStripStatusLabelLogin");
-            this.toolStripStatusLabelLogin.Image = global::UniversalValveToolbox.Properties.Resources.human_16;
+            this.toolStripStatusLabelLogin.Image = Resources.human_16;
             this.toolStripStatusLabelLogin.Name = "toolStripStatusLabelLogin";
             // 
             // toolStripStatusLabelEngines
             // 
             resources.ApplyResources(this.toolStripStatusLabelEngines, "toolStripStatusLabelEngines");
-            this.toolStripStatusLabelEngines.Image = global::UniversalValveToolbox.Properties.Resources.info_16;
+            this.toolStripStatusLabelEngines.Image = Resources.info_16;
             this.toolStripStatusLabelEngines.Name = "toolStripStatusLabelEngines";
             // 
             // toolStripStatusLabelAddons
             // 
             resources.ApplyResources(this.toolStripStatusLabelAddons, "toolStripStatusLabelAddons");
-            this.toolStripStatusLabelAddons.Image = global::UniversalValveToolbox.Properties.Resources.plug_silhouette_16;
+            this.toolStripStatusLabelAddons.Image = Resources.plug_silhouette_16;
             this.toolStripStatusLabelAddons.Name = "toolStripStatusLabelAddons";
             // 
             // toolStripStatusLabelRefresh
@@ -147,10 +149,10 @@
             this.toolStripStatusLabelRefresh.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
             this.toolStripStatusLabelRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripStatusLabelRefresh.DoubleClickEnabled = true;
-            this.toolStripStatusLabelRefresh.Image = global::UniversalValveToolbox.Properties.Resources.refresh_16;
+            this.toolStripStatusLabelRefresh.Image = Resources.refresh_16;
             this.toolStripStatusLabelRefresh.IsLink = true;
             this.toolStripStatusLabelRefresh.Name = "toolStripStatusLabelRefresh";
-            this.toolStripStatusLabelRefresh.Click += new System.EventHandler(this.toolStripStatusLabelRefresh_Click);
+            this.toolStripStatusLabelRefresh.Click += new System.EventHandler(this.ToolStripStatusLabelRefresh_Click);
             // 
             // openFileDialog1
             // 

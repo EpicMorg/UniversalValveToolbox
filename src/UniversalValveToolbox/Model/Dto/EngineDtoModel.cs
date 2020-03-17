@@ -1,32 +1,38 @@
-﻿using UniversalValveToolbox.Base;
+﻿namespace UniversalValveToolbox.Model.Dto
+{
+    using UniversalValveToolbox.Base;
 
-namespace UniversalValveToolbox.Model.Dto {
-    public class EngineDtoModel : DtoModel {
+    public class EngineDtoModel : DtoModel
+    {
         private int appid;
         private string name;
         private string bin;
         private ToolDtoModel[] tools;
 
-        public int Appid {
-            get => appid;
-            set => UpdateField(value, ref appid);
+        public int Appid
+        {
+            get => this.appid;
+            set => this.UpdateField(value, ref this.appid);
         }
 
-        public string Name {
-            get => name;
-            set => UpdateField(value, ref name);
+        public string Name
+        {
+            get => this.name;
+            set => this.UpdateField(value, ref this.name);
         }
 
-        public string Bin {
-            get => bin;
-            set => UpdateField(value, ref bin);
+        public string Bin
+        {
+            get => this.bin;
+            set => this.UpdateField(value, ref this.bin);
         }
 
-        public ToolDtoModel[] Tools {
-            get => tools;
-            set => UpdateField(value, ref tools);
+        public ToolDtoModel[] Tools
+        {
+            get => this.tools;
+            set => this.UpdateField(value, ref this.tools);
         }
 
-        public override string ToString() => name;
+        public override string ToString() => this.name;
     }
 }

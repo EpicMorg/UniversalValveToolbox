@@ -1,148 +1,156 @@
-﻿using EpicMorg.SteamPathsLib;
-using kasthack.binding.wf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
-using UniversalValveToolbox.Model.Dto;
-using UniversalValveToolbox.Model.Provider;
-using UniversalValveToolbox.Model.ViewModel;
-using UniversalValveToolbox.Utils;
+﻿namespace UniversalValveToolbox
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Windows.Forms;
+    using EpicMorg.SteamPathsLib;
+    using kasthack.binding.wf;
+    using UniversalValveToolbox.Model.Dto;
+    using UniversalValveToolbox.Model.Provider;
+    using UniversalValveToolbox.Model.ViewModel;
+    using UniversalValveToolbox.Utils;
 
-namespace UniversalValveToolbox {
-    public partial class FormProjects : Form {
+    public partial class FormProjects : Form
+    {
         private bool needRestart = false;
 
-        private DataProvider dataProvider = new DataProvider();
+        private readonly DataProvider dataProvider = new DataProvider();
 
-        private FormProjectViewModel model;
+        private readonly FormProjectViewModel model;
 
+        public FormProjects()
+        {
+            this.InitializeComponent();
 
-        public FormProjects() {
-            InitializeComponent();
-             
-            model = new FormProjectViewModel(dataProvider.Projects, dataProvider.Engines.Where(engine => SteamPathsUtil.GetSteamAppDataById(engine.Appid) != null).ToArray());
+            this.model = new FormProjectViewModel(this.dataProvider.Projects, this.dataProvider.Engines.Where(engine => SteamPathsUtil.GetSteamAppDataById(engine.Appid) != null).ToArray());
 
-            UpdateComboBoxProject();
-            UpdateComboBoxEngine();
+            this.UpdateComboBoxProject();
+            this.UpdateComboBoxEngine();
 
-            textBox1.Bind(a => a.Text, model, a => a.SelectProject.Name);
-            textBoxPath.Bind(a => a.Text, model, a => a.SelectProject.Path);
-            textBoxArgs.Bind(a => a.Text, model, a => a.SelectProject.Args);
+            this.textBox1.Bind(a => a.Text, this.model, a => a.SelectProject.Name);
+            this.textBoxPath.Bind(a => a.Text, this.model, a => a.SelectProject.Path);
+            this.textBoxArgs.Bind(a => a.Text, this.model, a => a.SelectProject.Args);
 
-            comboBox_Mod.Bind(a => a.SelectedIndex, model, a => a.SelectProjectIndex);
-            comboBoxEngine.Bind(a => a.SelectedIndex, model, a => a.SelectEngineIndex);
+            this.comboBox_Mod.Bind(a => a.SelectedIndex, this.model, a => a.SelectProjectIndex);
+            this.comboBoxEngine.Bind(a => a.SelectedIndex, this.model, a => a.SelectEngineIndex);
         }
 
-        private void Model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e) {
-            UpdateComboBoxEngine();
-        }
+        private void Model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e) => this.UpdateComboBoxEngine();
 
-        private void UpdateComboBoxProject() {
-            if (model.Projects.Length == 0) {
-                New();
-            } else {
-                comboBox_Mod.Items.Clear();
-                comboBox_Mod.Items.AddRange(model.Projects);
+        private void UpdateComboBoxProject()
+        {
+            if (this.model.Projects.Length == 0)
+            {
+                this.New();
+            }
+            else
+            {
+                this.comboBox_Mod.Items.Clear();
+                this.comboBox_Mod.Items.AddRange(this.model.Projects);
 
-                comboBox_Mod.SelectedIndex = model.SelectProjectIndex;
+                this.comboBox_Mod.SelectedIndex = this.model.SelectProjectIndex;
             }
         }
 
-        private void UpdateComboBoxEngine() {
-            comboBoxEngine.Items.Clear();
-            comboBoxEngine.Items.AddRange(model.Engines);
+        private void UpdateComboBoxEngine()
+        {
+            this.comboBoxEngine.Items.Clear();
+            this.comboBoxEngine.Items.AddRange(this.model.Engines);
 
-            comboBoxEngine.SelectedIndex = model.SelectEngineIndex;
+            this.comboBoxEngine.SelectedIndex = this.model.SelectEngineIndex;
         }
 
-        private void FormEditProfile_Load(object sender, EventArgs e) {
-
+        private void FormEditProfile_Load(object sender, EventArgs e)
+        {
         }
 
-        private void buttonCancel_Click(object sender, EventArgs e) {
-            if (needRestart) {
-                DialogResult = DialogResult.OK;
+        private void ButtonCancel_Click(object sender, EventArgs e)
+        {
+            if (this.needRestart)
+            {
+                this.DialogResult = DialogResult.OK;
             }
 
-            Close();
+            this.Close();
         }
 
-        private void buttonBrowse_Click(object sender, EventArgs e) {
-            string folderpath = "";
-            FolderBrowserDialog fbd = new FolderBrowserDialog {
+        private void ButtonBrowse_Click(object sender, EventArgs e)
+        {
+            var folderpath = string.Empty;
+            var fbd = new FolderBrowserDialog
+            {
                 ShowNewFolderButton = false,
-                RootFolder = Environment.SpecialFolder.MyComputer
+                RootFolder = Environment.SpecialFolder.MyComputer,
             };
-            DialogResult dr = fbd.ShowDialog();
+            var dr = fbd.ShowDialog();
 
-            if (dr == DialogResult.OK) {
+            if (dr == DialogResult.OK)
+            {
                 folderpath = fbd.SelectedPath;
             }
 
-            if (folderpath != "") {
-                textBoxPath.Text = folderpath;
+            if (!string.IsNullOrEmpty(folderpath))
+            {
+                this.textBoxPath.Text = folderpath;
             }
         }
 
-        private void comboBoxEngine_SelectedIndexChanged(object sender, EventArgs e) {
-            if (model.SelectProject != null && comboBoxEngine.SelectedItem != null)
-                model.SelectProject.Engine = ((EngineDtoModel)comboBoxEngine.SelectedItem).Appid;
+        private void ComboBoxEngine_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.model.SelectProject != null && this.comboBoxEngine.SelectedItem != null)
+            {
+                this.model.SelectProject.Engine = ((EngineDtoModel)this.comboBoxEngine.SelectedItem).Appid;
+            }
         }
 
-        private void comboBox_Mod_SelectedIndexChanged(object sender, EventArgs e) {
-            model.SelectProjectIndex = comboBox_Mod.SelectedIndex;
+        private void ComboBox_Mod_SelectedIndexChanged(object sender, EventArgs e) => this.model.SelectProjectIndex = this.comboBox_Mod.SelectedIndex;
+
+        private void Remove()
+        {
+            var newProjectList = new List<ProjectDtoModel>(this.model.Projects);
+            newProjectList.RemoveAt(this.model.SelectProjectIndex);
+
+            this.model.Projects = newProjectList.ToArray();
+
+            this.UpdateComboBoxProject();
         }
 
-        private void Remove() {
-            var newProjectList = new List<ProjectDtoModel>(model.Projects);
-            newProjectList.RemoveAt(model.SelectProjectIndex);
+        private void New()
+        {
+            var newProject = this.CreateNewEmptyProject();
 
-            model.Projects = newProjectList.ToArray();
-
-            UpdateComboBoxProject();
-        }
-
-        private void New() {
-            var newProject = CreateNewEmptyProject();
-
-            var newProjectList = new List<ProjectDtoModel>(model.Projects);
+            var newProjectList = new List<ProjectDtoModel>(this.model.Projects);
             newProjectList.Insert(0, newProject);
 
-            model.Projects = newProjectList.ToArray();
+            this.model.Projects = newProjectList.ToArray();
 
-            UpdateComboBoxProject();
+            this.UpdateComboBoxProject();
         }
 
-        private ProjectDtoModel CreateNewEmptyProject() {
-            var newProject = new ProjectDtoModel();
-            newProject.Name = Properties.translations.VarStrings.strNewProject;
+        private ProjectDtoModel CreateNewEmptyProject() => new ProjectDtoModel
+        {
+            Name = Properties.translations.VarStrings.strNewProject,
+        };
 
-            return newProject;
+        private void Save() => JsonFileUtil.SaveValues(DataProvider.ProjectsPath, "json", this.model.Projects.ToList());
+
+        private void ButtonOK_Click(object sender, EventArgs e)
+        {
+            this.Save();
+
+            this.Close();
         }
 
-        private void Save() {
-            JsonFileUtil.SaveValues(DataProvider.ProjectsPath, "json", model.Projects.ToList());
+        private void ButtonApply_Click(object sender, EventArgs e)
+        {
+            this.Save();
+
+            this.needRestart = true;
         }
 
-        private void buttonOK_Click(object sender, EventArgs e) {
-            Save();
+        private void ButtonNew_Click(object sender, EventArgs e) => this.New();
 
-            Close();
-        }
-
-        private void buttonApply_Click(object sender, EventArgs e) {
-            Save();
-
-            needRestart = true;
-        }
-
-        private void buttonNew_Click(object sender, EventArgs e) {
-            New();
-        }
-
-        private void buttonRemove_Click(object sender, EventArgs e) {
-            Remove();
-        }
+        private void ButtonRemove_Click(object sender, EventArgs e) => this.Remove();
     }
 }

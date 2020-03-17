@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UniversalValveToolbox.Base;
-using UniversalValveToolbox.Model.Dto;
-using static System.Windows.Forms.ListView;
+﻿namespace UniversalValveToolbox.Model.ViewModel
+{
+    using System.Collections;
+    using UniversalValveToolbox.Base;
+    using UniversalValveToolbox.Model.Dto;
 
-namespace UniversalValveToolbox.Model.ViewModel {
-    class FormAddonViewModel: DtoModel {
+    internal class FormAddonViewModel : DtoModel
+    {
         private AddonDtoModel[] addons;
         private int selectAddonIndex = 0;
         private int selectCategoryIndex = 0;
@@ -17,64 +13,63 @@ namespace UniversalValveToolbox.Model.ViewModel {
         private EngineDtoModel[] engines;
         private DictionaryEntry[] categories;
 
-        public FormAddonViewModel(AddonDtoModel[] addons, EngineDtoModel[] engines, DictionaryEntry[] categories) {
+        public FormAddonViewModel(AddonDtoModel[] addons, EngineDtoModel[] engines, DictionaryEntry[] categories)
+        {
             this.addons = addons;
             this.engines = engines;
             this.categories = categories;
         }
 
-        public AddonDtoModel[] Addons {
-            get => addons;
-            set {
-                UpdateField(value, ref addons);
+        public AddonDtoModel[] Addons
+        {
+            get => this.addons;
+            set
+            {
+                this.UpdateField(value, ref this.addons);
 
-                SelectAddonIndex = 0;
+                this.SelectAddonIndex = 0;
             }
         }
 
-        public DictionaryEntry[] Categories {
-            get => categories;
-            set {
-                UpdateField(value, ref categories);
+        public DictionaryEntry[] Categories
+        {
+            get => this.categories;
+            set
+            {
+                this.UpdateField(value, ref this.categories);
 
-                SelectCategoryIndex = 0;
+                this.SelectCategoryIndex = 0;
             }
         }
 
-        public int SelectAddonIndex {
-            get => selectAddonIndex;
-            set {
-                ForceUpdateField(value, ref selectAddonIndex);
-                OnPropertyChanged(nameof(SelectAddon));
+        public int SelectAddonIndex
+        {
+            get => this.selectAddonIndex;
+            set
+            {
+                this.ForceUpdateField(value, ref this.selectAddonIndex);
+                this.OnPropertyChanged(nameof(this.SelectAddon));
             }
         }
 
-        public int SelectCategoryIndex {
-            get => selectCategoryIndex;
-            set {
-                ForceUpdateField(value, ref selectCategoryIndex);
-                OnPropertyChanged(nameof(SelectCategory));
+        public int SelectCategoryIndex
+        {
+            get => this.selectCategoryIndex;
+            set
+            {
+                this.ForceUpdateField(value, ref this.selectCategoryIndex);
+                this.OnPropertyChanged(nameof(this.SelectCategory));
             }
         }
 
-        public AddonDtoModel SelectAddon {
-            get {
-                if (addons == null || addons.Length == 0)
-                    return null;
-                
-                return addons[selectAddonIndex]; 
-            }
-        }
+        public AddonDtoModel SelectAddon => this.addons == null || this.addons.Length == 0 ? null : this.addons[this.selectAddonIndex];
 
-        public DictionaryEntry SelectCategory {
-            get { return categories[selectCategoryIndex]; }
-        }
+        public DictionaryEntry SelectCategory => this.categories[this.selectCategoryIndex];
 
-        public EngineDtoModel[] Engines {
-            get => engines;
-            set {
-                UpdateField(value, ref engines);
-            }
+        public EngineDtoModel[] Engines
+        {
+            get => this.engines;
+            set => this.UpdateField(value, ref this.engines);
         }
     }
 }

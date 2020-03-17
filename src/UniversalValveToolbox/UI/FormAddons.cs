@@ -1,28 +1,30 @@
-﻿using System;
-using System.Windows.Forms;
-using UniversalValveToolbox.Model.Provider;
-using UniversalValveToolbox.Model.ViewModel;
-using UniversalValveToolbox.Model.Dto;
-using kasthack.binding.wf;
-using System.Linq;
-using System.Collections.Generic;
-using UniversalValveToolbox.Utils;
-using System.Globalization;
-using System.Collections;
-using EpicMorg.SteamPathsLib;
+﻿namespace UniversalValveToolbox
+{
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
+    using System.Windows.Forms;
+    using EpicMorg.SteamPathsLib;
+    using kasthack.binding.wf;
+    using UniversalValveToolbox.Model.Dto;
+    using UniversalValveToolbox.Model.Provider;
+    using UniversalValveToolbox.Model.ViewModel;
+    using UniversalValveToolbox.Utils;
 
-namespace UniversalValveToolbox {
-    public partial class FormAddons : Form {
+    public partial class FormAddons : Form
+    {
         private bool needRestart;
         private bool isEnableListBoxCheckListener = false;
 
-        private DataProvider dataProvider = new DataProvider();
+        private readonly DataProvider dataProvider = new DataProvider();
 
-        private FormAddonViewModel model;
+        private readonly FormAddonViewModel model;
 
-
-        public FormAddons() {
-            InitializeComponent();
+        public FormAddons()
+        {
+            this.InitializeComponent();
 
             var categories = Properties.translations.MenuCategories
                 .ResourceManager
@@ -30,169 +32,188 @@ namespace UniversalValveToolbox {
                 .Cast<DictionaryEntry>()
                 .ToArray();
 
-            model = new FormAddonViewModel(dataProvider.Addons, dataProvider.Engines.Where(engine => SteamPathsUtil.GetSteamAppDataById(engine.Appid) != null).ToArray(), categories);
+            this.model = new FormAddonViewModel(this.dataProvider.Addons, this.dataProvider.Engines.Where(engine => SteamPathsUtil.GetSteamAppDataById(engine.Appid) != null).ToArray(), categories);
 
-            UpdateAddonsComboBox();
-            UpdateAddonCategoryComboBox();
-            UpdateEngineCheckedListView();
+            this.UpdateAddonsComboBox();
+            this.UpdateAddonCategoryComboBox();
+            this.UpdateEngineCheckedListView();
 
-            comboBox_Addon.Bind(a => a.SelectedIndex, model, a => a.SelectAddonIndex);
-            comboBoxCategory.Bind(a => a.SelectedIndex, model, a => a.SelectCategoryIndex);
+            this.comboBox_Addon.Bind(a => a.SelectedIndex, this.model, a => a.SelectAddonIndex);
+            this.comboBoxCategory.Bind(a => a.SelectedIndex, this.model, a => a.SelectCategoryIndex);
 
-            textBoxName.Bind(a => a.Text, model, a => a.SelectAddon.Name);
-            textBoxPath.Bind(a => a.Text, model, a => a.SelectAddon.Bin);
-            textBoxArgs.Bind(a => a.Text, model, a => a.SelectAddon.Args);
+            this.textBoxName.Bind(a => a.Text, this.model, a => a.SelectAddon.Name);
+            this.textBoxPath.Bind(a => a.Text, this.model, a => a.SelectAddon.Bin);
+            this.textBoxArgs.Bind(a => a.Text, this.model, a => a.SelectAddon.Args);
 
-            model.PropertyChanged += Model_PropertyChanged;
+            this.model.PropertyChanged += this.Model_PropertyChanged;
 
-            this.engineCheckedListBox.ItemCheck += EngineCheckedListBox_ItemCheck;
+            this.engineCheckedListBox.ItemCheck += this.EngineCheckedListBox_ItemCheck;
         }
 
-        private void EngineCheckedListBox_ItemCheck(object sender, ItemCheckEventArgs e) {
-            if (isEnableListBoxCheckListener) {
-                List<EngineDtoModel> checkedItems = new List<EngineDtoModel>();
-                foreach (var item in engineCheckedListBox.CheckedItems)
+        private void EngineCheckedListBox_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (this.isEnableListBoxCheckListener)
+            {
+                var checkedItems = new List<EngineDtoModel>();
+                foreach (var item in this.engineCheckedListBox.CheckedItems)
+                {
                     checkedItems.Add((EngineDtoModel)item);
+                }
 
                 if (e.NewValue == CheckState.Checked)
-                    checkedItems.Add((EngineDtoModel)engineCheckedListBox.Items[e.Index]);
+                {
+                    checkedItems.Add((EngineDtoModel)this.engineCheckedListBox.Items[e.Index]);
+                }
                 else
-                    checkedItems.Remove((EngineDtoModel)engineCheckedListBox.Items[e.Index]);
+                {
+                    checkedItems.Remove((EngineDtoModel)this.engineCheckedListBox.Items[e.Index]);
+                }
 
-
-                model.SelectAddon.Engines = checkedItems.Select(engine => engine.Appid).ToArray();
+                this.model.SelectAddon.Engines = checkedItems.Select(engine => engine.Appid).ToArray();
             }
         }
 
-        private void Model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e) {
-            if (e.PropertyName == nameof(model.SelectAddon)) {
-                UpdateEngineCheckedListView();
+        private void Model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(this.model.SelectAddon))
+            {
+                this.UpdateEngineCheckedListView();
             }
         }
 
-        private void UpdateEngineCheckedListView() {
-            isEnableListBoxCheckListener = false;
+        private void UpdateEngineCheckedListView()
+        {
+            this.isEnableListBoxCheckListener = false;
 
-            engineCheckedListBox.Items.Clear();
-            engineCheckedListBox.Items.AddRange(model.Engines);
+            this.engineCheckedListBox.Items.Clear();
+            this.engineCheckedListBox.Items.AddRange(this.model.Engines);
 
-            if (model.SelectAddon != null) {
-                for (var i = 0; i < model.Engines.Length; i++) {
-                    var engine = model.Engines[i];
+            if (this.model.SelectAddon != null)
+            {
+                for (var i = 0; i < this.model.Engines.Length; i++)
+                {
+                    var engine = this.model.Engines[i];
 
-                    if (model.SelectAddon.Engines.Contains(engine.Appid)) {
-                        engineCheckedListBox.SetItemChecked(i, true);
+                    if (this.model.SelectAddon.Engines.Contains(engine.Appid))
+                    {
+                        this.engineCheckedListBox.SetItemChecked(i, true);
                     }
                 }
             }
-            else {
-                for (var i = 0; i < model.Engines.Length; i++) {
-                    engineCheckedListBox.SetItemChecked(i, false);
+            else
+            {
+                for (var i = 0; i < this.model.Engines.Length; i++)
+                {
+                    this.engineCheckedListBox.SetItemChecked(i, false);
                 }
             }
 
-            isEnableListBoxCheckListener = true;
+            this.isEnableListBoxCheckListener = true;
         }
 
-        private void UpdateAddonsComboBox() {
-            if (model.Addons.Length == 0) {
-                New();
+        private void UpdateAddonsComboBox()
+        {
+            if (this.model.Addons.Length == 0)
+            {
+                this.New();
             }
-            else {
-                comboBox_Addon.Items.Clear();
-                comboBox_Addon.Items.AddRange(model.Addons);
+            else
+            {
+                this.comboBox_Addon.Items.Clear();
+                this.comboBox_Addon.Items.AddRange(this.model.Addons);
 
-                comboBox_Addon.SelectedIndex = 0;
+                this.comboBox_Addon.SelectedIndex = 0;
             }
         }
 
-        private void UpdateAddonCategoryComboBox() {
-            comboBoxCategory.Items.Clear();
-            comboBoxCategory.Items.AddRange(model.Categories.Select(c => c.Value).ToArray());
+        private void UpdateAddonCategoryComboBox()
+        {
+            this.comboBoxCategory.Items.Clear();
+            this.comboBoxCategory.Items.AddRange(this.model.Categories.Select(c => c.Value).ToArray());
 
-            var index = Array.IndexOf(model.Categories.Select(c => c.Key).ToArray(), model.SelectAddon.Category);
-            comboBoxCategory.SelectedIndex = index;
+            var index = Array.IndexOf(this.model.Categories.Select(c => c.Key).ToArray(), this.model.SelectAddon.Category);
+            this.comboBoxCategory.SelectedIndex = index;
         }
 
-        private void buttonCancel_Click(object sender, EventArgs e) {
-            Close();
-        }
+        private void ButtonCancel_Click(object sender, EventArgs e) => this.Close();
 
-        private void buttonBrowse_Click(object sender, EventArgs e) {
-            OpenFileDialog dialog = new OpenFileDialog {
+        private void ButtonBrowse_Click(object sender, EventArgs e)
+        {
+            var dialog = new OpenFileDialog
+            {
                 InitialDirectory = @"C:\",
                 DefaultExt = "exe",
                 Filter = "Exe file (*.exe) | *.exe",
                 Multiselect = false,
-                RestoreDirectory = true
+                RestoreDirectory = true,
             };
 
-            if (dialog.ShowDialog() == DialogResult.OK) {
-                textBoxPath.Text = dialog.FileName;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                this.textBoxPath.Text = dialog.FileName;
             }
         }
 
-        private void FormAddons_Load(object sender, EventArgs e) {
-
+        private void FormAddons_Load(object sender, EventArgs e)
+        {
         }
 
-        private void comboBox_Addon_SelectedIndexChanged(object sender, EventArgs e) {
-            model.SelectAddonIndex = comboBox_Addon.SelectedIndex;
+        private void ComboBox_Addon_SelectedIndexChanged(object sender, EventArgs e) => this.model.SelectAddonIndex = this.comboBox_Addon.SelectedIndex;
+
+        private void Remove()
+        {
+            var newAddonList = new List<AddonDtoModel>(this.model.Addons);
+            newAddonList.RemoveAt(this.model.SelectAddonIndex);
+
+            this.model.Addons = newAddonList.ToArray();
+
+            this.UpdateAddonsComboBox();
         }
 
-        private void Remove() {
-            var newAddonList = new List<AddonDtoModel>(model.Addons);
-            newAddonList.RemoveAt(model.SelectAddonIndex);
+        private void New()
+        {
+            var newAddon = this.CreateNewEmptyAddon();
 
-            model.Addons = newAddonList.ToArray();
-
-            UpdateAddonsComboBox();
-        }
-
-        private void New() {
-            var newAddon = CreateNewEmptyAddon();
-
-            var newAddonList = new List<AddonDtoModel>(model.Addons);
+            var newAddonList = new List<AddonDtoModel>(this.model.Addons);
             newAddonList.Insert(0, newAddon);
 
-            model.Addons = newAddonList.ToArray();
+            this.model.Addons = newAddonList.ToArray();
 
-            UpdateAddonsComboBox();
+            this.UpdateAddonsComboBox();
         }
 
-        private AddonDtoModel CreateNewEmptyAddon() {
-            var newAddon = new AddonDtoModel();
-            newAddon.Name = Properties.translations.VarStrings.strNewAddon;
+        private AddonDtoModel CreateNewEmptyAddon()
+        {
+            var newAddon = new AddonDtoModel
+            {
+                Name = Properties.translations.VarStrings.strNewAddon,
+            };
 
             return newAddon;
         }
 
-        private void Save() {
-            JsonFileUtil.SaveValues(DataProvider.AddonsPath, "json", model.Addons.ToList());
+        private void Save() => JsonFileUtil.SaveValues(DataProvider.AddonsPath, "json", this.model.Addons.ToList());
+
+        private void ButtonRemove_Click(object sender, EventArgs e) => this.Remove();
+
+        private void ButtonNew_Click(object sender, EventArgs e) => this.New();
+
+        private void ButtonApply_Click(object sender, EventArgs e)
+        {
+            this.needRestart = true;
+
+            this.Save();
         }
 
-        private void buttonRemove_Click(object sender, EventArgs e) {
-            Remove();
+        private void ButtonOK_Click(object sender, EventArgs e)
+        {
+            this.Save();
+
+            this.Close();
         }
 
-        private void buttonNew_Click(object sender, EventArgs e) {
-            New();
-        }
-
-        private void buttonApply_Click(object sender, EventArgs e) {
-            needRestart = true;
-
-            Save();
-        }
-
-        private void buttonOK_Click(object sender, EventArgs e) {
-            Save();
-
-            Close();
-        }
-
-        private void comboBoxCategory_SelectedIndexChanged(object sender, EventArgs e) {
-
+        private void ComboBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
     }
 }

@@ -1,24 +1,29 @@
-﻿using UniversalValveToolbox.Base;
+﻿namespace UniversalValveToolbox.Model.Dto
+{
+    using UniversalValveToolbox.Base;
 
-namespace UniversalValveToolbox.Model.Dto {
-    public class ToolDtoModel : DtoModel {
+    public class ToolDtoModel : DtoModel
+    {
         private string args;
         private string bin;
         private string name;
 
-        public string Args {
-            get => args;
-            set => UpdateField(value, ref args);
+        public string Args
+        {
+            get => this.args;
+            set => this.UpdateField(value, ref this.args);
         }
 
-        public string Bin {
-            get => bin;
-            set => UpdateField(value, ref bin);
+        public string Bin
+        {
+            get => this.bin;
+            set => this.UpdateField(value, ref this.bin);
         }
 
-        public string Name {
-            get => name;
-            set => UpdateField(value, ref name);
+        public string Name
+        {
+            get => this.name;
+            set => this.UpdateField(value, ref this.name);
         }
     }
 }
