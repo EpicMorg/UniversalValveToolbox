@@ -47,49 +47,32 @@
             // 
             // comboBoxProjects
             // 
-            this.comboBoxProjects.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.comboBoxProjects, "comboBoxProjects");
             this.comboBoxProjects.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxProjects.Enabled = false;
             this.comboBoxProjects.FormattingEnabled = true;
-            this.comboBoxProjects.ItemHeight = 13;
             this.comboBoxProjects.Items.AddRange(new object[] {
-            "No project configured"});
-            this.comboBoxProjects.Location = new System.Drawing.Point(12, 412);
+            resources.GetString("comboBoxProjects.Items")});
             this.comboBoxProjects.Name = "comboBoxProjects";
-            this.comboBoxProjects.Size = new System.Drawing.Size(449, 21);
-            this.comboBoxProjects.TabIndex = 1;
             // 
             // comboBoxEngine
             // 
-            this.comboBoxEngine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.comboBoxEngine, "comboBoxEngine");
             this.comboBoxEngine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxEngine.Enabled = false;
             this.comboBoxEngine.FormattingEnabled = true;
             this.comboBoxEngine.Items.AddRange(new object[] {
-            "No engine installed"});
-            this.comboBoxEngine.Location = new System.Drawing.Point(12, 385);
+            resources.GetString("comboBoxEngine.Items")});
             this.comboBoxEngine.Name = "comboBoxEngine";
-            this.comboBoxEngine.Size = new System.Drawing.Size(449, 21);
-            this.comboBoxEngine.TabIndex = 1;
             // 
             // listView
             // 
-            this.listView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.listView, "listView");
             this.listView.GridLines = true;
             this.listView.HideSelection = false;
             this.listView.LargeImageList = this.imageListLarge;
-            this.listView.Location = new System.Drawing.Point(12, 12);
-            this.listView.Margin = new System.Windows.Forms.Padding(0);
             this.listView.MultiSelect = false;
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(449, 367);
             this.listView.SmallImageList = this.imageListSmall;
             this.listView.StateImageList = this.imageListLarge;
-            this.listView.TabIndex = 4;
             this.listView.TileSize = new System.Drawing.Size(320, 30);
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Tile;
@@ -119,6 +102,7 @@
             // 
             // statusStrip
             // 
+            resources.ApplyResources(this.statusStrip, "statusStrip");
             this.statusStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelSteam,
@@ -126,46 +110,37 @@
             this.toolStripStatusLabelEngines,
             this.toolStripStatusLabelAddons,
             this.toolStripStatusLabelRefresh});
-            this.statusStrip.Location = new System.Drawing.Point(0, 441);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.ShowItemToolTips = true;
-            this.statusStrip.Size = new System.Drawing.Size(473, 25);
-            this.statusStrip.TabIndex = 5;
             // 
             // toolStripStatusLabelSteam
             // 
+            resources.ApplyResources(this.toolStripStatusLabelSteam, "toolStripStatusLabelSteam");
             this.toolStripStatusLabelSteam.Image = global::UniversalValveToolbox.Properties.Resources.cancel_16;
             this.toolStripStatusLabelSteam.Margin = new System.Windows.Forms.Padding(11, 3, 0, 2);
             this.toolStripStatusLabelSteam.Name = "toolStripStatusLabelSteam";
-            this.toolStripStatusLabelSteam.Size = new System.Drawing.Size(89, 20);
-            this.toolStripStatusLabelSteam.Text = "Steam: none";
-            this.toolStripStatusLabelSteam.ToolTipText = "666";
             // 
             // toolStripStatusLabelLogin
             // 
+            resources.ApplyResources(this.toolStripStatusLabelLogin, "toolStripStatusLabelLogin");
             this.toolStripStatusLabelLogin.Image = global::UniversalValveToolbox.Properties.Resources.human_16;
             this.toolStripStatusLabelLogin.Name = "toolStripStatusLabelLogin";
-            this.toolStripStatusLabelLogin.Size = new System.Drawing.Size(86, 20);
-            this.toolStripStatusLabelLogin.Text = "Login: none";
             // 
             // toolStripStatusLabelEngines
             // 
+            resources.ApplyResources(this.toolStripStatusLabelEngines, "toolStripStatusLabelEngines");
             this.toolStripStatusLabelEngines.Image = global::UniversalValveToolbox.Properties.Resources.info_16;
             this.toolStripStatusLabelEngines.Name = "toolStripStatusLabelEngines";
-            this.toolStripStatusLabelEngines.Size = new System.Drawing.Size(82, 20);
-            this.toolStripStatusLabelEngines.Text = "Engines: 00";
-            this.toolStripStatusLabelEngines.ToolTipText = "Count of available engines";
             // 
             // toolStripStatusLabelAddons
             // 
+            resources.ApplyResources(this.toolStripStatusLabelAddons, "toolStripStatusLabelAddons");
             this.toolStripStatusLabelAddons.Image = global::UniversalValveToolbox.Properties.Resources.plug_silhouette_16;
             this.toolStripStatusLabelAddons.Name = "toolStripStatusLabelAddons";
-            this.toolStripStatusLabelAddons.Size = new System.Drawing.Size(82, 20);
-            this.toolStripStatusLabelAddons.Text = "Addons: 00";
-            this.toolStripStatusLabelAddons.ToolTipText = "Count of available plugins";
             // 
             // toolStripStatusLabelRefresh
             // 
+            resources.ApplyResources(this.toolStripStatusLabelRefresh, "toolStripStatusLabelRefresh");
             this.toolStripStatusLabelRefresh.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
@@ -175,29 +150,23 @@
             this.toolStripStatusLabelRefresh.Image = global::UniversalValveToolbox.Properties.Resources.refresh_16;
             this.toolStripStatusLabelRefresh.IsLink = true;
             this.toolStripStatusLabelRefresh.Name = "toolStripStatusLabelRefresh";
-            this.toolStripStatusLabelRefresh.Size = new System.Drawing.Size(20, 20);
-            this.toolStripStatusLabelRefresh.ToolTipText = "Refresh";
             this.toolStripStatusLabelRefresh.Click += new System.EventHandler(this.toolStripStatusLabelRefresh_Click);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            resources.ApplyResources(this.openFileDialog1, "openFileDialog1");
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(473, 466);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.comboBoxEngine);
             this.Controls.Add(this.comboBoxProjects);
             this.DoubleBuffered = true;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(373, 474);
             this.Name = "FormMain";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Universal Valve Toolbox";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.statusStrip.ResumeLayout(false);

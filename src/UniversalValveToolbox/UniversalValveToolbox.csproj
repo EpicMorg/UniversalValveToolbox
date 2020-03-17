@@ -150,10 +150,6 @@
     <Compile Include="Model\Provider\DataProvider.cs" />
     <Compile Include="Model\Dto\EngineDtoModel.cs" />
     <Compile Include="Base\DtoModel.cs" />
-    <Compile Include="UI\View\IconComboBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UI\View\IconComboBoxItem.cs" />
     <Compile Include="Utils\EnvUtils.cs" />
     <Compile Include="Utils\JsonFileUtil.cs" />
     <Compile Include="Utils\LanguageManager.cs" />
@@ -188,8 +184,17 @@
     <EmbeddedResource Include="UI\FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormAbout.ru.resx">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FormAddons.resx">
       <DependentUpon>FormAddons.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormAddons.ru.resx">
+      <DependentUpon>FormAddons.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormMain.ru.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormProjects.resx">
       <DependentUpon>FormProjects.cs</DependentUpon>
@@ -230,6 +235,9 @@
     <EmbeddedResource Include="Properties\translations\MessageBoxes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>MessageBoxes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormSettings.ru.resx">
+      <DependentUpon>FormSettings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="json\addons\myOtherProgram.json" />
     <None Include="json\addons\myProgram.json" />

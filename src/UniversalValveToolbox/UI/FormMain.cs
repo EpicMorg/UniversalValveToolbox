@@ -1,5 +1,4 @@
 ﻿using EpicMorg.SteamPathsLib;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

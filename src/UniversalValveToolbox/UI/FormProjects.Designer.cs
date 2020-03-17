@@ -47,183 +47,114 @@ namespace UniversalValveToolbox {
             // 
             // comboBox_Mod
             // 
-            this.comboBox_Mod.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.comboBox_Mod, "comboBox_Mod");
             this.comboBox_Mod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Mod.FormattingEnabled = true;
-            this.comboBox_Mod.Location = new System.Drawing.Point(12, 25);
             this.comboBox_Mod.Name = "comboBox_Mod";
-            this.comboBox_Mod.Size = new System.Drawing.Size(395, 21);
-            this.comboBox_Mod.TabIndex = 3;
             this.comboBox_Mod.SelectedIndexChanged += new System.EventHandler(this.comboBox_Mod_SelectedIndexChanged);
             // 
             // buttonOK
             // 
-            this.buttonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.buttonOK, "buttonOK");
             this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonOK.Location = new System.Drawing.Point(251, 225);
             this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(75, 23);
-            this.buttonOK.TabIndex = 4;
-            this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.buttonCancel, "buttonCancel");
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(332, 225);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 5;
-            this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonNew
             // 
-            this.buttonNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonNew.Location = new System.Drawing.Point(413, 63);
+            resources.ApplyResources(this.buttonNew, "buttonNew");
             this.buttonNew.Name = "buttonNew";
-            this.buttonNew.Size = new System.Drawing.Size(75, 23);
-            this.buttonNew.TabIndex = 7;
-            this.buttonNew.Text = "New";
             this.buttonNew.UseVisualStyleBackColor = true;
             this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
             // 
             // buttonRemove
             // 
-            this.buttonRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonRemove.Location = new System.Drawing.Point(413, 23);
+            resources.ApplyResources(this.buttonRemove, "buttonRemove");
             this.buttonRemove.Name = "buttonRemove";
-            this.buttonRemove.Size = new System.Drawing.Size(75, 23);
-            this.buttonRemove.TabIndex = 8;
-            this.buttonRemove.Text = "Remove";
             this.buttonRemove.UseVisualStyleBackColor = true;
             this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
             // 
             // buttonBrowse
             // 
-            this.buttonBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonBrowse.Location = new System.Drawing.Point(413, 102);
+            resources.ApplyResources(this.buttonBrowse, "buttonBrowse");
             this.buttonBrowse.Name = "buttonBrowse";
-            this.buttonBrowse.Size = new System.Drawing.Size(75, 23);
-            this.buttonBrowse.TabIndex = 21;
-            this.buttonBrowse.Text = "Browse";
             this.buttonBrowse.UseVisualStyleBackColor = true;
             this.buttonBrowse.Click += new System.EventHandler(this.buttonBrowse_Click);
             // 
             // textBoxPath
             // 
-            this.textBoxPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPath.Location = new System.Drawing.Point(12, 104);
+            resources.ApplyResources(this.textBoxPath, "textBoxPath");
             this.textBoxPath.Name = "textBoxPath";
-            this.textBoxPath.Size = new System.Drawing.Size(395, 20);
-            this.textBoxPath.TabIndex = 19;
             // 
             // textBox1
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(12, 65);
+            resources.ApplyResources(this.textBox1, "textBox1");
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(395, 20);
-            this.textBox1.TabIndex = 20;
             // 
             // comboBoxEngine
             // 
-            this.comboBoxEngine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.comboBoxEngine, "comboBoxEngine");
             this.comboBoxEngine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEngine.FormattingEnabled = true;
-            this.comboBoxEngine.Location = new System.Drawing.Point(12, 143);
             this.comboBoxEngine.Name = "comboBoxEngine";
-            this.comboBoxEngine.Size = new System.Drawing.Size(395, 21);
-            this.comboBoxEngine.TabIndex = 15;
             this.comboBoxEngine.SelectedIndexChanged += new System.EventHandler(this.comboBoxEngine_SelectedIndexChanged);
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 88);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 13);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Path:";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 49);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "Name:";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 127);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 13);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "Linked engine:";
             // 
             // labelAddon
             // 
-            this.labelAddon.AutoSize = true;
-            this.labelAddon.Location = new System.Drawing.Point(12, 9);
+            resources.ApplyResources(this.labelAddon, "labelAddon");
             this.labelAddon.Name = "labelAddon";
-            this.labelAddon.Size = new System.Drawing.Size(76, 13);
-            this.labelAddon.TabIndex = 22;
-            this.labelAddon.Text = "Select Project:";
             // 
             // labelDivider
             // 
-            this.labelDivider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.labelDivider, "labelDivider");
             this.labelDivider.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelDivider.Location = new System.Drawing.Point(-18, 216);
             this.labelDivider.Name = "labelDivider";
-            this.labelDivider.Size = new System.Drawing.Size(550, 2);
-            this.labelDivider.TabIndex = 23;
             // 
             // buttonApply
             // 
-            this.buttonApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonApply.Location = new System.Drawing.Point(413, 225);
+            resources.ApplyResources(this.buttonApply, "buttonApply");
             this.buttonApply.Name = "buttonApply";
-            this.buttonApply.Size = new System.Drawing.Size(75, 23);
-            this.buttonApply.TabIndex = 28;
-            this.buttonApply.Text = "Apply";
             this.buttonApply.UseVisualStyleBackColor = true;
             this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
             // 
             // textBoxArgs
             // 
-            this.textBoxArgs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxArgs.Location = new System.Drawing.Point(12, 183);
+            resources.ApplyResources(this.textBoxArgs, "textBoxArgs");
             this.textBoxArgs.Name = "textBoxArgs";
-            this.textBoxArgs.Size = new System.Drawing.Size(395, 20);
-            this.textBoxArgs.TabIndex = 30;
             // 
             // labelArgs
             // 
-            this.labelArgs.AutoSize = true;
-            this.labelArgs.Location = new System.Drawing.Point(12, 167);
+            resources.ApplyResources(this.labelArgs, "labelArgs");
             this.labelArgs.Name = "labelArgs";
-            this.labelArgs.Size = new System.Drawing.Size(60, 13);
-            this.labelArgs.TabIndex = 29;
-            this.labelArgs.Text = "Arguments:";
             // 
             // FormProjects
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 260);
             this.Controls.Add(this.textBoxArgs);
             this.Controls.Add(this.labelArgs);
             this.Controls.Add(this.buttonApply);
@@ -241,12 +172,8 @@ namespace UniversalValveToolbox {
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.comboBox_Mod);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(516, 259);
             this.Name = "FormProjects";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Edit Projects";
             this.Load += new System.EventHandler(this.FormEditProfile_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
