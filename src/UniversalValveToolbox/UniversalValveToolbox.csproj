@@ -2,11 +2,35 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>valve.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Resources\cancel_16.png" />
+    <None Remove="Resources\checked_16.png" />
+    <None Remove="Resources\human_16.png" />
+    <None Remove="Resources\info_16.png" />
+    <None Remove="Resources\plug-silhouette_16.png" />
+    <None Remove="Resources\refresh_16.png" />
+    <None Remove="Resources\run_16.png" />
+    <None Remove="Resources\valve_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\cancel_16.png" />
+    <EmbeddedResource Include="Resources\checked_16.png" />
+    <EmbeddedResource Include="Resources\human_16.png" />
+    <EmbeddedResource Include="Resources\info_16.png" />
+    <EmbeddedResource Include="Resources\plug-silhouette_16.png" />
+    <EmbeddedResource Include="Resources\refresh_16.png" />
+    <EmbeddedResource Include="Resources\run_16.png" />
+    <EmbeddedResource Include="Resources\valve_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="StyleCop.Analyzers">
       <Version>1.2.0-beta.164</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

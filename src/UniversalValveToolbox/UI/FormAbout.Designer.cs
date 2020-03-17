@@ -55,7 +55,7 @@ namespace UniversalValveToolbox
             // 
             resources.ApplyResources(this.pictureBoxLogo, "pictureBoxLogo");
             this.pictureBoxLogo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBoxLogo.Image = Resources.valve_64;
+            //this.pictureBoxLogo.Image = Resources.valve_64;
             this.pictureBoxLogo.Name = "pictureBoxLogo";
             this.pictureBoxLogo.TabStop = false;
             // 

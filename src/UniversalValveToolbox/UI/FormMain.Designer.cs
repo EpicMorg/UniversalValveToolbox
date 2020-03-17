@@ -49,25 +49,27 @@ namespace UniversalValveToolbox
             // 
             // comboBoxProjects
             // 
-            resources.ApplyResources(this.comboBoxProjects, "comboBoxProjects");
+            //resources.ApplyResources(this.comboBoxProjects, "comboBoxProjects");
             this.comboBoxProjects.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxProjects.FormattingEnabled = true;
             this.comboBoxProjects.Items.AddRange(new object[] {
-            resources.GetString("comboBoxProjects.Items")});
+            //resources.GetString("comboBoxProjects.Items")
+            });
             this.comboBoxProjects.Name = "comboBoxProjects";
             // 
             // comboBoxEngine
             // 
-            resources.ApplyResources(this.comboBoxEngine, "comboBoxEngine");
+            //resources.ApplyResources(this.comboBoxEngine, "comboBoxEngine");
             this.comboBoxEngine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEngine.FormattingEnabled = true;
             this.comboBoxEngine.Items.AddRange(new object[] {
-            resources.GetString("comboBoxEngine.Items")});
+            //resources.GetString("comboBoxEngine.Items")
+            });
             this.comboBoxEngine.Name = "comboBoxEngine";
             // 
             // listView
             // 
-            resources.ApplyResources(this.listView, "listView");
+            //resources.ApplyResources(this.listView, "listView");
             this.listView.GridLines = true;
             this.listView.HideSelection = false;
             this.listView.LargeImageList = this.imageListLarge;
@@ -82,29 +84,29 @@ namespace UniversalValveToolbox
             // 
             // imageListLarge
             // 
-            this.imageListLarge.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListLarge.ImageStream")));
-            this.imageListLarge.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListLarge.Images.SetKeyName(0, "github-logo_24.png");
-            this.imageListLarge.Images.SetKeyName(1, "internet_24.png");
-            this.imageListLarge.Images.SetKeyName(2, "settings_24.png");
-            this.imageListLarge.Images.SetKeyName(3, "technical-support_24.png");
-            this.imageListLarge.Images.SetKeyName(4, "plug-silhouette_24.png");
-            this.imageListLarge.Images.SetKeyName(5, "info_24.png");
-            // 
-            // imageListSmall
-            // 
-            this.imageListSmall.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListSmall.ImageStream")));
-            this.imageListSmall.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListSmall.Images.SetKeyName(0, "github-logo_16.png");
-            this.imageListSmall.Images.SetKeyName(1, "internet_16.png");
-            this.imageListSmall.Images.SetKeyName(2, "settings_16.png");
-            this.imageListSmall.Images.SetKeyName(3, "technical-support_16.png");
-            this.imageListSmall.Images.SetKeyName(4, "plug-silhouette_16.png");
-            this.imageListSmall.Images.SetKeyName(5, "info_16.png");
+            //this.imageListLarge.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListLarge.ImageStream")));
+            //this.imageListLarge.TransparentColor = System.Drawing.Color.Transparent;
+            //this.imageListLarge.Images.SetKeyName(0, "github-logo_24.png");
+            //this.imageListLarge.Images.SetKeyName(1, "internet_24.png");
+            //this.imageListLarge.Images.SetKeyName(2, "settings_24.png");
+            //this.imageListLarge.Images.SetKeyName(3, "technical-support_24.png");
+            //this.imageListLarge.Images.SetKeyName(4, "plug-silhouette_24.png");
+            //this.imageListLarge.Images.SetKeyName(5, "info_24.png");
+            //// 
+            //// imageListSmall
+            //// 
+            //this.imageListSmall.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListSmall.ImageStream")));
+            //this.imageListSmall.TransparentColor = System.Drawing.Color.Transparent;
+            //this.imageListSmall.Images.SetKeyName(0, "github-logo_16.png");
+            //this.imageListSmall.Images.SetKeyName(1, "internet_16.png");
+            //this.imageListSmall.Images.SetKeyName(2, "settings_16.png");
+            //this.imageListSmall.Images.SetKeyName(3, "technical-support_16.png");
+            //this.imageListSmall.Images.SetKeyName(4, "plug-silhouette_16.png");
+            //this.imageListSmall.Images.SetKeyName(5, "info_16.png");
             // 
             // statusStrip
             // 
-            resources.ApplyResources(this.statusStrip, "statusStrip");
+            //resources.ApplyResources(this.statusStrip, "statusStrip");
             this.statusStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelSteam,
@@ -117,39 +119,39 @@ namespace UniversalValveToolbox
             // 
             // toolStripStatusLabelSteam
             // 
-            resources.ApplyResources(this.toolStripStatusLabelSteam, "toolStripStatusLabelSteam");
-            this.toolStripStatusLabelSteam.Image = Resources.cancel_16;
+            //resources.ApplyResources(this.toolStripStatusLabelSteam, "toolStripStatusLabelSteam");
+            //this.toolStripStatusLabelSteam.Image = Resources.cancel_16;
             this.toolStripStatusLabelSteam.Margin = new System.Windows.Forms.Padding(11, 3, 0, 2);
             this.toolStripStatusLabelSteam.Name = "toolStripStatusLabelSteam";
             // 
             // toolStripStatusLabelLogin
             // 
-            resources.ApplyResources(this.toolStripStatusLabelLogin, "toolStripStatusLabelLogin");
-            this.toolStripStatusLabelLogin.Image = Resources.human_16;
+            //resources.ApplyResources(this.toolStripStatusLabelLogin, "toolStripStatusLabelLogin");
+            //this.toolStripStatusLabelLogin.Image = Resources.human_16;
             this.toolStripStatusLabelLogin.Name = "toolStripStatusLabelLogin";
             // 
             // toolStripStatusLabelEngines
             // 
-            resources.ApplyResources(this.toolStripStatusLabelEngines, "toolStripStatusLabelEngines");
-            this.toolStripStatusLabelEngines.Image = Resources.info_16;
+            //resources.ApplyResources(this.toolStripStatusLabelEngines, "toolStripStatusLabelEngines");
+            //this.toolStripStatusLabelEngines.Image = Resources.info_16;
             this.toolStripStatusLabelEngines.Name = "toolStripStatusLabelEngines";
             // 
             // toolStripStatusLabelAddons
             // 
-            resources.ApplyResources(this.toolStripStatusLabelAddons, "toolStripStatusLabelAddons");
-            this.toolStripStatusLabelAddons.Image = Resources.plug_silhouette_16;
+            //resources.ApplyResources(this.toolStripStatusLabelAddons, "toolStripStatusLabelAddons");
+            //this.toolStripStatusLabelAddons.Image = Resources.plug_silhouette_16;
             this.toolStripStatusLabelAddons.Name = "toolStripStatusLabelAddons";
             // 
             // toolStripStatusLabelRefresh
             // 
-            resources.ApplyResources(this.toolStripStatusLabelRefresh, "toolStripStatusLabelRefresh");
+            //resources.ApplyResources(this.toolStripStatusLabelRefresh, "toolStripStatusLabelRefresh");
             this.toolStripStatusLabelRefresh.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.toolStripStatusLabelRefresh.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
             this.toolStripStatusLabelRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripStatusLabelRefresh.DoubleClickEnabled = true;
-            this.toolStripStatusLabelRefresh.Image = Resources.refresh_16;
+            //this.toolStripStatusLabelRefresh.Image = Resources.refresh_16;
             this.toolStripStatusLabelRefresh.IsLink = true;
             this.toolStripStatusLabelRefresh.Name = "toolStripStatusLabelRefresh";
             this.toolStripStatusLabelRefresh.Click += new System.EventHandler(this.ToolStripStatusLabelRefresh_Click);
@@ -157,11 +159,11 @@ namespace UniversalValveToolbox
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            resources.ApplyResources(this.openFileDialog1, "openFileDialog1");
+            //resources.ApplyResources(this.openFileDialog1, "openFileDialog1");
             // 
             // FormMain
             // 
-            resources.ApplyResources(this, "$this");
+            //resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.listView);

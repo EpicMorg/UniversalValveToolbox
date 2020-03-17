@@ -365,13 +365,13 @@
 
             if (steamData.SteamPid != 0)
             {
-                this.toolStripStatusLabelSteam.Image = Properties.Resources.checked_16;
+                //this.toolStripStatusLabelSteam.Image = Resources.checked_16;
                 this.toolStripStatusLabelSteam.Text = MenuNavbar.menuStrSteam + MenuNavbar.menuStrOnline;
                 this.toolStripStatusLabelSteam.ToolTipText = MenuNavbar.menuStrSteam + $"PID: {steamData.SteamPid}";
             }
             else
             {
-                this.toolStripStatusLabelSteam.Image = Properties.Resources.cancel_16;
+                //this.toolStripStatusLabelSteam.Image = Resources.cancel_16;
                 this.toolStripStatusLabelSteam.ToolTipText = string.Empty;
                 this.toolStripStatusLabelSteam.Text = MenuNavbar.menuStrSteam + MenuNavbar.menuStrOffline;
             }
