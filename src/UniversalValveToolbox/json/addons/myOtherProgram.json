@@ -1,0 +1,7 @@
+{
+  "engines": [ 243730, 10 ], //linked avalible engine(s) by id
+  "name": "My another Awesome Program",
+  "category": "catUtils", //link program to one of category
+  "bin": "C:\\program123.exe", //full path
+  "args": ""
+}

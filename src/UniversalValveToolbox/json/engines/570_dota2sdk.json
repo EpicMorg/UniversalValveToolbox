@@ -1,0 +1,22 @@
+{
+  "appid": 570,
+  "name": "Dota 2: SDK",
+  "bin": "",
+  "tools": [
+    {
+      "args": "-steam -game dota",
+      "bin": "game//bin//win64//dota2cfg.exe",
+      "name": "Dota 2 Workshop Manager (x64)"
+    },
+    {
+      "args": "-steam -game dota",
+      "bin": "game//bin//win64//dota2.exe",
+      "name": "Run Game (x64)"
+    },
+    {
+      "args": "-steam -game dota",
+      "bin": "game\\bin\\win32\\dota2.exe",
+      "name": "Run Game (x32)"
+    }
+  ]
+}

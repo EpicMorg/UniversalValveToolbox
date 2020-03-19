@@ -1,0 +1,37 @@
+{
+  "appid": 380,
+  "name": "Half-Life 2 Episode One: SDK",
+  "bin": "hl2.exe",
+  "tools": [
+    {
+      "args": "",
+      "bin": "bin//hammer.exe",
+      "name": "Valve Hammer Editor"
+    },
+    {
+      "args": "",
+      "bin": "bin//hlmv.exe",
+      "name": "Half-Life Model Viewer"
+    },
+    {
+      "args": "",
+      "bin": "bin//hlfaceposer.exe",
+      "name": "Half-Life FacePoser"
+    },
+    {
+      "args": "",
+      "bin": "bin//qc_eyes.exe",
+      "name": "QC Eyes"
+    },
+    {
+      "args": "-tools -steam -game episodic",
+      "bin": "hl2.exe",
+      "name": "Engine Tools"
+    },
+    {
+      "args": "-steam -game episodic",
+      "bin": "hl2.exe",
+      "name": "Run Game"
+    }
+  ]
+}

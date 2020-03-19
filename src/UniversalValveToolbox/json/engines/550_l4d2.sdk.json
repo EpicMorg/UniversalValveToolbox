@@ -1,0 +1,47 @@
+{
+  "appid": 550,
+  "name": "Left 4 Dead 2: SDK",
+  "bin": "left4dead2.exe",
+  "tools": [
+    {
+      "args": "-steam -game left4dead2",
+      "bin": "bin//SDKLauncher.exe",
+      "name": "Authoring Tools Launcher"
+    },
+    {
+      "args": "-steam -game left4dead2",
+      "bin": "bin//l4d2_workshop_manager.exe",
+      "name": "Left 4 Dead 2 Workshop Manager"
+    },
+    {
+      "args": "",
+      "bin": "bin//hammer.exe",
+      "name": "Valve Hammer Editor"
+    },
+    {
+      "args": "",
+      "bin": "bin//hlmv.exe",
+      "name": "Half-Life Model Viewer"
+    },
+    {
+      "args": "",
+      "bin": "bin//hlfaceposer.exe",
+      "name": "Half-Life FacePoser"
+    },
+    {
+      "args": "",
+      "bin": "bin//qc_eyes.exe",
+      "name": "QC Eyes"
+    },
+    {
+      "args": "-tools -steam -game left4dead2",
+      "bin": "left4dead2.exe",
+      "name": "Engine Tools"
+    },
+    {
+      "args": "-steam -game left4dead2",
+      "bin": "left4dead2.exe",
+      "name": "Run Game"
+    }
+  ]
+}

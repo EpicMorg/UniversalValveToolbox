@@ -1,0 +1,37 @@
+{
+  "appid": 730,
+  "name": "CSGO: SDK",
+  "bin": "csgo.exe",
+  "tools": [
+    {
+      "args": "",
+      "bin": "bin//SDKLauncher.exe",
+      "name": "Authoring Tools Launcher"
+    },
+    {
+      "args": "-nop4",
+      "bin": "bin//hammer.exe",
+      "name": "Valve Hammer Editor"
+    },
+    {
+      "args": "",
+      "bin": "bin//hlmv.exe",
+      "name": "Half-Life Model Viewer"
+    },
+    {
+      "args": "",
+      "bin": "bin//hlfaceposer.exe",
+      "name": "Half-Life FacePoser"
+    },
+    {
+      "args": "",
+      "bin": "bin//qc_eyes.exe",
+      "name": "QC Eyes"
+    },
+    {
+      "args": "-steam -game csgo",
+      "bin": "csgo.exe",
+      "name": "Run Game"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "appid": 211,
+  "name": "Source SDK 2006 2007 2009 (legacy)",
+  "bin": "swarm.exe",
+  "tools": [
+    {
+      "args": "-steam -game launcher",
+      "bin": "bin//SDKLauncher.exe",
+      "name": "Authoring Tools Launcher"
+    }
+  ]
+}

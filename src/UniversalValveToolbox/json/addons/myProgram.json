@@ -1,0 +1,7 @@
+{
+  "engines": [ 243730 ], //linked avalible engine(s) by id
+  "name": "My Awesome Program",
+  "category": "catCompileDecpmpile", //link program to one of category
+  "bin": "C:\\program.exe", //full path
+  "args": "-dev"
+}

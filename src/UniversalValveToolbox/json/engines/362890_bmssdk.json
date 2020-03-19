@@ -1,0 +1,37 @@
+{
+  "appid": 362890,
+  "name": "Black Mesa: SDK",
+  "bin": "bms.exe",
+  "tools": [
+    {
+      "args": "",
+      "bin": "bin//hammer.exe",
+      "name": "Valve Hammer Editor"
+    },
+    {
+      "args": "",
+      "bin": "bin//hlmv.exe",
+      "name": "Half-Life Model Viewer"
+    },
+    {
+      "args": "",
+      "bin": "bin//hlfaceposer.exe",
+      "name": "Half-Life FacePoser"
+    },
+    {
+      "args": "",
+      "bin": "bin//qc_eyes.exe",
+      "name": "QC Eyes"
+    },
+    {
+      "args": "-steam -game bms",
+      "bin": "bin//blackmesa_publish.exe",
+      "name": "Black Mesa Publish Tool"
+    },
+    {
+      "args": "-steam -game bms",
+      "bin": "bms.exe",
+      "name": "Run Game"
+    }
+  ]
+}

@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DE66895F-7317-45D3-B5CA-292253CE086A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>UniversalValveToolbox</RootNamespace>
+    <AssemblyName>UniversalValveToolbox</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>valve.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <PackageReference Include="EpicMorg.SteamPathsLib" Version="1.1.0.5" />
+    <PackageReference Include="kasthack.binding.wf">
+      <Version>1.2.26</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\ViewModel\FormAddonViewModel.cs" />
+    <Compile Include="Model\ViewModel\FormProjectViewModel.cs" />
+    <Compile Include="Model\ViewModel\SteamDataViewModel.cs" />
+    <Compile Include="Properties\translations\LangDict.Designer.cs">
+      <DependentUpon>LangDict.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\translations\LangDict.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LangDict.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\translations\MenuNavbar.ru.Designer.cs">
+      <DependentUpon>MenuNavbar.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\translations\MenuNavbar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MenuNavbar.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\translations\VarStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VarStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormAbout.Designer.cs">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormAddons.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormAddons.Designer.cs">
+      <DependentUpon>FormAddons.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormProjects.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormProjects.Designer.cs">
+      <DependentUpon>FormProjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormSettings.Designer.cs">
+      <DependentUpon>FormSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\translations\MenuCategories.Designer.cs">
+      <DependentUpon>MenuCategories.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\translations\MenuItems.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MenuItems.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\translations\MenuCategories.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MenuCategories.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\translations\MessageBoxes.ru.Designer.cs">
+      <DependentUpon>MessageBoxes.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\translations\MessageBoxes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MessageBoxes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Dto\AddonDtoModel.cs" />
+    <Compile Include="Model\Provider\DataProvider.cs" />
+    <Compile Include="Model\Dto\EngineDtoModel.cs" />
+    <Compile Include="Base\DtoModel.cs" />
+    <Compile Include="Utils\EnvUtils.cs" />
+    <Compile Include="Utils\JsonFileUtil.cs" />
+    <Compile Include="Utils\LanguageManager.cs" />
+    <Compile Include="Model\Dto\ToolDtoModel.cs" />
+    <Compile Include="Model\ViewModel\SettingsViewModel.cs" />
+    <Compile Include="Model\Dto\SettingsDtoModel.cs" />
+    <Compile Include="Model\Provider\LanguageProvider.cs" />
+    <Compile Include="Utils\SteamManager.cs" />
+    <Compile Include="Utils\VersionHelper.cs" />
+    <Compile Include="Model\Dto\ProjectDtoModel.cs" />
+    <EmbeddedResource Include="Properties\translations\LangDict.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LangDict.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\translations\LangDict.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LangDict.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\translations\MenuNavbar.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MenuNavbar.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\translations\MenuNavbar.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MenuNavbar.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\translations\VarStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>VarStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\translations\VarStrings.ru.resx" />
+    <EmbeddedResource Include="UI\FormAbout.resx">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormAbout.ru.resx">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormAddons.resx">
+      <DependentUpon>FormAddons.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormAddons.ru.resx">
+      <DependentUpon>FormAddons.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormMain.ru.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormProjects.resx">
+      <DependentUpon>FormProjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormProjects.ru.resx">
+      <DependentUpon>FormProjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormSettings.resx">
+      <DependentUpon>FormSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Properties\translations\MenuCategories.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MenuCategories.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\translations\MenuItems.ru.resx" />
+    <EmbeddedResource Include="Properties\translations\MenuItems.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MenuItems.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\translations\MenuCategories.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MenuCategories.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\translations\MessageBoxes.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MessageBoxes.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\translations\MessageBoxes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MessageBoxes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormSettings.ru.resx">
+      <DependentUpon>FormSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="json\addons\myOtherProgram.json" />
+    <None Include="json\addons\myProgram.json" />
+    <None Include="json\engines\1840_sfm.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\440_tf2.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\399120_prospekt.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\211_source.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\630_alienswarm.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\620_portal2.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\400_portal.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\550_l4d2.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\500_l4d.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\280_hl1source.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\360_hl1sourcedeathmatch.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\290930_hl2update.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\340_hl2lc.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\420_hl2ep2.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\380_hl2episodic.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\320_hl2dm.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\220_hl2.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\4000_garrysmod.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\570_dota2sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\300_dod.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\280740_aperturetag.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\240_css.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\730_csgo.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\362890_bmssdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\496450_jack.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\254430_hl.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\243750_ssdk2013mp.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\243730_ssdk2013sp.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\projects\test project.json" />
+    <None Include="json\settings.json" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_16.png" />
+    <None Include="Resources\checked_16.png" />
+    <None Include="Resources\human_16.png" />
+    <None Include="Resources\refresh_16.png" />
+    <None Include="Resources\valve_64.png" />
+    <None Include="Resources\info_16.png" />
+    <None Include="Resources\plug-silhouette_16.png" />
+    <None Include="Resources\run_16.png" />
+    <Content Include="valve.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
