@@ -26,7 +26,7 @@ namespace UniversalValveToolbox {
             UpdateComboBoxProject();
             UpdateComboBoxEngine();
 
-            textBox1.Bind(a => a.Text, model, a => a.SelectProject.Name);
+            textBoxName.Bind(a => a.Text, model, a => a.SelectProject.Name);
             textBoxPath.Bind(a => a.Text, model, a => a.SelectProject.Path);
             textBoxArgs.Bind(a => a.Text, model, a => a.SelectProject.Args);
 

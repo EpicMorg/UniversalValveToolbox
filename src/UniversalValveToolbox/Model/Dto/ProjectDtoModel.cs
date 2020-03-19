@@ -9,9 +9,9 @@ namespace UniversalValveToolbox.Model.Dto {
 
         public ProjectDtoModel() {
             this.engine = 0;
-            this.path = "";
-            this.name = "";
-            this.args = "";
+            this.path = string.Empty;
+            this.name = string.Empty;
+            this.args = string.Empty;
         }
 
         public int Engine {
@@ -33,7 +33,7 @@ namespace UniversalValveToolbox.Model.Dto {
             get => args;
             set => UpdateField(value, ref args);
         }
-
-        public override string ToString() => name ?? "";
+ 
+        public override string ToString() => name ?? string.Empty;
     }
 }

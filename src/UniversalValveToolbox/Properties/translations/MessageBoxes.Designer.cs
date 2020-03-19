@@ -68,5 +68,59 @@ namespace UniversalValveToolbox.Properties.translations {
                 return ResourceManager.GetString("msgInfo", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cancelled..
+        /// </summary>
+        internal static string msgTextCancelled {
+            get {
+                return ResourceManager.GetString("msgTextCancelled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Installation of.
+        /// </summary>
+        internal static string msgTextInstallationOf {
+            get {
+                return ResourceManager.GetString("msgTextInstallationOf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to not found..
+        /// </summary>
+        internal static string msgTextNotFound {
+            get {
+                return ResourceManager.GetString("msgTextNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to not installed. Do you want to install it?.
+        /// </summary>
+        internal static string msgTextNotInstalledInstall {
+            get {
+                return ResourceManager.GetString("msgTextNotInstalledInstall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to with app id.
+        /// </summary>
+        internal static string msgTextWithAppID {
+            get {
+                return ResourceManager.GetString("msgTextWithAppID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning.
+        /// </summary>
+        internal static string msgWarning {
+            get {
+                return ResourceManager.GetString("msgWarning", resourceCulture);
+            }
+        }
     }
 }

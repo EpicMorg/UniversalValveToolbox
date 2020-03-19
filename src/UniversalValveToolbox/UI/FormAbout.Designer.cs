@@ -36,7 +36,6 @@
             this.labelDivider = new System.Windows.Forms.Label();
             this.buttonOK = new System.Windows.Forms.Button();
             this.linkLabelIconSite = new System.Windows.Forms.LinkLabel();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox = new System.Windows.Forms.GroupBox();
             this.linkLabelTI = new System.Windows.Forms.LinkLabel();
             this.linkLabelFP = new System.Windows.Forms.LinkLabel();
@@ -51,9 +50,9 @@
             // 
             // pictureBoxLogo
             // 
-            resources.ApplyResources(this.pictureBoxLogo, "pictureBoxLogo");
             this.pictureBoxLogo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBoxLogo.Image = global::UniversalValveToolbox.Properties.Resources.valve_64;
+            resources.ApplyResources(this.pictureBoxLogo, "pictureBoxLogo");
             this.pictureBoxLogo.Name = "pictureBoxLogo";
             this.pictureBoxLogo.TabStop = false;
             // 
@@ -87,11 +86,6 @@
             this.linkLabelIconSite.TabStop = true;
             this.linkLabelIconSite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelIconSite_LinkClicked);
             // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
             // groupBox
             // 
             resources.ApplyResources(this.groupBox, "groupBox");
@@ -120,7 +114,6 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.labelDivider);
             this.Controls.Add(this.labelTitle);
@@ -150,7 +143,6 @@
         private System.Windows.Forms.Label labelDivider;
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.LinkLabel linkLabelIconSite;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox;
         private System.Windows.Forms.LinkLabel linkLabelTI;
         private System.Windows.Forms.LinkLabel linkLabelFP;

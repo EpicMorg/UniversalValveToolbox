@@ -10,10 +10,10 @@ namespace UniversalValveToolbox.Model.Dto {
 
         public AddonDtoModel() {
             this.engines = new int[0];
-            this.args = "";
-            this.bin = "";
-            this.name = "";
-            this.category = "";
+            this.args = string.Empty;
+            this.bin = string.Empty;
+            this.name = string.Empty;
+            this.category = string.Empty;
         }
 
         public int[] Engines {
@@ -41,7 +41,7 @@ namespace UniversalValveToolbox.Model.Dto {
             set => UpdateField(value, ref args);
         }
 
-        public override string ToString() => name ?? "";
+        public override string ToString() => name ?? string.Empty;
     }
 
 }

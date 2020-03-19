@@ -3,7 +3,7 @@ using System;
 using System.IO;
 
 namespace UniversalValveToolbox.Utils {
-    class EnvUtils {
+    internal static class EnvUtils {
         public static void PrepareVProject(string data) {
             Environment.SetEnvironmentVariable("VProject", data, EnvironmentVariableTarget.User);
         }
@@ -25,6 +25,9 @@ namespace UniversalValveToolbox.Utils {
         }
 
         public static void PrepareSFMData(string pathProject) {
+            if (pathProject == null || pathProject.Length == 0)
+                return;   
+
             var SFMpath = SteamPathsUtil.GetSteamAppManifestDataById(1840)?.Path;
 
             if (SFMpath == null)

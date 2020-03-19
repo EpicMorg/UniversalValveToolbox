@@ -120,4 +120,22 @@
   <data name="msgInfo" xml:space="preserve">
     <value>Info</value>
   </data>
+  <data name="msgTextCancelled" xml:space="preserve">
+    <value>cancelled.</value>
+  </data>
+  <data name="msgTextInstallationOf" xml:space="preserve">
+    <value>Installation of</value>
+  </data>
+  <data name="msgTextNotFound" xml:space="preserve">
+    <value>not found.</value>
+  </data>
+  <data name="msgTextNotInstalledInstall" xml:space="preserve">
+    <value>not installed. Do you want to install it?</value>
+  </data>
+  <data name="msgTextWithAppID" xml:space="preserve">
+    <value>with app id</value>
+  </data>
+  <data name="msgWarning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
 </root>

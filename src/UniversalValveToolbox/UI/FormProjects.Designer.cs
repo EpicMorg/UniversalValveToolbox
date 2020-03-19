@@ -33,11 +33,11 @@ namespace UniversalValveToolbox {
             this.buttonRemove = new System.Windows.Forms.Button();
             this.buttonBrowse = new System.Windows.Forms.Button();
             this.textBoxPath = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
             this.comboBoxEngine = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelPath = new System.Windows.Forms.Label();
+            this.labelName = new System.Windows.Forms.Label();
+            this.labelLinkedEngine = new System.Windows.Forms.Label();
             this.labelAddon = new System.Windows.Forms.Label();
             this.labelDivider = new System.Windows.Forms.Label();
             this.buttonApply = new System.Windows.Forms.Button();
@@ -95,10 +95,10 @@ namespace UniversalValveToolbox {
             resources.ApplyResources(this.textBoxPath, "textBoxPath");
             this.textBoxPath.Name = "textBoxPath";
             // 
-            // textBox1
+            // textBoxName
             // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
+            resources.ApplyResources(this.textBoxName, "textBoxName");
+            this.textBoxName.Name = "textBoxName";
             // 
             // comboBoxEngine
             // 
@@ -108,20 +108,20 @@ namespace UniversalValveToolbox {
             this.comboBoxEngine.Name = "comboBoxEngine";
             this.comboBoxEngine.SelectedIndexChanged += new System.EventHandler(this.comboBoxEngine_SelectedIndexChanged);
             // 
-            // label2
+            // labelPath
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
+            resources.ApplyResources(this.labelPath, "labelPath");
+            this.labelPath.Name = "labelPath";
             // 
-            // label1
+            // labelName
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            resources.ApplyResources(this.labelName, "labelName");
+            this.labelName.Name = "labelName";
             // 
-            // label3
+            // labelLinkedEngine
             // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
+            resources.ApplyResources(this.labelLinkedEngine, "labelLinkedEngine");
+            this.labelLinkedEngine.Name = "labelLinkedEngine";
             // 
             // labelAddon
             // 
@@ -162,11 +162,11 @@ namespace UniversalValveToolbox {
             this.Controls.Add(this.labelAddon);
             this.Controls.Add(this.buttonBrowse);
             this.Controls.Add(this.textBoxPath);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.comboBoxEngine);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelPath);
+            this.Controls.Add(this.labelName);
+            this.Controls.Add(this.labelLinkedEngine);
             this.Controls.Add(this.buttonRemove);
             this.Controls.Add(this.buttonNew);
             this.Controls.Add(this.buttonCancel);
@@ -190,11 +190,11 @@ namespace UniversalValveToolbox {
         private System.Windows.Forms.Button buttonRemove;
         private System.Windows.Forms.Button buttonBrowse;
         private System.Windows.Forms.TextBox textBoxPath;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.ComboBox comboBoxEngine;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelPath;
+        private System.Windows.Forms.Label labelName;
+        private System.Windows.Forms.Label labelLinkedEngine;
         private System.Windows.Forms.Label labelAddon;
         private System.Windows.Forms.Label labelDivider;
         private System.Windows.Forms.Button buttonApply;

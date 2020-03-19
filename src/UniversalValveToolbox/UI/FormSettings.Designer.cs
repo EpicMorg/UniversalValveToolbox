@@ -27,8 +27,10 @@
             this.labelDivider = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonOK = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.labelLang = new System.Windows.Forms.Label();
             this.comboBoxLang = new System.Windows.Forms.ComboBox();
+            this.labelTranslationBy = new System.Windows.Forms.Label();
+            this.labelTranslationAthor = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelDivider
@@ -51,10 +53,10 @@
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // labelLang
             // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
+            resources.ApplyResources(this.labelLang, "labelLang");
+            this.labelLang.Name = "labelLang";
             // 
             // comboBoxLang
             // 
@@ -65,12 +67,25 @@
             resources.GetString("comboBoxLang.Items")});
             this.comboBoxLang.Name = "comboBoxLang";
             // 
+            // labelTranslationBy
+            // 
+            resources.ApplyResources(this.labelTranslationBy, "labelTranslationBy");
+            this.labelTranslationBy.Name = "labelTranslationBy";
+            // 
+            // labelTranslationAthor
+            // 
+            this.labelTranslationAthor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            resources.ApplyResources(this.labelTranslationAthor, "labelTranslationAthor");
+            this.labelTranslationAthor.Name = "labelTranslationAthor";
+            // 
             // FormSettings
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelTranslationAthor);
+            this.Controls.Add(this.labelTranslationBy);
             this.Controls.Add(this.comboBoxLang);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.labelLang);
             this.Controls.Add(this.labelDivider);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
@@ -89,7 +104,9 @@
         private System.Windows.Forms.Label labelDivider;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonOK;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelLang;
         private System.Windows.Forms.ComboBox comboBoxLang;
+        private System.Windows.Forms.Label labelTranslationBy;
+        private System.Windows.Forms.Label labelTranslationAthor;
     }
 }

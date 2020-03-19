@@ -127,6 +127,15 @@
   <data name="label5.Text" xml:space="preserve">
     <value>Язык:</value>
   </data>
+  <data name="label_translation_by.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 13</value>
+  </data>
+  <data name="label_translation_by.Text" xml:space="preserve">
+    <value>Автор перевода:</value>
+  </data>
+  <data name="label_translate_author.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAAAAAAAEAIADbMQAAZgAAAICAAAABACAAKAgBAEEyAABAQAAAAQAgAChCAABpOgEAMDAAAAEA

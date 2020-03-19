@@ -71,8 +71,8 @@ namespace UniversalValveToolbox {
                 var indexProject = comboBoxProjects.Items.IndexOf(lastSelectedProject.Name);
                 comboBoxProjects.SelectedIndex = indexProject;
 
-                EnvUtils.PrepareVProject($"{SelectedProject?.Path ?? ""}");
-                EnvUtils.PrepareSFMData($"{SelectedProject?.Path ?? ""}");
+                EnvUtils.PrepareVProject($"{SelectedProject?.Path ?? string.Empty}");
+                EnvUtils.PrepareSFMData($"{SelectedProject?.Path ?? string.Empty}");
             }
         }
         private void SaveLastSelectedProject() {
@@ -345,7 +345,7 @@ namespace UniversalValveToolbox {
             }
             else {
                 toolStripStatusLabelSteam.Image = Properties.Resources.cancel_16;
-                toolStripStatusLabelSteam.ToolTipText = "";
+                toolStripStatusLabelSteam.ToolTipText = string.Empty;
                 toolStripStatusLabelSteam.Text = Properties.translations.MenuNavbar.menuStrSteam + Properties.translations.MenuNavbar.menuStrOffline;
             }
 
@@ -365,15 +365,15 @@ namespace UniversalValveToolbox {
             var selectItem = listView.SelectedItems[0];
 
             var selectItemText = selectItem.Text;
-            EnvUtils.PrepareVProject($"{SelectedProject?.Path ?? ""}");
-            EnvUtils.PrepareSFMData($"{SelectedProject?.Path ?? ""}");
+            EnvUtils.PrepareVProject($"{SelectedProject?.Path ?? string.Empty}");
+            EnvUtils.PrepareSFMData($"{SelectedProject?.Path ?? string.Empty}");
 
             if (selectItem.Group == listViewGroupTools) {
                 if (RUN_PROJECT_ID.Equals(selectItem.Tag) && SelectedProject != null) {
                     var pathEngineBin = Path.Combine(SteamPathsUtil.GetSteamAppManifestDataById(SelectedEngine.Appid).Path, SelectedEngine.Bin);
 
                     
-                    Process.Start(pathEngineBin, $"-steam -game \"{SelectedProject?.Path ?? ""}\" {SelectedProject.Args}");
+                    Process.Start(pathEngineBin, $"-steam -game \"{SelectedProject?.Path ?? string.Empty}\" {SelectedProject.Args}");
                 }
 
                 var selectedTool = SelectedEngine.Tools.FirstOrDefault(tool => tool.Name == selectItemText);
@@ -387,21 +387,21 @@ namespace UniversalValveToolbox {
                             string finalArg = $"-steam {selectedTool.Args}";
 
                             if (!finalArg.Contains("-game")) {
-                                finalArg += $"-game \"{SelectedProject?.Path ?? ""}\"";
+                                finalArg += $"-game \"{SelectedProject?.Path ?? string.Empty}\"";
                             }
 
                             Process.Start(toolPath, finalArg);
                         }
                         else
-                            MessageBox.Show($"\"{selectedTool.Name}\" no found.\n{toolPath}", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show($"\"{selectedTool.Name}\" {Properties.translations.MessageBoxes.msgTextNotFound}\n{toolPath}", Properties.translations.MessageBoxes.msgWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else {
-                        DialogResult dialogResult = MessageBox.Show($"\"{SelectedEngine.Name}\" with app id \"{SelectedEngine.Appid}\" not installed. Do you want to install it?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        DialogResult dialogResult = MessageBox.Show($"\"{SelectedEngine.Name}\" {Properties.translations.MessageBoxes.msgTextWithAppID} \"{SelectedEngine.Appid}\" {Properties.translations.MessageBoxes.msgTextNotInstalledInstall}", Properties.translations.MessageBoxes.msgWarning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                         if (dialogResult == DialogResult.Yes) {
                             Process.Start($"steam://install/{SelectedEngine.Appid}");
                         }
                         else if (dialogResult == DialogResult.No) {
-                            MessageBox.Show($"Installation of \"{SelectedEngine.Name}\" with app id \"{SelectedEngine.Appid}\" canceled.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                            MessageBox.Show($"{Properties.translations.MessageBoxes.msgTextInstallationOf} \"{SelectedEngine.Name}\" {Properties.translations.MessageBoxes.msgTextWithAppID} \"{SelectedEngine.Appid}\" {Properties.translations.MessageBoxes.msgTextCancelled}", Properties.translations.MessageBoxes.msgInfo, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         }
                     }
                 }
@@ -415,7 +415,7 @@ namespace UniversalValveToolbox {
                     if (File.Exists(addonPath))
                         Process.Start(addonPath, selectedAddons.Args);
                     else
-                        MessageBox.Show($"\"{selectedAddons.Name}\" no found.\n{addonPath}", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show($"\"{selectedAddons.Name}\" {Properties.translations.MessageBoxes.msgTextNotFound}\n{addonPath}", Properties.translations.MessageBoxes.msgWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 }
             }

@@ -123,4 +123,7 @@
   <data name="ru-RU" xml:space="preserve">
     <value>Russian</value>
   </data>
+  <data name="strLangAuthor" xml:space="preserve">
+    <value>EpicMorg</value>
+  </data>
 </root>
