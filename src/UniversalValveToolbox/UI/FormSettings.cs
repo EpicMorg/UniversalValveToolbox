@@ -20,7 +20,7 @@ namespace UniversalValveToolbox {
         }
 
         private void FormSettings_Load(object sender, EventArgs e) {
-            labelTranslationAthor.Text = Properties.translations.LangDict.strLangAuthor;
+            labelTranslationAthor.Text = Properties.translations.VarStrings.strLangAuthor;
         }
     }
 }

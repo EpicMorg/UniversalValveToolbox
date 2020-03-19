@@ -77,14 +77,5 @@ namespace UniversalValveToolbox.Properties.translations {
                 return ResourceManager.GetString("ru-RU", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to EpicMorg.
-        /// </summary>
-        internal static string strLangAuthor {
-            get {
-                return ResourceManager.GetString("strLangAuthor", resourceCulture);
-            }
-        }
     }
 }

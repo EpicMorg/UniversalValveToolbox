@@ -61,6 +61,15 @@ namespace UniversalValveToolbox.Properties.translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to EpicMorg.
+        /// </summary>
+        internal static string strLangAuthor {
+            get {
+                return ResourceManager.GetString("strLangAuthor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;New Addon&gt;.
         /// </summary>
         internal static string strNewAddon {
