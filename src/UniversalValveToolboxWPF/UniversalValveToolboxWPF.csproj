@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <StartupObject>UniversalValveToolboxWPF.App</StartupObject>
+    <ApplicationIcon>valve.ico</ApplicationIcon>
+    <Version>2.0.0.0</Version>
+    <PackageId>EpicMorg.Universal.Valve.Toolbox</PackageId>
+    <Company>EpicMorg</Company>
+    <Authors>EpicMorg</Authors>
+    <Title>Universal Valve Toolbox</Title>
+    <Product>Universal Valve Toolbox</Product>
+    <Description>Universal Valve Toolbox</Description>
+    <Copyright>Copyright © EpicMorg</Copyright>
+    <RepositoryType>git</RepositoryType>
+    <PackageIcon>valve.ico</PackageIcon>
+    <RepositoryUrl>https://github.com/EpicMorg/UniversalValveToolbox</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/EpicMorg/UniversalValveToolbox</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>valve toolbox epicmorg sdk source sourcesdk ssdk</PackageTags>
+    <PackageReleaseNotes>Initial</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EpicMorg.SteamPathsLib" Version="1.1.0.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="valve.ico">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
