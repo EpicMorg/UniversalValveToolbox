@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UniversalValveToolboxWPF"
         mc:Ignorable="d"
-        Title="Universal Valve Toolbox" Height="505" Width="490">
+        
+        Title="Universal Valve Toolbox"
+        Height="505"
+        Width="490">
     <Grid>
-
+        
+        <ListView x:Name="listView" Margin="10,10,10,10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <!-- Add button to window -->
     </Grid>
 </Window>
