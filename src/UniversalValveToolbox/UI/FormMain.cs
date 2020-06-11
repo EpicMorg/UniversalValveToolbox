@@ -166,7 +166,11 @@ namespace UniversalValveToolbox {
 
         private void UpdateEngineList() {
             var dataProvider = new DataProvider();
-            Engines = dataProvider.Engines.Where(engine => SteamPathsUtil.GetSteamAppDataById(engine.Appid) != null).ToArray();
+            Engines = dataProvider.Engines.Where(engine => {
+                var engineAppData = SteamPathsUtil.GetSteamAppDataById(engine.Appid);
+
+                return engineAppData != null && engineAppData.Installed;
+             }).ToArray();
 
             if (Engines != null && Engines.Length != 0) {
                 comboBoxEngine.Enabled = true;
@@ -327,7 +331,7 @@ namespace UniversalValveToolbox {
         }
 
         private void UpdateInfoNavigationBar() {
-            var countAvailableEngines = dataProvider.Engines.Length;
+            var countAvailableEngines = Engines.Length;
             var countAvailableProjects = dataProvider.Projects.Length;
             var countAvailableAddons = dataProvider.Addons.Length;
 
