@@ -391,7 +391,7 @@ namespace UniversalValveToolbox {
                             string finalArg = $"-steam {selectedTool.Args}";
 
                             if (!finalArg.Contains("-game")) {
-                                finalArg += $"-game \"{SelectedProject?.Path ?? string.Empty}\"";
+                                finalArg += $" -game \"{SelectedProject?.Path ?? string.Empty}\" ";
                             }
 
                             Process.Start(toolPath, finalArg);

@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>valve.ico</ApplicationIcon>
+    <ApplicationIcon>toolbox.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -56,9 +56,6 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="squirrel.windows">
-      <Version>2.0.1</Version>
-    </PackageReference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -207,14 +204,23 @@
     <EmbeddedResource Include="UI\FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormAbout.ru-RU.resx">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FormAbout.ru.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormAddons.resx">
       <DependentUpon>FormAddons.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormAddons.ru-RU.resx">
+      <DependentUpon>FormAddons.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FormAddons.ru.resx">
       <DependentUpon>FormAddons.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormMain.ru-RU.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormMain.ru.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
@@ -224,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormProjects.ru-RU.resx">
+      <DependentUpon>FormProjects.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormProjects.ru.resx">
       <DependentUpon>FormProjects.cs</DependentUpon>
@@ -261,6 +270,9 @@
     <EmbeddedResource Include="Properties\translations\MessageBoxes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>MessageBoxes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormSettings.ru-RU.resx">
+      <DependentUpon>FormSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormSettings.ru.resx">
       <DependentUpon>FormSettings.cs</DependentUpon>
@@ -364,6 +376,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="toolbox.ico" />
     <None Include="Resources\cancel_16.png" />
     <None Include="Resources\checked_16.png" />
     <None Include="Resources\human_16.png" />
@@ -372,11 +385,11 @@
     <None Include="Resources\info_16.png" />
     <None Include="Resources\plug-silhouette_16.png" />
     <None Include="Resources\run_16.png" />
-    <Content Include="steam_api\steam_api.dll">
+    <None Include="Resources\toolbox64.png" />
+    <Content Include="steam_api.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="steam_api\steam_api64.dll" />
-    <Content Include="valve.ico" />
+    <Content Include="steam_api64.dll" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
