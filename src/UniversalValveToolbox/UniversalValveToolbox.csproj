@@ -369,10 +369,18 @@
     <None Include="Resources\info_16.png" />
     <None Include="Resources\plug-silhouette_16.png" />
     <None Include="Resources\run_16.png" />
+    <Content Include="steam_api\steam_api.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="steam_api\steam_api64.dll" />
     <Content Include="valve.ico" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\retail\" />
+    <ProjectReference Include="..\Facepunch.Steamworks\Facepunch.Steamworks\Facepunch.Steamworks.Win32.csproj">
+      <Project>{ed9b29e8-0f90-4f9e-bd87-f5014f5fcf85}</Project>
+      <Name>Facepunch.Steamworks.Win32</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
