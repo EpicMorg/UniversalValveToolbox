@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Steamworks;
+using System;
 using System.Windows.Forms;
 using UniversalValveToolbox.Model.Provider;
 using UniversalValveToolbox.Utils;
@@ -10,6 +11,8 @@ namespace UniversalValveToolbox {
         /// </summary>
         [STAThread]
         static void Main() {
+            SteamClient.Init(480);
+
             var dataProvide = new DataProvider();
             var currSettings = dataProvide.Settings;
 

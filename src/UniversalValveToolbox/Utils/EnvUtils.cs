@@ -1,4 +1,4 @@
-﻿using EpicMorg.SteamPathsLib;
+﻿using Steamworks;
 using System;
 using System.IO;
 
@@ -28,7 +28,7 @@ namespace UniversalValveToolbox.Utils {
             if (pathProject == null || pathProject.Length == 0)
                 return;   
 
-            var SFMpath = SteamPathsUtil.GetSteamAppManifestDataById(1840)?.Path;
+            var SFMpath = SteamApps.AppInstallDir(1840);
 
             if (SFMpath == null)
                 return;

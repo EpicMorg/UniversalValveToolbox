@@ -1,4 +1,4 @@
-﻿using EpicMorg.SteamPathsLib;
+﻿using Steamworks;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -167,10 +167,9 @@ namespace UniversalValveToolbox {
         private void UpdateEngineList() {
             var dataProvider = new DataProvider();
             Engines = dataProvider.Engines.Where(engine => {
-                var engineAppData = SteamPathsUtil.GetSteamAppDataById(engine.Appid);
-
-                return engineAppData != null && engineAppData.Installed;
-             }).ToArray();
+                var isInstall = SteamApps.IsAppInstalled(engine.Appid);
+                return isInstall;
+            }).ToArray();
 
             if (Engines != null && Engines.Length != 0) {
                 comboBoxEngine.Enabled = true;
@@ -222,7 +221,7 @@ namespace UniversalValveToolbox {
             if (SelectedEngine == null)
                 return;
 
-            var pathSelectedEngine = SteamPathsUtil.GetSteamAppManifestDataById(SelectedEngine.Appid)?.Path;
+            var pathSelectedEngine = SteamApps.AppInstallDir(SelectedEngine.Appid);
 
             if (pathSelectedEngine != null) {
                 var pairPathIconTools = SelectedEngine.Tools
@@ -260,20 +259,16 @@ namespace UniversalValveToolbox {
             listView.Items.AddRange(itemsTools);
 
 
-            var engineData = SteamPathsUtil.GetSteamAppManifestDataById(SelectedEngine.Appid);
+            var enginePath = SteamApps.AppInstallDir(SelectedEngine.Appid);
             var isAvailableProjectBySelectEngine = Projects.Any(project => project.Engine == SelectedEngine.Appid);
 
-            if (engineData != null && isAvailableProjectBySelectEngine) {
-                var enginePath = engineData.Path;
+            if (enginePath != null && isAvailableProjectBySelectEngine) {
+                var iconPathEngine = Path.Combine(enginePath, SelectedEngine.Bin);
 
-                if (enginePath != null) {
-                    var iconPathEngine = Path.Combine(enginePath, SelectedEngine.Bin);
+                var runProjectListViewItem = new ListViewItem(Properties.translations.MenuItems.itmRunProject, iconPathEngine, listViewGroupTools);
+                runProjectListViewItem.Tag = RUN_PROJECT_ID;
 
-                    var runProjectListViewItem = new ListViewItem(Properties.translations.MenuItems.itmRunProject, iconPathEngine, listViewGroupTools);
-                    runProjectListViewItem.Tag = RUN_PROJECT_ID;
-
-                    listView.Items.Add(runProjectListViewItem);
-                }
+                listView.Items.Add(runProjectListViewItem);
             }
         }
 
@@ -289,7 +284,7 @@ namespace UniversalValveToolbox {
             if (SelectedEngine == null)
                 return;
 
-            var pathSelectedEngine = SteamPathsUtil.GetSteamAppManifestDataById(SelectedEngine.Appid)?.Path;
+            var pathSelectedEngine = SteamApps.AppInstallDir(SelectedEngine.Appid);
             var addonsSelectedEngine = dataProvider.Addons.Where(a => a.Engines.Contains(SelectedEngine.Appid));
 
 
@@ -374,15 +369,15 @@ namespace UniversalValveToolbox {
 
             if (selectItem.Group == listViewGroupTools) {
                 if (RUN_PROJECT_ID.Equals(selectItem.Tag) && SelectedProject != null) {
-                    var pathEngineBin = Path.Combine(SteamPathsUtil.GetSteamAppManifestDataById(SelectedEngine.Appid).Path, SelectedEngine.Bin);
+                    var pathEngineBin = Path.Combine(SteamApps.AppInstallDir(SelectedEngine.Appid), SelectedEngine.Bin);
 
-                    
+
                     Process.Start(pathEngineBin, $"-steam -game \"{SelectedProject?.Path ?? string.Empty}\" {SelectedProject.Args}");
                 }
 
                 var selectedTool = SelectedEngine.Tools.FirstOrDefault(tool => tool.Name == selectItemText);
                 if (selectedTool != null) {
-                    var selectedEnginePath = SteamPathsUtil.GetSteamAppManifestDataById(SelectedEngine.Appid)?.Path;
+                    var selectedEnginePath = SteamApps.AppInstallDir(SelectedEngine.Appid);
 
                     if (selectedEnginePath != null) {
                         var toolPath = Path.Combine(selectedEnginePath, selectedTool.Bin);
@@ -394,7 +389,15 @@ namespace UniversalValveToolbox {
                                 finalArg += $" -game \"{SelectedProject?.Path ?? string.Empty}\" ";
                             }
 
-                            Process.Start(toolPath, finalArg);
+                            SteamClient.Shutdown();
+                            SteamClient.Init(Convert.ToUInt32(SelectedEngine.Appid));
+                            var process = Process.Start(toolPath, finalArg);
+                            process.EnableRaisingEvents = true;
+                            process.Exited += (a, b) => {
+                                SteamClient.Shutdown();
+                                SteamClient.Init(480);
+                            };
+
                         }
                         else
                             MessageBox.Show($"\"{selectedTool.Name}\" {Properties.translations.MessageBoxes.msgTextNotFound}\n{toolPath}", Properties.translations.MessageBoxes.msgWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);

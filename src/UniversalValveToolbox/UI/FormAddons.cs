@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using UniversalValveToolbox.Utils;
 using System.Globalization;
 using System.Collections;
-using EpicMorg.SteamPathsLib;
+using Steamworks;
 
 namespace UniversalValveToolbox {
     public partial class FormAddons : Form {
@@ -30,7 +30,7 @@ namespace UniversalValveToolbox {
                 .Cast<DictionaryEntry>()
                 .ToArray();
 
-            model = new FormAddonViewModel(dataProvider.Addons, dataProvider.Engines.Where(engine => SteamPathsUtil.GetSteamAppDataById(engine.Appid) != null).ToArray(), categories);
+            model = new FormAddonViewModel(dataProvider.Addons, dataProvider.Engines.Where(engine => isSteamAppInstall(engine.Appid)).ToArray(), categories);
 
             UpdateAddonsComboBox();
             UpdateAddonCategoryComboBox();
@@ -104,6 +104,11 @@ namespace UniversalValveToolbox {
 
                 comboBox_Addon.SelectedIndex = 0;
             }
+        }
+
+        private bool isSteamAppInstall(int appId) {
+            var isInstall = SteamApps.IsAppInstalled(appId);
+            return isInstall;
         }
 
         private void UpdateAddonCategoryComboBox() {

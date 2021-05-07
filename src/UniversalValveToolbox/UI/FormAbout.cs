@@ -13,6 +13,7 @@ namespace UniversalValveToolbox {
             System.Reflection.Assembly assemblykasthackbindingwf = System.Reflection.Assembly.LoadFrom("kasthack.binding.wf.dll");
             System.Reflection.Assembly assemblyGameloopVdf = System.Reflection.Assembly.LoadFrom("Gameloop.Vdf.dll");
             System.Reflection.Assembly assemblyNewtonsoftJson = System.Reflection.Assembly.LoadFrom("Newtonsoft.Json.dll");
+
             Version verEpicMorgSteamPathsLib = assemblyEpicMorgSteamPathsLib.GetName().Version;
             Version verFacepunchSteamworksWin32 = assemblyFacepunchSteamworksWin32.GetName().Version;
             Version verkasthackbindingwf = assemblykasthackbindingwf.GetName().Version;
