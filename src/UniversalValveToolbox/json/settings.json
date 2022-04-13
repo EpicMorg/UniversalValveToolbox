@@ -1,6 +1,11 @@
 {
-  "LastSelectedProject": null, 
+  "LastSelectedProject": null,
   "Language": "en-US",
   "AvailableLanguages": [ "en-US", "ru-RU" ],
-  "Theme": null
+  "Theme": null,
+  "ToolboxMod": "bundle", //retail, bundle, dev
+  "ToolsAppId": 1966980, //set your game real steam sdk id for init SteamApi or use 480 stub
+  "BundleAppID": 1950750, //set your gane steam id for get fs path
+  "DevEnginePath": "C://", //set you game root folder if you run dev-mod
+  "DevEngineName": "My Future Game (engine)" //set you game root folder if you run dev-mod
 }

@@ -11,12 +11,12 @@ namespace UniversalValveToolbox {
         /// </summary>
         [STAThread]
         static void Main() {
-            SteamClient.Init(480);
-
             var dataProvide = new DataProvider();
             var currSettings = dataProvide.Settings;
 
             LanguageManager.UpdateLanguage(currSettings.Language);
+
+            SteamClient.Init(currSettings.ToolsAppId);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
