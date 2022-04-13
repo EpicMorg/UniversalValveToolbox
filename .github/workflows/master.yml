@@ -1,0 +1,40 @@
+name: Universal Valve Toolbox - master
+
+on:
+  push:
+    branches: [ master ]
+
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
+jobs:
+  build:
+    runs-on: windows-latest
+  
+    steps:
+
+    - name: Set the value
+      run: echo "ACTIONS_ALLOW_UNSECURE_COMMANDS=true" >> $GITHUB_ENV
+
+    - name: Checkout Code
+      uses: actions/checkout@master
+      with:
+        clean: true
+        fetch-depth: 0
+        lfs: true
+        submodules: true
+
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.1
+      with: 
+        vs-prerelease: true
+        msbuild-architecture: x86
+
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1
+
+    - name: Restore NuGet Packages
+      run: nuget restore src/UniversalValveToolbox.sln
+ 
+    - name: Build Release
+      run: msbuild src/UniversalValveToolbox.sln /p:Configuration=Release
