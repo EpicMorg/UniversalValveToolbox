@@ -1,8 +1,8 @@
-name: Universal Valve Toolbox - develop
+name: Universal Valve Toolbox - pull request to master
 
 on:
-  push:
-    branches: [ develop ]
+  pull_request:
+    branches: [ master ]
 
 env:
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
@@ -38,3 +38,6 @@ jobs:
  
     - name: Build Debug
       run: msbuild src/UniversalValveToolbox.sln /p:Configuration=Debug
+
+    - name: Build Release
+      run: msbuild src/UniversalValveToolbox.sln /p:Configuration=Release
