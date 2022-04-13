@@ -71,7 +71,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <PackageReference Include="EpicMorg.SteamPathsLib" Version="1.1.0.6" />
+    <!--<PackageReference Include="EpicMorg.SteamPathsLib" Version="1.1.0.6" />-->
     <PackageReference Include="kasthack.binding.wf">
       <Version>1.2.26</Version>
     </PackageReference>
@@ -280,6 +280,12 @@
     <None Include="json\addons\myOtherProgram.json" />
     <None Include="json\addons\myProgram.json" />
     <None Include="json\engines\1840_sfm.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\1950750_kl.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\1966980_bst.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="json\engines\440_tf2.sdk.json">
