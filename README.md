@@ -5,6 +5,8 @@
 # Description
 Toolbox for easy launching some officials Valve's SDK such as Source SDK 2013 SP or MP.
 
+`Universal Valve Toolbox is not affiliated with Valve Corporation.`
+
 # Settings
 Mod could be changed at `settings.json` with `ToolboxMod` section. Supported mods: `retail`, `bundle`, `dev`.
 ## Retail

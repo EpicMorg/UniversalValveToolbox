@@ -40,11 +40,9 @@
             this.labelIconsBy = new System.Windows.Forms.Label();
             this.linkLabelthoseicons = new System.Windows.Forms.LinkLabel();
             this.linkLabelsmashicons = new System.Windows.Forms.LinkLabel();
-            this.labelEpicMorgSteamPathsLibdll = new System.Windows.Forms.Label();
             this.labelFacepunchSteamworksWin32dll = new System.Windows.Forms.Label();
             this.labelkasthackbindingwfdll = new System.Windows.Forms.Label();
             this.labelNewtonsoftJsondll = new System.Windows.Forms.Label();
-            this.labelGameloopVdf = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -87,8 +85,8 @@
             // 
             // pictureBoxLogo
             // 
-            resources.ApplyResources(this.pictureBoxLogo, "pictureBoxLogo");
             this.pictureBoxLogo.Image = global::UniversalValveToolbox.Properties.Resources.toolbox64;
+            resources.ApplyResources(this.pictureBoxLogo, "pictureBoxLogo");
             this.pictureBoxLogo.Name = "pictureBoxLogo";
             this.pictureBoxLogo.TabStop = false;
             // 
@@ -117,12 +115,6 @@
             this.linkLabelsmashicons.TabStop = true;
             this.linkLabelsmashicons.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelSI_LinkClicked);
             // 
-            // labelEpicMorgSteamPathsLibdll
-            // 
-            resources.ApplyResources(this.labelEpicMorgSteamPathsLibdll, "labelEpicMorgSteamPathsLibdll");
-            this.labelEpicMorgSteamPathsLibdll.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelEpicMorgSteamPathsLibdll.Name = "labelEpicMorgSteamPathsLibdll";
-            // 
             // labelFacepunchSteamworksWin32dll
             // 
             resources.ApplyResources(this.labelFacepunchSteamworksWin32dll, "labelFacepunchSteamworksWin32dll");
@@ -141,20 +133,12 @@
             this.labelNewtonsoftJsondll.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.labelNewtonsoftJsondll.Name = "labelNewtonsoftJsondll";
             // 
-            // labelGameloopVdf
-            // 
-            resources.ApplyResources(this.labelGameloopVdf, "labelGameloopVdf");
-            this.labelGameloopVdf.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelGameloopVdf.Name = "labelGameloopVdf";
-            // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Controls.Add(this.labelEpicMorgSteamPathsLibdll);
             this.groupBox1.Controls.Add(this.labelkasthackbindingwfdll);
-            this.groupBox1.Controls.Add(this.labelGameloopVdf);
             this.groupBox1.Controls.Add(this.labelNewtonsoftJsondll);
             this.groupBox1.Controls.Add(this.labelFacepunchSteamworksWin32dll);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
@@ -200,11 +184,9 @@
         private System.Windows.Forms.Label labelIconsBy;
         private System.Windows.Forms.LinkLabel linkLabelthoseicons;
         private System.Windows.Forms.LinkLabel linkLabelsmashicons;
-        private System.Windows.Forms.Label labelEpicMorgSteamPathsLibdll;
         private System.Windows.Forms.Label labelFacepunchSteamworksWin32dll;
         private System.Windows.Forms.Label labelkasthackbindingwfdll;
         private System.Windows.Forms.Label labelNewtonsoftJsondll;
-        private System.Windows.Forms.Label labelGameloopVdf;
         private System.Windows.Forms.GroupBox groupBox1;
     }
 }
