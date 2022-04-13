@@ -1,5 +1,6 @@
-﻿using EpicMorg.SteamPathsLib;
+﻿
 using kasthack.binding.wf;
+using Steamworks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace UniversalValveToolbox {
         public FormProjects() {
             InitializeComponent();
              
-            model = new FormProjectViewModel(dataProvider.Projects, dataProvider.Engines.Where(engine => SteamPathsUtil.GetSteamAppDataById(engine.Appid) != null).ToArray());
+            model = new FormProjectViewModel(dataProvider.Projects, dataProvider.Engines.Where(engine => isAppInstalled(engine.Appid)).ToArray());
 
             UpdateComboBoxProject();
             UpdateComboBoxEngine();
@@ -33,6 +34,11 @@ namespace UniversalValveToolbox {
             comboBox_Mod.Bind(a => a.SelectedIndex, model, a => a.SelectProjectIndex);
             comboBoxEngine.Bind(a => a.SelectedIndex, model, a => a.SelectEngineIndex);
         }
+
+        private bool isAppInstalled(int appId) {
+            var isInstall = SteamApps.IsAppInstalled(appId);
+            return isInstall;
+        } 
 
         private void Model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e) {
             UpdateComboBoxEngine();

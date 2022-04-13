@@ -1,0 +1,3 @@
+[submodule "src/Facepunch.Steamworks"]
+	path = src/Facepunch.Steamworks
+	url = https://github.com/Facepunch/Facepunch.Steamworks.git

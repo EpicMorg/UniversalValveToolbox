@@ -1,4 +1,5 @@
-﻿using EpicMorg.SteamPathsLib;
+﻿using Steamworks;
+using System.Diagnostics;
 using UniversalValveToolbox.Model.ViewModel;
 
 namespace UniversalValveToolbox.Utils {
@@ -6,8 +7,9 @@ namespace UniversalValveToolbox.Utils {
         public static SteamDataViewModel SteamData {
             get {
                 var result = new SteamDataViewModel();
-                result.SteamPid = SteamPathsUtil.GetActiveProcessSteamData()?.PID ?? 0;
-                result.UserNameSteam = SteamPathsUtil.GetSteamData()?.LastGameNameUsed ?? null;
+
+                result.SteamPid = Process.GetProcessesByName("steam")[0]?.Id ?? 0;
+                result.UserNameSteam = SteamClient.Name ?? null;
 
                 return result;
             }            

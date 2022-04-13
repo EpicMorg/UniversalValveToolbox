@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Steamworks;
+using System;
 using System.Windows.Forms;
 using UniversalValveToolbox.Model.Provider;
 using UniversalValveToolbox.Utils;
@@ -14,6 +15,8 @@ namespace UniversalValveToolbox {
             var currSettings = dataProvide.Settings;
 
             LanguageManager.UpdateLanguage(currSettings.Language);
+
+            SteamClient.Init(currSettings.ToolsAppId);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

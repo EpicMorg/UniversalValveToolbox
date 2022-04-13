@@ -13,6 +13,9 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
@@ -33,7 +36,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>valve.ico</ApplicationIcon>
+    <ApplicationIcon>toolbox.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
@@ -51,7 +74,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <PackageReference Include="EpicMorg.SteamPathsLib" Version="1.1.0.6" />
+    <!--<PackageReference Include="EpicMorg.SteamPathsLib" Version="1.1.0.6" />-->
     <PackageReference Include="kasthack.binding.wf">
       <Version>1.2.26</Version>
     </PackageReference>
@@ -184,14 +207,23 @@
     <EmbeddedResource Include="UI\FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormAbout.ru-RU.resx">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FormAbout.ru.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormAddons.resx">
       <DependentUpon>FormAddons.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormAddons.ru-RU.resx">
+      <DependentUpon>FormAddons.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FormAddons.ru.resx">
       <DependentUpon>FormAddons.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormMain.ru-RU.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormMain.ru.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
@@ -201,6 +233,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormProjects.ru-RU.resx">
+      <DependentUpon>FormProjects.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormProjects.ru.resx">
       <DependentUpon>FormProjects.cs</DependentUpon>
@@ -239,12 +274,21 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>MessageBoxes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormSettings.ru-RU.resx">
+      <DependentUpon>FormSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FormSettings.ru.resx">
       <DependentUpon>FormSettings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="json\addons\myOtherProgram.json" />
     <None Include="json\addons\myProgram.json" />
     <None Include="json\engines\1840_sfm.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\1950750_kl.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\1966980_bst.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="json\engines\440_tf2.sdk.json">
@@ -341,6 +385,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="toolbox.ico" />
     <None Include="Resources\cancel_16.png" />
     <None Include="Resources\checked_16.png" />
     <None Include="Resources\human_16.png" />
@@ -349,7 +394,18 @@
     <None Include="Resources\info_16.png" />
     <None Include="Resources\plug-silhouette_16.png" />
     <None Include="Resources\run_16.png" />
-    <Content Include="valve.ico" />
+    <None Include="Resources\toolbox64.png" />
+    <Content Include="steam_api.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="steam_api64.dll" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Facepunch.Steamworks\Facepunch.Steamworks\Facepunch.Steamworks.Win32.csproj">
+      <Project>{ed9b29e8-0f90-4f9e-bd87-f5014f5fcf85}</Project>
+      <Name>Facepunch.Steamworks.Win32</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

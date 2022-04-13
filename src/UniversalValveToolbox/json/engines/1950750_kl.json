@@ -1,17 +1,17 @@
 {
-  "appid": 240,
-  "name": "Counter-Strike Source: SDK",
-  "bin": "hl2.exe",
+  "appid": 1950750,
+  "name": "Kayf-Life: Complete Edition",
+  "bin": "kl.exe",
   "tools": [
-    {
-      "args": "",
-      "bin": "bin//hammer.exe",
-      "name": "Valve Hammer Editor"
-    },
     {
       "args": "",
       "bin": "bin//hammerplusplus.exe",
       "name": "Valve Hammer Editor ++"
+    },
+    {
+      "args": "",
+      "bin": "bin//hammer.exe",
+      "name": "Valve Hammer Editor (Slamin Tools)"
     },
     {
       "args": "",
@@ -29,14 +29,9 @@
       "name": "QC Eyes"
     },
     {
-      "args": "-tools -steam -game cstrike",
-      "bin": "hl2.exe",
+      "args": "-tools",
+      "bin": "kl.exe",
       "name": "Engine Tools"
-    },
-    {
-      "args": "-steam -game cstrike",
-      "bin": "hl2.exe",
-      "name": "Run Game"
     }
   ]
 }

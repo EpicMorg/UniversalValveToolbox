@@ -10,6 +10,11 @@
     },
     {
       "args": "",
+      "bin": "bin//hammerplusplus.exe",
+      "name": "Valve Hammer Editor ++"
+    },
+    {
+      "args": "",
       "bin": "bin//hlmv.exe",
       "name": "Half-Life Model Viewer"
     },

@@ -74,8 +74,8 @@
             // 
             // labelTranslationAthor
             // 
-            this.labelTranslationAthor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             resources.ApplyResources(this.labelTranslationAthor, "labelTranslationAthor");
+            this.labelTranslationAthor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.labelTranslationAthor.Name = "labelTranslationAthor";
             // 
             // FormSettings

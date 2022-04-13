@@ -133,6 +133,16 @@ namespace UniversalValveToolbox.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap toolbox64 {
+            get {
+                object obj = ResourceManager.GetObject("toolbox64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap valve_64 {
             get {
                 object obj = ResourceManager.GetObject("valve_64", resourceCulture);
