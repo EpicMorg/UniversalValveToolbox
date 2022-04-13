@@ -388,15 +388,15 @@ namespace UniversalValveToolbox {
                             if (!finalArg.Contains("-game")) {
                                 finalArg += $" -game \"{SelectedProject?.Path ?? string.Empty}\" ";
                             }
-
-                            SteamClient.Shutdown();
-                            SteamClient.Init(Convert.ToUInt32(SelectedEngine.Appid));
-                            var process = Process.Start(toolPath, finalArg);
-                            process.EnableRaisingEvents = true;
-                            process.Exited += (a, b) => {
-                                SteamClient.Shutdown();
-                                SteamClient.Init(480);
-                            };
+                            Process.Start(toolPath, finalArg);
+                            // SteamClient.Shutdown();
+                            // SteamClient.Init(Convert.ToUInt32(SelectedEngine.Appid));
+                            // var process = Process.Start(toolPath, finalArg);
+                            //   process.EnableRaisingEvents = true;
+                            //    process.Exited += (a, b) => {
+                            //       SteamClient.Shutdown();
+                            //        SteamClient.Init(480);
+                            //   };
 
                         }
                         else

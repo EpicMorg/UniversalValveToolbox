@@ -363,6 +363,9 @@
     <None Include="json\engines\243730_ssdk2013sp.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="json\projects\bst.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="json\projects\test project.json" />
     <None Include="json\settings.json" />
     <None Include="Properties\Settings.settings">
