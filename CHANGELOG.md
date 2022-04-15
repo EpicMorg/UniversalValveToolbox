@@ -10,6 +10,11 @@
 
 # Changelog
 
+## 1.0.0.4
+#### Whats new
+* Fixed `SteamInit` on program initialization and added tries to launch `Steam`
+* Fixed `Run project` option
+
 ## 1.0.0.3
 #### Whats new
 * Migrated to @Facepunch [Steamworks](https://github.com/Facepunch/Facepunch.Steamworks)
