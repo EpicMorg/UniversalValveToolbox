@@ -1,0 +1,9 @@
+{
+  "Engines": [
+    
+  ],
+  "Name": "Google Chrome",
+  "Category": "",
+  "Bin": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+  "Args": ""
+}

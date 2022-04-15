@@ -1,0 +1,9 @@
+{
+  "Engines": [
+    
+  ],
+  "Name": "Win Merge",
+  "Category": "",
+  "Bin": "C:\\Program Files\\WinMerge\\WinMergeU.exe",
+  "Args": ""
+}

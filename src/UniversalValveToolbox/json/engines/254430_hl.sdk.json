@@ -5,7 +5,7 @@
   "tools": [
     {
       "args": "",
-      "bin": "Hammer Editor//hammer.exe",
+      "bin": "Hammer Editor\\hammer.exe",
       "name": "Valve Hammer Editor"
     }
   ]

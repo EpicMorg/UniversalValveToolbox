@@ -1,0 +1,9 @@
+{
+  "Engines": [
+    
+  ],
+  "Name": "PowerShell 7 Preview (x64)",
+  "Category": "",
+  "Bin": "C:\\Program Files\\PowerShell\\7-preview\\pwsh.exe",
+  "Args": " -WorkingDirectory ~"
+}

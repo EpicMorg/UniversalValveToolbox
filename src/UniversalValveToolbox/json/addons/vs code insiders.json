@@ -1,0 +1,9 @@
+{
+  "Engines": [
+    
+  ],
+  "Name": "VS Code Insiders",
+  "Category": "",
+  "Bin": "C:\\Program Files\\Microsoft VS Code Insiders\\Code - Insiders.exe",
+  "Args": ""
+}

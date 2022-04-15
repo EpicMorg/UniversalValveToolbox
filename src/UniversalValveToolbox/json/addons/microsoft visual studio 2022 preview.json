@@ -1,0 +1,9 @@
+{
+  "Engines": [
+    
+  ],
+  "Name": "Microsoft Visual Studio 2022 Preview",
+  "Category": "",
+  "Bin": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Preview\\Common7\\IDE\\devenv.exe",
+  "Args": ""
+}

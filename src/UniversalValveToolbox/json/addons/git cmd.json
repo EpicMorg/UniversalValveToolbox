@@ -1,0 +1,9 @@
+{
+  "Engines": [
+    
+  ],
+  "Name": "Git CMD",
+  "Category": "",
+  "Bin": "C:\\Program Files\\Git\\git-cmd.exe",
+  "Args": "--cd-to-home"
+}
