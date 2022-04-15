@@ -4,25 +4,13 @@
 
 `Universal Valve Toolbox is not affiliated with Valve Corporation.`
 
----------------------------
+# Settings
+Mod could be changed at `settings.json` with `ToolboxMod` section. Supported mods: `retail`, `bundle`, `dev`.
+## Retail
+This is default mode. Shows all avalible users games at account. Tool launched with default steam app id `480` for requesting steam api and getting info.
 
-# Description
-`Universal Valve Toolbox` is a toolbox for easy launching some officials Valve's SDK such as Source SDK 2013 SP or MP and other games. Full list of supported games can be found [here](SUPPORTED.md).
-
-## Settings
-[Read it here](SETTINGS.md)
-
-## Changelog
-[Read it here](CHANGELOG.md)
-
----------------------------
-
-# Stargazers
-[![Stargazers repo roster for @EpicMorg/SourceSDK.ENV.Editor](https://reporoster.com/stars/dark/EpicMorg/SourceSDK.ENV.Editor)](https://github.com/EpicMorg/SourceSDK.ENV.Editor/stargazers)
-
-# Forkers
-[![Forkers repo roster for @EpicMorg/SourceSDK.ENV.Editor](https://reporoster.com/forks/dark/EpicMorg/SourceSDK.ENV.Editor)](https://github.com/EpicMorg/SourceSDK.ENV.Editor/network/members)
-
----------------------------
-
-[![](https://codescene.io/projects/6852/status.svg)](https://codescene.io/projects/6852/jobs/latest-successful/results)
+## Bundle mode
+If you want to distribute this tollbox with your game - edit  `settings.json` and switch `ToolboxMod` to `bundle` value. And change `ToolsAppId` and `BundleAppID` for your's `SteamApp` of you game and sdk tools.
+## Dev mode
+Dev mode is the same mode as `bundle` but local path of root of your game folder and angine name will be get from  `DevEnginePath` and `DevEngineName` values. Also You should set `ToolsAppId` and `BundleAppID` for your's `SteamApp` of you game and sdk tools.
+ 

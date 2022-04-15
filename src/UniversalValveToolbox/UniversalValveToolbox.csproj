@@ -280,6 +280,30 @@
     <EmbeddedResource Include="UI\FormSettings.ru.resx">
       <DependentUpon>FormSettings.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="json\engines\1117390_snowdropecape.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\17520_synergy.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\1828210_RequiemOfScience.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\224260_nmrih.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\286080_thinkingwithtimemachine.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\397680_FIREFIGHTRELOADED.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\447820_dayofinfamy.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\563560_alienswarm.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="json\addons\7-zip.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

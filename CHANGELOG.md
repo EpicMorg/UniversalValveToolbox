@@ -4,25 +4,25 @@
 
 `Universal Valve Toolbox is not affiliated with Valve Corporation.`
 
----------------------------
+# Changelog
 
-# Description
-`Universal Valve Toolbox` is a toolbox for easy launching some officials Valve's SDK such as Source SDK 2013 SP or MP and other games. Full list of supported games can be found [here](SUPPORTED.md).
+## 1.0.0.3
+#### Whats new
+* Migrated to @Facepunch [Steamworks](https://github.com/Facepunch/Facepunch.Steamworks)
+* Added support for new engines
+* Code cleanup
+* Added new modes - `retail`, `bundeled`, `dev`
 
-## Settings
-[Read it here](SETTINGS.md)
+## 1.0.0.2
+#### Whats new
+* SteamPathLib version bump
+* Fixed UI
+* Fixed logic
 
-## Changelog
-[Read it here](CHANGELOG.md)
+## 1.0.0.1
+#### Whats new
+* lang hotfix
 
----------------------------
-
-# Stargazers
-[![Stargazers repo roster for @EpicMorg/SourceSDK.ENV.Editor](https://reporoster.com/stars/dark/EpicMorg/SourceSDK.ENV.Editor)](https://github.com/EpicMorg/SourceSDK.ENV.Editor/stargazers)
-
-# Forkers
-[![Forkers repo roster for @EpicMorg/SourceSDK.ENV.Editor](https://reporoster.com/forks/dark/EpicMorg/SourceSDK.ENV.Editor)](https://github.com/EpicMorg/SourceSDK.ENV.Editor/network/members)
-
----------------------------
-
-[![](https://codescene.io/projects/6852/status.svg)](https://codescene.io/projects/6852/jobs/latest-successful/results)
+## 1.0.0.0
+#### Whats new
+* Release Candidate
