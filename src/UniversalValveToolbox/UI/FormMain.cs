@@ -456,8 +456,14 @@ namespace UniversalValveToolbox
             {
                 if (RUN_PROJECT_ID.Equals(selectItem.Tag) && SelectedProject != null)
                 {
-                    var pathEngineBin = Path.Combine(SteamApps.AppInstallDir(SelectedEngine.Appid), SelectedEngine.Bin);
-
+                    //var pathEngineBin = Path.Combine(SteamApps.AppInstallDir(SelectedEngine.Appid), SelectedEngine.Bin);
+                    var pathEngineBin = dataProvider.Settings.ToolboxMod switch
+                    {
+                        ToolboxMod.retail => Path.Combine(SteamApps.AppInstallDir(SelectedEngine.Appid), SelectedEngine.Bin),
+                        ToolboxMod.bundle => Path.Combine(SteamApps.AppInstallDir(dataProvider.Settings.BundleAppID), SelectedEngine.Bin),
+                        ToolboxMod.dev => Path.Combine(dataProvider.Settings.DevEnginePath, SelectedEngine.Bin),
+                        _ => throw new Exception($"Unrecognised engine type: {dataProvider.Settings.ToolboxMod}")
+                    };
 
                     Process.Start(pathEngineBin, $"-steam -game \"{SelectedProject?.Path ?? string.Empty}\" {SelectedProject.Args}");
                 }
