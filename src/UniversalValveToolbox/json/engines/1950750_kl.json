@@ -39,6 +39,11 @@
       "name": "Engine Tools"
     },
     {
+      "args": "-game klall -novid -condebug -condump +map testmap -shaderedit",
+      "bin": "kl.exe",
+      "name": "Shader Editor"
+    },
+    {
       "args": "-steam -game klall",
       "bin": "kl.exe",
       "name": "Run Game"

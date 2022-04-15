@@ -39,6 +39,11 @@
       "name": "Engine Tools"
     },
     {
+      "args": "-game bst -novid -condebug -condump +map testmap -shaderedit",
+      "bin": "bst.exe",
+      "name": "Shader Editor"
+    },
+    {
       "args": "-steam -game bst",
       "bin": "bst.exe",
       "name": "Run Game"
