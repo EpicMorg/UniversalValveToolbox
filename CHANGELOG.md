@@ -14,7 +14,7 @@
 #### Whats new
 * Fixed `SteamInit` on program initialization and added tries to launch `Steam`
 * Fixed `Run project` option
-* Added support of new engines
+* Added [support for new engines](SUPPORTED.md)
 * Added some default addons, but not linked with any engines
 
 ## 1.0.0.3
