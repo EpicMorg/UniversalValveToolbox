@@ -5,33 +5,43 @@
   "tools": [
     {
       "args": "",
-      "bin": "bin//hammerplusplus.exe",
+      "bin": "bin\\hammerplusplus.exe",
       "name": "Valve Hammer Editor ++"
     },
     {
       "args": "",
-      "bin": "bin//hammer.exe",
-      "name": "Valve Hammer Editor (Slamin Tools)"
+      "bin": "bin\\hammer.exe",
+      "name": "Valve Hammer Editor (Slammin' Source Tools)"
     },
     {
       "args": "",
-      "bin": "bin//hlmv.exe",
+      "bin": "bin\\hlmv.exe",
       "name": "Half-Life Model Viewer"
     },
     {
       "args": "",
-      "bin": "bin//hlfaceposer.exe",
+      "bin": "bin\\hlfaceposer.exe",
       "name": "Half-Life FacePoser"
     },
     {
       "args": "",
-      "bin": "bin//qc_eyes.exe",
+      "bin": "bin\\qc_eyes.exe",
       "name": "QC Eyes"
     },
+	{
+      "args": "",
+      "bin": "sdktools\\SourceSDK.ENV.Editor\\SourceSDK.ENV.Editor.exe",
+      "name": "SourceSDK ENV Editor"
+    },
     {
-      "args": "-tools",
+      "args": "-tools -steam -game bst",
       "bin": "bst.exe",
       "name": "Engine Tools"
+    },
+    {
+      "args": "-steam -game bst",
+      "bin": "bst.exe",
+      "name": "Run Game"
     }
   ]
 }

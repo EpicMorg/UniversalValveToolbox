@@ -1,0 +1,9 @@
+{
+  "Engines": [
+    
+  ],
+  "Name": "Mozilla Firefox",
+  "Category": "",
+  "Bin": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+  "Args": ""
+}

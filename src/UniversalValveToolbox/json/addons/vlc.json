@@ -1,0 +1,9 @@
+{
+  "Engines": [
+    
+  ],
+  "Name": "VLC",
+  "Category": "",
+  "Bin": "C:\\Program Files\\VideoLAN\\VLC\\vlc.exe",
+  "Args": ""
+}

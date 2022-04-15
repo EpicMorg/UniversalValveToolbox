@@ -1,0 +1,9 @@
+{
+  "Engines": [
+    
+  ],
+  "Name": "P4 Merge",
+  "Category": "",
+  "Bin": "C:\\Program Files\\Perforce\\p4merge.exe",
+  "Args": ""
+}

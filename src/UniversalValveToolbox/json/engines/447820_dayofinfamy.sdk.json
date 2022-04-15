@@ -1,0 +1,37 @@
+{
+  "appid": 447820,
+  "name": "Day of Infamy: SDK",
+  "bin": "dayofinfamy.exe",
+  "tools": [
+    {
+      "args": "",
+      "bin": "bin\\hammer.exe",
+      "name": "Valve Hammer Editor"
+    },
+    {
+      "args": "",
+      "bin": "bin\\hlmv.exe",
+      "name": "Half-Life Model Viewer"
+    },
+    {
+      "args": "",
+      "bin": "bin\\hlfaceposer.exe",
+      "name": "Half-Life FacePoser"
+    },
+    {
+      "args": "",
+      "bin": "bin\\qc_eyes.exe",
+      "name": "QC Eyes"
+    },
+    {
+      "args": "-tools -steam -game doi",
+      "bin": "dayofinfamy.exe",
+      "name": "Engine Tools"
+    },
+    {
+      "args": "-steam -game doi",
+      "bin": "dayofinfamy.exe",
+      "name": "Run Game"
+    }
+  ]
+}

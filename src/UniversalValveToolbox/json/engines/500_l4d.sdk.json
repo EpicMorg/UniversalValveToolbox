@@ -5,27 +5,27 @@
   "tools": [
     {
       "args": "-steam -game left4dead",
-      "bin": "bin//SDKLauncher.exe",
+      "bin": "bin\\SDKLauncher.exe",
       "name": "Authoring Tools Launcher"
     },
     {
       "args": "",
-      "bin": "bin//hammer.exe",
+      "bin": "bin\\hammer.exe",
       "name": "Valve Hammer Editor"
     },
     {
       "args": "",
-      "bin": "bin//hlmv.exe",
+      "bin": "bin\\hlmv.exe",
       "name": "Half-Life Model Viewer"
     },
     {
       "args": "",
-      "bin": "bin//hlfaceposer.exe",
+      "bin": "bin\\hlfaceposer.exe",
       "name": "Half-Life FacePoser"
     },
     {
       "args": "",
-      "bin": "bin//qc_eyes.exe",
+      "bin": "bin\\qc_eyes.exe",
       "name": "QC Eyes"
     },
     {

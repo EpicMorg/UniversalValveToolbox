@@ -1,0 +1,37 @@
+{
+  "appid": 447820,
+  "name": "No More Room in Hell: SDK",
+  "bin": "nmrih.exe",
+  "tools": [
+    {
+      "args": "",
+      "bin": "bin\\hammer.exe",
+      "name": "Valve Hammer Editor"
+    },
+    {
+      "args": "",
+      "bin": "bin\\hlmv.exe",
+      "name": "Half-Life Model Viewer"
+    },
+    {
+      "args": "",
+      "bin": "bin\\hlfaceposer.exe",
+      "name": "Half-Life FacePoser"
+    },
+    {
+      "args": "",
+      "bin": "bin\\qc_eyes.exe",
+      "name": "QC Eyes"
+    },
+    {
+      "args": "-tools -steam -game nmrih",
+      "bin": "nmrih.exe",
+      "name": "Engine Tools"
+    },
+    {
+      "args": "-steam -game nmrih",
+      "bin": "nmrih.exe",
+      "name": "Run Game"
+    }
+  ]
+}

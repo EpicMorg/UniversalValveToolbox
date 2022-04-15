@@ -1,0 +1,9 @@
+{
+  "Engines": [
+    
+  ],
+  "Name": "7-Zip",
+  "Category": "",
+  "Bin": "C:\\Program Files\\7-Zip\\7zFM.exe",
+  "Args": ""
+}

@@ -5,7 +5,7 @@
   "tools": [
     {
       "args": "-steam -game launcher",
-      "bin": "bin//SDKLauncher.exe",
+      "bin": "bin\\SDKLauncher.exe",
       "name": "Authoring Tools Launcher"
     }
   ]

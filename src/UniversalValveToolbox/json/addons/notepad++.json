@@ -1,0 +1,9 @@
+{
+  "Engines": [
+    
+  ],
+  "Name": "Notepad++",
+  "Category": "",
+  "Bin": "C:\\Program Files\\Notepad++\\notepad++.exe",
+  "Args": ""
+}

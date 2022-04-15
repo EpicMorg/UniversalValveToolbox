@@ -1,36 +1,36 @@
 {
   "appid": 1840,
   "name": "Source Filmmaker",
-  "bin": "game//sfm.exe",
+  "bin": "game\\sfm.exe",
   "tools": [
     {
       "args": "-steam",
-      "bin": "game//bin//qsdklauncher.exe",
+      "bin": "game\\bin\\qsdklauncher.exe",
       "name": "SDK Launcher"
     },
     {
       "args": "",
-      "bin": "game//bin//hammer.exe",
+      "bin": "game\\bin\\hammer.exe",
       "name": "Valve Hammer Editor"
     },
     {
       "args": "",
-      "bin": "game//bin//hlmv.exe",
+      "bin": "game\\bin\\hlmv.exe",
       "name": "Half-Life Model Viewer"
     },
     {
       "args": "",
-      "bin": "game//bin//hlfaceposer.exe",
+      "bin": "game\\bin\\hlfaceposer.exe",
       "name": "Half-Life FacePoser"
     },
     {
       "args": "",
-      "bin": "game//bin//qc_eyes.exe",
+      "bin": "game\\bin\\qc_eyes.exe",
       "name": "QC Eyes"
     },
     {
       "args": "-steam",
-      "bin": "game//sfm.exe",
+      "bin": "game\\sfm.exe",
       "name": "Run SFM"
     }
   ]
