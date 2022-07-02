@@ -20,10 +20,10 @@
 ---------------------------
 
 # Stargazers
-[![Stargazers repo roster for @EpicMorg/SourceSDK.ENV.Editor](https://reporoster.com/stars/dark/EpicMorg/SourceSDK.ENV.Editor)](https://github.com/EpicMorg/SourceSDK.ENV.Editor/stargazers)
+[![Stargazers repo roster for @EpicMorg/UniversalValveToolbox](https://reporoster.com/stars/dark/EpicMorg/UniversalValveToolbox)](https://github.com/EpicMorg/UniversalValveToolbox/stargazers)
 
 # Forkers
-[![Forkers repo roster for @EpicMorg/SourceSDK.ENV.Editor](https://reporoster.com/forks/dark/EpicMorg/SourceSDK.ENV.Editor)](https://github.com/EpicMorg/SourceSDK.ENV.Editor/network/members)
+[![Forkers repo roster for @EpicMorg/UniversalValveToolboxr](https://reporoster.com/forks/dark/EpicMorg/UniversalValveToolbox)](https://github.com/EpicMorg/UniversalValveToolbox/network/members)
 
 ---------------------------
 
