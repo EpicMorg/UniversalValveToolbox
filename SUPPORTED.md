@@ -48,4 +48,4 @@ appid | name
 570 | Dota 2
 620 | Portal 2
 630 | Alien Swarm
-730 | ounter-Strike: Global Offensive
+730 | Сounter-Strike 2: SDK (ex. Сounter-Strike: Global Offensive)
