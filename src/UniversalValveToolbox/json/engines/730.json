@@ -1,0 +1,37 @@
+{
+  "appid": 730,
+  "name": "Сounter-Strike 2: SDK (ex. Counter-Strike: Global Offensive)",
+  "bin": "",
+  "tools": [
+    {
+      "args": "-steam -retail -game csgo",
+      "bin": "game\\bin\\win64\\csgocfg.exe",
+      "name": "Сounter-Strike 2: Workshop Manager (x64)"
+    },
+    {
+      "args": "-steam -retail -game csgo",
+      "bin": "game\\bin\\win32\\csgocfg.exe",
+      "name": "Сounter-Strike 2: Workshop Manager (x32)"
+    },
+    {
+      "args": "-steam -retail -game csgo -gpuraytracing -vulkan",
+      "bin": "game\\bin\\win64\\csgocfg.exe",
+      "name": "CS2: Workshop Manager (x64, gpu, vulcan)"
+    },
+    {
+      "args": "-steam -retail -game csgo -gpuraytracing -vulkan",
+      "bin": "game\\bin\\win32\\csgocfg.exe",
+      "name": "CS: Workshop Manager (x32, gpu, vulcan)"
+    },
+    {
+      "args": "-steam",
+      "bin": "game\\bin\\win32\\cs2.exe",
+      "name": "Run Сounter-Strike 2 (x32)"
+    },
+    {
+      "args": "-steam",
+      "bin": "game\\bin\\win64\\cs2.exe",
+      "name": "Run Сounter-Strike 2 (x64)"
+    }
+  ]
+}

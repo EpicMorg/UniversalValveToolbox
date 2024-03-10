@@ -10,6 +10,17 @@
 
 # Changelog
 
+## 2.0.0.0
+#### Whats new
+* `Steam` ready release!1!11! 
+* Fixed naming of [supported engines](SUPPORTED.md), also all filesn in `engine` folder were renamed! Please empty this folder before manual update to avoid errors.
+* Replaced `Counter-Strike: Global Offensive` to `Counter-Strike 2` engine, due of deprecation of `csgo` by `Valve`.
+* Updated @Facepunch [Steamworks](https://github.com/Facepunch/Facepunch.Steamworks) to latest stable version.
+* Updated `steam_api` to `1.57`.
+* Added new translations:
+* Added `url` support of links in launcher.
+* Added `plugins` support of future bundled `dlc` from `steam`-version.
+
 ## 1.0.0.4
 #### Whats new
 * Fixed `SteamInit` on program initialization and added tries to launch `Steam`
