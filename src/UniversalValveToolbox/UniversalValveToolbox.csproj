@@ -78,7 +78,7 @@
     <PackageReference Include="kasthack.binding.wf">
       <Version>1.2.26</Version>
     </PackageReference>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
