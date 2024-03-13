@@ -9,43 +9,44 @@
 ---------------------------
 
 # Supported games and SDK
-appid | name
---- | --- 
-1117390 | Snowdrop Escape
-17520 | Synergy
-1828210 | Requiem Of Science
-1840 | Source Filmmaker
-1950750 | Kayf-Life: Complete Edition
-1966980 | Bestiarium Project
-211 | Source SDK
-220 | Half-Life2
-224260 | No More Room in Hell
-240 | Counter-Strike: Source
-243730 | Source SDK 2013 SinglePlayer
-243750 | Source SDK 2013 MultiPlayer
-254430 | Half-Life SDK
-280740 | Aperture Tag: The Paint Gun Testing Initiative
-280 | Half-Life: Source
-286080 | Thinking with Time Machine
-290930 | Half-Life 2: Update
-300 | Day of Defeat: Source
-320 | Half-Life 2: Deathmatch
-340 | Half-Life 2: Lost Coast
-360 | Half-Life Deathmatch: Source
-362890 | Black Mesa
-380 | Half-Life 2: Episode One
-397680 | FIREFIGHT RELOADED
-399120 | Prospekt
-4000 | Garry's Mod
-400 | Portal
-420 | Half-Life 2: Episode Two
-440 | Team Fortress 2
-447820 | Day of Infamy
-496450 | J.A.C.K.
-500 | Left 4 Dead
-550 | Left 4 Dead 2
-563560 | Alien Swarm: Reactive Drop
-570 | Dota 2
-620 | Portal 2
-630 | Alien Swarm
-730 | Сounter-Strike 2: SDK (ex. Сounter-Strike: Global Offensive)
+appid | name | type
+--- | --- | ---
+1117390 | Snowdrop Escape | 
+17520 | Synergy | 
+1828210 | Requiem Of Science | 
+1840 | Source Filmmaker | SDK
+1950750 | Kayf-Life: Complete Edition | Mod
+1966980 | Bestiarium Project  | Game
+211 | Source SDK | SDK
+220 | Half-Life2  | Game
+224260 | No More Room in Hell | 
+240 | Counter-Strike: Source  | Game
+243730 | Source SDK 2013 SinglePlayer | SDK
+243750 | Source SDK 2013 MultiPlayer | SDK
+254430 | Half-Life SDK | SDK
+280740 | Aperture Tag: The Paint Gun Testing Initiative | 
+280 | Half-Life: Source | Game
+286080 | Thinking with Time Machine | Game
+290930 | Half-Life 2: Update | Mod
+300 | Day of Defeat: Source | Game
+320 | Half-Life 2: Deathmatch | Game
+340 | Half-Life 2: Lost Coast | Game
+360 | Half-Life Deathmatch: Source | Game
+362890 | Black Mesa | Game
+380 | Half-Life 2: Episode One | Game
+397680 | FIREFIGHT RELOADED | 
+399120 | Prospekt | 
+4000 | Garry's Mod | Game
+400 | Portal | Game
+410 | Portal: First Slice | Demo
+420 | Half-Life 2: Episode Two | Game
+440 | Team Fortress 2 | Game
+447820 | Day of Infamy | 
+496450 | J.A.C.K. | SDK
+500 | Left 4 Dead | Game
+550 | Left 4 Dead 2 | Game
+563560 | Alien Swarm: Reactive Drop | 
+570 | Dota 2 | Game
+620 | Portal 2 | Game
+630 | Alien Swarm | Game
+730 | Сounter-Strike 2: SDK (ex. Сounter-Strike: Global Offensive) | Game
