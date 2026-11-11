@@ -9,48 +9,50 @@
 ---------------------------
 
 # Supported games and SDK
-appid | name
---- | --- 
-1117390 | Snowdrop Escape
-1583720 | Entropy : Zero 2
-17520 | Synergy
-17570 | Pirates, Vikings and Knights II
-1828210 | Requiem Of Science
-1840 | Source Filmmaker
-1950750 | Kayf-Life: Complete Edition
-1966980 | Bestiarium Project
-211 | Source SDK
-220 | Half-Life2
-224260 | No More Room in Hell
-240 | Counter-Strike: Source
-243730 | Source SDK 2013 SinglePlayer
-243750 | Source SDK 2013 MultiPlayer
-254430 | Half-Life SDK
-280 | Half-Life: Source
-280740 | Aperture Tag: The Paint Gun Testing Initiative
-286080 | Thinking with Time Machine
-290930 | Half-Life 2: Update
-300 | Day of Defeat: Source
-320 | Half-Life 2: Deathmatch
-340 | Half-Life 2: Lost Coast
-3545060 | Team Fortress 2 Classified
-360 | Half-Life Deathmatch: Source
-362890 | Black Mesa
-380 | Half-Life 2: Episode One
-397680 | FIREFIGHT RELOADED
-399120 | Prospekt
-400 | Portal
-4000 | Garry's Mod
-420 | Half-Life 2: Episode Two
-440 | Team Fortress 2
-4465480 | Counter-Strike: Global Offensive (Legacy)
-447820 | Day of Infamy
-496450 | J.A.C.K.
-500 | Left 4 Dead
-550 | Left 4 Dead 2
-563560 | Alien Swarm: Reactive Drop
-570 | Dota 2
-601360 | Portal: Revolution
-620 | Portal 2
-630 | Alien Swarm
-714070 | Entropy : Zero
+appid | name | type
+--- | --- | ---
+1117390 | Snowdrop Escape | 
+1583720 | Entropy : Zero 2 | Mod
+17520 | Synergy | 
+17570 | Pirates, Vikings and Knights II | Game
+1828210 | Requiem Of Science | 
+1840 | Source Filmmaker | SDK
+1950750 | Kayf-Life: Complete Edition | Mod
+1966980 | Bestiarium Project  | Game
+211 | Source SDK | SDK
+220 | Half-Life2  | Game
+224260 | No More Room in Hell | 
+240 | Counter-Strike: Source  | Game
+243730 | Source SDK 2013 SinglePlayer | SDK
+243750 | Source SDK 2013 MultiPlayer | SDK
+254430 | Half-Life SDK | SDK
+280 | Half-Life: Source | Game
+280740 | Aperture Tag: The Paint Gun Testing Initiative | 
+286080 | Thinking with Time Machine | Game
+290930 | Half-Life 2: Update | Mod
+300 | Day of Defeat: Source | Game
+320 | Half-Life 2: Deathmatch | Game
+340 | Half-Life 2: Lost Coast | Game
+3545060 | Team Fortress 2 Classified | Mod
+360 | Half-Life Deathmatch: Source | Game
+362890 | Black Mesa | Game
+380 | Half-Life 2: Episode One | Game
+397680 | FIREFIGHT RELOADED | 
+399120 | Prospekt | 
+400 | Portal | Game
+4000 | Garry's Mod | Game
+410 | Portal: First Slice | Demo
+420 | Half-Life 2: Episode Two | Game
+440 | Team Fortress 2 | Game
+4465480 | Counter-Strike: Global Offensive (Legacy) | Game
+447820 | Day of Infamy | 
+496450 | J.A.C.K. | SDK
+500 | Left 4 Dead | Game
+550 | Left 4 Dead 2 | Game
+563560 | Alien Swarm: Reactive Drop | 
+570 | Dota 2 | Game
+601360 | Portal: Revolution | Game
+620 | Portal 2 | Game
+630 | Alien Swarm | Game
+714070 | Entropy : Zero | Mod
+730 | Counter-Strike 2: SDK (ex. Counter-Strike: Global Offensive) | Game

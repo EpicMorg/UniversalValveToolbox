@@ -10,13 +10,21 @@
 
 # Changelog
 
-## develop
+## 2.0.0.0
 #### Whats new
+* `Steam` ready release!1!11! 
+* Fixed naming of [supported engines](SUPPORTED.md), also all filesn in `engine` folder were renamed! Please empty this folder before manual update to avoid errors.
+* Replaced `Counter-Strike: Global Offensive` to `Counter-Strike 2` engine, due of deprecation of `csgo` by `Valve`.
+* Updated @Facepunch [Steamworks](https://github.com/Facepunch/Facepunch.Steamworks) to latest stable version.
+* Updated `steam_api` to `1.57`.
+* Added new translations:
+* Added `url` support of links in launcher.
+* Added `plugins` support of future bundled `dlc` from `steam`-version.
 * `Team Fortress 2`, `Counter-Strike: Source`, `Day of Defeat: Source`, `Half-Life 2: Deathmatch`, `Half-Life Deathmatch: Source`, `Garry's Mod`: games now start from their own executables (`tf_win64.exe`, `cstrike_win64.exe`, `dod_win64.exe`, `hl2mp_win64.exe`, `hl1mp_win64.exe`, `gmod_win64.exe`) instead of `hl2.exe`; 32-bit `Run Game` kept
 * Added 64-bit tools (`bin\x64`, Garry's Mod `bin\win64`): Hammer, Hammer++, HLMV, FacePoser, QC Eyes — shown only when installed; also for `Source SDK 2013 MultiPlayer`
-* `Counter-Strike: Global Offensive` moved to its new app `4465480` (Legacy); `730` is now Counter-Strike 2 (Source 2)
+* Added `Counter-Strike: Global Offensive (Legacy)` — the old CS:GO is a separate app `4465480` now (`730` is Counter-Strike 2)
 * Added `Portal: Revolution` (Strata Source, `bin\win64`) and `Team Fortress 2 Classified` (`tf2classified_win64.exe`, tools launcher, Hammer++ / HLMV++ x64)
-* Fixed `Counter-Strike` typo in the supported list
+* Fixed `Counter-Strike` typos (incl. Cyrillic `С`) in the supported list
 * Added `Entropy : Zero`, `Entropy : Zero 2` (+ Wilson : Zero, Progenitors, Axon Pariah) and `Pirates, Vikings and Knights II` (x64) — launch configs as published by Steam
 * `Half-Life 2`: runs `-game hl2_complete` (20th anniversary update), `Run Game (hl2 only)` kept
 
