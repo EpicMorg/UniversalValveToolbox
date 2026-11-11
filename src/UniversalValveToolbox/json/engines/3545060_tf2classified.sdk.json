@@ -1,7 +1,7 @@
 {
   "appid": 3545060,
   "name": "Team Fortress 2 Classified: SDK",
-  "bin": "bin\\x64\\toolslauncher.exe",
+  "bin": "tf2classified_win64.exe",
   "tools": [
     {
       "args": "",
@@ -27,6 +27,16 @@
       "args": "",
       "bin": "bin\\x64\\qc_eyes.exe",
       "name": "QC Eyes (x64)"
+    },
+    {
+      "args": "-tools -steam",
+      "bin": "tf2classified_win64.exe",
+      "name": "Engine Tools"
+    },
+    {
+      "args": "-steam",
+      "bin": "tf2classified_win64.exe",
+      "name": "Run Game"
     }
   ]
 }
