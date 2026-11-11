@@ -24,28 +24,30 @@ appid | name
 243730 | Source SDK 2013 SinglePlayer
 243750 | Source SDK 2013 MultiPlayer
 254430 | Half-Life SDK
-280740 | Aperture Tag: The Paint Gun Testing Initiative
 280 | Half-Life: Source
+280740 | Aperture Tag: The Paint Gun Testing Initiative
 286080 | Thinking with Time Machine
 290930 | Half-Life 2: Update
 300 | Day of Defeat: Source
 320 | Half-Life 2: Deathmatch
 340 | Half-Life 2: Lost Coast
+3545060 | Team Fortress 2 Classified
 360 | Half-Life Deathmatch: Source
 362890 | Black Mesa
 380 | Half-Life 2: Episode One
 397680 | FIREFIGHT RELOADED
 399120 | Prospekt
-4000 | Garry's Mod
 400 | Portal
+4000 | Garry's Mod
 420 | Half-Life 2: Episode Two
 440 | Team Fortress 2
+4465480 | Counter-Strike: Global Offensive (Legacy)
 447820 | Day of Infamy
 496450 | J.A.C.K.
 500 | Left 4 Dead
 550 | Left 4 Dead 2
 563560 | Alien Swarm: Reactive Drop
 570 | Dota 2
+601360 | Portal: Revolution
 620 | Portal 2
 630 | Alien Swarm
-730 | ounter-Strike: Global Offensive

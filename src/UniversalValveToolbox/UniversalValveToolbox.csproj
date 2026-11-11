@@ -447,7 +447,13 @@
     <None Include="json\engines\240_css.sdk.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="json\engines\730_csgo.sdk.json">
+    <None Include="json\engines\601360_portalrevolution.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\3545060_tf2classified.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\4465480_csgo_legacy.sdk.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="json\engines\362890_bmssdk.json">

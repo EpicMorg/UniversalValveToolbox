@@ -1,0 +1,32 @@
+{
+  "appid": 601360,
+  "name": "Portal: Revolution: SDK",
+  "bin": "bin\\win64\\revolution.exe",
+  "tools": [
+    {
+      "args": "",
+      "bin": "bin\\win64\\hammer.exe",
+      "name": "Strata Hammer Editor"
+    },
+    {
+      "args": "-game revolution",
+      "bin": "bin\\win64\\hlmv.exe",
+      "name": "Half-Life Model Viewer"
+    },
+    {
+      "args": "-game revolution",
+      "bin": "bin\\win64\\hlfaceposer.exe",
+      "name": "Half-Life FacePoser"
+    },
+    {
+      "args": "-tools -novid",
+      "bin": "bin\\win64\\revolution.exe",
+      "name": "Engine Tools"
+    },
+    {
+      "args": "",
+      "bin": "bin\\win64\\revolution.exe",
+      "name": "Run Game"
+    }
+  ]
+}

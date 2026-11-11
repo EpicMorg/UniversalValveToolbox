@@ -1,7 +1,7 @@
 {
   "appid": 360,
   "name": "Half-Life Deathmatch Source: SDK",
-  "bin": "hl2.exe",
+  "bin": "hl1mp_win64.exe",
   "tools": [
     {
       "args": "",
@@ -10,8 +10,18 @@
     },
     {
       "args": "",
+      "bin": "bin\\x64\\hammer.exe",
+      "name": "Valve Hammer Editor (x64)"
+    },
+    {
+      "args": "",
       "bin": "bin\\hlmv.exe",
       "name": "Half-Life Model Viewer"
+    },
+    {
+      "args": "",
+      "bin": "bin\\x64\\hlmv.exe",
+      "name": "Half-Life Model Viewer (x64)"
     },
     {
       "args": "",
@@ -20,18 +30,33 @@
     },
     {
       "args": "",
+      "bin": "bin\\x64\\hlfaceposer.exe",
+      "name": "Half-Life FacePoser (x64)"
+    },
+    {
+      "args": "",
       "bin": "bin\\qc_eyes.exe",
       "name": "QC Eyes"
     },
     {
+      "args": "",
+      "bin": "bin\\x64\\qc_eyes.exe",
+      "name": "QC Eyes (x64)"
+    },
+    {
       "args": "-tools -steam -game hl1mp",
-      "bin": "hl2.exe",
+      "bin": "hl1mp_win64.exe",
       "name": "Engine Tools"
     },
     {
       "args": "-steam -game hl1mp",
-      "bin": "hl2.exe",
+      "bin": "hl1mp_win64.exe",
       "name": "Run Game"
+    },
+    {
+      "args": "-steam -game hl1mp",
+      "bin": "hl1mp.exe",
+      "name": "Run Game (32-bit)"
     }
   ]
 }

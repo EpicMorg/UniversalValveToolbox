@@ -1,7 +1,7 @@
 {
   "appid": 240,
   "name": "Counter-Strike Source: SDK",
-  "bin": "hl2.exe",
+  "bin": "cstrike_win64.exe",
   "tools": [
     {
       "args": "",
@@ -10,8 +10,18 @@
     },
     {
       "args": "",
+      "bin": "bin\\x64\\hammer.exe",
+      "name": "Valve Hammer Editor (x64)"
+    },
+    {
+      "args": "",
       "bin": "bin\\hammerplusplus.exe",
       "name": "Valve Hammer Editor ++"
+    },
+    {
+      "args": "",
+      "bin": "bin\\x64\\hammerplusplus.exe",
+      "name": "Valve Hammer Editor ++ (x64)"
     },
     {
       "args": "",
@@ -20,8 +30,18 @@
     },
     {
       "args": "",
+      "bin": "bin\\x64\\hlmv.exe",
+      "name": "Half-Life Model Viewer (x64)"
+    },
+    {
+      "args": "",
       "bin": "bin\\hlfaceposer.exe",
       "name": "Half-Life FacePoser"
+    },
+    {
+      "args": "",
+      "bin": "bin\\x64\\hlfaceposer.exe",
+      "name": "Half-Life FacePoser (x64)"
     },
     {
       "args": "",
@@ -29,14 +49,24 @@
       "name": "QC Eyes"
     },
     {
+      "args": "",
+      "bin": "bin\\x64\\qc_eyes.exe",
+      "name": "QC Eyes (x64)"
+    },
+    {
       "args": "-tools -steam -game cstrike",
-      "bin": "hl2.exe",
+      "bin": "cstrike_win64.exe",
       "name": "Engine Tools"
     },
     {
       "args": "-steam -game cstrike",
-      "bin": "hl2.exe",
+      "bin": "cstrike_win64.exe",
       "name": "Run Game"
+    },
+    {
+      "args": "-steam -game cstrike",
+      "bin": "cstrike.exe",
+      "name": "Run Game (32-bit)"
     }
   ]
 }

@@ -1,0 +1,32 @@
+{
+  "appid": 3545060,
+  "name": "Team Fortress 2 Classified: SDK",
+  "bin": "bin\\x64\\toolslauncher.exe",
+  "tools": [
+    {
+      "args": "",
+      "bin": "bin\\x64\\toolslauncher.exe",
+      "name": "TF2C Tools Launcher"
+    },
+    {
+      "args": "",
+      "bin": "bin\\x64\\hammerplusplus.exe",
+      "name": "Valve Hammer Editor ++ (x64)"
+    },
+    {
+      "args": "",
+      "bin": "bin\\x64\\hlmvplusplus.exe",
+      "name": "Half-Life Model Viewer ++ (x64)"
+    },
+    {
+      "args": "",
+      "bin": "bin\\x64\\hlfaceposerplusplus.exe",
+      "name": "Half-Life FacePoser ++ (x64)"
+    },
+    {
+      "args": "",
+      "bin": "bin\\x64\\qc_eyes.exe",
+      "name": "QC Eyes (x64)"
+    }
+  ]
+}
