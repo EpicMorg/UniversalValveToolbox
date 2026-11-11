@@ -12,7 +12,9 @@
 appid | name
 --- | --- 
 1117390 | Snowdrop Escape
+1583720 | Entropy : Zero 2
 17520 | Synergy
+17570 | Pirates, Vikings and Knights II
 1828210 | Requiem Of Science
 1840 | Source Filmmaker
 1950750 | Kayf-Life: Complete Edition
@@ -51,3 +53,4 @@ appid | name
 601360 | Portal: Revolution
 620 | Portal 2
 630 | Alien Swarm
+714070 | Entropy : Zero

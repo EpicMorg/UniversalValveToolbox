@@ -1,0 +1,72 @@
+{
+  "appid": 17570,
+  "name": "Pirates, Vikings and Knights II: SDK",
+  "bin": "sdkbase_pvkii\\pvkii_win64.exe",
+  "tools": [
+    {
+      "args": "",
+      "bin": "sdkbase_pvkii\\bin\\hammer.exe",
+      "name": "Valve Hammer Editor"
+    },
+    {
+      "args": "",
+      "bin": "sdkbase_pvkii\\bin\\x64\\hammer.exe",
+      "name": "Valve Hammer Editor (x64)"
+    },
+    {
+      "args": "",
+      "bin": "sdkbase_pvkii\\bin\\hammerplusplus.exe",
+      "name": "Valve Hammer Editor ++"
+    },
+    {
+      "args": "",
+      "bin": "sdkbase_pvkii\\bin\\x64\\hammerplusplus.exe",
+      "name": "Valve Hammer Editor ++ (x64)"
+    },
+    {
+      "args": "",
+      "bin": "sdkbase_pvkii\\bin\\hlmv.exe",
+      "name": "Half-Life Model Viewer"
+    },
+    {
+      "args": "",
+      "bin": "sdkbase_pvkii\\bin\\x64\\hlmv.exe",
+      "name": "Half-Life Model Viewer (x64)"
+    },
+    {
+      "args": "",
+      "bin": "sdkbase_pvkii\\bin\\hlfaceposer.exe",
+      "name": "Half-Life FacePoser"
+    },
+    {
+      "args": "",
+      "bin": "sdkbase_pvkii\\bin\\x64\\hlfaceposer.exe",
+      "name": "Half-Life FacePoser (x64)"
+    },
+    {
+      "args": "",
+      "bin": "sdkbase_pvkii\\bin\\qc_eyes.exe",
+      "name": "QC Eyes"
+    },
+    {
+      "args": "",
+      "bin": "sdkbase_pvkii\\bin\\x64\\qc_eyes.exe",
+      "name": "QC Eyes (x64)"
+    },
+    {
+      "args": "-tools -steam -game ../pvkii",
+      "bin": "sdkbase_pvkii\\pvkii_win64.exe",
+      "name": "Engine Tools"
+    },
+    {
+      "args": "-steam -game ../pvkii",
+      "bin": "sdkbase_pvkii\\pvkii_win64.exe",
+      "name": "Run Game"
+    },
+    {
+      "args": "-steam -game ../pvkii",
+      "bin": "sdkbase_pvkii\\pvkii_win32.exe",
+      "name": "Run Game (32-bit)"
+    }
+  ]
+}

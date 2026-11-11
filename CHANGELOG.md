@@ -17,6 +17,8 @@
 * `Counter-Strike: Global Offensive` moved to its new app `4465480` (Legacy); `730` is now Counter-Strike 2 (Source 2)
 * Added `Portal: Revolution` (Strata Source, `bin\win64`) and `Team Fortress 2 Classified` (tools launcher, Hammer++ / HLMV++ x64)
 * Fixed `Counter-Strike` typo in the supported list
+* Added `Entropy : Zero`, `Entropy : Zero 2` (+ Wilson : Zero, Progenitors, Axon Pariah) and `Pirates, Vikings and Knights II` (x64) — launch configs as published by Steam
+* `Half-Life 2`: runs `-game hl2_complete` (20th anniversary update), `Run Game (hl2 only)` kept
 
 ## 1.0.0.4
 #### Whats new

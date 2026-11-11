@@ -447,6 +447,15 @@
     <None Include="json\engines\240_css.sdk.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="json\engines\714070_entropyzero.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\1583720_entropyzero2.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="json\engines\17570_pvkii.sdk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="json\engines\601360_portalrevolution.sdk.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

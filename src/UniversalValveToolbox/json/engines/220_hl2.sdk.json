@@ -29,14 +29,19 @@
       "name": "QC Eyes"
     },
     {
-      "args": "-tools -steam -game hl2",
+      "args": "-tools -steam -game hl2_complete",
       "bin": "hl2.exe",
       "name": "Engine Tools"
     },
     {
-      "args": "-steam -game hl2",
+      "args": "-steam -game hl2_complete",
       "bin": "hl2.exe",
       "name": "Run Game"
+    },
+    {
+      "args": "-steam -game hl2",
+      "bin": "hl2.exe",
+      "name": "Run Game (hl2 only)"
     }
   ]
 }
