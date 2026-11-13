@@ -12,11 +12,14 @@
 appid | name | type
 --- | --- | ---
 1117390 | Snowdrop Escape | 
-1341060 | Half-Life 2 |  Genry's Great Escape From City 13:Mod
+1255980 | Portal Reloaded | Game
+1341060 | Half-Life 2: Genry's Great Escape From City 13 | Mod
 1583720 | Entropy : Zero 2 | Mod
+1636310 | Portal: Forbidden Testing Tracks | Game
 17500 | Zombie Panic! Source | Game
 17520 | Synergy | 
 17570 | Pirates, Vikings and Knights II | Game
+17580 | Dystopia | Game
 17710 | Nuclear Dawn | Game
 1828210 | Requiem Of Science | 
 1840 | Source Filmmaker | SDK
@@ -28,9 +31,10 @@ appid | name | type
 222880 | Insurgency | Game
 224260 | No More Room in Hell | 
 240 | Counter-Strike: Source  | Game
-2410180 | Portal |  Prelude RTX:Mod
+2410180 | Portal: Prelude RTX | Mod
 243730 | Source SDK 2013 SinglePlayer | SDK
 243750 | Source SDK 2013 MultiPlayer | SDK
+247120 | Portal 2 Sixense Perceptual Pack | Game
 2477290 | Half-Life 2 RTX | Game
 254430 | Half-Life SDK | SDK
 280 | Half-Life: Source | Game
@@ -38,7 +42,8 @@ appid | name | type
 286080 | Thinking with Time Machine | Game
 290930 | Half-Life 2: Update | Mod
 300 | Day of Defeat: Source | Game
-317400 | Portal Stories |  Mel:Mod
+3043220 | Portal: Lost in Aperture | Game
+317400 | Portal Stories: Mel | Mod
 320 | Half-Life 2: Deathmatch | Game
 340 | Half-Life 2: Lost Coast | Game
 3545060 | Team Fortress 2 Classified | Mod
@@ -59,10 +64,11 @@ appid | name | type
 550 | Left 4 Dead 2 | Game
 563560 | Alien Swarm: Reactive Drop | 
 570 | Dota 2 | Game
-587650 | Half-Life 2 |  DownFall:Mod
+587650 | Half-Life 2: DownFall | Mod
 601360 | Portal: Revolution | Game
 620 | Portal 2 | Game
 630 | Alien Swarm | Game
+658920 | Half-Life 2: VR Mod | Mod
 714070 | Entropy : Zero | Mod
 730 | Counter-Strike 2: SDK (ex. Counter-Strike: Global Offensive) | Game
-747250 | Half-Life 2 |  Year Long Alarm:Mod
+747250 | Half-Life 2: Year Long Alarm | Mod

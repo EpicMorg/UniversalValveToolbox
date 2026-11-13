@@ -28,7 +28,7 @@
       "bin": "bin\\qc_eyes.exe",
       "name": "QC Eyes"
     },
-	{
+    {
       "args": "",
       "bin": "sdktools\\SourceSDK.ENV.Editor\\SourceSDK.ENV.Editor.exe",
       "name": "SourceSDK ENV Editor"
@@ -39,14 +39,32 @@
       "name": "Engine Tools"
     },
     {
+      "args": "-tools -steam -game klall",
+      "bin": "KAYF-LIFE.exe",
+      "name": "Engine Tools (KAYF-LIFE.exe)"
+    },
+    {
       "args": "-game klall -novid -condebug -condump +map testmap -shaderedit",
       "bin": "kl.exe",
       "name": "Shader Editor"
     },
     {
+      "args": "-game klall -novid -condebug -condump +map testmap -shaderedit",
+      "bin": "KAYF-LIFE.exe",
+      "name": "Shader Editor (KAYF-LIFE.exe)"
+    },
+    {
       "args": "-steam -game klall",
       "bin": "kl.exe",
       "name": "Run Game"
+    },
+    {
+      "args": "-steam -game klall",
+      "bin": "KAYF-LIFE.exe",
+      "name": "Run Game (KAYF-LIFE.exe)"
     }
+  ],
+  "altBins": [
+    "KAYF-LIFE.exe"
   ]
 }

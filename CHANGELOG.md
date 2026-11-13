@@ -31,6 +31,9 @@
 * Fixed `Counter-Strike` typos (incl. Cyrillic `С`) in the supported list
 * Added `Entropy : Zero`, `Entropy : Zero 2` (+ Wilson : Zero, Progenitors, Axon Pariah) and `Pirates, Vikings and Knights II` (x64) — launch configs as published by Steam
 * `Half-Life 2`: runs `-game hl2_complete` (20th anniversary update), `Run Game (hl2 only)` kept
+* Added `Dystopia`, `Portal 2 Sixense Perceptual Pack`, `Portal Reloaded`, `Portal: Forbidden Testing Tracks`, `Half-Life 2: VR Mod`, `Portal: Lost in Aperture` (mod folders from installed `gameinfo.txt`); Portal 2-based ones get the in-engine Hammer (`-edit`)
+* `KAYF-LIFE`: the game exe is `KAYF-LIFE.exe` now — added next to the old `kl.exe` entries; `Insurgency`: `Run Game (x64)` (`insurgency_x64.exe`); `Portal: Forbidden Testing Tracks`: HLMV++
+* Fixed names with `:` in the supported list (`Portal Stories: Mel`, `Portal: Prelude RTX`, `Half-Life 2: DownFall` and others)
 
 ## 1.0.0.4
 #### Whats new
