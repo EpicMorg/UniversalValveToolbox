@@ -16,8 +16,8 @@ namespace UniversalValveToolbox {
             var dataProvide = new DataProvider();
             var currSettings = dataProvide.Settings;
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            // visual styles, default font, high DPI mode from the csproj (ApplicationVisualStyles / ApplicationHighDpiMode)
+            ApplicationConfiguration.Initialize();
 
             LanguageManager.UpdateLanguage(currSettings.Language);
 
@@ -36,7 +36,7 @@ namespace UniversalValveToolbox {
                         string steamPATH = ""; 
                         RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Valve\Steam");
                         steamPATH = key.GetValue("SteamExe").ToString();
-                        Process.Start(steamPATH);
+                        ShellUtils.Start(steamPATH);
                         key.Close();
                     }
                     catch (Exception exs) {
@@ -46,13 +46,13 @@ namespace UniversalValveToolbox {
                         "---------------------------------------------------------------------------" + Environment.NewLine +
                         "Application will be terminated.",
                         "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Application.Exit();
+                        return; // Application.Exit() before Run() does not stop Run(new FormMain())
                     }
                 }
                 else
                 {
                     MessageBox.Show("Application will be terminated.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    Application.Exit();
+                    return;
                 }
                
             }

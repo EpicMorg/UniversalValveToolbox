@@ -5,7 +5,6 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Web.UI;
 using System.Windows.Forms;
 using UniversalValveToolbox.Model.Dto;
 using UniversalValveToolbox.Model.Provider;
@@ -288,13 +287,13 @@ namespace UniversalValveToolbox
                         var keyByPath = Path.Combine(pathSelectedEngine, tool.Bin);
                         var icon = Icon.ExtractAssociatedIcon(Path.Combine(pathSelectedEngine, tool.Bin));
 
-                        return new Pair(keyByPath, icon);
+                        return (Key: keyByPath, Icon: icon);
                     });
 
                 foreach (var pair in pairPathIconTools)
                 {
-                    listView.SmallImageList.Images.Add((string)pair.First, (Icon)pair.Second);
-                    listView.LargeImageList.Images.Add((string)pair.First, (Icon)pair.Second);
+                    listView.SmallImageList.Images.Add(pair.Key, pair.Icon);
+                    listView.LargeImageList.Images.Add(pair.Key, pair.Icon);
                 }
             }
 
@@ -373,13 +372,13 @@ namespace UniversalValveToolbox
                     var keyByPath = addons.Bin;
                     var icon = Icon.ExtractAssociatedIcon(keyByPath);
 
-                    return new Pair(keyByPath, icon);
+                    return (Key: keyByPath, Icon: icon);
                 });
 
             foreach (var pair in pairPathIconTools)
             {
-                listView.SmallImageList.Images.Add((string)pair.First, (Icon)pair.Second);
-                listView.LargeImageList.Images.Add((string)pair.First, (Icon)pair.Second);
+                listView.SmallImageList.Images.Add(pair.Key, pair.Icon);
+                listView.LargeImageList.Images.Add(pair.Key, pair.Icon);
             }
 
             var itemsAddons = addonsSelectedEngine.Select(addons =>
@@ -468,7 +467,7 @@ namespace UniversalValveToolbox
                     // newer builds have their own exe (tf_win64.exe), older ones of the same app id still hl2.exe
                     var pathEngineBin = Path.Combine(engineRoot, SelectedEngine.ResolveBin(engineRoot));
 
-                    Process.Start(pathEngineBin, $"-steam -game \"{SelectedProject?.Path ?? string.Empty}\" {SelectedProject.Args}");
+                    ShellUtils.Start(pathEngineBin, $"-steam -game \"{SelectedProject?.Path ?? string.Empty}\" {SelectedProject.Args}");
                 }
 
                 var selectedTool = SelectedEngine.Tools.FirstOrDefault(tool => tool.Name == selectItemText);
@@ -497,7 +496,7 @@ namespace UniversalValveToolbox
                             {
                                 finalArg += $" -game \"{SelectedProject?.Path ?? string.Empty}\" ";
                             }
-                            Process.Start(toolPath, finalArg);
+                            ShellUtils.Start(toolPath, finalArg);
                            
                         }
                         else
@@ -508,7 +507,7 @@ namespace UniversalValveToolbox
                         DialogResult dialogResult = MessageBox.Show($"\"{SelectedEngine.Name}\" {Properties.translations.MessageBoxes.msgTextWithAppID} \"{SelectedEngine.Appid}\" {Properties.translations.MessageBoxes.msgTextNotInstalledInstall}", Properties.translations.MessageBoxes.msgWarning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                         if (dialogResult == DialogResult.Yes)
                         {
-                            Process.Start($"steam://install/{SelectedEngine.Appid}");
+                            ShellUtils.Start($"steam://install/{SelectedEngine.Appid}");
                         }
                         else if (dialogResult == DialogResult.No)
                         {
@@ -526,7 +525,7 @@ namespace UniversalValveToolbox
                     var addonPath = Path.Combine(selectedAddons.Bin);
 
                     if (File.Exists(addonPath))
-                        Process.Start(addonPath, selectedAddons.Args);
+                        ShellUtils.Start(addonPath, selectedAddons.Args);
                     else
                         MessageBox.Show($"\"{selectedAddons.Name}\" {Properties.translations.MessageBoxes.msgTextNotFound}\n{addonPath}", Properties.translations.MessageBoxes.msgWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
@@ -560,11 +559,11 @@ namespace UniversalValveToolbox
             }
             else if (selectItemText == Properties.translations.MenuItems.itmGitHubLink)
             {
-                Process.Start("https://github.com/EpicMorg/UniversalValveToolbox");
+                ShellUtils.Start("https://github.com/EpicMorg/UniversalValveToolbox");
             }
             else if (selectItemText == Properties.translations.MenuItems.itmGitHubReport)
             {
-                Process.Start("https://github.com/EpicMorg/UniversalValveToolbox/issues/new/choose");
+                ShellUtils.Start("https://github.com/EpicMorg/UniversalValveToolbox/issues/new/choose");
             }
         }
 

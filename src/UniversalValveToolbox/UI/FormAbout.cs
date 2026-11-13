@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
+using UniversalValveToolbox.Utils;
 
 namespace UniversalValveToolbox {
     public partial class FormAbout : Form {
@@ -37,20 +38,20 @@ namespace UniversalValveToolbox {
         }
 
         private void linkLabelIconSite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-            Process.Start("https://www.flaticon.com/");
+            ShellUtils.Start("https://www.flaticon.com/");
         }
 
         private void linkLabelFP_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-            Process.Start("https://www.flaticon.com/authors/freepik");
+            ShellUtils.Start("https://www.flaticon.com/authors/freepik");
         }
 
         private void linkLabelTI_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-            Process.Start("https://www.flaticon.com/authors/those-icons");
+            ShellUtils.Start("https://www.flaticon.com/authors/those-icons");
         }
 
         private void linkLabelSI_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://www.flaticon.com/authors/smashicons");
+            ShellUtils.Start("https://www.flaticon.com/authors/smashicons");
         }
     }
 }
