@@ -24,6 +24,11 @@
       "name": "Valve Hammer Editor ++"
     },
     {
+      "args": "-edit -steam -game left4dead2",
+      "bin": "left4dead2.exe",
+      "name": "Valve Hammer Editor (in-engine, -edit)"
+    },
+    {
       "args": "",
       "bin": "bin\\hlmv.exe",
       "name": "Half-Life Model Viewer"

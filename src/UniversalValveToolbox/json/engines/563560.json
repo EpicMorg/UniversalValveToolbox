@@ -4,12 +4,12 @@
   "bin": "reactivedrop.exe",
   "tools": [
     {
-      "args": "-steam -game swarm",
+      "args": "-steam -game reactivedrop",
       "bin": "bin\\SDKLauncher.exe",
       "name": "Authoring Tools Launcher"
     },
     {
-      "args": "-steam -game swarm",
+      "args": "-steam -game reactivedrop",
       "bin": "bin\\addoninstaller.exe",
       "name": "Addon Installer"
     },
@@ -17,6 +17,11 @@
       "args": "",
       "bin": "bin\\hammer.exe",
       "name": "Valve Hammer Editor"
+    },
+    {
+      "args": "-edit -steam -game reactivedrop",
+      "bin": "reactivedrop.exe",
+      "name": "Valve Hammer Editor (in-engine, -edit)"
     },
     {
       "args": "",
@@ -34,12 +39,12 @@
       "name": "QC Eyes"
     },
     {
-      "args": "-tools -steam -game swarm",
+      "args": "-tools -steam -game reactivedrop",
       "bin": "reactivedrop.exe",
       "name": "Engine Tools"
     },
     {
-      "args": "-steam -game swarm",
+      "args": "-steam -game reactivedrop",
       "bin": "reactivedrop.exe",
       "name": "Run Game"
     }

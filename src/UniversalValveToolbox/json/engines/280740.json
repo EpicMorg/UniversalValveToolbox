@@ -19,6 +19,11 @@
       "name": "Valve Hammer Editor"
     },
     {
+      "args": "-edit -steam -game aperturetag",
+      "bin": "portal2.exe",
+      "name": "Valve Hammer Editor (in-engine, -edit)"
+    },
+    {
       "args": "",
       "bin": "bin\\hlmv.exe",
       "name": "Half-Life Model Viewer"

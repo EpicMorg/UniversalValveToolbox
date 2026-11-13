@@ -1,0 +1,37 @@
+{
+  "appid": 17500,
+  "name": "Zombie Panic! Source: SDK",
+  "bin": "zps.exe",
+  "tools": [
+    {
+      "args": "",
+      "bin": "bin\\hammer.exe",
+      "name": "Valve Hammer Editor"
+    },
+    {
+      "args": "",
+      "bin": "bin\\hammerplusplus.exe",
+      "name": "Valve Hammer Editor ++"
+    },
+    {
+      "args": "",
+      "bin": "bin\\hlmv.exe",
+      "name": "Half-Life Model Viewer"
+    },
+    {
+      "args": "",
+      "bin": "bin\\hlfaceposer.exe",
+      "name": "Half-Life FacePoser"
+    },
+    {
+      "args": "",
+      "bin": "bin\\qc_eyes.exe",
+      "name": "QC Eyes"
+    },
+    {
+      "args": "-steam -game zps",
+      "bin": "zps.exe",
+      "name": "Run Game"
+    }
+  ]
+}

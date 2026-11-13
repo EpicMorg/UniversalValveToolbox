@@ -1,5 +1,5 @@
 {
-  "appid": 563560,
+  "appid": 286080,
   "name": "Thinking with Time Machine: SDK",
   "bin": "portal2.exe",
   "tools": [
@@ -12,6 +12,11 @@
       "args": "",
       "bin": "bin\\hammer.exe",
       "name": "Valve Hammer Editor"
+    },
+    {
+      "args": "-edit -steam -game TWTM",
+      "bin": "portal2.exe",
+      "name": "Valve Hammer Editor (in-engine, -edit)"
     },
     {
       "args": "",
