@@ -207,6 +207,7 @@ namespace UniversalValveToolbox
                         Appid = (int)dataProvider.Settings.BundleAppID,
                         Name = dataProvider.Settings.DevEngineName,
                         Bin = engineValues.Bin,
+                        AltBins = engineValues.AltBins,
                         Tools = engineValues.Tools
                     } 
                 };
@@ -332,7 +333,7 @@ namespace UniversalValveToolbox
 
             if (enginePath != null && isAvailableProjectBySelectEngine)
             {
-                var iconPathEngine = Path.Combine(enginePath, SelectedEngine.Bin);
+                var iconPathEngine = Path.Combine(enginePath, SelectedEngine.ResolveBin(enginePath));
 
                 var runProjectListViewItem = new ListViewItem(Properties.translations.MenuItems.itmRunProject, iconPathEngine, listViewGroupTools);
                 runProjectListViewItem.Tag = RUN_PROJECT_ID;
@@ -457,13 +458,15 @@ namespace UniversalValveToolbox
                 if (RUN_PROJECT_ID.Equals(selectItem.Tag) && SelectedProject != null)
                 {
                     //var pathEngineBin = Path.Combine(SteamApps.AppInstallDir(SelectedEngine.Appid), SelectedEngine.Bin);
-                    var pathEngineBin = dataProvider.Settings.ToolboxMod switch
+                    var engineRoot = dataProvider.Settings.ToolboxMod switch
                     {
-                        ToolboxMod.retail => Path.Combine(SteamApps.AppInstallDir(SelectedEngine.Appid), SelectedEngine.Bin),
-                        ToolboxMod.bundle => Path.Combine(SteamApps.AppInstallDir(dataProvider.Settings.BundleAppID), SelectedEngine.Bin),
-                        ToolboxMod.dev => Path.Combine(dataProvider.Settings.DevEnginePath, SelectedEngine.Bin),
+                        ToolboxMod.retail => SteamApps.AppInstallDir(SelectedEngine.Appid),
+                        ToolboxMod.bundle => SteamApps.AppInstallDir(dataProvider.Settings.BundleAppID),
+                        ToolboxMod.dev => dataProvider.Settings.DevEnginePath,
                         _ => throw new Exception($"Unrecognised engine type: {dataProvider.Settings.ToolboxMod}")
                     };
+                    // newer builds have their own exe (tf_win64.exe), older ones of the same app id still hl2.exe
+                    var pathEngineBin = Path.Combine(engineRoot, SelectedEngine.ResolveBin(engineRoot));
 
                     Process.Start(pathEngineBin, $"-steam -game \"{SelectedProject?.Path ?? string.Empty}\" {SelectedProject.Args}");
                 }

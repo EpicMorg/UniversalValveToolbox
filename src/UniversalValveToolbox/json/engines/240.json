@@ -2,6 +2,9 @@
   "appid": 240,
   "name": "Counter-Strike Source: SDK",
   "bin": "cstrike_win64.exe",
+  "altBins": [
+    "hl2.exe"
+  ],
   "tools": [
     {
       "args": "",
@@ -59,9 +62,19 @@
       "name": "Engine Tools"
     },
     {
+      "args": "-tools -steam -game cstrike",
+      "bin": "hl2.exe",
+      "name": "Engine Tools (hl2.exe)"
+    },
+    {
       "args": "-steam -game cstrike",
       "bin": "cstrike_win64.exe",
       "name": "Run Game"
+    },
+    {
+      "args": "-steam -game cstrike",
+      "bin": "hl2.exe",
+      "name": "Run Game (hl2.exe)"
     },
     {
       "args": "-steam -game cstrike",

@@ -2,6 +2,9 @@
   "appid": 320,
   "name": "Half-Life 2 Deathmatch: SDK",
   "bin": "hl2mp_win64.exe",
+  "altBins": [
+    "hl2.exe"
+  ],
   "tools": [
     {
       "args": "",
@@ -59,9 +62,19 @@
       "name": "Engine Tools"
     },
     {
+      "args": "-tools -steam -game hl2mp",
+      "bin": "hl2.exe",
+      "name": "Engine Tools (hl2.exe)"
+    },
+    {
       "args": "-steam -game hl2mp",
       "bin": "hl2mp_win64.exe",
       "name": "Run Game"
+    },
+    {
+      "args": "-steam -game hl2mp",
+      "bin": "hl2.exe",
+      "name": "Run Game (hl2.exe)"
     },
     {
       "args": "-steam -game hl2mp",

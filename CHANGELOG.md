@@ -21,6 +21,7 @@
 * Added `url` support of links in launcher.
 * Added `plugins` support of future bundled `dlc` from `steam`-version.
 * `Team Fortress 2`, `Counter-Strike: Source`, `Day of Defeat: Source`, `Half-Life 2: Deathmatch`, `Half-Life Deathmatch: Source`, `Garry's Mod`: games now start from their own executables (`tf_win64.exe`, `cstrike_win64.exe`, `dod_win64.exe`, `hl2mp_win64.exe`, `hl1mp_win64.exe`, `gmod_win64.exe`) instead of `hl2.exe`; 32-bit `Run Game` kept
+* Old builds keep working: entries for games that moved to their own executables keep the old `hl2.exe` ones next to the new (`Engine Tools (hl2.exe)`, `Run Game (hl2.exe)`, Half-Life 2 `(hl2 only)`), only the ones that exist in the install are shown; engines got an optional `altBins` list, and `Run Project` uses the first existing of `bin` + `altBins`
 * Added 64-bit tools (`bin\x64`, Garry's Mod `bin\win64`): Hammer, Hammer++, HLMV, FacePoser, QC Eyes — shown only when installed; also for `Source SDK 2013 MultiPlayer`
 * Added `Counter-Strike: Global Offensive (Legacy)` — the old CS:GO is a separate app `4465480` now (`730` is Counter-Strike 2)
 * Added `Portal: Revolution` (Strata Source, `bin\win64`) and `Team Fortress 2 Classified` (`tf2classified_win64.exe`, tools launcher, Hammer++ / HLMV++ x64)

@@ -2,6 +2,9 @@
   "appid": 360,
   "name": "Half-Life Deathmatch Source: SDK",
   "bin": "hl1mp_win64.exe",
+  "altBins": [
+    "hl2.exe"
+  ],
   "tools": [
     {
       "args": "",
@@ -49,9 +52,19 @@
       "name": "Engine Tools"
     },
     {
+      "args": "-tools -steam -game hl1mp",
+      "bin": "hl2.exe",
+      "name": "Engine Tools (hl2.exe)"
+    },
+    {
       "args": "-steam -game hl1mp",
       "bin": "hl1mp_win64.exe",
       "name": "Run Game"
+    },
+    {
+      "args": "-steam -game hl1mp",
+      "bin": "hl2.exe",
+      "name": "Run Game (hl2.exe)"
     },
     {
       "args": "-steam -game hl1mp",

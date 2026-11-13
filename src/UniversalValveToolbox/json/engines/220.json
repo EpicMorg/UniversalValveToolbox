@@ -34,6 +34,11 @@
       "name": "Engine Tools"
     },
     {
+      "args": "-tools -steam -game hl2",
+      "bin": "hl2.exe",
+      "name": "Engine Tools (hl2 only)"
+    },
+    {
       "args": "-steam -game hl2_complete",
       "bin": "hl2.exe",
       "name": "Run Game"

@@ -2,6 +2,9 @@
   "appid": 440,
   "name": "Team Fortress 2: SDK",
   "bin": "tf_win64.exe",
+  "altBins": [
+    "hl2.exe"
+  ],
   "tools": [
     {
       "args": "",
@@ -59,9 +62,19 @@
       "name": "Engine Tools"
     },
     {
+      "args": "-tools -steam -game tf",
+      "bin": "hl2.exe",
+      "name": "Engine Tools (hl2.exe)"
+    },
+    {
       "args": "-steam -game tf",
       "bin": "tf_win64.exe",
       "name": "Run Game"
+    },
+    {
+      "args": "-steam -game tf",
+      "bin": "hl2.exe",
+      "name": "Run Game (hl2.exe)"
     },
     {
       "args": "-steam -game tf",
