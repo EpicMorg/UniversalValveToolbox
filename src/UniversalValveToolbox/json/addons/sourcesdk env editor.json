@@ -1,0 +1,7 @@
+{
+  "Engines": [],
+  "Name": "SourceSDK ENV Editor",
+  "Category": "",
+  "Bin": "tools\\SourceSDK.ENV.Editor\\SourceSDK.ENV.Editor.exe",
+  "Args": ""
+}

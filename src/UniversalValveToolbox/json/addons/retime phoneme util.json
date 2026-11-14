@@ -1,0 +1,7 @@
+{
+  "Engines": [],
+  "Name": "Retime Phoneme Util",
+  "Category": "",
+  "Bin": "tools\\RetimePhonemeUtil\\kru.gui.exe",
+  "Args": ""
+}

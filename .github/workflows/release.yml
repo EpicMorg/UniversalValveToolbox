@@ -1,0 +1,36 @@
+name: Universal Valve Toolbox - release
+
+# Push a tag like v2.0.0: builds x64 + x86 and publishes a GitHub release with
+# the UVT bundle zips and a standalone zip for every bundled tool.
+on:
+  push:
+    tags: [ 'v*' ]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        lfs: true
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 10.0.x
+
+    - name: Build and package (x64 + x86)
+      shell: pwsh
+      run: ./build/package.ps1
+
+    - name: Publish release
+      shell: pwsh
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: gh release create "${{ github.ref_name }}" (Get-ChildItem dist/*.zip).FullName --title "${{ github.ref_name }}" --generate-notes --draft

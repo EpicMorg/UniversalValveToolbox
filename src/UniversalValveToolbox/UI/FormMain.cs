@@ -321,9 +321,12 @@ namespace UniversalValveToolbox
                 if (engine == null)
                     return;
 
+                // addons without engines are for every engine; like tools, only the ones that are installed
                 var items = Addons
-                    .Where(addon => addon.Engines.Contains(engine.Appid))
-                    .Select(addon => new ListViewItem(addon.Name, EnsureIcon(addon.Bin), listViewGroupAddons))
+                    .Where(addon => addon.Engines == null || addon.Engines.Length == 0 || addon.Engines.Contains(engine.Appid))
+                    .Select(addon => (addon, path: ResolveAddonPath(addon.Bin)))
+                    .Where(a => File.Exists(a.path))
+                    .Select(a => new ListViewItem(a.addon.Name, EnsureIcon(a.path), listViewGroupAddons))
                     .ToArray();
                 listView.Items.AddRange(items);
             }
@@ -331,6 +334,18 @@ namespace UniversalValveToolbox
             {
                 listView.EndUpdate();
             }
+        }
+
+        /// <summary>
+        /// Addon exe path: environment variables expanded (%ProgramFiles%), relative paths are relative to the
+        /// launcher folder (bundled tools live in tools\&lt;Name&gt;\).
+        /// </summary>
+        private static string ResolveAddonPath(string bin)
+        {
+            if (string.IsNullOrWhiteSpace(bin))
+                return null;
+            var path = Environment.ExpandEnvironmentVariables(bin.Trim());
+            return Path.IsPathRooted(path) ? path : Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, path));
         }
 
         private void UpdateInfoNavigationBar()
@@ -443,9 +458,9 @@ namespace UniversalValveToolbox
                 var selectedAddons = Addons.FirstOrDefault(addon => addon.Name == selectItemText);
                 if (selectedAddons != null)
                 {
-                    var addonPath = selectedAddons.Bin;
+                    var addonPath = ResolveAddonPath(selectedAddons.Bin);
 
-                    if (File.Exists(addonPath))
+                    if (addonPath != null && File.Exists(addonPath))
                     {
                         var env = EnvUtils.ForLaunch(SelectedProject, SelectedEngine, EnginePath(SelectedEngine));
                         ShellUtils.Launch(addonPath, selectedAddons.Args, env, Path.GetDirectoryName(addonPath));

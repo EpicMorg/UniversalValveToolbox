@@ -1,0 +1,25 @@
+<Project>
+  <!--
+    Shared by every app in the UVT solution (the launcher and the bundled tools):
+    .NET 10 Windows, two builds (x86 / x64), output in bin\<platform>\<configuration>.
+    Import it at the top of a project: <Import Project="$(MSBuildThisFileDirectory)..\..\Common.props" />
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Platforms>x86;x64</Platforms>
+    <!-- tools that do not pass a platform (Any CPU) build x64 -->
+    <Platform Condition="'$(Platform)' == '' or '$(Platform)' == 'AnyCPU'">x64</Platform>
+    <PlatformTarget>$(Platform)</PlatformTarget>
+    <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
+    <RuntimeIdentifier>win-$(Platform)</RuntimeIdentifier>
+    <SelfContained>false</SelfContained>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <BaseOutputPath>bin\</BaseOutputPath>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <Deterministic>true</Deterministic>
+    <!-- plain "1.2.0" in the informational version (SDK 8+ appends "+<commit>"; the tools parse/show it) -->
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    <Company>EpicMorg</Company>
+  </PropertyGroup>
+</Project>

@@ -27,6 +27,9 @@
 * Saving addons/projects keeps other files and subfolders (`json\addons\template` was deleted) and no longer merges items with the same name into one file
 * A broken `settings.json` is reported and left as is (it was silently replaced by defaults)
 * Faster main window: one refresh pass instead of two or three, settings read once, tool icons extracted once; projects with the same name in different engines no longer get mixed up
+* Bundled tools: [SourceSDK.ENV.Editor](src/Tools/SourceSDK.ENV.Editor) and [Retime Phoneme Util GUI](src/Tools/RetimePhonemeUtil) moved into this repository (history kept), built on `.NET 10` x64/x86 with the launcher; the release has the UVT bundle (`tools\<Name>\`) and a standalone zip of every tool
+* Addons: a path relative to the launcher folder (`tools\...`) and environment variables (`%ProgramFiles%`) work; addons without engines are shown for every engine; addons whose exe is missing are hidden (like tools)
+* `build/package.ps1` builds the release zips; pushing a `v*` tag creates a draft GitHub release with them; [third-party notices](THIRD-PARTY-NOTICES.md)
 * Added new translations:
 * Added `url` support of links in launcher.
 * Added `plugins` support of future bundled `dlc` from `steam`-version.

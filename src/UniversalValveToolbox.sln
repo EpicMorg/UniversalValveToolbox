@@ -5,6 +5,12 @@ VisualStudioVersion = 18.0.0.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalValveToolbox", "UniversalValveToolbox\UniversalValveToolbox.csproj", "{DE66895F-7317-45D3-B5CA-292253CE086A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{07C2787E-EAC7-C090-1BA3-A61EC2A24D84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SourceSDK.ENV.Editor", "Tools\SourceSDK.ENV.Editor\src\SourceSDK.ENV.Editor.csproj", "{C441C3EF-B93E-4A0C-94E0-85F1B10571A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kru.gui", "Tools\RetimePhonemeUtil\src\kru.gui\kru.gui.csproj", "{3ED6085C-A229-4496-BAE7-B9B8B6D08262}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,9 +27,29 @@ Global
 		{DE66895F-7317-45D3-B5CA-292253CE086A}.Release|x64.Build.0 = Release|x64
 		{DE66895F-7317-45D3-B5CA-292253CE086A}.Release|x86.ActiveCfg = Release|x86
 		{DE66895F-7317-45D3-B5CA-292253CE086A}.Release|x86.Build.0 = Release|x86
+		{C441C3EF-B93E-4A0C-94E0-85F1B10571A9}.Debug|x64.ActiveCfg = Debug|x64
+		{C441C3EF-B93E-4A0C-94E0-85F1B10571A9}.Debug|x64.Build.0 = Debug|x64
+		{C441C3EF-B93E-4A0C-94E0-85F1B10571A9}.Debug|x86.ActiveCfg = Debug|x86
+		{C441C3EF-B93E-4A0C-94E0-85F1B10571A9}.Debug|x86.Build.0 = Debug|x86
+		{C441C3EF-B93E-4A0C-94E0-85F1B10571A9}.Release|x64.ActiveCfg = Release|x64
+		{C441C3EF-B93E-4A0C-94E0-85F1B10571A9}.Release|x64.Build.0 = Release|x64
+		{C441C3EF-B93E-4A0C-94E0-85F1B10571A9}.Release|x86.ActiveCfg = Release|x86
+		{C441C3EF-B93E-4A0C-94E0-85F1B10571A9}.Release|x86.Build.0 = Release|x86
+		{3ED6085C-A229-4496-BAE7-B9B8B6D08262}.Debug|x64.ActiveCfg = Debug|x64
+		{3ED6085C-A229-4496-BAE7-B9B8B6D08262}.Debug|x64.Build.0 = Debug|x64
+		{3ED6085C-A229-4496-BAE7-B9B8B6D08262}.Debug|x86.ActiveCfg = Debug|x86
+		{3ED6085C-A229-4496-BAE7-B9B8B6D08262}.Debug|x86.Build.0 = Debug|x86
+		{3ED6085C-A229-4496-BAE7-B9B8B6D08262}.Release|x64.ActiveCfg = Release|x64
+		{3ED6085C-A229-4496-BAE7-B9B8B6D08262}.Release|x64.Build.0 = Release|x64
+		{3ED6085C-A229-4496-BAE7-B9B8B6D08262}.Release|x86.ActiveCfg = Release|x86
+		{3ED6085C-A229-4496-BAE7-B9B8B6D08262}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C441C3EF-B93E-4A0C-94E0-85F1B10571A9} = {07C2787E-EAC7-C090-1BA3-A61EC2A24D84}
+		{3ED6085C-A229-4496-BAE7-B9B8B6D08262} = {07C2787E-EAC7-C090-1BA3-A61EC2A24D84}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ECD6061F-2A57-4E06-983B-650FDA9A012C}

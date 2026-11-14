@@ -1,24 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <!-- .NET 10, x86/x64, bin\<platform>\<configuration> (shared with the bundled tools) -->
+  <Import Project="..\Common.props" />
+
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net10.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <RootNamespace>UniversalValveToolbox</RootNamespace>
     <AssemblyName>UniversalValveToolbox</AssemblyName>
     <ApplicationIcon>toolbox.ico</ApplicationIcon>
-    <!-- two builds: x86 and x64 (Any CPU from tools that do not pass a platform -> x64) -->
-    <Platforms>x86;x64</Platforms>
-    <Platform Condition="'$(Platform)' == '' or '$(Platform)' == 'AnyCPU'">x64</Platform>
-    <PlatformTarget>$(Platform)</PlatformTarget>
-    <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
-    <RuntimeIdentifier>win-$(Platform)</RuntimeIdentifier>
-    <SelfContained>false</SelfContained>
-    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <!-- output: bin/x64/Debug, bin/x86/Release, ... (no net10.0-windows or RID subfolders) -->
-    <BaseOutputPath>bin\</BaseOutputPath>
-    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
     <LangVersion>latest</LangVersion>
     <Nullable>disable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
@@ -26,9 +16,7 @@
     <AssemblyTitle>Universal Valve Toolbox</AssemblyTitle>
     <Description>Universal Valve Toolbox</Description>
     <Product>Universal Valve Toolbox</Product>
-    <Company>EpicMorg</Company>
     <Copyright>Copyright © EpicMorg</Copyright>
-    <Deterministic>true</Deterministic>
     <ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
     <ApplicationVisualStyles>true</ApplicationVisualStyles>
     <ForceDesignerDpiUnaware>true</ForceDesignerDpiUnaware>

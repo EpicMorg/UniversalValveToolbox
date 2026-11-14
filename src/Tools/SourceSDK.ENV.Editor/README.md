@@ -12,11 +12,11 @@ Manage your SourceSDK Environments. Edit, reset, configure by one click.
 ## Preview   
 
 #### Empty Environments
-![](https://rawcdn.githack.com/EpicMorg/SourceSDK.ENV.Editor/3bed860c4fc6e6fcaf1391eb6f87d8633ee574a8/.github/images/preview1.png)
+![](images/preview1.png)
 
 
 #### Configured Environments
-![](https://rawcdn.githack.com/EpicMorg/SourceSDK.ENV.Editor/3bed860c4fc6e6fcaf1391eb6f87d8633ee574a8/.github/images/preview2.png)
+![](images/preview2.png)
 
 
 # Stargazers
