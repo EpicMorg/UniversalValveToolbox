@@ -1,30 +1,27 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Windows.Forms;
+using UniversalValveToolbox.Steam;
+using UniversalValveToolbox.Utils;
 
 namespace UniversalValveToolbox {
     public partial class FormAbout : Form {
         public FormAbout() {
             InitializeComponent();
 
-            #region move to helper
-            System.Reflection.Assembly assemblyFacepunchSteamworksWin32 = System.Reflection.Assembly.LoadFrom("Facepunch.Steamworks.Win32.dll");
-            System.Reflection.Assembly assemblykasthackbindingwf = System.Reflection.Assembly.LoadFrom("kasthack.binding.wf.dll");
-            System.Reflection.Assembly assemblyNewtonsoftJson = System.Reflection.Assembly.LoadFrom("Newtonsoft.Json.dll");
-
-            Version verFacepunchSteamworksWin32 = assemblyFacepunchSteamworksWin32.GetName().Version;
-            Version verkasthackbindingwf = assemblykasthackbindingwf.GetName().Version;
-            Version verNewtonsoftJson = assemblyNewtonsoftJson.GetName().Version;
-            #endregion
-
             labelVersion.Text = Utils.VersionHelper.AssemblyVersion;
             labelTitle.Text = Utils.VersionHelper.AssemblyTitle;
             labelCopy.Text = Utils.VersionHelper.AssemblyCopyright;
             labelCaution.Text = labelTitle.Text + " " + labelCaution.Text;
 
-            labelFacepunchSteamworksWin32dll.Text = "Facepunch.Steamworks.Win32.dll " + verFacepunchSteamworksWin32.ToString();
-            labelkasthackbindingwfdll.Text = "kasthack.binding.wf.dll " + verkasthackbindingwf.ToString();
-            labelNewtonsoftJsondll.Text = "Newtonsoft.Json.dll " + verNewtonsoftJson.ToString();
+            // versions of the native Steam API and the referenced libraries
+            labelFacepunchSteamworksWin32dll.Text = SteamApi.NativeLibraryVersion;
+            labelkasthackbindingwfdll.Text = $".NET {Environment.Version} ({(Environment.Is64BitProcess ? "x64" : "x86")})";
+            labelNewtonsoftJsondll.Text = Describe(typeof(Newtonsoft.Json.JsonConvert).Assembly);
+        }
+
+        private static string Describe(System.Reflection.Assembly assembly) {
+            var name = assembly.GetName();
+            return $"{name.Name}.dll {name.Version}";
 
         }
 
@@ -37,20 +34,20 @@ namespace UniversalValveToolbox {
         }
 
         private void linkLabelIconSite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-            Process.Start("https://www.flaticon.com/");
+            ShellUtils.Start("https://www.flaticon.com/");
         }
 
         private void linkLabelFP_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-            Process.Start("https://www.flaticon.com/authors/freepik");
+            ShellUtils.Start("https://www.flaticon.com/authors/freepik");
         }
 
         private void linkLabelTI_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-            Process.Start("https://www.flaticon.com/authors/those-icons");
+            ShellUtils.Start("https://www.flaticon.com/authors/those-icons");
         }
 
         private void linkLabelSI_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://www.flaticon.com/authors/smashicons");
+            ShellUtils.Start("https://www.flaticon.com/authors/smashicons");
         }
     }
 }

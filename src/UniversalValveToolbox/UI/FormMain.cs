@@ -1,11 +1,10 @@
-﻿using Steamworks;
+﻿using UniversalValveToolbox.Steam;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Web.UI;
 using System.Windows.Forms;
 using UniversalValveToolbox.Model.Dto;
 using UniversalValveToolbox.Model.Provider;
@@ -215,7 +214,7 @@ namespace UniversalValveToolbox
                 else { 
             Engines = dataProvider.Engines.Where(engine => dataProvider.Settings.ToolboxMod switch
                 {
-                    ToolboxMod.retail => SteamApps.IsAppInstalled(engine.Appid),
+                    ToolboxMod.retail => SteamApi.IsAppInstalled(engine.Appid),
                     ToolboxMod.bundle => engine.Appid == dataProvider.Settings.BundleAppID,
                     _ => throw new Exception($"Unrecognised toolbox mode: {dataProvider.Settings.ToolboxMod}")
                 }).ToArray();
@@ -273,8 +272,8 @@ namespace UniversalValveToolbox
 
             var pathSelectedEngine = dataProvider.Settings.ToolboxMod switch
             {
-                ToolboxMod.retail => SteamApps.AppInstallDir(SelectedEngine.Appid),
-                ToolboxMod.bundle => SteamApps.AppInstallDir(dataProvider.Settings.BundleAppID),
+                ToolboxMod.retail => SteamApi.AppInstallDir(SelectedEngine.Appid),
+                ToolboxMod.bundle => SteamApi.AppInstallDir(dataProvider.Settings.BundleAppID),
                 ToolboxMod.dev => dataProvider.Settings.DevEnginePath,
                 _ => throw new Exception($"Unrecognised engine type: {dataProvider.Settings.ToolboxMod}")
             };
@@ -288,13 +287,13 @@ namespace UniversalValveToolbox
                         var keyByPath = Path.Combine(pathSelectedEngine, tool.Bin);
                         var icon = Icon.ExtractAssociatedIcon(Path.Combine(pathSelectedEngine, tool.Bin));
 
-                        return new Pair(keyByPath, icon);
+                        return (Key: keyByPath, Icon: icon);
                     });
 
                 foreach (var pair in pairPathIconTools)
                 {
-                    listView.SmallImageList.Images.Add((string)pair.First, (Icon)pair.Second);
-                    listView.LargeImageList.Images.Add((string)pair.First, (Icon)pair.Second);
+                    listView.SmallImageList.Images.Add(pair.Key, pair.Icon);
+                    listView.LargeImageList.Images.Add(pair.Key, pair.Icon);
                 }
             }
 
@@ -323,8 +322,8 @@ namespace UniversalValveToolbox
 
             var enginePath = dataProvider.Settings.ToolboxMod switch
             {
-                ToolboxMod.retail => SteamApps.AppInstallDir(SelectedEngine.Appid),
-                ToolboxMod.bundle => SteamApps.AppInstallDir(dataProvider.Settings.BundleAppID),
+                ToolboxMod.retail => SteamApi.AppInstallDir(SelectedEngine.Appid),
+                ToolboxMod.bundle => SteamApi.AppInstallDir(dataProvider.Settings.BundleAppID),
                 ToolboxMod.dev => dataProvider.Settings.DevEnginePath,
                 _ => throw new Exception($"Unrecognised engine type: {dataProvider.Settings.ToolboxMod}")
             };
@@ -356,7 +355,7 @@ namespace UniversalValveToolbox
             if (SelectedEngine == null)
                 return;
 
-            var pathSelectedEngine = SteamApps.AppInstallDir(SelectedEngine.Appid);
+            var pathSelectedEngine = SteamApi.AppInstallDir(SelectedEngine.Appid);
             var addonsSelectedEngine = dataProvider.Addons.Where(a => a.Engines.Contains(SelectedEngine.Appid));
 
 
@@ -373,13 +372,13 @@ namespace UniversalValveToolbox
                     var keyByPath = addons.Bin;
                     var icon = Icon.ExtractAssociatedIcon(keyByPath);
 
-                    return new Pair(keyByPath, icon);
+                    return (Key: keyByPath, Icon: icon);
                 });
 
             foreach (var pair in pairPathIconTools)
             {
-                listView.SmallImageList.Images.Add((string)pair.First, (Icon)pair.Second);
-                listView.LargeImageList.Images.Add((string)pair.First, (Icon)pair.Second);
+                listView.SmallImageList.Images.Add(pair.Key, pair.Icon);
+                listView.LargeImageList.Images.Add(pair.Key, pair.Icon);
             }
 
             var itemsAddons = addonsSelectedEngine.Select(addons =>
@@ -457,29 +456,29 @@ namespace UniversalValveToolbox
             {
                 if (RUN_PROJECT_ID.Equals(selectItem.Tag) && SelectedProject != null)
                 {
-                    //var pathEngineBin = Path.Combine(SteamApps.AppInstallDir(SelectedEngine.Appid), SelectedEngine.Bin);
+                    //var pathEngineBin = Path.Combine(SteamApi.AppInstallDir(SelectedEngine.Appid), SelectedEngine.Bin);
                     var engineRoot = dataProvider.Settings.ToolboxMod switch
                     {
-                        ToolboxMod.retail => SteamApps.AppInstallDir(SelectedEngine.Appid),
-                        ToolboxMod.bundle => SteamApps.AppInstallDir(dataProvider.Settings.BundleAppID),
+                        ToolboxMod.retail => SteamApi.AppInstallDir(SelectedEngine.Appid),
+                        ToolboxMod.bundle => SteamApi.AppInstallDir(dataProvider.Settings.BundleAppID),
                         ToolboxMod.dev => dataProvider.Settings.DevEnginePath,
                         _ => throw new Exception($"Unrecognised engine type: {dataProvider.Settings.ToolboxMod}")
                     };
                     // newer builds have their own exe (tf_win64.exe), older ones of the same app id still hl2.exe
                     var pathEngineBin = Path.Combine(engineRoot, SelectedEngine.ResolveBin(engineRoot));
 
-                    Process.Start(pathEngineBin, $"-steam -game \"{SelectedProject?.Path ?? string.Empty}\" {SelectedProject.Args}");
+                    ShellUtils.Start(pathEngineBin, $"-steam -game \"{SelectedProject?.Path ?? string.Empty}\" {SelectedProject.Args}");
                 }
 
                 var selectedTool = SelectedEngine.Tools.FirstOrDefault(tool => tool.Name == selectItemText);
                 if (selectedTool != null)
                 {
-                   // var selectedEnginePath = SteamApps.AppInstallDir(SelectedEngine.Appid);
+                   // var selectedEnginePath = SteamApi.AppInstallDir(SelectedEngine.Appid);
 
                     var selectedEnginePath = dataProvider.Settings.ToolboxMod switch
                     {
-                        ToolboxMod.retail => SteamApps.AppInstallDir(SelectedEngine.Appid),
-                        ToolboxMod.bundle => SteamApps.AppInstallDir(dataProvider.Settings.BundleAppID),
+                        ToolboxMod.retail => SteamApi.AppInstallDir(SelectedEngine.Appid),
+                        ToolboxMod.bundle => SteamApi.AppInstallDir(dataProvider.Settings.BundleAppID),
                         ToolboxMod.dev => dataProvider.Settings.DevEnginePath,
                         _ => throw new Exception($"Unrecognised engine type: {dataProvider.Settings.ToolboxMod}")
                     };
@@ -497,7 +496,7 @@ namespace UniversalValveToolbox
                             {
                                 finalArg += $" -game \"{SelectedProject?.Path ?? string.Empty}\" ";
                             }
-                            Process.Start(toolPath, finalArg);
+                            ShellUtils.Start(toolPath, finalArg);
                            
                         }
                         else
@@ -508,7 +507,7 @@ namespace UniversalValveToolbox
                         DialogResult dialogResult = MessageBox.Show($"\"{SelectedEngine.Name}\" {Properties.translations.MessageBoxes.msgTextWithAppID} \"{SelectedEngine.Appid}\" {Properties.translations.MessageBoxes.msgTextNotInstalledInstall}", Properties.translations.MessageBoxes.msgWarning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                         if (dialogResult == DialogResult.Yes)
                         {
-                            Process.Start($"steam://install/{SelectedEngine.Appid}");
+                            ShellUtils.Start($"steam://install/{SelectedEngine.Appid}");
                         }
                         else if (dialogResult == DialogResult.No)
                         {
@@ -526,7 +525,7 @@ namespace UniversalValveToolbox
                     var addonPath = Path.Combine(selectedAddons.Bin);
 
                     if (File.Exists(addonPath))
-                        Process.Start(addonPath, selectedAddons.Args);
+                        ShellUtils.Start(addonPath, selectedAddons.Args);
                     else
                         MessageBox.Show($"\"{selectedAddons.Name}\" {Properties.translations.MessageBoxes.msgTextNotFound}\n{addonPath}", Properties.translations.MessageBoxes.msgWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
@@ -560,11 +559,11 @@ namespace UniversalValveToolbox
             }
             else if (selectItemText == Properties.translations.MenuItems.itmGitHubLink)
             {
-                Process.Start("https://github.com/EpicMorg/UniversalValveToolbox");
+                ShellUtils.Start("https://github.com/EpicMorg/UniversalValveToolbox");
             }
             else if (selectItemText == Properties.translations.MenuItems.itmGitHubReport)
             {
-                Process.Start("https://github.com/EpicMorg/UniversalValveToolbox/issues/new/choose");
+                ShellUtils.Start("https://github.com/EpicMorg/UniversalValveToolbox/issues/new/choose");
             }
         }
 
@@ -588,7 +587,7 @@ namespace UniversalValveToolbox
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaveLastSelectedProject();
-            SteamClient.Shutdown();
+            SteamApi.Shutdown();
         }
     }
 }

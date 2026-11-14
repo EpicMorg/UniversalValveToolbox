@@ -1,7 +1,6 @@
 ﻿using Microsoft.Win32;
-using Steamworks;
+using UniversalValveToolbox.Steam;
 using System;
-using System.Diagnostics;
 using System.Windows.Forms;
 using UniversalValveToolbox.Model.Provider;
 using UniversalValveToolbox.Utils;
@@ -16,48 +15,61 @@ namespace UniversalValveToolbox {
             var dataProvide = new DataProvider();
             var currSettings = dataProvide.Settings;
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            // visual styles, default font, high DPI mode from the csproj (ApplicationVisualStyles / ApplicationHighDpiMode)
+            ApplicationConfiguration.Initialize();
 
             LanguageManager.UpdateLanguage(currSettings.Language);
 
-            try { SteamClient.Init(currSettings.ToolsAppId); }
-            catch (Exception ex) {
+            const string line = "---------------------------------------------------------------------------";
 
+            if (!SteamApi.Init(currSettings.ToolsAppId, out var error)) {
                 DialogResult result = MessageBox.Show(@"Some error was occurred when trying to init Steam API:" + Environment.NewLine +
-                    "---------------------------------------------------------------------------" + Environment.NewLine +
-                    ex.Message + Environment.NewLine +
-                    "---------------------------------------------------------------------------" + Environment.NewLine +
-                    "Try to launch Steam?", 
+                    line + Environment.NewLine +
+                    error + Environment.NewLine +
+                    line + Environment.NewLine +
+                    "Try to launch Steam?",
                     "Error!", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
-                if (result == DialogResult.Yes)
-                {
-                    try {
-                        string steamPATH = ""; 
-                        RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Valve\Steam");
-                        steamPATH = key.GetValue("SteamExe").ToString();
-                        Process.Start(steamPATH);
-                        key.Close();
+                if (result != DialogResult.Yes) {
+                    MessageBox.Show("Application will be terminated.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return; // Application.Exit() before Run() does not stop Run(new FormMain())
+                }
+
+                try {
+                    using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Valve\Steam")) {
+                        ShellUtils.Start(key.GetValue("SteamExe").ToString());
                     }
-                    catch (Exception exs) {
-                        MessageBox.Show(@"Sorry. Steam launch failed because:" + Environment.NewLine +
-                        "---------------------------------------------------------------------------" + Environment.NewLine +
+                }
+                catch (Exception exs) {
+                    MessageBox.Show(@"Sorry. Steam launch failed because:" + Environment.NewLine +
+                        line + Environment.NewLine +
                         exs.Message + Environment.NewLine +
-                        "---------------------------------------------------------------------------" + Environment.NewLine +
+                        line + Environment.NewLine +
                         "Application will be terminated.",
                         "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Application.Exit();
-                    }
+                    return;
                 }
-                else
-                {
-                    MessageBox.Show("Application will be terminated.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    Application.Exit();
+
+                // Steam needs time to start and log in; the launcher is useless without it
+                Cursor.Current = Cursors.WaitCursor;
+                var started = SteamApi.WaitAndInit(currSettings.ToolsAppId, TimeSpan.FromSeconds(90), out error);
+                Cursor.Current = Cursors.Default;
+                if (!started) {
+                    MessageBox.Show(@"Steam did not start in time:" + Environment.NewLine +
+                        line + Environment.NewLine +
+                        error + Environment.NewLine +
+                        line + Environment.NewLine +
+                        "Application will be terminated.",
+                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
-               
             }
 
-            Application.Run(new FormMain());
+            try {
+                Application.Run(new FormMain());
+            }
+            finally {
+                SteamApi.Shutdown();
+            }
         }
     }
 }

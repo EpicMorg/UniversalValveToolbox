@@ -3,13 +3,12 @@ using System.Windows.Forms;
 using UniversalValveToolbox.Model.Provider;
 using UniversalValveToolbox.Model.ViewModel;
 using UniversalValveToolbox.Model.Dto;
-using kasthack.binding.wf;
 using System.Linq;
 using System.Collections.Generic;
 using UniversalValveToolbox.Utils;
 using System.Globalization;
 using System.Collections;
-using Steamworks;
+using UniversalValveToolbox.Steam;
 
 namespace UniversalValveToolbox {
     public partial class FormAddons : Form {
@@ -107,7 +106,7 @@ namespace UniversalValveToolbox {
         }
 
         private bool isSteamAppInstall(int appId) {
-            var isInstall = SteamApps.IsAppInstalled(appId);
+            var isInstall = SteamApi.IsAppInstalled(appId);
             return isInstall;
         }
 
