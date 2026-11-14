@@ -23,4 +23,3 @@ The tool ships MinGW-w64 runtime libraries next to it: `libgcc_s_seh-1.dll` / `l
 ## NuGet packages
 - [Newtonsoft.Json](https://www.newtonsoft.com/json) — MIT (launcher)
 - [DarkUI.CE](https://github.com/MuzzleInteractive/DarkUI.CE) — MIT, fork of DarkUI by Robin Perris (SourceSDK.ENV.Editor)
-- [Octokit](https://github.com/octokit/octokit.net) — MIT (SourceSDK.ENV.Editor, update check)

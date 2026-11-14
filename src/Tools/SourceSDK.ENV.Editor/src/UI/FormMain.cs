@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Octokit;
 using DarkUI.Forms;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -16,9 +15,8 @@ namespace SourceSDK.ENV.Editor.UI
 {
     public partial class FormMain : Form
     {
-        GitHubClient client = new GitHubClient(new ProductHeaderValue("SourceSDK.ENV.Editor"));
-        Version localVersion = new Version(System.Windows.Forms.Application.ProductVersion); //Replace this with your local version. Only tested with numeric values.
-      
+        // releases come with Universal Valve Toolbox now (bundle and standalone zip); no update check over the network
+        private const string ReleasesUrl = "https://github.com/EpicMorg/UniversalValveToolbox/releases";
 
         public FormMain()
         {
@@ -29,7 +27,9 @@ namespace SourceSDK.ENV.Editor.UI
         private void FormMain_Load(object sender, EventArgs e)
         {
             checkAll();
-            try  { SilentCheckGitHubNewerVersion(); } catch { }
+            toolStripStatusLabelUpdateStatus.Image = Properties.Resources.done;
+            toolStripStatusLabelUpdateStatus.Text = "Part of Universal Valve Toolbox";
+            toolStripStatusLabelUpdateStatus.ToolTipText = "Click to open the releases page";
             folderBrowserDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); //set defaut directory
         }
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
@@ -47,89 +47,6 @@ namespace SourceSDK.ENV.Editor.UI
             frmAbout.ShowDialog();
         }
 
-        #region update check
-        private async System.Threading.Tasks.Task SilentCheckGitHubNewerVersion() 
-        {
-            IReadOnlyList<Release> releases = await client.Repository.Release.GetAll("EpicMorg", "SourceSDK.ENV.Editor");
-            Version latestGitHubVersion = new Version(releases[0].TagName);
-            int versionComparison = localVersion.CompareTo(latestGitHubVersion);
-            if (versionComparison < 0)
-            {
-                toolStripStatusLabelUpdateStatus.Image = Properties.Resources.cancel;
-                toolStripStatusLabelUpdateStatus.Text = "New version avalible";
-                toolStripStatusLabelUpdateStatus.ToolTipText = "The version on GitHub is more up to date than this local release.";
-            }
-            else if (versionComparison > 0)
-            {
-                toolStripStatusLabelUpdateStatus.Image = Properties.Resources.wait;
-                toolStripStatusLabelUpdateStatus.Text = "This local version is greater";
-                toolStripStatusLabelUpdateStatus.ToolTipText ="This local version is greater than the release version on GitHub.";
-            }
-            else
-            {
-                toolStripStatusLabelUpdateStatus.Image = Properties.Resources.done;
-                toolStripStatusLabelUpdateStatus.Text = "This version is up to date";
-                toolStripStatusLabelUpdateStatus.ToolTipText = "This local Version and the Version on GitHub are equal.";
-            }
-        }
-        private async System.Threading.Tasks.Task CheckGitHubNewerVersion()
-        {
-            //Get all releases from GitHub
-            //Source: https://octokitnet.readthedocs.io/en/latest/getting-started/
-
-            IReadOnlyList<Release> releases = await client.Repository.Release.GetAll("EpicMorg", "SourceSDK.ENV.Editor");
-            //Setup the versions
-            Version latestGitHubVersion = new Version(releases[0].TagName);
-
-            //Compare the Versions
-            //Source: https://stackoverflow.com/questions/7568147/compare-version-numbers-without-using-split-function
-            int versionComparison = localVersion.CompareTo(latestGitHubVersion);
-
-            if (versionComparison < 0)
-            {
-                if (DarkUI.Forms.DarkMessageBox.ShowWarning("The version on GitHub is more up to date than this local release. Do you want to update it?", "Information", DarkDialogButton.YesNo) == DialogResult.Yes)
-                {
-                    var url = "https://github.com/EpicMorg/SourceSDK.ENV.Editor/releases/latest";
-                    try
-                    {
-                        Process.Start(url);
-                    }
-                    catch
-                    {
-                        // hack because of this: https://github.com/dotnet/corefx/issues/10361
-                        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                        {
-                            url = url.Replace("&", "^&");
-                            Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
-                        }
-                        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                        {
-                            Process.Start("xdg-open", url);
-                        }
-                        else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                        {
-                            Process.Start("open", url);
-                        }
-                        else
-                        {
-                            throw;
-                        }
-                    }
-                }
-            }
-            else if (versionComparison > 0)
-            {
-                DarkUI.Forms.DarkMessageBox.ShowInformation("This local version is greater than the release version on GitHub.", "Information", DarkDialogButton.Ok);
-                //This local version is greater than the release version on GitHub.
-            }
-            else
-            {
-                DarkUI.Forms.DarkMessageBox.ShowInformation("This local Version and the Version on GitHub are equal.", "Information", DarkDialogButton.Ok);
-                //This local Version and the Version on GitHub are equal.
-            }
-        }
-
-        #endregion
 
         #region checks
         private void checkAll()
@@ -614,7 +531,7 @@ namespace SourceSDK.ENV.Editor.UI
 
         private void toolStripStatusLabelUpdateStatus_Click(object sender, EventArgs e)
         {
-            try { CheckGitHubNewerVersion(); } catch { }
+            try { Process.Start(new ProcessStartInfo(ReleasesUrl) { UseShellExecute = true }); } catch { }
             
         }
     }

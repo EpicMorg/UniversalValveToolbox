@@ -37,4 +37,10 @@
   <ItemGroup>
     <None Update="Tools\**\*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Update="Roslynator.Analyzers" Version="5.0.1" />
+    <PackageReference Update="Roslynator.CodeAnalysis.Analyzers" Version="5.0.1" />
+    <PackageReference Update="Roslynator.Formatting.Analyzers" Version="5.0.1" />
+    <PackageReference Update="StyleCop.Analyzers" Version="1.3.180" />
+  </ItemGroup>
 </Project>

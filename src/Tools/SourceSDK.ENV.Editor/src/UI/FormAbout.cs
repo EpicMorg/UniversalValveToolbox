@@ -6,7 +6,6 @@ namespace SourceSDK.ENV.Editor.UI
     public partial class FormAbout : Form
     {
         string verDarkUI = "Unknown";
-        string verOctokit = "Unknown";
         public FormAbout()
         {
             InitializeComponent();
@@ -15,16 +14,16 @@ namespace SourceSDK.ENV.Editor.UI
             darkLabelCopyright.Text = String.Format(" Copyright {1} \u00a9 {0}", System.Windows.Forms.Application.CompanyName, DateTime.Now.Year);
             try
             {
-                 verDarkUI = System.Reflection.AssemblyName.GetAssemblyName(Path.Combine(Application.StartupPath,"DarkUI.dll")).Version.ToString();
-                 verOctokit = System.Reflection.AssemblyName.GetAssemblyName(Path.Combine(Application.StartupPath, "Octokit.dll")).Version.ToString();
+                 verDarkUI = System.Reflection.AssemblyName.GetAssemblyName(Path.Combine(Application.StartupPath,"DarkUI.dll")).Version?.ToString() ?? "Unknown";
             }
             catch
             {
                 verDarkUI = "Unknown";
-                verOctokit = "Unknown";
             }
             darkTextBoxDUV.Text = verDarkUI;
-            textBoxOKitV.Text = verOctokit;
+            // the Octokit row (update check is gone) shows the runtime instead
+            textBoxOKit.Text = ".NET";
+            textBoxOKitV.Text = $"{Environment.Version} ({(Environment.Is64BitProcess ? "x64" : "x86")})";
         }
 
         private void FormAbout_Load(object sender, EventArgs e)
