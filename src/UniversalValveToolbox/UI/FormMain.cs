@@ -1,7 +1,5 @@
-﻿using UniversalValveToolbox.Steam;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -9,6 +7,7 @@ using System.Windows.Forms;
 using UniversalValveToolbox.Model.Dto;
 using UniversalValveToolbox.Model.Provider;
 using UniversalValveToolbox.Model.ViewModel;
+using UniversalValveToolbox.Steam;
 using UniversalValveToolbox.Utils;
 
 namespace UniversalValveToolbox
@@ -17,47 +16,49 @@ namespace UniversalValveToolbox
     {
         private readonly string RUN_PROJECT_ID = "RUN_PROJECT_ID";
 
-        private EngineDtoModel[] Engines;
-        private ProjectDtoModel[] Projects;
-        private ProjectDtoModel[] AvailableProjects;
+        // icons of tools/addons by exe path, extracted once per run
+        private static readonly Dictionary<string, Icon> iconCache = new Dictionary<string, Icon>(StringComparer.OrdinalIgnoreCase);
+
+        private EngineDtoModel[] Engines = new EngineDtoModel[0];
+        private ProjectDtoModel[] Projects = new ProjectDtoModel[0];
+        private ProjectDtoModel[] AvailableProjects = new ProjectDtoModel[0];
+        private AddonDtoModel[] Addons = new AddonDtoModel[0];
+        private SettingsDtoModel settings;
 
         private DataProvider dataProvider = new DataProvider();
 
         private ListViewGroup listViewGroupAddons;
         private ListViewGroup listViewGroupTools;
 
-        private EngineDtoModel SelectedEngine
-        {
-            get
-            {
-                if (Engines.Length == 0)
-                    return null;
+        // set while UpdateFormData fills the engine box, so SelectedIndexChanged does not rebuild everything again
+        private bool suppressEngineChanged;
 
-                return Engines[comboBoxEngine.SelectedIndex];
-            }
-        }
-        private ProjectDtoModel SelectedProject
-        {
-            get => (ProjectDtoModel)((comboBoxProjects.Enabled)
-                ? Projects.First(project => project.Name.Equals(comboBoxProjects.SelectedItem))
-                : null);
-        }
+        private EngineDtoModel SelectedEngine =>
+            comboBoxEngine.SelectedIndex >= 0 && comboBoxEngine.SelectedIndex < Engines.Length ? Engines[comboBoxEngine.SelectedIndex] : null;
+
+        // by index in the list of the selected engine's projects (names may repeat across engines)
+        private ProjectDtoModel SelectedProject =>
+            comboBoxProjects.Enabled && comboBoxProjects.SelectedIndex >= 0 && comboBoxProjects.SelectedIndex < AvailableProjects.Length
+                ? AvailableProjects[comboBoxProjects.SelectedIndex]
+                : null;
 
         public FormMain()
         {
             InitializeComponent();
             FillBaseMenuItems();
 
-            UpdateFormData();
-
-            Text = VersionHelper.AssemblyTitle + VersionHelper.AssemblyVersion;
-
             comboBoxEngine.SelectedIndexChanged += (s, e) =>
             {
+                if (suppressEngineChanged)
+                    return;
                 UpdateProjectList();
                 UpdateToolsList();
                 UpdateAddonsList();
             };
+
+            UpdateFormData();
+
+            Text = VersionHelper.AssemblyTitle + VersionHelper.AssemblyVersion;
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -65,44 +66,61 @@ namespace UniversalValveToolbox
 
         }
 
-        private void UpdateLastSelectedProject()
+        /// <summary>Root folder of an engine in the current mode, or null when it is not installed.</summary>
+        private string EnginePath(EngineDtoModel engine)
         {
-            var lastSelectedProject = dataProvider.Projects.FirstOrDefault(project => project.Name.Equals(dataProvider.Settings.LastSelectedProject));
-
-            // the project's engine may be uninstalled or not shown in this mode
-            var lastEngine = lastSelectedProject == null ? null : Engines.FirstOrDefault(engine => engine.Appid == lastSelectedProject.Engine);
-            if (lastEngine != null)
+            if (engine == null)
+                return null;
+            return settings.ToolboxMod switch
             {
-                var indexEngine = comboBoxEngine.Items.IndexOf(lastEngine.Name);
-                comboBoxEngine.SelectedIndex = indexEngine;
-
-                UpdateProjectList();
-                UpdateToolsList();
-
-                var indexProject = comboBoxProjects.Items.IndexOf(lastSelectedProject.Name);
-                comboBoxProjects.SelectedIndex = indexProject;
-
-                EnvUtils.PrepareVProject($"{SelectedProject?.Path ?? string.Empty}");
-                EnvUtils.PrepareSFMData($"{SelectedProject?.Path ?? string.Empty}");
-            }
+                ToolboxMod.retail => SteamApi.AppInstallDir(engine.Appid),
+                ToolboxMod.bundle => SteamApi.AppInstallDir(settings.BundleAppID),
+                ToolboxMod.dev => settings.DevEnginePath,
+                _ => null
+            };
         }
+
         private void SaveLastSelectedProject()
         {
-            var settings = dataProvider.Settings;
-            settings.LastSelectedProject = SelectedProject?.Name;
-            dataProvider.Settings = settings;
+            var current = dataProvider.Settings;
+            current.LastSelectedProject = SelectedProject?.Name;
+            dataProvider.Settings = current;
         }
 
-
+        /// <summary>Reloads settings, catalog, projects and addons and rebuilds the window in one pass.</summary>
         private void UpdateFormData()
         {
-            UpdateEngineList();
-            UpdateProjectList();
+            settings = dataProvider.Settings;
+            Projects = dataProvider.Projects;
+            Addons = dataProvider.Addons;
+
+            suppressEngineChanged = true;
+            try
+            {
+                UpdateEngineList();
+
+                // engine of the last used project, if it is in the list
+                var lastProject = Projects.FirstOrDefault(project => project.Name == settings.LastSelectedProject);
+                var lastEngineIndex = lastProject == null ? -1 : Array.FindIndex(Engines, engine => engine.Appid == lastProject.Engine);
+                if (lastEngineIndex >= 0)
+                    comboBoxEngine.SelectedIndex = lastEngineIndex;
+
+                UpdateProjectList();
+                if (lastProject != null)
+                {
+                    var lastProjectIndex = Array.IndexOf(AvailableProjects, lastProject);
+                    if (lastProjectIndex >= 0)
+                        comboBoxProjects.SelectedIndex = lastProjectIndex;
+                }
+            }
+            finally
+            {
+                suppressEngineChanged = false;
+            }
+
             UpdateToolsList();
             UpdateAddonsList();
             UpdateNavigationBar();
-
-            UpdateLastSelectedProject();
         }
 
         private void UpdateNavigationBar()
@@ -183,240 +201,142 @@ namespace UniversalValveToolbox
 
         private void UpdateEngineList()
         {
+            Engines = GetAvailableEngines();
 
-
-
-            GetAvailableEngines();
-
-            if (Engines != null && Engines.Length != 0)
+            comboBoxEngine.Items.Clear();
+            comboBoxEngine.Enabled = Engines.Length != 0;
+            if (Engines.Length != 0)
             {
-                comboBoxEngine.Enabled = true;
-                comboBoxEngine.Items.Clear();
                 comboBoxEngine.Items.AddRange(Engines.Select(engine => engine.Name).ToArray());
-
                 comboBoxEngine.SelectedIndex = 0;
             }
         }
 
-        private void GetAvailableEngines()
+        private EngineDtoModel[] GetAvailableEngines()
         {
-            var dataProvider = new DataProvider();
-            if (dataProvider.Settings.ToolboxMod == ToolboxMod.dev)
+            var catalog = dataProvider.Engines;
+            switch (settings.ToolboxMod)
             {
-                // tools come from the catalog entry of BundleAppID; without one there is nothing to show (used to crash on Single)
-                EngineDtoModel engineValues = dataProvider.Engines.FirstOrDefault(engine => engine.Appid == dataProvider.Settings.BundleAppID);
-                Engines = engineValues == null ? new EngineDtoModel[0] : new[] {
-                    new EngineDtoModel {
-                        Appid = (int)dataProvider.Settings.BundleAppID,
-                        Name = dataProvider.Settings.DevEngineName,
-                        Bin = engineValues.Bin,
-                        AltBins = engineValues.AltBins,
-                        Tools = engineValues.Tools
-                    } 
-                };
+                case ToolboxMod.dev:
+                    // tools come from the catalog entry of BundleAppID; without one there is nothing to show
+                    var template = catalog.FirstOrDefault(engine => engine.Appid == settings.BundleAppID);
+                    return template == null ? new EngineDtoModel[0] : new[] {
+                        new EngineDtoModel {
+                            Appid = (int)settings.BundleAppID,
+                            Name = settings.DevEngineName,
+                            Bin = template.Bin,
+                            AltBins = template.AltBins,
+                            Tools = template.Tools
+                        }
+                    };
+                case ToolboxMod.bundle:
+                    return catalog.Where(engine => engine.Appid == settings.BundleAppID).ToArray();
+                default:
+                    return catalog.Where(engine => SteamApi.IsAppInstalled(engine.Appid)).ToArray();
             }
-                else { 
-            Engines = dataProvider.Engines.Where(engine => dataProvider.Settings.ToolboxMod switch
-                {
-                    ToolboxMod.retail => SteamApi.IsAppInstalled(engine.Appid),
-                    ToolboxMod.bundle => engine.Appid == dataProvider.Settings.BundleAppID,
-                    _ => throw new Exception($"Unrecognised toolbox mode: {dataProvider.Settings.ToolboxMod}")
-                }).ToArray();
-                }
-            }
+        }
 
         private void UpdateProjectList()
         {
-            if (Engines.Length == 0)
+            var engine = SelectedEngine;
+            AvailableProjects = engine == null ? new ProjectDtoModel[0] : Projects.Where(project => project.Engine == engine.Appid).ToArray();
+
+            comboBoxProjects.Items.Clear();
+            comboBoxProjects.Enabled = AvailableProjects.Length != 0;
+            if (AvailableProjects.Length != 0)
             {
-                comboBoxProjects.Enabled = false;
-
-                comboBoxProjects.Items.Clear();
-
-                return;
-            }
-
-            Projects = dataProvider.Projects;
-
-            var selectEngine = Engines[comboBoxEngine.SelectedIndex];
-            AvailableProjects = Projects.Where(project => project.Engine == selectEngine.Appid).ToArray();
-
-            if (AvailableProjects != null && AvailableProjects.Length != 0)
-            {
-                comboBoxProjects.Enabled = true;
-
-                comboBoxProjects.Items.Clear();
                 comboBoxProjects.Items.AddRange(AvailableProjects.Select(project => project.Name).ToArray());
-
                 comboBoxProjects.SelectedIndex = 0;
             }
-            else
-            {
-                comboBoxProjects.Enabled = false;
+        }
 
-                comboBoxProjects.Items.Clear();
+        /// <summary>Adds the exe's icon to the image lists once; returns the image key, or null for a missing file.</summary>
+        private string EnsureIcon(string exePath)
+        {
+            if (string.IsNullOrEmpty(exePath) || !File.Exists(exePath))
+                return null;
+
+            if (!listView.SmallImageList.Images.ContainsKey(exePath))
+            {
+                if (!iconCache.TryGetValue(exePath, out var icon))
+                {
+                    try { icon = Icon.ExtractAssociatedIcon(exePath); }
+                    catch (Exception) { icon = null; }
+                    iconCache[exePath] = icon;
+                }
+                if (icon == null)
+                    return null;
+                listView.SmallImageList.Images.Add(exePath, icon);
+                listView.LargeImageList.Images.Add(exePath, icon);
             }
+            return exePath;
+        }
+
+        private void RemoveGroupItems(ListViewGroup group)
+        {
+            foreach (var item in group.Items.Cast<ListViewItem>().ToList())
+                listView.Items.Remove(item);
         }
 
         private void UpdateToolsList()
         {
-            var removeItem = new List<ListViewItem>();
-
-            foreach (ListViewItem item in listViewGroupTools.Items)
+            listView.BeginUpdate();
+            try
             {
-                removeItem.Add(item);
-            }
+                RemoveGroupItems(listViewGroupTools);
 
-            removeItem.ForEach(item => listView.Items.Remove(item));
+                var engine = SelectedEngine;
+                var enginePath = EnginePath(engine);
+                if (enginePath == null)
+                    return; // not installed (or no folder yet): nothing to launch
 
-            if (SelectedEngine == null)
-                return;
+                // only tools whose exe exists in this install (old and new builds of one app id differ)
+                var items = engine.Tools
+                    .Select(tool => (tool, path: Path.Combine(enginePath, tool.Bin)))
+                    .Where(t => File.Exists(t.path))
+                    .Select(t => new ListViewItem(t.tool.Name, EnsureIcon(t.path), listViewGroupTools))
+                    .ToArray();
+                listView.Items.AddRange(items);
 
-            var dataProvider = new DataProvider();
-
-            var pathSelectedEngine = dataProvider.Settings.ToolboxMod switch
-            {
-                ToolboxMod.retail => SteamApi.AppInstallDir(SelectedEngine.Appid),
-                ToolboxMod.bundle => SteamApi.AppInstallDir(dataProvider.Settings.BundleAppID),
-                ToolboxMod.dev => dataProvider.Settings.DevEnginePath,
-                _ => throw new Exception($"Unrecognised engine type: {dataProvider.Settings.ToolboxMod}")
-            };
-
-            if (pathSelectedEngine != null)
-            {
-                var pairPathIconTools = SelectedEngine.Tools
-                    .Where(tool => File.Exists(Path.Combine(pathSelectedEngine, tool.Bin)))
-                    .Select(tool =>
-                    {
-                        var keyByPath = Path.Combine(pathSelectedEngine, tool.Bin);
-                        var icon = Icon.ExtractAssociatedIcon(Path.Combine(pathSelectedEngine, tool.Bin));
-
-                        return (Key: keyByPath, Icon: icon);
-                    });
-
-                foreach (var pair in pairPathIconTools)
+                if (AvailableProjects.Length != 0)
                 {
-                    listView.SmallImageList.Images.Add(pair.Key, pair.Icon);
-                    listView.LargeImageList.Images.Add(pair.Key, pair.Icon);
+                    var iconKey = EnsureIcon(Path.Combine(enginePath, engine.ResolveBin(enginePath)));
+                    listView.Items.Add(new ListViewItem(Properties.translations.MenuItems.itmRunProject, iconKey, listViewGroupTools) { Tag = RUN_PROJECT_ID });
                 }
             }
-
-            if (pathSelectedEngine == null)
-                return; // installed per Steam, but no folder (yet): no tools to show; Path.Combine(null, ...) threw here
-
-            var itemsTools = SelectedEngine.Tools
-                .Where(tool => File.Exists(Path.Combine(pathSelectedEngine, tool.Bin)))
-
-                .Select(tool =>
-                {
-                    string keyByPath = null;
-
-                    if (pathSelectedEngine != null)
-                        keyByPath = Path.Combine(pathSelectedEngine, tool.Bin);
-
-                    if (keyByPath == null)
-                    {
-                        return new ListViewItem(tool.Name, listViewGroupTools);
-                    }
-                    else
-                    {
-                        return new ListViewItem(tool.Name, keyByPath, listViewGroupTools);
-                    }
-
-                }).ToArray();
-            listView.Items.AddRange(itemsTools);
-
-
-            var enginePath = dataProvider.Settings.ToolboxMod switch
+            finally
             {
-                ToolboxMod.retail => SteamApi.AppInstallDir(SelectedEngine.Appid),
-                ToolboxMod.bundle => SteamApi.AppInstallDir(dataProvider.Settings.BundleAppID),
-                ToolboxMod.dev => dataProvider.Settings.DevEnginePath,
-                _ => throw new Exception($"Unrecognised engine type: {dataProvider.Settings.ToolboxMod}")
-            };
-
-            var isAvailableProjectBySelectEngine = Projects.Any(project => project.Engine == SelectedEngine.Appid);
-
-            if (enginePath != null && isAvailableProjectBySelectEngine)
-            {
-                var iconPathEngine = Path.Combine(enginePath, SelectedEngine.ResolveBin(enginePath));
-
-                var runProjectListViewItem = new ListViewItem(Properties.translations.MenuItems.itmRunProject, iconPathEngine, listViewGroupTools);
-                runProjectListViewItem.Tag = RUN_PROJECT_ID;
-
-                listView.Items.Add(runProjectListViewItem);
+                listView.EndUpdate();
             }
         }
 
         private void UpdateAddonsList()
         {
-            var removeItem = new List<ListViewItem>();
-
-            foreach (ListViewItem item in listViewGroupAddons.Items)
+            listView.BeginUpdate();
+            try
             {
-                removeItem.Add(item);
+                RemoveGroupItems(listViewGroupAddons);
+
+                var engine = SelectedEngine;
+                if (engine == null)
+                    return;
+
+                var items = Addons
+                    .Where(addon => addon.Engines.Contains(engine.Appid))
+                    .Select(addon => new ListViewItem(addon.Name, EnsureIcon(addon.Bin), listViewGroupAddons))
+                    .ToArray();
+                listView.Items.AddRange(items);
             }
-
-            removeItem.ForEach(item => listView.Items.Remove(item));
-
-            if (SelectedEngine == null)
-                return;
-
-            var pathSelectedEngine = SteamApi.AppInstallDir(SelectedEngine.Appid);
-            var addonsSelectedEngine = dataProvider.Addons.Where(a => a.Engines.Contains(SelectedEngine.Appid));
-
-
-            var pairPathIconTools = addonsSelectedEngine
-                .Where(addon =>
-                {
-                    var path = addon.Bin;
-
-                    return File.Exists(path);
-
-                })
-                .Select(addons =>
-                {
-                    var keyByPath = addons.Bin;
-                    var icon = Icon.ExtractAssociatedIcon(keyByPath);
-
-                    return (Key: keyByPath, Icon: icon);
-                });
-
-            foreach (var pair in pairPathIconTools)
+            finally
             {
-                listView.SmallImageList.Images.Add(pair.Key, pair.Icon);
-                listView.LargeImageList.Images.Add(pair.Key, pair.Icon);
+                listView.EndUpdate();
             }
-
-            var itemsAddons = addonsSelectedEngine.Select(addons =>
-            {
-                string keyByPath = null;
-
-                if (pathSelectedEngine != null)
-                    keyByPath = Path.Combine(pathSelectedEngine, addons.Bin);
-
-                if (keyByPath == null)
-                {
-                    return new ListViewItem(addons.Name, listViewGroupAddons);
-                }
-                else
-                {
-                    return new ListViewItem(addons.Name, keyByPath, listViewGroupAddons);
-                }
-
-            }).ToArray();
-
-            listView.Items.AddRange(itemsAddons);
         }
 
         private void UpdateInfoNavigationBar()
         {
-            var countAvailableEngines = Engines.Length;
-            var countAvailableProjects = dataProvider.Projects.Length;
-            var countAvailableAddons = dataProvider.Addons.Length;
-
-            toolStripStatusLabelEngines.Text = Properties.translations.MenuNavbar.menuStrEngines + $"{countAvailableEngines}";
-            toolStripStatusLabelAddons.Text = Properties.translations.MenuNavbar.menuStrAddons + $"{countAvailableAddons}";
+            toolStripStatusLabelEngines.Text = Properties.translations.MenuNavbar.menuStrEngines + $"{Engines.Length}";
+            toolStripStatusLabelAddons.Text = Properties.translations.MenuNavbar.menuStrAddons + $"{Addons.Length}";
         }
 
         private void UpdateLogInStatus()
@@ -451,94 +371,89 @@ namespace UniversalValveToolbox
             this.OpenSettings();
         }
 
+        /// <summary>Starts an engine program with the project's environment (process only + changed values to the user env).</summary>
+        private void LaunchForProject(string exePath, string args, EngineDtoModel engine, string enginePath)
+        {
+            var env = EnvUtils.ForLaunch(SelectedProject, engine, enginePath);
+            EnvUtils.ExportToUser(env);
+            ShellUtils.Launch(exePath, args, env, enginePath);
+        }
+
         private void listView_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            if (listView.SelectedItems.Count == 0)
+                return;
             var selectItem = listView.SelectedItems[0];
-
             var selectItemText = selectItem.Text;
-            EnvUtils.PrepareVProject($"{SelectedProject?.Path ?? string.Empty}");
-            EnvUtils.PrepareSFMData($"{SelectedProject?.Path ?? string.Empty}");
 
             if (selectItem.Group == listViewGroupTools)
             {
-                if (RUN_PROJECT_ID.Equals(selectItem.Tag) && SelectedProject != null)
-                {
-                    //var pathEngineBin = Path.Combine(SteamApi.AppInstallDir(SelectedEngine.Appid), SelectedEngine.Bin);
-                    var engineRoot = dataProvider.Settings.ToolboxMod switch
-                    {
-                        ToolboxMod.retail => SteamApi.AppInstallDir(SelectedEngine.Appid),
-                        ToolboxMod.bundle => SteamApi.AppInstallDir(dataProvider.Settings.BundleAppID),
-                        ToolboxMod.dev => dataProvider.Settings.DevEnginePath,
-                        _ => throw new Exception($"Unrecognised engine type: {dataProvider.Settings.ToolboxMod}")
-                    };
-                    // newer builds have their own exe (tf_win64.exe), older ones of the same app id still hl2.exe
-                    var pathEngineBin = Path.Combine(engineRoot, SelectedEngine.ResolveBin(engineRoot));
+                var engine = SelectedEngine;
+                var enginePath = EnginePath(engine);
+                var project = SelectedProject;
 
-                    ShellUtils.Start(pathEngineBin, $"-steam -game \"{SelectedProject?.Path ?? string.Empty}\" {SelectedProject.Args}");
+                if (RUN_PROJECT_ID.Equals(selectItem.Tag))
+                {
+                    if (enginePath != null && project != null)
+                    {
+                        // newer builds have their own exe (tf_win64.exe), older ones of the same app id still hl2.exe
+                        var pathEngineBin = Path.Combine(enginePath, engine.ResolveBin(enginePath));
+                        LaunchForProject(pathEngineBin, $"-steam -game \"{project.Path}\" {project.Args}", engine, enginePath);
+                    }
+                    return;
                 }
 
-                var selectedTool = SelectedEngine.Tools.FirstOrDefault(tool => tool.Name == selectItemText);
-                if (selectedTool != null)
+                var selectedTool = engine?.Tools.FirstOrDefault(tool => tool.Name == selectItemText);
+                if (selectedTool == null)
+                    return;
+
+                if (enginePath != null)
                 {
-                   // var selectedEnginePath = SteamApi.AppInstallDir(SelectedEngine.Appid);
+                    var toolPath = Path.Combine(enginePath, selectedTool.Bin);
 
-                    var selectedEnginePath = dataProvider.Settings.ToolboxMod switch
+                    if (File.Exists(toolPath))
                     {
-                        ToolboxMod.retail => SteamApi.AppInstallDir(SelectedEngine.Appid),
-                        ToolboxMod.bundle => SteamApi.AppInstallDir(dataProvider.Settings.BundleAppID),
-                        ToolboxMod.dev => dataProvider.Settings.DevEnginePath,
-                        _ => throw new Exception($"Unrecognised engine type: {dataProvider.Settings.ToolboxMod}")
-                    };
+                        string finalArg = $"-steam {selectedTool.Args}";
 
-
-                    if (selectedEnginePath != null)
-                    {
-                        var toolPath = Path.Combine(selectedEnginePath, selectedTool.Bin);
-
-                        if (File.Exists(toolPath))
+                        // the selected project's folder, unless the tool names its own -game; nothing without a project
+                        if (!finalArg.Contains("-game") && !string.IsNullOrEmpty(project?.Path))
                         {
-                            string finalArg = $"-steam {selectedTool.Args}";
-
-                            if (!finalArg.Contains("-game"))
-                            {
-                                finalArg += $" -game \"{SelectedProject?.Path ?? string.Empty}\" ";
-                            }
-                            ShellUtils.Start(toolPath, finalArg);
-                           
+                            finalArg += $" -game \"{project.Path}\"";
                         }
-                        else
-                            MessageBox.Show($"\"{selectedTool.Name}\" {Properties.translations.MessageBoxes.msgTextNotFound}\n{toolPath}", Properties.translations.MessageBoxes.msgWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        LaunchForProject(toolPath, finalArg, engine, enginePath);
                     }
                     else
+                        MessageBox.Show($"\"{selectedTool.Name}\" {Properties.translations.MessageBoxes.msgTextNotFound}\n{toolPath}", Properties.translations.MessageBoxes.msgWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    DialogResult dialogResult = MessageBox.Show($"\"{engine.Name}\" {Properties.translations.MessageBoxes.msgTextWithAppID} \"{engine.Appid}\" {Properties.translations.MessageBoxes.msgTextNotInstalledInstall}", Properties.translations.MessageBoxes.msgWarning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult == DialogResult.Yes)
                     {
-                        DialogResult dialogResult = MessageBox.Show($"\"{SelectedEngine.Name}\" {Properties.translations.MessageBoxes.msgTextWithAppID} \"{SelectedEngine.Appid}\" {Properties.translations.MessageBoxes.msgTextNotInstalledInstall}", Properties.translations.MessageBoxes.msgWarning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            ShellUtils.Start($"steam://install/{SelectedEngine.Appid}");
-                        }
-                        else if (dialogResult == DialogResult.No)
-                        {
-                            MessageBox.Show($"{Properties.translations.MessageBoxes.msgTextInstallationOf} \"{SelectedEngine.Name}\" {Properties.translations.MessageBoxes.msgTextWithAppID} \"{SelectedEngine.Appid}\" {Properties.translations.MessageBoxes.msgTextCancelled}", Properties.translations.MessageBoxes.msgInfo, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                        }
+                        ShellUtils.Start($"steam://install/{engine.Appid}");
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        MessageBox.Show($"{Properties.translations.MessageBoxes.msgTextInstallationOf} \"{engine.Name}\" {Properties.translations.MessageBoxes.msgTextWithAppID} \"{engine.Appid}\" {Properties.translations.MessageBoxes.msgTextCancelled}", Properties.translations.MessageBoxes.msgInfo, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
                 }
-
             }
             else if (selectItem.Group == listViewGroupAddons)
             {
-                var selectedAddons = dataProvider.Addons.FirstOrDefault(addon => addon.Name == selectItemText);
+                var selectedAddons = Addons.FirstOrDefault(addon => addon.Name == selectItemText);
                 if (selectedAddons != null)
                 {
-                    var addonPath = Path.Combine(selectedAddons.Bin);
+                    var addonPath = selectedAddons.Bin;
 
                     if (File.Exists(addonPath))
-                        ShellUtils.Start(addonPath, selectedAddons.Args);
+                    {
+                        var env = EnvUtils.ForLaunch(SelectedProject, SelectedEngine, EnginePath(SelectedEngine));
+                        ShellUtils.Launch(addonPath, selectedAddons.Args, env, Path.GetDirectoryName(addonPath));
+                    }
                     else
                         MessageBox.Show($"\"{selectedAddons.Name}\" {Properties.translations.MessageBoxes.msgTextNotFound}\n{addonPath}", Properties.translations.MessageBoxes.msgWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
                 }
             }
-
             else if (selectItemText == Properties.translations.MenuItems.itmOpenSettings)
             {
                 this.OpenSettings();

@@ -19,20 +19,31 @@ namespace UniversalValveToolbox.Model.Provider {
         public static readonly string ProjectsPath = Path.Combine(JsonRootPath, "projects");
         public static readonly string AddonsPath = Path.Combine(JsonRootPath, "addons");
 
-        public static readonly SettingsDtoModel DefaultSettings = GenerateDefaultSettings();
-
-
+        // settings.json exists but is broken: run with defaults, never write over the user's file
+        private static bool settingsBroken;
+        private static bool settingsErrorShown;
 
         public SettingsDtoModel Settings {
             get {
                 validateJsonFolder();
 
-                return JsonFileUtil.ReadValue<SettingsDtoModel>(SettingsPath, DefaultSettings);
+                // a fresh default object each time: callers modify what they get
+                var result = JsonFileUtil.ReadValue(SettingsPath, GenerateDefaultSettings(), out var error);
+                settingsBroken = error != null;
+                if (settingsBroken && !settingsErrorShown) {
+                    settingsErrorShown = true;
+                    MessageBox.Show($"{SettingsPath} cannot be read, default settings are used until it is fixed." +
+                        $"{Environment.NewLine}The launcher does not change the file.{Environment.NewLine}{Environment.NewLine}{error}",
+                        "Universal Valve Toolbox", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                return result;
             }
 
             set {
                 validateJsonFolder();
 
+                if (settingsBroken)
+                    return;
                 JsonFileUtil.WriteValue(SettingsPath, value);
             }
         }

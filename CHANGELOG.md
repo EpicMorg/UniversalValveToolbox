@@ -22,6 +22,11 @@
 * The launcher runs as `ToolsAppId` (default `480`): put your own app id there when you bundle it with your game/SDK, and Steam shows it as running
 * If Steam is not running, the launcher starts it and waits until it is logged in; no crash when the `steam` process is missing; install folders are cached
 * Own two-way WinForms binding helper instead of the `kasthack.binding.wf` package (it only targets .NET Framework); About shows the .NET runtime and bitness
+* `VProject` (and `VMod`/`VContent`/`VGame`/`VTools` for Source Filmmaker only) are passed to the launched tool; the user environment is updated only when a value changes (it was rewritten on start and on every click, which was slow and broadcast to all windows); tools start in the game folder
+* Tools no longer get `-game ""` when no project is selected
+* Saving addons/projects keeps other files and subfolders (`json\addons\template` was deleted) and no longer merges items with the same name into one file
+* A broken `settings.json` is reported and left as is (it was silently replaced by defaults)
+* Faster main window: one refresh pass instead of two or three, settings read once, tool icons extracted once; projects with the same name in different engines no longer get mixed up
 * Added new translations:
 * Added `url` support of links in launcher.
 * Added `plugins` support of future bundled `dlc` from `steam`-version.
