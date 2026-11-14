@@ -69,9 +69,11 @@ namespace UniversalValveToolbox
         {
             var lastSelectedProject = dataProvider.Projects.FirstOrDefault(project => project.Name.Equals(dataProvider.Settings.LastSelectedProject));
 
-            if (lastSelectedProject != null && Engines.Length != 0)
+            // the project's engine may be uninstalled or not shown in this mode
+            var lastEngine = lastSelectedProject == null ? null : Engines.FirstOrDefault(engine => engine.Appid == lastSelectedProject.Engine);
+            if (lastEngine != null)
             {
-                var indexEngine = comboBoxEngine.Items.IndexOf(Engines.First(engine => engine.Appid.Equals(lastSelectedProject.Engine)).Name);
+                var indexEngine = comboBoxEngine.Items.IndexOf(lastEngine.Name);
                 comboBoxEngine.SelectedIndex = indexEngine;
 
                 UpdateProjectList();
@@ -111,6 +113,7 @@ namespace UniversalValveToolbox
 
         private void toolStripStatusLabelRefresh_Click(object sender, EventArgs e)
         {
+            SteamApi.ClearCache(); // games may have been moved/uninstalled
             UpdateFormData();
         }
 
@@ -200,8 +203,9 @@ namespace UniversalValveToolbox
             var dataProvider = new DataProvider();
             if (dataProvider.Settings.ToolboxMod == ToolboxMod.dev)
             {
-                EngineDtoModel engineValues = dataProvider.Engines.Single(engine => engine.Appid == dataProvider.Settings.BundleAppID);
-                Engines = new[] {
+                // tools come from the catalog entry of BundleAppID; without one there is nothing to show (used to crash on Single)
+                EngineDtoModel engineValues = dataProvider.Engines.FirstOrDefault(engine => engine.Appid == dataProvider.Settings.BundleAppID);
+                Engines = engineValues == null ? new EngineDtoModel[0] : new[] {
                     new EngineDtoModel {
                         Appid = (int)dataProvider.Settings.BundleAppID,
                         Name = dataProvider.Settings.DevEngineName,
@@ -296,6 +300,9 @@ namespace UniversalValveToolbox
                     listView.LargeImageList.Images.Add(pair.Key, pair.Icon);
                 }
             }
+
+            if (pathSelectedEngine == null)
+                return; // installed per Steam, but no folder (yet): no tools to show; Path.Combine(null, ...) threw here
 
             var itemsTools = SelectedEngine.Tools
                 .Where(tool => File.Exists(Path.Combine(pathSelectedEngine, tool.Bin)))

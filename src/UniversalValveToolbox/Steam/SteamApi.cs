@@ -120,7 +120,9 @@ namespace UniversalValveToolbox.Steam {
                         dir = null;
                 }
             }
-            installDirs[appId] = dir;
+            // cache only found folders: a game installed while the launcher is open shows up on the next query
+            if (dir != null)
+                installDirs[appId] = dir;
             return dir;
         }
 
