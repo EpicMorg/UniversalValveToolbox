@@ -15,7 +15,7 @@ namespace UniversalValveToolbox {
 
             // versions of the native Steam API and the referenced libraries
             labelFacepunchSteamworksWin32dll.Text = SteamApi.NativeLibraryVersion;
-            labelkasthackbindingwfdll.Text = Describe(System.Reflection.Assembly.Load("kasthack.binding.wf"));
+            labelkasthackbindingwfdll.Text = $".NET {Environment.Version} ({(Environment.Is64BitProcess ? "x64" : "x86")})";
             labelNewtonsoftJsondll.Text = Describe(typeof(Newtonsoft.Json.JsonConvert).Assembly);
         }
 

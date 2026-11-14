@@ -44,8 +44,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!-- .NET Framework-only package (net40-net47); plain managed WinForms binding code that loads on .NET 10. TODO: replace with own binding helper -->
-    <PackageReference Include="kasthack.binding.wf" Version="1.2.26" NoWarn="NU1701" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 

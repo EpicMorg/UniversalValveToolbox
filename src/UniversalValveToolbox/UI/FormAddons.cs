@@ -3,7 +3,6 @@ using System.Windows.Forms;
 using UniversalValveToolbox.Model.Provider;
 using UniversalValveToolbox.Model.ViewModel;
 using UniversalValveToolbox.Model.Dto;
-using kasthack.binding.wf;
 using System.Linq;
 using System.Collections.Generic;
 using UniversalValveToolbox.Utils;

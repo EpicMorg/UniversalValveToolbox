@@ -21,6 +21,7 @@
 * Own thin wrapper over the native Steam API (flat API of `steam_api.dll` / `steam_api64.dll`) instead of @Facepunch [Steamworks](https://github.com/Facepunch/Facepunch.Steamworks); `steam_api` updated to Steamworks SDK `1.65`
 * The launcher runs as `ToolsAppId` (default `480`): put your own app id there when you bundle it with your game/SDK, and Steam shows it as running
 * If Steam is not running, the launcher starts it and waits until it is logged in; no crash when the `steam` process is missing; install folders are cached
+* Own two-way WinForms binding helper instead of the `kasthack.binding.wf` package (it only targets .NET Framework); About shows the .NET runtime and bitness
 * Added new translations:
 * Added `url` support of links in launcher.
 * Added `plugins` support of future bundled `dlc` from `steam`-version.
