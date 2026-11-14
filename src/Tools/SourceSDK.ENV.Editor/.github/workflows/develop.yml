@@ -1,0 +1,41 @@
+name: SourceSDK.ENV.Editor - develop
+
+on:
+  push:
+    branches: [ develop ]
+
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_NOLOGO: true
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+
+    - name: Set the value
+      run: echo "ACTIONS_ALLOW_UNSECURE_COMMANDS=true" >> $GITHUB_ENV
+
+    - name: Checkout Code
+      uses: actions/checkout@master
+      with:
+        clean: true
+        fetch-depth: 0
+        lfs: true
+        submodules: true
+
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '6.0.x'
+        include-prerelease: true
+        source-url: https://nuget.pkg.github.com/colhountech/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+ 
+    - name: Restore NuGet Packages
+      run: dotnet restore src/SourceSDK.ENV.Editor.csproj
+
+    - name: Build Debug
+      run: dotnet build src/SourceSDK.ENV.Editor.sln --configuration Debug --force --no-incremental  --nologo 
