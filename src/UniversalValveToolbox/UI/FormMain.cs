@@ -28,7 +28,11 @@ namespace UniversalValveToolbox
         private DataProvider dataProvider = new DataProvider();
 
         private ListViewGroup listViewGroupAddons;
+        private ListViewGroup listViewGroupBundled;
         private ListViewGroup listViewGroupTools;
+
+        // addon category of the tools shipped in tools\<Name>\ (shown in their own group)
+        private const string BundledCategory = "catBundled";
 
         // set while UpdateFormData fills the engine box, so SelectedIndexChanged does not rebuild everything again
         private bool suppressEngineChanged;
@@ -140,6 +144,7 @@ namespace UniversalValveToolbox
             #region static content, do not edit
             //creating groups (categores)
             listViewGroupAddons = new ListViewGroup(Properties.translations.MenuCategories.catAddons);
+            listViewGroupBundled = new ListViewGroup(Properties.translations.MenuCategories.catBundled);
             ListViewGroup listViewGroupCompileDecpmpile = new ListViewGroup(Properties.translations.MenuCategories.catCompileDecompile);
             ListViewGroup listViewGroupContent = new ListViewGroup(Properties.translations.MenuCategories.catContent);
             ListViewGroup listViewGroupDocs = new ListViewGroup(Properties.translations.MenuCategories.catDocs);
@@ -177,6 +182,7 @@ namespace UniversalValveToolbox
             //draw items and categories in forms
             listView.Groups.AddRange(new ListViewGroup[] {
                 listViewGroupTools,
+                listViewGroupBundled,
                 listViewGroupAddons,
                 listViewGroupCompileDecpmpile,
                 listViewGroupContent,
@@ -316,17 +322,20 @@ namespace UniversalValveToolbox
             try
             {
                 RemoveGroupItems(listViewGroupAddons);
+                RemoveGroupItems(listViewGroupBundled);
 
                 var engine = SelectedEngine;
                 if (engine == null)
                     return;
 
-                // addons without engines are for every engine; like tools, only the ones that are installed
+                // addons without engines are for every engine; like tools, only the ones that are installed;
+                // bundled tools (category catBundled) get their own group
                 var items = Addons
                     .Where(addon => addon.Engines == null || addon.Engines.Length == 0 || addon.Engines.Contains(engine.Appid))
                     .Select(addon => (addon, path: ResolveAddonPath(addon.Bin)))
                     .Where(a => File.Exists(a.path))
-                    .Select(a => new ListViewItem(a.addon.Name, EnsureIcon(a.path), listViewGroupAddons))
+                    .Select(a => new ListViewItem(a.addon.Name, EnsureIcon(a.path),
+                        a.addon.Category == BundledCategory ? listViewGroupBundled : listViewGroupAddons))
                     .ToArray();
                 listView.Items.AddRange(items);
             }
@@ -453,7 +462,7 @@ namespace UniversalValveToolbox
                     }
                 }
             }
-            else if (selectItem.Group == listViewGroupAddons)
+            else if (selectItem.Group == listViewGroupAddons || selectItem.Group == listViewGroupBundled)
             {
                 var selectedAddons = Addons.FirstOrDefault(addon => addon.Name == selectItemText);
                 if (selectedAddons != null)

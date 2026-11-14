@@ -30,6 +30,8 @@
 * Bundled tools: [SourceSDK.ENV.Editor](src/Tools/SourceSDK.ENV.Editor) and [Retime Phoneme Util GUI](src/Tools/RetimePhonemeUtil) moved into this repository (history kept), built on `.NET 10` x64/x86 with the launcher; the release has the UVT bundle (`tools\<Name>\`) and a standalone zip of every tool
 * Addons: a path relative to the launcher folder (`tools\...`) and environment variables (`%ProgramFiles%`) work; addons without engines are shown for every engine; addons whose exe is missing are hidden (like tools)
 * `build/package.ps1` builds the release zips; pushing a `v*` tag creates a draft GitHub release with them; [third-party notices](THIRD-PARTY-NOTICES.md)
+* Bundled tools have their own group in the launcher (`Bundled tools`, addon category `catBundled`) and are built together with it into `tools\<Name>\` of its output folder (also when started from Visual Studio); the list lives in `<BundledTool>` of the launcher project and drives the bundle and the standalone zips
+* The category chosen in the addon editor is saved now (it was never written to the addon)
 * Added new translations:
 * Added `url` support of links in launcher.
 * Added `plugins` support of future bundled `dlc` from `steam`-version.

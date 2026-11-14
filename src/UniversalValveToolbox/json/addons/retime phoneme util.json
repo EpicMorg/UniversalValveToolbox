@@ -1,7 +1,7 @@
 {
   "Engines": [],
   "Name": "Retime Phoneme Util",
-  "Category": "",
+  "Category": "catBundled",
   "Bin": "tools\\RetimePhonemeUtil\\kru.gui.exe",
   "Args": ""
 }

@@ -1,6 +1,9 @@
 <#
 .SYNOPSIS
-  Builds the release zips: the UVT bundle (launcher + tools\<Name>\) and a standalone zip per tool, for x64 and x86.
+  Builds the release zips for x64 and x86:
+    UniversalValveToolbox-<version>-<platform>.zip  - the bundle: launcher + tools\<Name>\ (the launcher's build output)
+    <Tool>-<version>-<platform>.zip                  - every bundled tool on its own (e.g. for its Chocolatey package)
+  The tool list comes from the <BundledTool> items of UniversalValveToolbox.csproj (one place for build, bundle and zips).
 
 .EXAMPLE
   pwsh build/package.ps1                  # Release, x64 + x86, into dist\
@@ -15,23 +18,24 @@ param(
 $ErrorActionPreference = 'Stop'
 $root = Resolve-Path (Join-Path $PSScriptRoot '..')
 $src = Join-Path $root 'src'
-
-# Bundled tools: folder name under tools\ in the bundle, project file, zip name of the standalone build.
-$tools = @(
-    @{ Name = 'SourceSDK.ENV.Editor'; Project = 'Tools\SourceSDK.ENV.Editor\src\SourceSDK.ENV.Editor.csproj' },
-    @{ Name = 'RetimePhonemeUtil';    Project = 'Tools\RetimePhonemeUtil\src\kru.gui\kru.gui.csproj' }
-)
-$launcher = @{ Name = 'UniversalValveToolbox'; Project = 'UniversalValveToolbox\UniversalValveToolbox.csproj' }
+$launcherProject = Join-Path $src 'UniversalValveToolbox\UniversalValveToolbox.csproj'
 
 function Get-Version($project) {
-    $xml = [xml](Get-Content (Join-Path $src $project) -Raw)
+    $xml = [xml](Get-Content $project -Raw)
     $v = ($xml.Project.PropertyGroup | ForEach-Object { $_.Version } | Where-Object { $_ } | Select-Object -First 1)
     if (-not $v) { throw "No <Version> in $project" }
     return $v
 }
 
+# <BundledTool Include="Name" ProjectPath="..\Tools\...\x.csproj" /> in the launcher project
+$tools = ([xml](Get-Content $launcherProject -Raw)).Project.ItemGroup.BundledTool | Where-Object { $_ } | ForEach-Object {
+    $project = [IO.Path]::GetFullPath((Join-Path (Split-Path $launcherProject) $_.ProjectPath))
+    @{ Name = $_.Include; Project = $project; Version = (Get-Version $project) }
+}
+if (-not $tools) { throw "No <BundledTool> items in $launcherProject" }
+
 function Get-Output($project, $platform) {
-    return Join-Path (Split-Path (Join-Path $src $project)) "bin\$platform\$Configuration"
+    return Join-Path (Split-Path $project) "bin\$platform\$Configuration"
 }
 
 # Copies a build output without debug files and without user data created by test runs.
@@ -63,7 +67,8 @@ $OutDir = Resolve-Path $OutDir
 $stage = Join-Path $OutDir 'stage'
 if (Test-Path $stage) { Remove-Item $stage -Recurse -Force }
 
-$uvtVersion = Get-Version $launcher.Project
+$uvtVersion = Get-Version $launcherProject
+Write-Host "UVT $uvtVersion; bundled: $(($tools | ForEach-Object { "$($_.Name) $($_.Version)" }) -join ', ')"
 foreach ($platform in $Platforms) {
     if (-not $NoBuild) {
         Write-Host "Building $Configuration $platform"
@@ -72,22 +77,21 @@ foreach ($platform in $Platforms) {
     }
     Write-Host "Packaging $platform"
 
-    # bundle: launcher + every tool under tools\<Name>\
-    $bundle = Join-Path $stage "$($launcher.Name)-$uvtVersion-$platform"
-    Copy-Output (Get-Output $launcher.Project $platform) $bundle
+    # bundle = the launcher's output, which already has tools\<Name>\ (CopyBundledTools target)
+    $bundle = Join-Path $stage "UniversalValveToolbox-$uvtVersion-$platform"
+    Copy-Output (Get-Output $launcherProject $platform) $bundle
     foreach ($tool in $tools) {
-        Copy-Output (Get-Output $tool.Project $platform) (Join-Path $bundle "tools\$($tool.Name)")
+        if (-not (Test-Path (Join-Path $bundle "tools\$($tool.Name)"))) { throw "bundle has no tools\$($tool.Name)" }
     }
     Add-Docs $bundle
-    New-Zip $bundle (Join-Path $OutDir "$($launcher.Name)-$uvtVersion-$platform.zip")
+    New-Zip $bundle (Join-Path $OutDir "UniversalValveToolbox-$uvtVersion-$platform.zip")
 
-    # standalone zip per tool (e.g. for its own Chocolatey package)
+    # standalone zip per tool
     foreach ($tool in $tools) {
-        $version = Get-Version $tool.Project
-        $dir = Join-Path $stage "$($tool.Name)-$version-$platform"
+        $dir = Join-Path $stage "$($tool.Name)-$($tool.Version)-$platform"
         Copy-Output (Get-Output $tool.Project $platform) $dir
         Add-Docs $dir
-        New-Zip $dir (Join-Path $OutDir "$($tool.Name)-$version-$platform.zip")
+        New-Zip $dir (Join-Path $OutDir "$($tool.Name)-$($tool.Version)-$platform.zip")
     }
 }
 Remove-Item $stage -Recurse -Force

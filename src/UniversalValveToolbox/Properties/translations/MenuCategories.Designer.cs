@@ -70,6 +70,15 @@ namespace UniversalValveToolbox.Properties.translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bundled tools.
+        /// </summary>
+        internal static string catBundled {
+            get {
+                return ResourceManager.GetString("catBundled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Compile or Decompile.
         /// </summary>
         internal static string catCompileDecompile {

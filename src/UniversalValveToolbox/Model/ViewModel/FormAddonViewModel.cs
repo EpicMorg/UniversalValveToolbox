@@ -53,6 +53,9 @@ namespace UniversalValveToolbox.Model.ViewModel {
             get => selectCategoryIndex;
             set {
                 ForceUpdateField(value, ref selectCategoryIndex);
+                // the chosen category belongs to the selected addon (it was never stored before)
+                if (value >= 0 && categories != null && value < categories.Length && SelectAddon != null)
+                    SelectAddon.Category = categories[value].Key?.ToString() ?? string.Empty;
                 OnPropertyChanged(nameof(SelectCategory));
             }
         }
@@ -67,7 +70,7 @@ namespace UniversalValveToolbox.Model.ViewModel {
         }
 
         public DictionaryEntry SelectCategory {
-            get { return categories[selectCategoryIndex]; }
+            get { return selectCategoryIndex >= 0 && selectCategoryIndex < categories.Length ? categories[selectCategoryIndex] : default; }
         }
 
         public EngineDtoModel[] Engines {

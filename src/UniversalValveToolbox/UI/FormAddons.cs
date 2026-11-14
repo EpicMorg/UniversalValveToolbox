@@ -66,6 +66,8 @@ namespace UniversalValveToolbox {
         private void Model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e) {
             if (e.PropertyName == nameof(model.SelectAddon)) {
                 UpdateEngineCheckedListView();
+                if (model.SelectAddon != null)
+                    UpdateAddonCategoryComboBox(); // show the category of the newly selected addon
             }
         }
 

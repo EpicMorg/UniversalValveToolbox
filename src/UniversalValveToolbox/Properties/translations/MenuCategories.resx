@@ -120,6 +120,9 @@
   <data name="catAddons" xml:space="preserve">
     <value>Addons</value>
   </data>
+  <data name="catBundled" xml:space="preserve">
+    <value>Bundled tools</value>
+  </data>
   <data name="catCompileDecompile" xml:space="preserve">
     <value>Compile or Decompile</value>
   </data>

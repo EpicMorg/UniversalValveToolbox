@@ -35,6 +35,31 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
   </ItemGroup>
 
+  <!--
+    Bundled tools: built before the launcher (same configuration/platform) and copied into
+    <output>\tools\<Name>\, so the launcher finds them when run from VS and the output folder is the bundle.
+    Their addon entries (json\addons, category catBundled) point to tools\<Name>\<exe>.
+  -->
+  <ItemGroup>
+    <BundledTool Include="SourceSDK.ENV.Editor" ProjectPath="..\Tools\SourceSDK.ENV.Editor\src\SourceSDK.ENV.Editor.csproj" />
+    <BundledTool Include="RetimePhonemeUtil" ProjectPath="..\Tools\RetimePhonemeUtil\src\kru.gui\kru.gui.csproj" />
+    <ProjectReference Include="@(BundledTool->'%(ProjectPath)')" ReferenceOutputAssembly="false" Private="false"
+                      SetPlatform="Platform=$(Platform)" SetConfiguration="Configuration=$(Configuration)" />
+  </ItemGroup>
+
+  <Target Name="CopyBundledTools" AfterTargets="Build" Outputs="%(BundledTool.Identity)">
+    <PropertyGroup>
+      <_BundledName>%(BundledTool.Identity)</_BundledName>
+      <_BundledDir>$([System.IO.Path]::GetDirectoryName($([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\%(BundledTool.ProjectPath)'))))\bin\$(Platform)\$(Configuration)\</_BundledDir>
+    </PropertyGroup>
+    <ItemGroup>
+      <_BundledFile Remove="@(_BundledFile)" />
+      <_BundledFile Include="$(_BundledDir)**\*" Exclude="$(_BundledDir)**\*.pdb" />
+    </ItemGroup>
+    <Error Condition="'@(_BundledFile)' == ''" Text="Bundled tool $(_BundledName) has no build output in $(_BundledDir)" />
+    <Copy SourceFiles="@(_BundledFile)" DestinationFiles="@(_BundledFile->'$(OutDir)tools\$(_BundledName)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+  </Target>
+
   <!-- Native Steam API from the Steamworks SDK (redistributable), used through Steam\SteamNative.cs; one per platform -->
   <ItemGroup>
     <None Remove="Native\**" />

@@ -1,7 +1,7 @@
 {
   "Engines": [],
   "Name": "SourceSDK ENV Editor",
-  "Category": "",
+  "Category": "catBundled",
   "Bin": "tools\\SourceSDK.ENV.Editor\\SourceSDK.ENV.Editor.exe",
   "Args": ""
 }

@@ -120,6 +120,9 @@
   <data name="catAddons" xml:space="preserve">
     <value>Дополнения</value>
   </data>
+  <data name="catBundled" xml:space="preserve">
+    <value>Встроенные инструменты</value>
+  </data>
   <data name="catCompileDecompile" xml:space="preserve">
     <value>Компиляция и Декомпиляция</value>
   </data>
