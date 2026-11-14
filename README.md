@@ -32,7 +32,7 @@ bitness as the zip (x64 or x86), Steam installed and logged in.
 Unpack anywhere and run `UniversalValveToolbox.exe`. If Steam is not running, UVT offers to start it and waits for it.
 
 # Documentation
-- [Settings and modes](SETTINGS.md): `retail` / `bundle` / `dev`, Steam app id, projects, addons
+- [Settings and modes](SETTINGS.md): `retail` / `bundle`, local engines, Steam app id, projects, addons
 - [FAQ](docs/FAQ.md)
 - [Supported games](SUPPORTED.md)
 - [Changelog](CHANGELOG.md)
