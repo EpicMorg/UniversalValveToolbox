@@ -1,0 +1,7 @@
+{
+  "Engines": [],
+  "Name": "Hammer MCP",
+  "Category": "catBundled",
+  "Bin": "tools\\HammerMcp\\hammer-mcp.exe",
+  "Args": ""
+}

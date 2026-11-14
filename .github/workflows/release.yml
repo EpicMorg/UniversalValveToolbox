@@ -25,9 +25,11 @@ jobs:
       with:
         dotnet-version: 10.0.x
 
-    - name: Build and package (x64 + x86)
+    - name: Build and package (x64 + x86, with the latest Hammer-MCP)
       shell: pwsh
-      run: ./build/package.ps1
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: ./build/package.ps1 -FetchExternal
 
     - name: Publish release
       shell: pwsh

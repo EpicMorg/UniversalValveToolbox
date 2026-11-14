@@ -24,6 +24,8 @@ tools (the tools' own bitness does not depend on UVT).
 ### Where are the bundled tools?
 In `tools\<Name>\` next to `UniversalValveToolbox.exe`, listed under *Bundled tools*. Each one is also released as its own
 zip on the [releases page](https://github.com/EpicMorg/UniversalValveToolbox/releases).
+[Hammer MCP](https://github.com/EpicMorg/Hammer-MCP) (GUI server) is taken from its latest release when UVT is released,
+for the platforms it has a build for (x64 now).
 
 ### My `settings.json` was ignored
 It could not be parsed (UVT shows a warning with the reason). Fix the file; UVT never overwrites a broken one.

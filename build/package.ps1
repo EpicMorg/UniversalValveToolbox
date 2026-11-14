@@ -4,16 +4,20 @@
     UniversalValveToolbox-<version>-<platform>.zip  - the bundle: launcher + tools\<Name>\ (the launcher's build output)
     <Tool>-<version>-<platform>.zip                  - every bundled tool on its own (e.g. for its Chocolatey package)
   The tool list comes from the <BundledTool> items of UniversalValveToolbox.csproj (one place for build, bundle and zips).
+  With -FetchExternal the latest releases of the tools in build\external-tools.json (other repos, e.g. Hammer-MCP)
+  are downloaded with gh and put into the bundle as tools\<Name>\ (only for platforms that have an asset).
 
 .EXAMPLE
   pwsh build/package.ps1                  # Release, x64 + x86, into dist\
   pwsh build/package.ps1 -Platforms x64 -NoBuild
+  pwsh build/package.ps1 -FetchExternal   # + latest Hammer-MCP etc. (needs gh, GH_TOKEN on CI)
 #>
 param(
     [string[]]$Platforms = @('x64', 'x86'),
     [string]$Configuration = 'Release',
     [string]$OutDir = (Join-Path $PSScriptRoot '..\dist'),
-    [switch]$NoBuild
+    [switch]$NoBuild,
+    [switch]$FetchExternal
 )
 $ErrorActionPreference = 'Stop'
 $root = Resolve-Path (Join-Path $PSScriptRoot '..')
@@ -62,6 +66,28 @@ function New-Zip($folder, $zip) {
     Write-Host "  $([IO.Path]::GetFileName($zip))  $([math]::Round((Get-Item $zip).Length / 1MB, 1)) MB"
 }
 
+# Latest release asset of an external tool for one platform -> tools\<Name>\ of the bundle, minus Exclude.
+function Add-ExternalTool($tool, $platform, $bundle) {
+    $pattern = $tool.Asset.Replace('{platform}', $platform)
+    $download = Join-Path $stage "external-$($tool.Name)-$platform"
+    New-Item -ItemType Directory -Force $download | Out-Null
+    & gh release download --repo $tool.Repo --pattern $pattern --dir $download --clobber 2>&1 | Write-Host
+    $zip = Get-ChildItem $download -Filter *.zip | Select-Object -First 1
+    if ($LASTEXITCODE -ne 0 -or -not $zip) {
+        Write-Warning "$($tool.Name): no '$pattern' in the latest release of $($tool.Repo), not bundled for $platform"
+        $global:LASTEXITCODE = 0 # a missing asset is not a failure of the package step
+        return
+    }
+    $to = Join-Path $bundle "tools\$($tool.Name)"
+    Expand-Archive $zip.FullName $to -Force
+    foreach ($exclude in @($tool.Exclude)) {
+        if ($exclude) { Get-ChildItem $to -Recurse -Filter $exclude | Remove-Item -Recurse -Force }
+    }
+    Write-Host "  + $($tool.Name) from $($zip.Name)"
+}
+
+$externalTools = if ($FetchExternal) { Get-Content (Join-Path $PSScriptRoot 'external-tools.json') -Raw | ConvertFrom-Json } else { @() }
+
 New-Item -ItemType Directory -Force $OutDir | Out-Null
 $OutDir = Resolve-Path $OutDir
 $stage = Join-Path $OutDir 'stage'
@@ -83,6 +109,7 @@ foreach ($platform in $Platforms) {
     foreach ($tool in $tools) {
         if (-not (Test-Path (Join-Path $bundle "tools\$($tool.Name)"))) { throw "bundle has no tools\$($tool.Name)" }
     }
+    foreach ($tool in $externalTools) { Add-ExternalTool $tool $platform $bundle }
     Add-Docs $bundle
     New-Zip $bundle (Join-Path $OutDir "UniversalValveToolbox-$uvtVersion-$platform.zip")
 

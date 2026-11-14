@@ -1,0 +1,8 @@
+[
+  {
+    "Name": "HammerMcp",
+    "Repo": "EpicMorg/Hammer-MCP",
+    "Asset": "hammer-mcp-*-win-{platform}.zip",
+    "Exclude": [ "hammer-mcp-cli.exe" ]
+  }
+]
