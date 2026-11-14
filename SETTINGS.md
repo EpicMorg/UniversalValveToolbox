@@ -54,7 +54,7 @@ The list of tools comes from `json\engines\<BundleAppID>.json`; without that fil
 { "engine": 243730, "path": "C:\\MyMod", "name": "My Mod", "args": "-dev" }
 ```
 `Run Project` starts the game with `-steam -game "<path>" <args>`. Tools get `-game "<path>"` unless their own arguments
-already have `-game`; the launched tool also gets `VProject=<path>` (and `VMod`, `VContent`, `VGame`, `VTools` for
+already have `-game`; `-steam` is added only when the tool is the game exe itself (`-tools`, `-edit`); the launched tool also gets `VProject=<path>` (and `VMod`, `VContent`, `VGame`, `VTools` for
 Source Filmmaker). The user environment is updated only when the value changes.
 
 ## Addons

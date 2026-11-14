@@ -437,7 +437,10 @@ namespace UniversalValveToolbox
 
                     if (File.Exists(toolPath))
                     {
-                        string finalArg = $"-steam {selectedTool.Args}";
+                        // -steam only for the game's own exe (engine tools like -tools/-edit); hammer, hlmv etc. don't take it
+                        var isGameExe = new[] { engine.Bin }.Concat(engine.AltBins ?? []).Any(bin => string.Equals(bin, selectedTool.Bin, StringComparison.OrdinalIgnoreCase));
+                        var toolArgs = selectedTool.Args ?? "";
+                        string finalArg = isGameExe && !toolArgs.Contains("-steam") ? $"-steam {toolArgs}" : toolArgs;
 
                         // the selected project's folder, unless the tool names its own -game; nothing without a project
                         if (!finalArg.Contains("-game") && !string.IsNullOrEmpty(project?.Path))
