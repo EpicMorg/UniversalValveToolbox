@@ -1,6 +1,6 @@
 ﻿
 using kasthack.binding.wf;
-using Steamworks;
+using UniversalValveToolbox.Steam;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +36,7 @@ namespace UniversalValveToolbox {
         }
 
         private bool isAppInstalled(int appId) {
-            var isInstall = SteamApps.IsAppInstalled(appId);
+            var isInstall = SteamApi.IsAppInstalled(appId);
             return isInstall;
         } 
 

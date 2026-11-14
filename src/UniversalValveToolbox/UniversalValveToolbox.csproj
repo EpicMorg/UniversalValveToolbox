@@ -7,15 +7,18 @@
     <RootNamespace>UniversalValveToolbox</RootNamespace>
     <AssemblyName>UniversalValveToolbox</AssemblyName>
     <ApplicationIcon>toolbox.ico</ApplicationIcon>
-    <Platforms>x64</Platforms>
-    <PlatformTarget>x64</PlatformTarget>
-    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <!-- two builds: x86 and x64 (Any CPU from tools that do not pass a platform -> x64) -->
+    <Platforms>x86;x64</Platforms>
+    <Platform Condition="'$(Platform)' == '' or '$(Platform)' == 'AnyCPU'">x64</Platform>
+    <PlatformTarget>$(Platform)</PlatformTarget>
+    <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
+    <RuntimeIdentifier>win-$(Platform)</RuntimeIdentifier>
     <SelfContained>false</SelfContained>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <!-- bin\Debug, bin\Release (no x64 / net10.0-windows subfolders) -->
+    <!-- output: bin/x64/Debug, bin/x86/Release, ... (no net10.0-windows or RID subfolders) -->
     <BaseOutputPath>bin\</BaseOutputPath>
-    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
     <LangVersion>latest</LangVersion>
     <Nullable>disable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
@@ -46,8 +49,11 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
+  <!-- Native Steam API from the Steamworks SDK (redistributable), used through Steam\SteamNative.cs; one per platform -->
   <ItemGroup>
-    <ProjectReference Include="..\Facepunch.Steamworks\Facepunch.Steamworks\Facepunch.Steamworks.Win64.csproj" />
+    <None Remove="Native\**" />
+    <None Include="Native\steam_api.dll" Condition="'$(Platform)' == 'x86'" Link="steam_api.dll" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Native\steam_api64.dll" Condition="'$(Platform)' == 'x64'" Link="steam_api64.dll" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <!-- Strongly typed resources (translations + Resources.resx) and settings -->

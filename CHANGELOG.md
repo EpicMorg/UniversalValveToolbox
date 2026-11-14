@@ -13,13 +13,14 @@
 ## 2.0.0.0
 #### Whats new
 * `Steam` ready release!1!11! 
-* Moved to `.NET 10` (`net10.0-windows`, x64, SDK-style project): needs the [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0); builds with `dotnet build` or Visual Studio 2026; `Facepunch.Steamworks.Win64` + `steam_api64.dll`
+* Moved to `.NET 10` (`net10.0-windows`, SDK-style project), two builds: `x64` and `x86`; needs the [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0) of the same bitness; builds with `dotnet build` or Visual Studio 2026
 * Links, `steam://` and tools are opened through the shell as before (`.NET` no longer does it by default); the app no longer opens the main window after the user declined to start Steam
 * CI: `actions/checkout@v4` + `actions/setup-dotnet@v4`, no `ACTIONS_ALLOW_UNSECURE_COMMANDS`; fixed the build status badge
 * Fixed naming of [supported engines](SUPPORTED.md), also all filesn in `engine` folder were renamed! Please empty this folder before manual update to avoid errors.
 * Replaced `Counter-Strike: Global Offensive` to `Counter-Strike 2` engine, due of deprecation of `csgo` by `Valve`.
-* Updated @Facepunch [Steamworks](https://github.com/Facepunch/Facepunch.Steamworks) to latest stable version.
-* Updated `steam_api` to `1.57`.
+* Own thin wrapper over the native Steam API (flat API of `steam_api.dll` / `steam_api64.dll`) instead of @Facepunch [Steamworks](https://github.com/Facepunch/Facepunch.Steamworks); `steam_api` updated to Steamworks SDK `1.65`
+* The launcher runs as `ToolsAppId` (default `480`): put your own app id there when you bundle it with your game/SDK, and Steam shows it as running
+* If Steam is not running, the launcher starts it and waits until it is logged in; no crash when the `steam` process is missing; install folders are cached
 * Added new translations:
 * Added `url` support of links in launcher.
 * Added `plugins` support of future bundled `dlc` from `steam`-version.

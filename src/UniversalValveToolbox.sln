@@ -5,22 +5,22 @@ VisualStudioVersion = 18.0.0.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalValveToolbox", "UniversalValveToolbox\UniversalValveToolbox.csproj", "{DE66895F-7317-45D3-B5CA-292253CE086A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Facepunch.Steamworks.Win64", "Facepunch.Steamworks\Facepunch.Steamworks\Facepunch.Steamworks.Win64.csproj", "{ED9B29E8-0F90-4F9E-BD87-F5014F5FCF85}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{DE66895F-7317-45D3-B5CA-292253CE086A}.Debug|x64.ActiveCfg = Debug|x64
 		{DE66895F-7317-45D3-B5CA-292253CE086A}.Debug|x64.Build.0 = Debug|x64
-		{ED9B29E8-0F90-4F9E-BD87-F5014F5FCF85}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{ED9B29E8-0F90-4F9E-BD87-F5014F5FCF85}.Debug|x64.Build.0 = Debug|Any CPU
+		{DE66895F-7317-45D3-B5CA-292253CE086A}.Debug|x86.ActiveCfg = Debug|x86
+		{DE66895F-7317-45D3-B5CA-292253CE086A}.Debug|x86.Build.0 = Debug|x86
 		{DE66895F-7317-45D3-B5CA-292253CE086A}.Release|x64.ActiveCfg = Release|x64
 		{DE66895F-7317-45D3-B5CA-292253CE086A}.Release|x64.Build.0 = Release|x64
-		{ED9B29E8-0F90-4F9E-BD87-F5014F5FCF85}.Release|x64.ActiveCfg = Release|Any CPU
-		{ED9B29E8-0F90-4F9E-BD87-F5014F5FCF85}.Release|x64.Build.0 = Release|Any CPU
+		{DE66895F-7317-45D3-B5CA-292253CE086A}.Release|x86.ActiveCfg = Release|x86
+		{DE66895F-7317-45D3-B5CA-292253CE086A}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

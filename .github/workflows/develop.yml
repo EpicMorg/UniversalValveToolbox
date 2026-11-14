@@ -14,7 +14,6 @@ jobs:
       with:
         fetch-depth: 0
         lfs: true
-        submodules: true
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
@@ -24,5 +23,8 @@ jobs:
     - name: Restore
       run: dotnet restore src/UniversalValveToolbox.sln
 
-    - name: Build Debug
-      run: dotnet build src/UniversalValveToolbox.sln -c Debug --no-restore
+    - name: Build Debug x64
+      run: dotnet build src/UniversalValveToolbox.sln --no-restore -c Debug -p:Platform=x64
+
+    - name: Build Debug x86
+      run: dotnet build src/UniversalValveToolbox.sln --no-restore -c Debug -p:Platform=x86

@@ -1,6 +1,5 @@
-﻿using Steamworks;
-using System.Diagnostics;
-using UniversalValveToolbox.Model.ViewModel;
+﻿using UniversalValveToolbox.Model.ViewModel;
+using UniversalValveToolbox.Steam;
 
 namespace UniversalValveToolbox.Utils {
     static class SteamManager {
@@ -8,11 +7,14 @@ namespace UniversalValveToolbox.Utils {
             get {
                 var result = new SteamDataViewModel();
 
-                result.SteamPid = Process.GetProcessesByName("steam")[0]?.Id ?? 0;
-                result.UserNameSteam = SteamClient.Name ?? null;
+                // no steam process -> 0 (GetProcessesByName("steam")[0] used to throw here)
+                using (var steam = SteamApi.SteamProcess) {
+                    result.SteamPid = steam?.Id ?? 0;
+                }
+                result.UserNameSteam = SteamApi.UserName;
 
                 return result;
-            }            
+            }
         }
     }
 }

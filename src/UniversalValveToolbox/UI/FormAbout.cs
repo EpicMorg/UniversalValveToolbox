@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using UniversalValveToolbox.Steam;
 using UniversalValveToolbox.Utils;
 
 namespace UniversalValveToolbox {
@@ -12,8 +13,8 @@ namespace UniversalValveToolbox {
             labelCopy.Text = Utils.VersionHelper.AssemblyCopyright;
             labelCaution.Text = labelTitle.Text + " " + labelCaution.Text;
 
-            // versions of the referenced libraries (already loaded; file names differ per platform, e.g. Facepunch.Steamworks.Win64)
-            labelFacepunchSteamworksWin32dll.Text = Describe(typeof(Steamworks.SteamClient).Assembly);
+            // versions of the native Steam API and the referenced libraries
+            labelFacepunchSteamworksWin32dll.Text = SteamApi.NativeLibraryVersion;
             labelkasthackbindingwfdll.Text = Describe(System.Reflection.Assembly.Load("kasthack.binding.wf"));
             labelNewtonsoftJsondll.Text = Describe(typeof(Newtonsoft.Json.JsonConvert).Assembly);
         }

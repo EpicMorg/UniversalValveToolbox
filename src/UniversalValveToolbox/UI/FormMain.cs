@@ -1,4 +1,4 @@
-﻿using Steamworks;
+﻿using UniversalValveToolbox.Steam;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -214,7 +214,7 @@ namespace UniversalValveToolbox
                 else { 
             Engines = dataProvider.Engines.Where(engine => dataProvider.Settings.ToolboxMod switch
                 {
-                    ToolboxMod.retail => SteamApps.IsAppInstalled(engine.Appid),
+                    ToolboxMod.retail => SteamApi.IsAppInstalled(engine.Appid),
                     ToolboxMod.bundle => engine.Appid == dataProvider.Settings.BundleAppID,
                     _ => throw new Exception($"Unrecognised toolbox mode: {dataProvider.Settings.ToolboxMod}")
                 }).ToArray();
@@ -272,8 +272,8 @@ namespace UniversalValveToolbox
 
             var pathSelectedEngine = dataProvider.Settings.ToolboxMod switch
             {
-                ToolboxMod.retail => SteamApps.AppInstallDir(SelectedEngine.Appid),
-                ToolboxMod.bundle => SteamApps.AppInstallDir(dataProvider.Settings.BundleAppID),
+                ToolboxMod.retail => SteamApi.AppInstallDir(SelectedEngine.Appid),
+                ToolboxMod.bundle => SteamApi.AppInstallDir(dataProvider.Settings.BundleAppID),
                 ToolboxMod.dev => dataProvider.Settings.DevEnginePath,
                 _ => throw new Exception($"Unrecognised engine type: {dataProvider.Settings.ToolboxMod}")
             };
@@ -322,8 +322,8 @@ namespace UniversalValveToolbox
 
             var enginePath = dataProvider.Settings.ToolboxMod switch
             {
-                ToolboxMod.retail => SteamApps.AppInstallDir(SelectedEngine.Appid),
-                ToolboxMod.bundle => SteamApps.AppInstallDir(dataProvider.Settings.BundleAppID),
+                ToolboxMod.retail => SteamApi.AppInstallDir(SelectedEngine.Appid),
+                ToolboxMod.bundle => SteamApi.AppInstallDir(dataProvider.Settings.BundleAppID),
                 ToolboxMod.dev => dataProvider.Settings.DevEnginePath,
                 _ => throw new Exception($"Unrecognised engine type: {dataProvider.Settings.ToolboxMod}")
             };
@@ -355,7 +355,7 @@ namespace UniversalValveToolbox
             if (SelectedEngine == null)
                 return;
 
-            var pathSelectedEngine = SteamApps.AppInstallDir(SelectedEngine.Appid);
+            var pathSelectedEngine = SteamApi.AppInstallDir(SelectedEngine.Appid);
             var addonsSelectedEngine = dataProvider.Addons.Where(a => a.Engines.Contains(SelectedEngine.Appid));
 
 
@@ -456,11 +456,11 @@ namespace UniversalValveToolbox
             {
                 if (RUN_PROJECT_ID.Equals(selectItem.Tag) && SelectedProject != null)
                 {
-                    //var pathEngineBin = Path.Combine(SteamApps.AppInstallDir(SelectedEngine.Appid), SelectedEngine.Bin);
+                    //var pathEngineBin = Path.Combine(SteamApi.AppInstallDir(SelectedEngine.Appid), SelectedEngine.Bin);
                     var engineRoot = dataProvider.Settings.ToolboxMod switch
                     {
-                        ToolboxMod.retail => SteamApps.AppInstallDir(SelectedEngine.Appid),
-                        ToolboxMod.bundle => SteamApps.AppInstallDir(dataProvider.Settings.BundleAppID),
+                        ToolboxMod.retail => SteamApi.AppInstallDir(SelectedEngine.Appid),
+                        ToolboxMod.bundle => SteamApi.AppInstallDir(dataProvider.Settings.BundleAppID),
                         ToolboxMod.dev => dataProvider.Settings.DevEnginePath,
                         _ => throw new Exception($"Unrecognised engine type: {dataProvider.Settings.ToolboxMod}")
                     };
@@ -473,12 +473,12 @@ namespace UniversalValveToolbox
                 var selectedTool = SelectedEngine.Tools.FirstOrDefault(tool => tool.Name == selectItemText);
                 if (selectedTool != null)
                 {
-                   // var selectedEnginePath = SteamApps.AppInstallDir(SelectedEngine.Appid);
+                   // var selectedEnginePath = SteamApi.AppInstallDir(SelectedEngine.Appid);
 
                     var selectedEnginePath = dataProvider.Settings.ToolboxMod switch
                     {
-                        ToolboxMod.retail => SteamApps.AppInstallDir(SelectedEngine.Appid),
-                        ToolboxMod.bundle => SteamApps.AppInstallDir(dataProvider.Settings.BundleAppID),
+                        ToolboxMod.retail => SteamApi.AppInstallDir(SelectedEngine.Appid),
+                        ToolboxMod.bundle => SteamApi.AppInstallDir(dataProvider.Settings.BundleAppID),
                         ToolboxMod.dev => dataProvider.Settings.DevEnginePath,
                         _ => throw new Exception($"Unrecognised engine type: {dataProvider.Settings.ToolboxMod}")
                     };
@@ -587,7 +587,7 @@ namespace UniversalValveToolbox
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaveLastSelectedProject();
-            SteamClient.Shutdown();
+            SteamApi.Shutdown();
         }
     }
 }

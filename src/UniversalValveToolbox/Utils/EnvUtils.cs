@@ -1,4 +1,4 @@
-﻿using Steamworks;
+﻿using UniversalValveToolbox.Steam;
 using System;
 using System.IO;
 
@@ -28,7 +28,7 @@ namespace UniversalValveToolbox.Utils {
             if (pathProject == null || pathProject.Length == 0)
                 return;   
 
-            var SFMpath = SteamApps.AppInstallDir(1840);
+            var SFMpath = SteamApi.AppInstallDir(1840);
 
             if (SFMpath == null)
                 return;
