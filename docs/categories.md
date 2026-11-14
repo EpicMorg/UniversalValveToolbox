@@ -1,4 +1,5 @@
 - catAddons
+- catBundled (bundled tools, own group)
 - catCompileDecpmpile
 - catContent
 - catDocs

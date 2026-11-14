@@ -9,13 +9,45 @@
 ---------------------------
 
 # Description
-`Universal Valve Toolbox` is a toolbox for easy launching some officials Valve's SDK such as Source SDK 2013 SP or MP and other games. Full list of supported games can be found [here](SUPPORTED.md).
+`Universal Valve Toolbox` (UVT) is a launcher for the modding tools of Source engine games: Hammer, Hammer++, Model Viewer,
+FacePoser, Engine Tools, in-engine Hammer (`-edit`), your mod projects and your own helper programs — for every
+supported game you have installed in Steam. Full list of supported games: [SUPPORTED.md](SUPPORTED.md).
 
-## Settings
-[Read it here](SETTINGS.md)
+- Shows only the games you have installed and only the tools that exist in each install (old and new builds of a game).
+- Projects: your mod folders with their engine and launch arguments; `VProject` is set for the tools you start.
+- Addons: any program (7-Zip, Notepad++, Git, …) in the same list, per engine or for all.
+- Bundled tools: [SourceSDK.ENV.Editor](src/Tools/SourceSDK.ENV.Editor) and
+  [Retime Phoneme Util GUI](src/Tools/RetimePhonemeUtil) come with UVT and are also released on their own.
+- Modders can ship UVT with their game (`bundle` mode, own Steam app id) — see [SETTINGS.md](SETTINGS.md).
 
-## Changelog
-[Read it here](CHANGELOG.md)
+# Download
+| Where | What |
+| --- | --- |
+| [GitHub Releases](https://github.com/EpicMorg/UniversalValveToolbox/releases) | `UniversalValveToolbox-<version>-x64.zip` / `-x86.zip` (UVT with the bundled tools), standalone zips of every bundled tool |
+| [Gamer-Lab](http://gamer-lab.com/rus/files_source/Universal_Valve_Toolbox) | mirror |
+
+Requirements: Windows 10/11, [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0) of the same
+bitness as the zip (x64 or x86), Steam installed and logged in.
+
+Unpack anywhere and run `UniversalValveToolbox.exe`. If Steam is not running, UVT offers to start it and waits for it.
+
+# Documentation
+- [Settings and modes](SETTINGS.md): `retail` / `bundle` / `dev`, Steam app id, projects, addons
+- [FAQ](docs/FAQ.md)
+- [Supported games](SUPPORTED.md)
+- [Changelog](CHANGELOG.md)
+- [Third-party notices](THIRD-PARTY-NOTICES.md)
+
+# Building
+Visual Studio 2026 or the .NET 10 SDK:
+
+```
+dotnet build src/UniversalValveToolbox.sln -c Release -p:Platform=x64     # or x86
+pwsh build/package.ps1                                                      # release zips into dist\
+```
+
+Output: `src/UniversalValveToolbox/bin/<x64|x86>/<Debug|Release>/`, bundled tools in its `tools\` subfolder.
+Pushing a `v*` tag builds a draft GitHub release with all zips.
 
 ---------------------------
 
