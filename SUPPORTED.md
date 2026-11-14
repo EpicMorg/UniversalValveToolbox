@@ -18,6 +18,7 @@ appid | name | type
 1636310 | Portal: Forbidden Testing Tracks | Game
 17500 | Zombie Panic! Source | Game
 17520 | Synergy | 
+17550 | Eternal Silence | Mod
 17570 | Pirates, Vikings and Knights II | Game
 17580 | Dystopia | Game
 17710 | Nuclear Dawn | Game
