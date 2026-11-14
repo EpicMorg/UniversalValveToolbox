@@ -1,7 +1,6 @@
 ﻿using Microsoft.Win32;
 using Steamworks;
 using System;
-using System.Diagnostics;
 using System.Windows.Forms;
 using UniversalValveToolbox.Model.Provider;
 using UniversalValveToolbox.Utils;
