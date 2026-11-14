@@ -9,6 +9,7 @@ using UniversalValveToolbox.Model.Provider;
 using UniversalValveToolbox.Model.ViewModel;
 using UniversalValveToolbox.Steam;
 using UniversalValveToolbox.Utils;
+using Msg = UniversalValveToolbox.Properties.translations.MessageBoxes;
 
 namespace UniversalValveToolbox
 {
@@ -61,8 +62,9 @@ namespace UniversalValveToolbox
             };
 
             UpdateFormData();
+            Shown += (s, e) => OfferBundleInstall();
 
-            Text = VersionHelper.AssemblyTitle + VersionHelper.AssemblyVersion;
+            Text =VersionHelper.AssemblyTitle + VersionHelper.AssemblyVersion;
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -75,13 +77,31 @@ namespace UniversalValveToolbox
         {
             if (engine == null)
                 return null;
-            return settings.ToolboxMod switch
-            {
-                ToolboxMod.retail => SteamApi.AppInstallDir(engine.Appid),
-                ToolboxMod.bundle => SteamApi.AppInstallDir(settings.BundleAppID),
-                ToolboxMod.dev => settings.DevEnginePath,
-                _ => null
-            };
+            if (engine.LocalPath != null)
+                return Directory.Exists(engine.LocalPath) ? engine.LocalPath : null;
+            return settings.ToolboxMod == ToolboxMod.bundle
+                ? SteamApi.AppInstallDir(settings.BundleAppID)
+                : SteamApi.AppInstallDir(engine.Appid);
+        }
+
+        /// <summary>Asks to install a Steam game that is not installed; opens steam://install on yes.</summary>
+        private void OfferInstall(EngineDtoModel engine)
+        {
+            var dialogResult = MessageBox.Show($"\"{engine.Name}\" {Msg.msgTextWithAppID} \"{engine.Appid}\" {Msg.msgTextNotInstalledInstall}", Msg.msgWarning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialogResult == DialogResult.Yes)
+                ShellUtils.Start($"steam://install/{engine.Appid}");
+            else
+                MessageBox.Show($"{Msg.msgTextInstallationOf} \"{engine.Name}\" {Msg.msgTextWithAppID} \"{engine.Appid}\" {Msg.msgTextCancelled}", Msg.msgInfo, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        }
+
+        /// <summary>Bundle mode: the one game of this toolbox is not installed. Asked once per start.</summary>
+        private void OfferBundleInstall()
+        {
+            if (settings.ToolboxMod != ToolboxMod.bundle)
+                return;
+            var engine = Engines.FirstOrDefault();
+            if (engine != null && EnginePath(engine) == null)
+                OfferInstall(engine);
         }
 
         private void SaveLastSelectedProject()
@@ -221,25 +241,29 @@ namespace UniversalValveToolbox
         private EngineDtoModel[] GetAvailableEngines()
         {
             var catalog = dataProvider.Engines;
-            switch (settings.ToolboxMod)
-            {
-                case ToolboxMod.dev:
-                    // tools come from the catalog entry of BundleAppID; without one there is nothing to show
-                    var template = catalog.FirstOrDefault(engine => engine.Appid == settings.BundleAppID);
-                    return template == null ? new EngineDtoModel[0] : new[] {
-                        new EngineDtoModel {
-                            Appid = (int)settings.BundleAppID,
-                            Name = settings.DevEngineName,
-                            Bin = template.Bin,
-                            AltBins = template.AltBins,
-                            Tools = template.Tools
-                        }
-                    };
-                case ToolboxMod.bundle:
-                    return catalog.Where(engine => engine.Appid == settings.BundleAppID).ToArray();
-                default:
-                    return catalog.Where(engine => SteamApi.IsAppInstalled(engine.Appid)).ToArray();
-            }
+            if (settings.ToolboxMod == ToolboxMod.bundle)
+                return catalog.Where(engine => engine.Appid == settings.BundleAppID).ToArray();
+
+            // retail: installed Steam games, then local builds
+            var locals = (settings.LocalEngines ?? new LocalEngineDtoModel[0]).ToList();
+            if (settings.ToolboxMod == ToolboxMod.dev) // old settings: DevEngine* is one local engine
+                locals.Insert(0, new LocalEngineDtoModel { Name = settings.DevEngineName, Path = settings.DevEnginePath, Template = (int)settings.BundleAppID });
+
+            var localEngines = locals
+                .Where(local => local != null && !string.IsNullOrWhiteSpace(local.Path))
+                .Select(local => (local, template: catalog.FirstOrDefault(engine => engine.Appid == local.Template)))
+                .Where(t => t.template != null) // the exe and tools come from the template; without one there is nothing to show
+                .Select(t => new EngineDtoModel
+                {
+                    Appid = t.template.Appid,
+                    Name = $"{(string.IsNullOrWhiteSpace(t.local.Name) ? t.template.Name : t.local.Name)} [local]",
+                    Bin = t.template.Bin,
+                    AltBins = t.template.AltBins,
+                    Tools = t.template.Tools,
+                    LocalPath = Environment.ExpandEnvironmentVariables(t.local.Path)
+                });
+
+            return catalog.Where(engine => SteamApi.IsAppInstalled(engine.Appid)).Concat(localEngines).ToArray();
         }
 
         private void UpdateProjectList()
@@ -452,18 +476,10 @@ namespace UniversalValveToolbox
                     else
                         MessageBox.Show($"\"{selectedTool.Name}\" {Properties.translations.MessageBoxes.msgTextNotFound}\n{toolPath}", Properties.translations.MessageBoxes.msgWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                else if (engine.LocalPath != null)
+                    MessageBox.Show($"\"{engine.Name}\" {Properties.translations.MessageBoxes.msgTextNotFound}\n{engine.LocalPath}", Properties.translations.MessageBoxes.msgWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 else
-                {
-                    DialogResult dialogResult = MessageBox.Show($"\"{engine.Name}\" {Properties.translations.MessageBoxes.msgTextWithAppID} \"{engine.Appid}\" {Properties.translations.MessageBoxes.msgTextNotInstalledInstall}", Properties.translations.MessageBoxes.msgWarning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        ShellUtils.Start($"steam://install/{engine.Appid}");
-                    }
-                    else if (dialogResult == DialogResult.No)
-                    {
-                        MessageBox.Show($"{Properties.translations.MessageBoxes.msgTextInstallationOf} \"{engine.Name}\" {Properties.translations.MessageBoxes.msgTextWithAppID} \"{engine.Appid}\" {Properties.translations.MessageBoxes.msgTextCancelled}", Properties.translations.MessageBoxes.msgInfo, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                    }
-                }
+                    OfferInstall(engine);
             }
             else if (selectItem.Group == listViewGroupAddons || selectItem.Group == listViewGroupBundled)
             {

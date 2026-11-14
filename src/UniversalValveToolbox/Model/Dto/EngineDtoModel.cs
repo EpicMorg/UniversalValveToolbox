@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
 using UniversalValveToolbox.Base;
 
 namespace UniversalValveToolbox.Model.Dto {
@@ -38,6 +39,10 @@ namespace UniversalValveToolbox.Model.Dto {
             get => tools;
             set => UpdateField(value, ref tools);
         }
+
+        /// <summary>Folder of a local build (settings LocalEngines); null for Steam games. Not part of the catalog.</summary>
+        [JsonIgnore]
+        public string LocalPath { get; set; }
 
         /// <summary>Bin, or the first AltBins entry that exists under <paramref name="enginePath"/>; Bin if none exists.</summary>
         public string ResolveBin(string enginePath) {

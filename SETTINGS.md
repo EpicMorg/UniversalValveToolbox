@@ -27,8 +27,9 @@ If `settings.json` cannot be read (e.g. a typo), UVT says so, runs with defaults
   "ToolboxMod": "retail",
   "ToolsAppId": 480,
   "BundleAppID": 480,
-  "DevEnginePath": "C:\\MyGame",
-  "DevEngineName": "My Future Game (engine)",
+  "LocalEngines": [
+    { "Name": "My Game", "Path": "D:\\Builds\\MyGame", "Template": 243730 }
+  ],
   "LastSelectedProject": null
 }
 ```
@@ -39,15 +40,23 @@ If `settings.json` cannot be read (e.g. a typo), UVT says so, runs with defaults
 
 ## Modes
 ### retail (default)
-Every game from `json\engines` that is installed in the user's Steam library, with the tools that exist in that install.
+Every game from `json\engines` that is installed in the user's Steam library, with the tools that exist in that install,
+followed by the local engines.
 
 ### bundle
 For shipping UVT with one game: only the engine `BundleAppID` is shown, its tools are taken from that game's install folder.
 Set `ToolsAppId` to your SDK/tools app and `BundleAppID` to your game, and make sure `json\engines\<BundleAppID>.json` exists.
+If the game is not installed, UVT says so on start and offers to install it through Steam.
 
-### dev
-Like `bundle`, but the game is a local folder (`DevEnginePath`, shown as `DevEngineName`), e.g. a build that is not on Steam.
-The list of tools comes from `json\engines\<BundleAppID>.json`; without that file the list is empty.
+### Local engines
+Game builds in a local folder (not installed through Steam), listed after the Steam games as `<Name> [local]`:
+- `Name` — shown in the list (the template's name if empty);
+- `Path` — the game root folder (environment variables allowed);
+- `Template` — app id of a `json\engines` entry; the game exe and the tools are taken from it. Entries without a known
+  template are skipped. Projects of the template's app id are shown for the local engine too.
+
+The old `dev` mode still works: it is `retail` plus one local engine made of `DevEngineName`, `DevEnginePath` and
+`BundleAppID`.
 
 ## Projects
 ```json

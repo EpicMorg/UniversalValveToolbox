@@ -12,6 +12,7 @@ namespace UniversalValveToolbox.Model.Dto {
         private ToolboxMod toolboxmod = ToolboxMod.retail;
         private uint toolsappid = 480;
         private uint bundleappsid = 480;
+        private LocalEngineDtoModel[] localEngines = new LocalEngineDtoModel[0];
 
 
         public string LastSelectedProject {
@@ -55,8 +56,18 @@ namespace UniversalValveToolbox.Model.Dto {
             get => devenginename;
             set => UpdateField(value, ref devenginename);
         }
+
+        /// <summary>Local game builds shown in retail mode next to the Steam games.</summary>
+        public LocalEngineDtoModel[] LocalEngines
+        {
+            get => localEngines;
+            set => UpdateField(value, ref localEngines);
+        }
     }
     public enum ToolboxMod {
-        retail, bundle, dev
+        retail,
+        bundle,
+        /// <summary>Old mode: same as retail plus one local engine from DevEnginePath/DevEngineName/BundleAppID.</summary>
+        dev
     }
 }

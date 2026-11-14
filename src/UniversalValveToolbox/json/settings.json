@@ -3,9 +3,10 @@
   "Language": "en-US",
   "AvailableLanguages": [ "en-US", "ru-RU" ],
   "Theme": null,
-  "ToolboxMod": "retail", //retail, bundle or dev, see SETTINGS.md
+  "ToolboxMod": "retail", //retail or bundle, see SETTINGS.md
   "ToolsAppId": 480, //Steam app id UVT runs as: 480 is Valve's test app, put your SDK/tools app id here when shipping UVT
-  "BundleAppID": 243730, //bundle/dev: the game whose tools are shown (243730 = Source SDK Base 2013 Singleplayer)
-  "DevEnginePath": "C:\\MyGame", //dev: local game folder
-  "DevEngineName": "My Game (dev)" //dev: name shown in the list
+  "BundleAppID": 243730, //bundle: the game whose tools are shown (243730 = Source SDK Base 2013 Singleplayer)
+  "LocalEngines": [ //local builds shown as "<Name> [local]"; exe and tools from json\engines\<Template>.json
+    { "Name": "My Game", "Path": "C:\\MyGame", "Template": 243730 }
+  ]
 }
